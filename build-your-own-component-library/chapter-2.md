@@ -1,6 +1,6 @@
 ## Chapter 2: Project setup
 
-This chapter gets you from an empty directory to a working development environment with Vite, React 19, TypeScript, and Tailwind CSS 4. No components yet. Just the foundation.
+This chapter gets you from an empty directory to a working development environment with Vite, React 19, TypeScript, and Tailwind CSS 4. No components yet, just the foundation.
 
 ### Initialize the project
 
@@ -47,7 +47,7 @@ Create `tsconfig.json` at the project root:
 }
 ```
 
-The key settings: `strict: true` catches type errors early. `jsx: "react-jsx"` enables the automatic JSX runtime (no need to import React in every file). `declaration: true` generates `.d.ts` files, which consumers need for TypeScript support.
+`strict: true` catches type errors early. `jsx: "react-jsx"` enables the automatic JSX runtime, so you don't need to import React in every file. `declaration: true` generates `.d.ts` files that consumers need for TypeScript support.
 
 ### Configure Vite
 
@@ -69,7 +69,7 @@ export default defineConfig({
 })
 ```
 
-This configuration handles two roles: a dev server for Storybook development, and (later) a library build for npm distribution. The library build configuration gets added in Chapter 11.
+For now, this configuration covers the dev server for Storybook development. You add the library build configuration for npm distribution in Chapter 11.
 
 ### Set up the directory structure
 
@@ -86,7 +86,7 @@ Create the main CSS entry point at `src/app.css`:
 @import 'tailwindcss';
 ```
 
-That single line is all Tailwind CSS 4 needs to start. The `@theme` directive and token imports get added in the next chapter.
+That single line is all Tailwind CSS 4 needs to start. You add the `@theme` directive and token imports in the next chapter.
 
 ### Create the utility function
 
@@ -107,7 +107,7 @@ Install the dependencies:
 npm install clsx tailwind-merge
 ```
 
-`clsx` handles conditional class joining. `tailwind-merge` resolves Tailwind class conflicts (for example, if a component applies `bg-blue-500` and the consumer passes `bg-red-500`, `tailwind-merge` keeps only the consumer's class). Combined, they let buyers override any component style with Tailwind utilities without fighting specificity.
+`clsx` handles conditional class joining. `tailwind-merge` resolves Tailwind class conflicts (for example, if a component applies `bg-blue-500` and the consumer passes `bg-red-500`, `tailwind-merge` keeps only the consumer's class). Together, they let consumers override any component style with Tailwind utilities without specificity conflicts.
 
 ### Verify the setup
 

@@ -1,6 +1,6 @@
 ## Chapter 1: The architecture before the code
 
-Don't open your terminal yet. The most expensive mistakes in a component library are architectural, and they compound. A bad token structure means renaming hundreds of references later. A wrong CSS strategy means rewriting every component's styles. A missing accessibility layer means bolting it on after the fact, which always costs more than building it in.
+Don't open your terminal yet. The most expensive mistakes in a component library are architectural, and they compound. A bad token structure means renaming hundreds of references later. A wrong CSS strategy means rewriting every component's styles. A missing accessibility layer means adding it retroactively, which always costs more than building it in.
 
 This chapter covers the decisions you need to make before you write a single line of code.
 
@@ -12,17 +12,17 @@ You have three options:
 
 **Build it yourself.** This means implementing WAI-ARIA patterns from scratch for every interactive component. A correct modal implementation alone requires focus trapping, scroll locking, Escape key handling, focus restoration on close, and `aria-modal` management. Multiply that by every interactive component in your library. Unless accessibility engineering is your core skill, this path produces components that work for mouse users and break for everyone else.
 
-**Use Radix primitives.** Radix provides unstyled, accessible components that you style yourself. It's the layer underneath shadcn/ui, and it has the largest mindshare in the React ecosystem. Radix was originally built by Modulz and is now maintained by WorkOS. It's a mature, battle-tested library. The reason this guide doesn't use Radix is not that Radix is a bad choice. It's that React Aria offers deeper accessibility coverage out of the box, particularly for mobile screen readers and internationalization, which means less custom work per component.
+**Use Radix primitives.** Radix provides unstyled, accessible components that you style yourself. It's the layer underneath shadcn/ui, and it has the largest mindshare in the React ecosystem. Radix was originally built by Modulz and is now maintained by WorkOS. It's a mature, battle-tested library. This guide uses React Aria instead of Radix, not because Radix is a bad choice, but because React Aria offers deeper accessibility coverage out of the box, particularly for mobile screen readers and internationalization, which means less custom work per component.
 
-**Use React Aria.** React Aria is maintained by Adobe's design system team (the same team behind Adobe's Spectrum design system). HeroUI (formerly NextUI) has built on React Aria since v2. Untitled UI React, launched in 2026, also chose React Aria. React Aria handles mobile screen reader interactions, press event normalization across pointer types, and internationalization of ARIA labels. In this guide's experience, these capabilities reduce the amount of custom accessibility work needed per component.
+**Use React Aria.** React Aria is maintained by Adobe's design system team (the same team behind Adobe's Spectrum design system). HeroUI (formerly NextUI) has built on React Aria since v2. Untitled UI React, launched in 2026, also chose React Aria. React Aria handles mobile screen reader interactions, press event normalization across pointer types, and internationalization of ARIA labels.
 
-This guide uses React Aria. Not because the other options are bad, but because React Aria gives you the most accessibility coverage with the least custom work, backed by a maintenance commitment tied to Adobe's own production needs.
+This guide uses React Aria because it gives you the most accessibility coverage with the least custom work, backed by a maintenance commitment tied to Adobe's own production needs.
 
 ### Choosing your styling approach
 
 The styling layer determines how your token values reach the rendered components and how buyers customize the visual output.
 
-**Tailwind CSS 4** is the recommendation. Version 4 introduced CSS-first configuration through the `@theme` directive, which means your design tokens (stored as CSS custom properties) map directly to Tailwind utility classes without a JavaScript config file. The buyer changes a token value, and every Tailwind utility that references it updates automatically.
+This guide recommends **Tailwind CSS 4**. Version 4 introduced CSS-first configuration through the `@theme` directive, which means your design tokens (stored as CSS custom properties) map directly to Tailwind utility classes without a JavaScript config file. The buyer changes a token value, and every Tailwind utility that references it updates automatically.
 
 The alternative approaches (CSS Modules, Sass, styled-components) all work, but they add a layer of indirection between your tokens and your styles. Tailwind's `@theme` collapses that layer. The token _is_ the style.
 
@@ -34,7 +34,7 @@ A three-tier architecture avoids this by separating _what values exist_ from _wh
 
 **Tier 1 (global tokens)** defines the raw palette. `color.blue.500` is `#3B82F6`. It has no opinion about what that color is for. It just exists as a named value in the system.
 
-**Tier 2 (semantic tokens)** assigns meaning. `color.brand.primary` references `color.blue.500`. Now the system knows that blue-500 is the primary brand color. When the brand changes to teal, you update one alias. Every component that uses `color.brand.primary` changes with it.
+**Tier 2 (semantic tokens)** assigns meaning. `color.brand.primary` references `color.blue.500`. Now `color.blue.500` is aliased as the primary brand color. When the brand changes to teal, you update one alias. Every component that uses `color.brand.primary` changes with it.
 
 **Tier 3 (component tokens, optional)** scopes values to individual components. `button.background.default` references `color.brand.primary`. This tier is useful in large systems where you need to change one component's behavior without affecting others. For a starter library, it's a reference implementation you can skip until you need it.
 
@@ -48,7 +48,7 @@ This guide treats layout as part of the component library. You'll build eight la
 
 The layout primitives are driven by the same token system as the UI components. Changing `layout.sidebar.width` from `20rem` to `24rem` propagates to every Sidebar instance in the application. Changing `layout.stack.space.default` from `1.5rem` to `2rem` adjusts vertical rhythm globally.
 
-### The decisions summary
+### Decisions summary
 
 Before you proceed, here's what you're committing to:
 
