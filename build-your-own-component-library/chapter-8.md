@@ -8,13 +8,14 @@ The Dialog (modal) is the most complex overlay component. It requires focus trap
 
 ```tsx
 // src/components/Dialog/Dialog.tsx
-import { useRef } from 'react'
+import { forwardRef, useRef } from 'react'
 import {
   useDialog,
   useModalOverlay,
   OverlayContainer,
   usePreventScroll,
 } from 'react-aria'
+import { useObjectRef } from '@react-aria/utils'
 import { useOverlayTriggerState } from 'react-stately'
 import type { OverlayTriggerState } from 'react-stately'
 import { cn } from '@/utils/cn'
@@ -29,7 +30,7 @@ export interface DialogProps {
   className?: string
 }
 
-export function Dialog({
+export const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog({
   isOpen,
   onClose,
   title,
@@ -37,9 +38,9 @@ export function Dialog({
   size = 'md',
   children,
   className,
-}: DialogProps) {
+}: DialogProps, ref) {
   const overlayRef = useRef<HTMLDivElement>(null)
-  const dialogRef = useRef<HTMLDivElement>(null)
+  const dialogRef = useObjectRef(ref)
 
   usePreventScroll({ isDisabled: !isOpen })
 
@@ -87,10 +88,12 @@ export function Dialog({
       </div>
     </OverlayContainer>
   )
-}
+})
 ```
 
 `useModalOverlay` handles focus trapping and Escape dismissal. `usePreventScroll` locks body scrolling. `OverlayContainer` from React Aria renders the dialog into a portal (appended to the document body), which prevents z-index stacking context issues.
+
+Dialog uses `forwardRef` so consumers can hold a ref to the dialog element, which is useful for programmatic focus management or measuring position. The internal `useDialog` hook requires a `RefObject<HTMLDivElement>`, not the looser `ForwardedRef` type that `forwardRef` provides. `useObjectRef` from `@react-aria/utils` bridges the two: it normalizes a forwarded ref (which may be a callback ref, a ref object, or null) into a stable `RefObject`, and syncs them so both the consumer's ref and `useDialog`'s ref point to the same element.
 
 The dialog is controlled-only (`isOpen` and `onClose` are required props). This is a deliberate choice. Uncontrolled dialogs (that manage their own open state) prevent the consumer from coordinating dialog visibility with the rest of their application state.
 
@@ -98,7 +101,7 @@ The dialog is controlled-only (`isOpen` and `onClose` are required props). This 
 
 ```tsx
 // src/components/Tooltip/Tooltip.tsx
-import React, { useRef } from 'react'
+import React, { forwardRef, useRef } from 'react'
 import {
   useTooltipTrigger,
   useTooltip as useTooltipAria,
@@ -113,57 +116,54 @@ export interface TooltipTriggerProps {
   children: [React.ReactElement, React.ReactElement]
 }
 
-export function TooltipTrigger({
-  delay = 500,
-  closeDelay = 0,
-  children,
-}: TooltipTriggerProps) {
-  const state = useTooltipTriggerState({ delay, closeDelay })
-  const triggerRef = useRef<HTMLElement>(null)
-  const { triggerProps, tooltipProps: triggerTooltipProps } = useTooltipTrigger(
-    { delay, closeDelay },
-    state,
-    triggerRef,
-  )
+export const TooltipTrigger = forwardRef<HTMLSpanElement, TooltipTriggerProps>(
+  function TooltipTrigger({ delay = 500, closeDelay = 0, children }, ref) {
+    const state = useTooltipTriggerState({ delay, closeDelay })
+    const triggerRef = useRef<HTMLElement>(null)
+    const { triggerProps, tooltipProps: triggerTooltipProps } = useTooltipTrigger(
+      { delay, closeDelay },
+      state,
+      triggerRef,
+    )
 
-  const [trigger, tooltip] = children
+    const [trigger, tooltip] = children
 
-  return (
-    <span className="rudiment-tooltip-trigger">
-      {React.cloneElement(
-        trigger,
-        mergeProps(triggerProps, { ref: triggerRef }),
-      )}
-      {state.isOpen && React.cloneElement(tooltip, triggerTooltipProps)}
-    </span>
-  )
-}
+    return (
+      <span ref={ref} className="rudiment-tooltip-trigger">
+        {React.cloneElement(
+          trigger,
+          mergeProps(triggerProps, { ref: triggerRef }),
+        )}
+        {state.isOpen && React.cloneElement(tooltip, triggerTooltipProps)}
+      </span>
+    )
+  },
+)
 
 export interface TooltipProps {
   children: React.ReactNode
   className?: string
 }
 
-export function Tooltip({
-  children,
-  className,
-  ...props
-}: TooltipProps & Record<string, unknown>) {
-  const { tooltipProps } = useTooltipAria(props)
+export const Tooltip = forwardRef<HTMLSpanElement, TooltipProps & Record<string, unknown>>(
+  function Tooltip({ children, className, ...props }, ref) {
+    const { tooltipProps } = useTooltipAria(props)
 
-  return (
-    <span
-      {...tooltipProps}
-      className={cn('rudiment-tooltip', className)}
-      role="tooltip"
-    >
-      {children}
-    </span>
-  )
-}
+    return (
+      <span
+        {...tooltipProps}
+        ref={ref}
+        className={cn('rudiment-tooltip', className)}
+        role="tooltip"
+      >
+        {children}
+      </span>
+    )
+  },
+)
 ```
 
-The tooltip appears on hover (after the configured delay) and on focus. It hides on pointer leave, blur, Escape, or scroll. React Aria manages the timing and the `aria-describedby` relationship between the trigger and the tooltip content.
+The tooltip appears on hover (after the configured delay) and on focus. It hides on pointer leave, blur, Escape, or scroll. React Aria manages the timing and the `aria-describedby` relationship between the trigger and the tooltip content. Both `TooltipTrigger` and `Tooltip` use `forwardRef`: `TooltipTrigger` exposes the outer wrapper span (useful for positioning logic), and `Tooltip` exposes the tooltip element itself.
 
 ### Alert
 
@@ -212,6 +212,6 @@ The full implementations are in the companion repository. The patterns don't var
 
 ### What you have now
 
-All 14 UI components are built. Combined with the 8 layout primitives and 3 typography components from chapters 4, 5, and 5b, the library has 25 components total. Every interactive component uses React Aria for keyboard and screen reader support. Every component references design tokens for its visual properties. Every layout primitive responds to its container's available space without media queries.
+You've now built all 14 UI components. Combined with the 8 layout primitives and 3 typography components from chapters 4, 5, and 5b, the library has 25 components total. Every interactive component uses React Aria for keyboard and screen reader support. Components reference design tokens for their visual properties, and layout primitives respond to available space without media queries. Every component that renders a DOM element now uses `forwardRef`, closing the ref-forwarding gap that existed in chapters 6 and 7.
 
 The next chapter configures Storybook to document and demonstrate the entire system.

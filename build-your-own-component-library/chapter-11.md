@@ -2,9 +2,9 @@
 
 Your library works in Storybook. Your tests pass. Now you need to package it so other projects can install and use it.
 
-### Vite library mode
+### Configure Vite library mode
 
-Vite's library mode produces a clean build output with ESM exports and TypeScript declarations. Install the declaration generation plugin:
+Vite's library mode produces a clean build output with ECMAScript module (ESM) exports and TypeScript declarations. Install the declaration generation plugin:
 
 ```bash
 npm install -D vite-plugin-dts
@@ -34,12 +34,6 @@ export default defineConfig({
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime'],
-      output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-        },
-      },
     },
   },
 })
@@ -47,7 +41,7 @@ export default defineConfig({
 
 The `external` array tells Vite not to bundle React into the library output. The consuming project provides its own React. This prevents duplicate React instances, which cause hook errors.
 
-### Package.json exports
+### Configure `package.json` exports
 
 Configure `package.json` for ESM consumption:
 
@@ -98,9 +92,9 @@ Vite generates `dist/index.js` (the library code), `dist/index.d.ts` (TypeScript
 node -e "import('file://' + process.cwd() + '/dist/index.js').then(m => console.log(Object.keys(m)))"
 ```
 
-This should print the names of every exported component and utility.
+This prints the names of every exported component and utility.
 
-### Publishing
+### Publish your library
 
 For the self-serve kit (Product 1), you're distributing the source code as a template repo, not publishing to npm. The buyer clones the repo and works with the source directly. The Vite build configuration is there for when the buyer wants to package their customized library for internal distribution within their own organization.
 
@@ -111,9 +105,9 @@ npm login
 npm publish
 ```
 
-Prefix the package name with your npm scope if needed: `@briley-creative/rudiment-ui`.
+Prefix the package name with your npm scope if needed: `@your-scope/rudiment-ui`.
 
-### Semantic versioning
+### Apply semantic versioning
 
 For a component library, the versioning rules are:
 
@@ -123,4 +117,4 @@ For a component library, the versioning rules are:
 
 **Patch (1.0.0 -> 1.0.1):** A bug is fixed without changing the API. A dependency is updated. A documentation error is corrected.
 
-Write a CHANGELOG.md that describes each release in human-readable terms. Consuming teams use the changelog to decide whether to upgrade and what to test after upgrading.
+Write a `CHANGELOG.md` that describes each release in human-readable terms. Consuming teams use the changelog to decide whether to upgrade and what to test after upgrading.
