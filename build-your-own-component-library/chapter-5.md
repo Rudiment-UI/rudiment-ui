@@ -2,7 +2,7 @@
 
 You have the pattern down from the Stack chapter: a React component that renders a semantic element with a CSS class and optional inline custom property overrides. The CSS does the layout work, tokens provide the defaults, and props allow per-instance control. This chapter applies that same pattern seven more times.
 
-Each primitive is presented with its CSS, TypeScript interface, and a brief explanation of the layout technique. Stories and tests follow the same conventions established for Stack. The full story and test files are in the companion repository. This chapter focuses on the CSS techniques that make each primitive work.
+Each section covers the primitive's CSS, TypeScript interface, and a brief explanation of the layout technique. Stories and tests follow the same conventions established for Stack. The full story and test files are in the companion repository. This chapter focuses on the CSS techniques that make each primitive work.
 
 ### Box
 
@@ -20,13 +20,14 @@ The Box is the simplest layout primitive. It applies consistent padding and an o
 }
 
 .rudiment-box--invert {
-  background-color: var(--color-neutral-900);
-  color: var(--color-neutral-0);
+  background-color: var(--color-bg-surface-inverted, var(--color-neutral-900));
+  color: var(--color-text-on-inverted, var(--color-neutral-0));
 }
 ```
 
 ```tsx
 // src/layouts/Box/Box.tsx
+import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 
 export interface BoxProps extends React.HTMLAttributes<HTMLElement> {
@@ -37,7 +38,7 @@ export interface BoxProps extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode
 }
 
-export function Box({
+export const Box = forwardRef<HTMLElement, BoxProps>(function Box({
   padding,
   bordered = false,
   invert = false,
@@ -46,12 +47,13 @@ export function Box({
   style,
   children,
   ...props
-}: BoxProps) {
+}, ref) {
   const customProperties: Record<string, string> = {}
   if (padding) customProperties['--box-padding'] = padding
 
   return (
     <Element
+      ref={ref}
       className={cn(
         'rudiment-box',
         bordered && 'rudiment-box--bordered',
@@ -64,8 +66,10 @@ export function Box({
       {children}
     </Element>
   )
-}
+})
 ```
+
+Every primitive in this chapter follows the same `forwardRef` pattern. The ref is typed as `HTMLElement` in all cases for the same reason discussed in Chapter 4: the `as` prop accepts any element type, so a more specific ref type (for example, `HTMLDivElement`) would be incorrect when the consumer passes `as="section"`. `HTMLElement` is the accurate common base. If your project needs the fully typed polymorphic ref, the pattern is documented in the companion repository.
 
 ### Center
 
@@ -94,6 +98,7 @@ The `intrinsic` variant uses flexbox centering to size the Center based on its c
 
 ```tsx
 // src/layouts/Center/Center.tsx
+import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 
 export interface CenterProps extends React.HTMLAttributes<HTMLElement> {
@@ -104,7 +109,7 @@ export interface CenterProps extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode
 }
 
-export function Center({
+export const Center = forwardRef<HTMLElement, CenterProps>(function Center({
   maxWidth,
   gutters,
   intrinsic = false,
@@ -113,13 +118,14 @@ export function Center({
   style,
   children,
   ...props
-}: CenterProps) {
+}, ref) {
   const customProperties: Record<string, string> = {}
   if (maxWidth) customProperties['--center-max-width'] = maxWidth
   if (gutters) customProperties['--center-gutters'] = gutters
 
   return (
     <Element
+      ref={ref}
       className={cn(
         'rudiment-center',
         intrinsic && 'rudiment-center--intrinsic',
@@ -131,7 +137,7 @@ export function Center({
       {children}
     </Element>
   )
-}
+})
 ```
 
 ### Cluster
@@ -153,6 +159,7 @@ The Cluster arranges inline-like children (tags, buttons, badges, navigation lin
 
 ```tsx
 // src/layouts/Cluster/Cluster.tsx
+import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 
 export interface ClusterProps extends React.HTMLAttributes<HTMLElement> {
@@ -168,7 +175,7 @@ export interface ClusterProps extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode
 }
 
-export function Cluster({
+export const Cluster = forwardRef<HTMLElement, ClusterProps>(function Cluster({
   space,
   justify,
   align,
@@ -177,7 +184,7 @@ export function Cluster({
   style,
   children,
   ...props
-}: ClusterProps) {
+}, ref) {
   const customProperties: Record<string, string> = {}
   if (space) customProperties['--cluster-space'] = space
   if (justify) customProperties['--cluster-justify'] = justify
@@ -185,6 +192,7 @@ export function Cluster({
 
   return (
     <Element
+      ref={ref}
       className={cn('rudiment-cluster', className)}
       style={{ ...customProperties, ...style } as React.CSSProperties}
       {...props}
@@ -192,10 +200,10 @@ export function Cluster({
       {children}
     </Element>
   )
-}
+})
 ```
 
-A common use: a header with a logo on the left and navigation links on the right.
+A common use case is a header with a logo on the left and navigation links on the right.
 
 ```tsx
 <Cluster justify="space-between" align="center">
@@ -210,7 +218,7 @@ A common use: a header with a logo on the left and navigation links on the right
 
 ### Sidebar
 
-The Sidebar is the most technically interesting layout primitive. It creates a two-panel layout where one panel (the sidebar) has a fixed width and the other (the content) fills the remaining space. When the content panel would be squeezed below a minimum width, both panels stack vertically. No media queries. The layout responds to its own container, not the viewport.
+The Sidebar is the most complex layout primitive. It creates a two-panel layout where one panel (the sidebar) has a fixed width and the other (the content) fills the remaining space. When the content panel would be squeezed below a minimum width, both panels stack vertically. No media queries. The layout responds to its own container, not the viewport.
 
 The technique uses flexbox with asymmetric `flex-grow` values:
 
@@ -257,6 +265,7 @@ This is an intrinsic layout. The same Sidebar component works in a 1200px contai
 
 ```tsx
 // src/layouts/Sidebar/Sidebar.tsx
+import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 
 export interface SidebarProps extends React.HTMLAttributes<HTMLElement> {
@@ -269,7 +278,7 @@ export interface SidebarProps extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode
 }
 
-export function Sidebar({
+export const Sidebar = forwardRef<HTMLElement, SidebarProps>(function Sidebar({
   side = 'left',
   sideWidth,
   contentMin,
@@ -280,7 +289,7 @@ export function Sidebar({
   style,
   children,
   ...props
-}: SidebarProps) {
+}, ref) {
   const customProperties: Record<string, string> = {}
   if (sideWidth) customProperties['--sidebar-width'] = sideWidth
   if (contentMin) customProperties['--sidebar-content-min'] = contentMin
@@ -288,6 +297,7 @@ export function Sidebar({
 
   return (
     <Element
+      ref={ref}
       className={cn(
         'rudiment-sidebar',
         side === 'right' && 'rudiment-sidebar--right',
@@ -300,10 +310,10 @@ export function Sidebar({
       {children}
     </Element>
   )
-}
+})
 ```
 
-The Sidebar expects exactly two children. The first child is the sidebar panel (when `side="left"`), and the second is the content panel. When `side="right"`, the roles reverse. The component doesn't enforce this at runtime, but the documentation and stories make the expectation clear.
+The Sidebar expects exactly two children. The first child is the sidebar panel (when `side="left"`), and the second is the content panel. When `side="right"`, the roles reverse. The component doesn't enforce this at runtime, but the companion repository's documentation and stories clarify the expectation.
 
 ### Switcher
 
@@ -330,6 +340,7 @@ The `calc()` expression is the heart of the trick. When the container is wider t
 
 ```tsx
 // src/layouts/Switcher/Switcher.tsx
+import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 
 export interface SwitcherProps extends React.HTMLAttributes<HTMLElement> {
@@ -340,7 +351,7 @@ export interface SwitcherProps extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode
 }
 
-export function Switcher({
+export const Switcher = forwardRef<HTMLElement, SwitcherProps>(function Switcher({
   threshold,
   space,
   limit,
@@ -349,13 +360,14 @@ export function Switcher({
   style,
   children,
   ...props
-}: SwitcherProps) {
+}, ref) {
   const customProperties: Record<string, string> = {}
   if (threshold) customProperties['--switcher-threshold'] = threshold
   if (space) customProperties['--switcher-space'] = space
 
   return (
     <Element
+      ref={ref}
       className={cn('rudiment-switcher', className)}
       style={{ ...customProperties, ...style } as React.CSSProperties}
       {...props}
@@ -363,10 +375,10 @@ export function Switcher({
       {children}
     </Element>
   )
-}
+})
 ```
 
-The `limit` prop is an enhancement for cases where you want at most N children per row. Implementation-wise, it applies `flex-basis: 100%` to children beyond the limit via a CSS rule like `.rudiment-switcher > :nth-child(n+4)`. For the initial version, this can be handled with an inline `<style>` tag scoped to the component instance, or deferred to a future release. The core switching behavior works without it.
+The `limit` prop is an enhancement for cases where you want at most N children per row. It applies `flex-basis: 100%` to children beyond the limit via a CSS rule like `.rudiment-switcher > :nth-child(n+4)`. You can handle this with an inline `<style>` tag scoped to the component instance. The core switching behavior works without it.
 
 ### Grid
 
@@ -389,6 +401,7 @@ The `min(var(--grid-min-cell), 100%)` inside the `minmax()` is critical. Without
 
 ```tsx
 // src/layouts/Grid/Grid.tsx
+import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 
 export interface GridProps extends React.HTMLAttributes<HTMLElement> {
@@ -398,7 +411,7 @@ export interface GridProps extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode
 }
 
-export function Grid({
+export const Grid = forwardRef<HTMLElement, GridProps>(function Grid({
   minCellWidth,
   space,
   as: Element = 'div',
@@ -406,13 +419,14 @@ export function Grid({
   style,
   children,
   ...props
-}: GridProps) {
+}, ref) {
   const customProperties: Record<string, string> = {}
   if (minCellWidth) customProperties['--grid-min-cell'] = minCellWidth
   if (space) customProperties['--grid-space'] = space
 
   return (
     <Element
+      ref={ref}
       className={cn('rudiment-grid', className)}
       style={{ ...customProperties, ...style } as React.CSSProperties}
       {...props}
@@ -420,7 +434,7 @@ export function Grid({
       {children}
     </Element>
   )
-}
+})
 ```
 
 ### Cover
@@ -457,6 +471,7 @@ The `margin-block: auto` on the centered child is the vertical centering mechani
 
 ```tsx
 // src/layouts/Cover/Cover.tsx
+import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 
 export interface CoverProps extends React.HTMLAttributes<HTMLElement> {
@@ -466,7 +481,7 @@ export interface CoverProps extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode
 }
 
-export function Cover({
+export const Cover = forwardRef<HTMLElement, CoverProps>(function Cover({
   minHeight,
   space,
   as: Element = 'div',
@@ -474,13 +489,14 @@ export function Cover({
   style,
   children,
   ...props
-}: CoverProps) {
+}, ref) {
   const customProperties: Record<string, string> = {}
   if (minHeight) customProperties['--cover-min-height'] = minHeight
   if (space) customProperties['--cover-space'] = space
 
   return (
     <Element
+      ref={ref}
       className={cn('rudiment-cover', className)}
       style={{ ...customProperties, ...style } as React.CSSProperties}
       {...props}
@@ -488,7 +504,7 @@ export function Cover({
       {children}
     </Element>
   )
-}
+})
 ```
 
 The consumer marks the centered child with the `rudiment-cover__centered` class:
@@ -508,7 +524,7 @@ An alternative approach is to export a `CoverCentered` wrapper component that ap
 
 ### Composing primitives
 
-The real power of these primitives appears when you nest them. A complete page layout requires no bespoke CSS, just composition:
+These primitives become most useful when nested. A complete page layout requires no bespoke CSS, just composition:
 
 ```tsx
 <Stack space="0">
@@ -570,10 +586,10 @@ This layout handles narrow viewports automatically. The Sidebar stacks when the 
 
 ### Attribution
 
-The layout primitives in this guide are inspired by the intrinsic layout patterns described in [Every Layout](https://every-layout.dev/) by Heydon Pickering and Andy Bell. Their work on algorithmic, context-independent CSS layout is foundational reading for anyone building layout systems.
+The layout primitives in this guide are inspired by the intrinsic layout patterns described in [Every Layout](https://every-layout.dev/) by Heydon Pickering and Andy Bell. Their work on algorithmic, context-independent CSS layout is recommended reading for anyone building layout systems.
 
 ### What you have now
 
 Eight layout primitives, all following the same pattern: token-driven CSS, React component wrapper, `as` prop for semantic HTML, `className` merging, prop-based overrides via inline custom properties. The layout system is usable independently of the UI components.
 
-Before moving to interactive components, the next section adds the typography layer: Heading, Text, and Prose components that handle the 80% of your UI that is just text.
+Before moving to interactive components, the next section adds the typography layer: Heading, Text, and Prose components that handle your UI's text content.

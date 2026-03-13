@@ -8,9 +8,10 @@ Select is the most complex form component in the library. It combines multiple R
 
 ```tsx
 // src/components/Select/Select.tsx (simplified structure)
-// Note: this example references Popover, ListBox, and ChevronIcon helper components
-// that are internal to the Select implementation. The companion repository contains
-// the complete implementations. Here we focus on the hook wiring pattern.
+// Note: this example references Popover, ListBox, ChevronIcon, and DismissButton
+// as helper components internal to the Select implementation. The companion
+// repository contains the complete implementations. Here we focus on the hook
+// wiring pattern.
 import { useRef } from 'react'
 import { useSelectState } from 'react-stately'
 import {
@@ -19,7 +20,6 @@ import {
   useOption,
   usePopover,
   HiddenSelect,
-  DismissButton,
 } from 'react-aria'
 import { cn } from '@/utils/cn'
 
@@ -94,7 +94,7 @@ export function Select<T extends object>(props: SelectProps<T>) {
 }
 ```
 
-The `HiddenSelect` component from React Aria renders a hidden native `<select>` element for form submission compatibility. The visible trigger is a `<button>` that opens the popover. The listbox inside the popover handles arrow key navigation, typeahead (type a letter to jump to matching options), and Home/End to jump to the first/last option.
+The `HiddenSelect` component from React Aria renders a hidden native `<select>` element for form submission compatibility. The visible trigger is a `<button>` that opens the popover. The listbox inside the popover handles arrow key navigation, typeahead (type a letter to jump to matching options), and `Home`/`End` to jump to the first/last option.
 
 This is a lot of code for a select input. That's the point. Getting keyboard navigation, ARIA attributes, popover positioning, and focus management right for a select is genuinely difficult. React Aria handles the behavioral complexity so your component code is mostly rendering and styling.
 
@@ -102,8 +102,9 @@ This is a lot of code for a select input. That's the point. Getting keyboard nav
 
 ```tsx
 // src/components/Checkbox/Checkbox.tsx
-import { useRef } from 'react'
+import { forwardRef } from 'react'
 import { useCheckbox } from 'react-aria'
+import { useObjectRef } from '@react-aria/utils'
 import { useToggleState } from 'react-stately'
 import { cn } from '@/utils/cn'
 
@@ -118,35 +119,39 @@ export interface CheckboxProps {
   className?: string
 }
 
-export function Checkbox(props: CheckboxProps) {
-  const ref = useRef<HTMLInputElement>(null)
-  const state = useToggleState(props)
-  const { inputProps } = useCheckbox(props, state, ref)
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+  function Checkbox(props, forwardedRef) {
+    const ref = useObjectRef(forwardedRef)
+    const state = useToggleState(props)
+    const { inputProps } = useCheckbox(props, state, ref)
 
-  return (
-    <label
-      className={cn(
-        'rudiment-checkbox',
-        props.isDisabled && 'rudiment-checkbox--disabled',
-        props.className,
-      )}
-    >
-      <input {...inputProps} ref={ref} className="rudiment-checkbox__input" />
-      <span
+    return (
+      <label
         className={cn(
-          'rudiment-checkbox__control',
-          state.isSelected && 'rudiment-checkbox__control--checked',
-          props.isIndeterminate && 'rudiment-checkbox__control--indeterminate',
+          'rudiment-checkbox',
+          props.isDisabled && 'rudiment-checkbox--disabled',
+          props.className,
         )}
-        aria-hidden="true"
-      />
-      <span className="rudiment-checkbox__label">{props.children}</span>
-    </label>
-  )
-}
+      >
+        <input {...inputProps} ref={ref} className="rudiment-checkbox__input" />
+        <span
+          className={cn(
+            'rudiment-checkbox__control',
+            state.isSelected && 'rudiment-checkbox__control--checked',
+            props.isIndeterminate && 'rudiment-checkbox__control--indeterminate',
+          )}
+          aria-hidden="true"
+        />
+        <span className="rudiment-checkbox__label">{props.children}</span>
+      </label>
+    )
+  },
+)
 ```
 
 The hidden native `<input>` provides the actual checkbox behavior. The `rudiment-checkbox__control` span is the visual indicator, styled via CSS to show a checkmark, dash (indeterminate), or empty box. The `aria-hidden="true"` on the visual indicator prevents screen readers from announcing it twice (once for the hidden input, once for the visual).
+
+Using `forwardRef` here lets a parent component call `.focus()` on the underlying input directly, which matters when you need to programmatically focus a checkbox, for example after form validation reveals an error. The React Aria hooks expect a `RefObject<T>`, but `forwardRef` gives you a `ForwardedRef<T>`, which can be either an object ref or a callback ref. `useObjectRef` from `@react-aria/utils` normalizes both forms into the `RefObject` the hooks need, so you get full compatibility without extra boilerplate. `@react-aria/utils` is already a transitive dependency of `react-aria`, so no new package is required.
 
 `CheckboxGroup` wraps multiple checkboxes with a group label:
 
@@ -253,8 +258,9 @@ Switch is semantically distinct from Checkbox. A checkbox is a selection control
 
 ```tsx
 // src/components/Switch/Switch.tsx
-import { useRef } from 'react'
+import { forwardRef } from 'react'
 import { useSwitch, VisuallyHidden } from 'react-aria'
+import { useObjectRef } from '@react-aria/utils'
 import { useToggleState } from 'react-stately'
 import { cn } from '@/utils/cn'
 
@@ -267,42 +273,44 @@ export interface SwitchProps {
   className?: string
 }
 
-export function Switch(props: SwitchProps) {
-  const ref = useRef<HTMLInputElement>(null)
-  const state = useToggleState(props)
-  const { inputProps } = useSwitch(props, state, ref)
+export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
+  function Switch(props, forwardedRef) {
+    const ref = useObjectRef(forwardedRef)
+    const state = useToggleState(props)
+    const { inputProps } = useSwitch(props, state, ref)
 
-  return (
-    <label
-      className={cn(
-        'rudiment-switch',
-        props.isDisabled && 'rudiment-switch--disabled',
-        props.className,
-      )}
-    >
-      <VisuallyHidden>
-        <input {...inputProps} ref={ref} />
-      </VisuallyHidden>
-      <span
+    return (
+      <label
         className={cn(
-          'rudiment-switch__track',
-          state.isSelected && 'rudiment-switch__track--on',
+          'rudiment-switch',
+          props.isDisabled && 'rudiment-switch--disabled',
+          props.className,
         )}
-        aria-hidden="true"
       >
-        <span className="rudiment-switch__thumb" />
-      </span>
-      <span className="rudiment-switch__label">{props.children}</span>
-    </label>
-  )
-}
+        <VisuallyHidden>
+          <input {...inputProps} ref={ref} />
+        </VisuallyHidden>
+        <span
+          className={cn(
+            'rudiment-switch__track',
+            state.isSelected && 'rudiment-switch__track--on',
+          )}
+          aria-hidden="true"
+        >
+          <span className="rudiment-switch__thumb" />
+        </span>
+        <span className="rudiment-switch__label">{props.children}</span>
+      </label>
+    )
+  },
+)
 ```
 
 `VisuallyHidden` is a React Aria utility that hides the native input from sight while keeping it accessible to screen readers. The visible switch track and thumb are styled via CSS to animate between on and off positions.
 
 ### What you have now
 
-All form components are built: Button, IconButton, Input, Select, Checkbox, CheckboxGroup, RadioGroup, Switch. Each uses React Aria for behavior and accessibility, with your token-driven CSS handling the visual layer. A buyer can compose a complete form using these components arranged inside a Stack:
+All form components are built: Button, IconButton, Input, Select, Checkbox, CheckboxGroup, RadioGroup, Switch. Each uses React Aria for behavior and accessibility, with your token-driven CSS handling the visual layer. You can compose a complete form using these components inside a Stack:
 
 ```tsx
 // Example roles data for the Select component

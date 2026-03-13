@@ -8,13 +8,13 @@ This chapter builds the token system that every component and layout primitive w
 npm install -D style-dictionary@4
 ```
 
-This guide uses Style Dictionary v4. Version 5 exists and uses a compatible configuration format, but the examples here were tested on v4.
+This guide uses Style Dictionary v4. Version 5 exists and uses a compatible configuration format, but the examples here use v4.
 
 ### Create the token source file
 
 Create `tokens/tokens.json`. This is the single source of truth for every visual and layout value in the system.
 
-The file uses the [DTCG format](https://design-tokens.github.io/community-group/format/). Each token has a `$value` (the actual value) and a `$type` (the kind of value). Tokens can reference other tokens using curly braces: `{color.blue.500}`. The DTCG format is the leading interchange format for design tokens. Its first stable release shipped in October 2025, and Style Dictionary v4 includes first-class support for it.
+The file uses the [DTCG format](https://design-tokens.github.io/community-group/format/). Each token has a `$value` (the actual value) and a `$type` (the kind of value). Tokens can reference other tokens using curly braces: `{color.blue.500}`. The DTCG format is the community standard for design token interchange. Style Dictionary v4 includes first-class support for it.
 
 Start with the global tokens (tier 1):
 
@@ -108,7 +108,7 @@ Start with the global tokens (tier 1):
 }
 ```
 
-These are placeholder values. The specific hex codes and sizes don't matter at this stage. What matters is the structure. Whoever adopts the library swaps these values to match their brand, and the structure stays the same.
+These are placeholder values. The structure matters more than the specific hex codes at this stage. Whoever adopts the library swaps these values to match their brand; the structure stays the same.
 
 ### Add semantic tokens
 
@@ -180,7 +180,7 @@ Create a separate file for the semantic tokens at `tokens/semantic.json`. Style 
 }
 ```
 
-Notice the layout tokens alongside the color tokens. Layout is not an afterthought. It's a peer of color, spacing, and typography in the token hierarchy.
+The layout tokens appear alongside the color tokens, not as a separate concern. Layout is a peer of color, spacing, and typography in the token hierarchy.
 
 ### Configure Style Dictionary
 
@@ -208,7 +208,7 @@ export default {
 }
 ```
 
-The `source` glob picks up both `tokens.json` and `semantic.json` (and any additional token files you add later). The `prefix: 'token'` option adds a `--token-` prefix to all generated CSS custom properties. This prefix is important: it prevents name collisions when you map these properties into Tailwind's `@theme` directive in the next step.
+The `source` glob picks up both `tokens.json` and `semantic.json` (and any additional token files you add later). The `prefix: 'token'` option adds a `--token-` prefix to all generated CSS custom properties, which prevents name collisions when you map them into Tailwind's `@theme` directive in the next step.
 
 The `outputReferences: true` option preserves the alias relationships in the CSS output. Instead of resolving `color.brand.primary` to its final hex value, the output is:
 

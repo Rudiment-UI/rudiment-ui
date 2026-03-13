@@ -1,6 +1,6 @@
 ## Chapter 5b: Typography: Heading, Text, and Prose
 
-Layout primitives handle where things go. Typography components handle how text looks and how it flows. Most component libraries skip this layer entirely, leaving every heading size, text variant, and content spacing decision to the consumer. The result is inconsistency: five developers make five different choices about how large an h2 should be.
+Layout primitives handle where things go. Typography components handle how text looks and how it flows. Most component libraries skip this layer entirely, leaving every heading size, text variant, and content spacing decision to the consumer. The result is inconsistency: five developers make five different choices about how large an `h2` should be.
 
 This chapter adds three components that enforce typographic consistency through the same token system that drives the rest of the library.
 
@@ -36,11 +36,22 @@ Add a typography namespace to `tokens/semantic.json`:
       "weight": { "$value": "{font.weight.regular}" },
       "lineHeight": { "$value": "{font.lineHeight.normal}" }
     },
+    "body-sm": {
+      "size": { "$value": "{font.size.sm}" },
+      "weight": { "$value": "{font.weight.regular}" },
+      "lineHeight": { "$value": "{font.lineHeight.normal}" }
+    },
     "caption": {
       "size": { "$value": "{font.size.sm}" },
       "weight": { "$value": "{font.weight.regular}" },
       "lineHeight": { "$value": "{font.lineHeight.normal}" },
       "color": { "$value": "{color.text.subtle}" }
+    },
+    "overline": {
+      "size": { "$value": "{font.size.xs}" },
+      "weight": { "$value": "{font.weight.semibold}" },
+      "lineHeight": { "$value": "{font.lineHeight.normal}" },
+      "tracking": { "$value": "0.1em" }
     },
     "prose": {
       "space": { "$value": "1.5em" },
@@ -57,10 +68,11 @@ Run `npm run build:tokens` to regenerate the CSS custom properties.
 
 The Heading component renders the correct semantic HTML element (`<h1>` through `<h6>`) based on a `level` prop. It also accepts a `size` prop for cases where the visual size needs to differ from the semantic level.
 
-This distinction matters for accessibility. Screen reader users navigate by heading level to understand page structure. If every visually-large heading is an `<h1>`, the document structure is flat and unhelpful. The `level` prop enforces correct document structure. The `size` prop lets you render an `<h2>` that looks like an `<h1>` when the design calls for it.
+This distinction matters for accessibility. Screen reader users navigate by heading level to understand page structure. If every visually large heading is an `<h1>`, the document structure is flat and unhelpful. The `level` prop enforces correct document structure. The `size` prop lets you render an `<h2>` that looks like an `<h1>` when the design calls for it.
 
 ```tsx
 // src/typography/Heading/Heading.tsx
+import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 
 export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
@@ -70,18 +82,19 @@ export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   className?: string
 }
 
-export function Heading({
+export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(function Heading({
   level,
   size,
   className,
   children,
   ...props
-}: HeadingProps) {
+}, ref) {
   const Element = `h${level}` as const
   const visualSize = size ?? level
 
   return (
     <Element
+      ref={ref}
       className={cn(
         `rudiment-heading rudiment-heading--${visualSize}`,
         className,
@@ -91,7 +104,7 @@ export function Heading({
       {children}
     </Element>
   )
-}
+})
 ```
 
 The CSS applies typography tokens per heading size:
@@ -122,6 +135,7 @@ The Text component covers non-heading text: body paragraphs, small text, caption
 
 ```tsx
 // src/typography/Text/Text.tsx
+import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 
 export interface TextProps extends React.HTMLAttributes<HTMLElement> {
@@ -131,22 +145,23 @@ export interface TextProps extends React.HTMLAttributes<HTMLElement> {
   className?: string
 }
 
-export function Text({
+export const Text = forwardRef<HTMLElement, TextProps>(function Text({
   variant = 'body',
   as: Element = 'p',
   className,
   children,
   ...props
-}: TextProps) {
+}, ref) {
   return (
     <Element
+      ref={ref}
       className={cn(`rudiment-text rudiment-text--${variant}`, className)}
       {...props}
     >
       {children}
     </Element>
   )
-}
+})
 ```
 
 ```css
@@ -157,11 +172,18 @@ export function Text({
   color: var(--color-text-default);
 }
 
+.rudiment-text--body-sm {
+  font-size: var(--token-typography-body-sm-size);
+  font-weight: var(--token-typography-body-sm-weight);
+  line-height: var(--token-typography-body-sm-lineHeight);
+  color: var(--color-text-default);
+}
+
 .rudiment-text--caption {
   font-size: var(--token-typography-caption-size);
   font-weight: var(--token-typography-caption-weight);
   line-height: var(--token-typography-caption-lineHeight);
-  color: var(--token-typography-caption-color);
+  color: var(--color-text-subtle);
 }
 
 .rudiment-text--overline {
@@ -185,12 +207,13 @@ export function Text({
 
 The Prose component solves the problem that Stack and Heading alone cannot: context-aware vertical rhythm in long-form content.
 
-Stack applies uniform spacing between its children. But long-form content needs variable spacing. The gap above a heading should be larger (it signals a new section). The gap below a heading should be smaller (the heading belongs to what follows). Paragraphs need consistent but moderate spacing. Code blocks need extra breathing room.
+Stack applies uniform spacing between its children. But long-form content needs variable spacing. The gap above a heading should be larger because it signals a new section. The gap below a heading should be smaller because the heading belongs to what follows. Paragraphs need consistent but moderate spacing. Code blocks need extra breathing room.
 
 Prose handles all of this with CSS selectors that target element-type relationships:
 
 ```tsx
 // src/typography/Prose/Prose.tsx
+import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 
 export interface ProseProps extends React.HTMLAttributes<HTMLElement> {
@@ -200,15 +223,16 @@ export interface ProseProps extends React.HTMLAttributes<HTMLElement> {
   className?: string
 }
 
-export function Prose({
+export const Prose = forwardRef<HTMLElement, ProseProps>(function Prose({
   size = 'base',
   as: Element = 'div',
   className,
   children,
   ...props
-}: ProseProps) {
+}, ref) {
   return (
     <Element
+      ref={ref}
       className={cn(
         'rudiment-prose',
         size !== 'base' && `rudiment-prose--${size}`,
@@ -219,7 +243,7 @@ export function Prose({
       {children}
     </Element>
   )
-}
+})
 ```
 
 ```css
@@ -303,8 +327,8 @@ The spacing values use `em`, not `rem`. This is the key detail. An `em` value sc
 </Prose>
 ```
 
-The headings get more space above (new section), less space below (connected to the following paragraph). Consecutive paragraphs get standard spacing. The code block gets extra room. No manual spacing classes needed.
+The headings get more space above (new section) and less space below (connected to the following paragraph). Consecutive paragraphs get standard spacing. The code block gets extra room. You don't need manual spacing classes.
 
-### What you have now
+### What's next
 
-Three typography components (Heading, Text, Prose) alongside eight layout primitives, all driven by the same token system. The library now handles spatial arrangement, typographic consistency, and long-form content rhythm. The next chapter adds interactive components with React Aria.
+You now have three typography components (Heading, Text, Prose) alongside eight layout primitives, all driven by the same token system. The library handles spatial arrangement, typographic consistency, and long-form content rhythm. The next chapter adds interactive components with React Aria.

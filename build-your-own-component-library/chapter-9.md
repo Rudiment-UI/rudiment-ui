@@ -10,7 +10,7 @@ npm create storybook@latest
 
 The Storybook CLI detects your Vite + React setup and installs the appropriate packages. It creates a `.storybook/` directory with `main.ts` and `preview.ts`. Accept the defaults, then modify both files.
 
-Install the addons:
+Install the accessibility addon:
 
 ```bash
 npm install -D @storybook/addon-a11y
@@ -81,7 +81,7 @@ const preview: Preview = {
 export default preview;
 ```
 
-The `preview.ts` configuration does three things:
+The `preview.ts` configuration does three things.
 
 It imports `app.css`, which loads your token values and Tailwind styles into Storybook's rendering iframe. Without this import, your components render without any styling.
 
@@ -91,7 +91,7 @@ The a11y addon configuration runs axe-core on every story automatically. Each st
 
 ### Story organization
 
-Stories are organized into three sections in Storybook's sidebar:
+Storybook's sidebar organizes stories into three sections:
 
 | Section    | Title prefix                                     | Contents                                     |
 | ---------- | ------------------------------------------------ | -------------------------------------------- |
@@ -99,22 +99,22 @@ Stories are organized into three sections in Storybook's sidebar:
 | Components | `Components/Button`, `Components/Input`, etc.    | One entry per UI component                   |
 | Examples   | `Examples/Dashboard`, `Examples/LoginPage`, etc. | Composed pages demonstrating the full system |
 
-This organization is enforced by the `title` field in each story's meta object. Storybook groups stories alphabetically within each section.
+The `title` field in each story's meta object controls this organization. Storybook groups stories alphabetically within each section.
 
 ### What every story file includes
 
 For layout primitives:
 
-1. **Default** — The primitive with token defaults and placeholder children.
-2. **Custom props** — The primitive with explicit prop values demonstrating customization.
-3. **Composed** — The primitive nested inside or containing other primitives.
+1. **Default**: The primitive with token defaults and placeholder children.
+2. **Custom props**: The primitive with explicit prop values demonstrating customization.
+3. **Composed**: The primitive nested inside or containing other primitives.
 
 For UI components:
 
-1. **Default** — The component in its default state.
-2. **Variants** — One story per visual variant.
-3. **States** — Stories for disabled, loading, error, and any other states.
-4. **Composed** — The component inside a layout primitive, demonstrating a realistic arrangement (for example, form fields in a Stack, buttons in a Cluster).
+1. **Default**: The component in its default state.
+2. **Variants**: One story per visual variant.
+3. **States**: Stories for disabled, loading, error, and any other states.
+4. **Composed**: The component inside a layout primitive, demonstrating a realistic arrangement (for example, form fields in a Stack, buttons in a Cluster).
 
 Every meta object includes `tags: ['autodocs']`. This generates a documentation page automatically from the story metadata and TypeScript prop types. The auto-generated docs page shows the props table, the default story, and all named stories with their controls.
 
@@ -122,9 +122,9 @@ Every meta object includes `tags: ['autodocs']`. This generates a documentation 
 
 The kitchen sink is a single story that composes the entire system into a realistic page. It lives at `src/examples/Dashboard.stories.tsx` with the title `Examples/Dashboard`.
 
-This story serves two purposes: it's the final integration test (if the dashboard renders correctly, the system works), and it's the hero of your sales page. Deploy Storybook publicly, and the kitchen sink page is what buyers see when they click "View demo."
+This story serves two purposes: it's the final integration test (if the dashboard renders correctly, the system works), and it's the centerpiece of your sales page. Deploy Storybook publicly, and the kitchen sink page is what buyers see when they click "View demo."
 
-Build the kitchen sink after all components are complete. It should use as many layout primitives and UI components as possible in a layout that looks like something a real startup would build: a header with navigation, a sidebar, a main content area with cards and a data grid, a form, and tabbed content.
+Build the kitchen sink after all components are complete. Use as many layout primitives and UI components as possible in a layout a real product would use: a header with navigation, a sidebar, a main content area with cards and a data grid, a form, and tabbed content.
 
 ### Deploying Storybook
 
@@ -134,10 +134,10 @@ Build the static Storybook site:
 npx storybook build -o storybook-static
 ```
 
-The `storybook-static` directory is a static site you can deploy to any hosting provider. Vercel and Netlify both deploy static sites from a Git repo with zero configuration. Point the build command to `npx storybook build -o storybook-static` and the output directory to `storybook-static`.
+The `storybook-static` directory is a static site you can deploy to any hosting provider. Vercel and Netlify both deploy static sites from a Git repository with zero configuration. Point the build command to `npx storybook build -o storybook-static` and the output directory to `storybook-static`.
 
 The deployed URL becomes the public demo linked from your sales page and README.
 
 ### What you have now
 
-A fully configured Storybook instance with accessibility audits, dark mode toggle, organized sidebar navigation, and a kitchen sink demo page. Every component and layout primitive has stories that document its API and demonstrate its behavior. The deployed Storybook is your living documentation and your most compelling sales asset.
+You now have a fully configured Storybook instance with accessibility audits, a dark mode toggle, organized sidebar navigation, and a kitchen sink demo page. Every component and layout primitive has stories that document its API and demonstrate its behavior. The deployed Storybook is your living documentation and your public demo.

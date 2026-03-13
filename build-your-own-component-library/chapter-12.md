@@ -27,13 +27,13 @@ Design-code drift is one of the most common friction points in design system ado
 
 Figma Variables (introduced in 2023 and expanded since) map directly to your token architecture. Create Figma variable collections that mirror your token tiers: a "Global" collection with color palette values, a "Semantic" collection with alias variables, and optionally a "Component" collection with per-component overrides. Name the variables the same way you name the tokens.
 
-Tokens Studio for Figma can read your `tokens.json` file directly and sync it into Figma, eliminating manual duplication. The sync can run in both directions: design-to-code or code-to-design. For a library where code is the source of truth (which it should be), code-to-design sync keeps Figma aligned without manual updates.
+Tokens Studio for Figma can read your `tokens.json` file directly and sync it into Figma, eliminating manual duplication. The sync can run in both directions: design-to-code or code-to-design. Code should be the source of truth. With that setup, code-to-design sync keeps Figma aligned without manual updates.
 
-Figma Code Connect (if you adopt it) maps Figma component properties to code props, so developers see the actual import statement and prop values when they inspect a component in Figma. This is a significant friction reducer for teams with both designers and developers.
+Figma Code Connect (if you adopt it) maps Figma component properties to code props, so developers see the actual import statement and prop values when they inspect a component in Figma. This reduces friction for teams with both designers and developers.
 
 ### Expanding the component set
 
-The initial 14 UI components cover the essentials. Buyer feedback and your own Product 2 engagements will tell you which components to add next. Common requests:
+The initial 14 UI components cover the essentials. Buyer feedback and customer engagements show which components to add next. Common requests:
 
 - **Toast/notification:** Timed, non-blocking feedback messages. Uses React Aria's `useToast`.
 - **Dropdown menu:** A button that opens a menu of actions. Uses `useMenuTrigger` + `useMenu`.
@@ -53,6 +53,6 @@ If you're interested in that transition, the article ["Design Systems Are Easy U
 
 ### Where to go from here
 
-You have a foundation. It's accessible, token-driven, documented, tested, and composable. The specific components and token values will change as you or your buyers use it. That's the point. The architecture is designed to absorb change without requiring you to rethink the fundamentals.
+You have a foundation. It's accessible, token-driven, documented, tested, and composable. The specific components and token values will change as you or your buyers use it. That's the point. The architecture absorbs change without requiring you to rethink the fundamentals.
 
 If building this from scratch isn't the right investment for your team, [Rudiment UI](https://joshuabriley.com/services/starter/) is a pre-built version of this exact architecture, ready to customize and extend.

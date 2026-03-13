@@ -1,6 +1,6 @@
 # Build your own component library
 
-A step-by-step guide to building an accessible, token-driven React component library with layout primitives, from an empty directory to a deployed Storybook.
+A step-by-step guide to building an accessible, token-driven React component library — from an empty directory to a deployed Storybook.
 
 **Author:** Josh Briley
 **Version:** Draft 1
@@ -8,11 +8,35 @@ A step-by-step guide to building an accessible, token-driven React component lib
 
 ## About this guide
 
-This guide walks you through building a production-grade React component library from scratch. By the end, you'll have a working system with design tokens, accessible UI components, intrinsic layout primitives, Storybook documentation, and tests.
+This guide walks you through building a React component library from scratch. By the end, you'll have a working system with design tokens, accessible UI components, intrinsic layout primitives, Storybook documentation, and tests.
 
-The guide is opinionated. It makes specific technology choices and explains why. Where reasonable alternatives exist, those are noted, but the guide doesn't try to cover every possible approach. Covering every approach is how guides become unusable.
+The guide is opinionated. It makes specific technology choices and explains why. Where reasonable alternatives exist, they are noted, but the guide doesn't try to cover every possible approach. Covering every approach is how guides become unusable.
 
-The architecture follows the same patterns used by libraries like HeroUI and Untitled UI React. If you'd rather skip the build and start with a pre-built version of this architecture, [Rudiment UI](https://joshuabriley.com/services/starter/) is a ready-to-use starter kit built on the same stack and principles described here.
+The architecture follows the same patterns used by libraries like HeroUI and Untitled UI React.
+
+## Who this guide is for
+
+This guide assumes you're comfortable with:
+
+- **React** — You understand components, props, hooks, and the component lifecycle. You've built at least one project in React and aren't relying on this guide to learn React fundamentals.
+- **TypeScript** — You can read and write typed interfaces, generics, and function signatures. You don't need deep expertise, but you shouldn't be encountering TypeScript for the first time.
+- **CSS** — You understand the box model, flexbox, and responsive design. Familiarity with CSS custom properties is helpful but not required.
+- **The terminal** — You're comfortable running commands, navigating directories, and managing packages with npm or a similar tool.
+- **Node.js** — You have Node 18 or later installed. If you're unsure, run `node -v` in your terminal.
+
+You don't need prior experience with Tailwind CSS, Storybook, design tokens, or accessibility tooling. The guide introduces each of these as they come up.
+
+## How to get the most from this guide
+
+**Work through chapters in order.** Chapters 1 through 3 establish the foundation — the architecture decisions and project setup that everything else builds on. Chapters 4 and later are more modular, but they reference the token system and file structure from the earlier chapters.
+
+**Type the code, don't copy it.** Pasting code lets you get to the end faster, but typing it forces you to read each line. The goal is understanding the system, not just having a working repo.
+
+**Read the "why" sections.** This guide explains the reasoning behind each choice. Those explanations are where the transferable knowledge lives. If you skip them, you'll have a library but not the judgment to extend it.
+
+**Don't skip Chapter 1.** It contains no code. It's also the most important chapter. The decisions made there shape every chapter that follows.
+
+**Expect things to break.** Build tools and package ecosystems change. If something doesn't work, check the version numbers first, then search for the error message. Each chapter specifies the versions it was written against.
 
 ## Series overview
 

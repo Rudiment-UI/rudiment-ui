@@ -1,6 +1,6 @@
 ## Chapter 6: Accessible components with React Aria
 
-Layout primitives handle spatial arrangement. UI components handle interaction. This chapter introduces React Aria and uses it to build the two most fundamental interactive components: Button and Input. The pattern you learn here applies to every interactive component in the library.
+Layout primitives handle spatial arrangement. UI components handle interaction. This chapter introduces React Aria and uses it to build three interactive components: Button, IconButton, and Input. The pattern you learn here applies to every interactive component in the library.
 
 ### Installing React Aria
 
@@ -28,11 +28,38 @@ The `buttonProps` object includes `onClick`, `onKeyDown`, `tabIndex`, `aria-disa
 ### Building Button
 
 ```tsx
-// src/components/Button/Button.tsx
-import { useRef } from 'react'
+// src/hooks/useLoadingButton.ts
 import { useButton } from 'react-aria'
 import type { AriaButtonProps } from 'react-aria'
+import type { RefObject } from 'react'
+
+export function useLoadingButton(
+  ariaProps: AriaButtonProps,
+  isLoading: boolean,
+  ref: RefObject<HTMLButtonElement>,
+) {
+  const { buttonProps } = useButton(
+    { ...ariaProps, isDisabled: ariaProps.isDisabled || isLoading },
+    ref,
+  )
+  return {
+    buttonProps: {
+      ...buttonProps,
+      'aria-busy': isLoading || undefined,
+    },
+  }
+}
+```
+
+Button and IconButton both have a loading state, and they share identical logic for it: disable the button via `useButton`, and set `aria-busy` on the element. Extract that into a shared `useLoadingButton` hook so neither component duplicates the behavior.
+
+```tsx
+// src/components/Button/Button.tsx
+import React from 'react'
+import { useObjectRef } from '@react-aria/utils'
+import type { AriaButtonProps } from 'react-aria'
 import { cn } from '@/utils/cn'
+import { useLoadingButton } from '@/hooks/useLoadingButton'
 
 export interface ButtonProps extends AriaButtonProps {
   variant?: 'primary' | 'secondary' | 'destructive' | 'ghost'
@@ -42,53 +69,46 @@ export interface ButtonProps extends AriaButtonProps {
   children: React.ReactNode
 }
 
-export function Button({
-  variant = 'primary',
-  size = 'md',
-  isLoading = false,
-  className,
-  children,
-  ...ariaProps
-}: ButtonProps) {
-  const ref = useRef<HTMLButtonElement>(null)
-  const { buttonProps } = useButton(
-    { ...ariaProps, isDisabled: ariaProps.isDisabled || isLoading },
-    ref,
-  )
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  function Button({ variant = 'primary', size = 'md', isLoading = false, className, children, ...ariaProps }, forwardedRef) {
+    const ref = useObjectRef(forwardedRef)
+    const { buttonProps } = useLoadingButton(ariaProps, isLoading, ref)
 
-  return (
-    <button
-      {...buttonProps}
-      ref={ref}
-      className={cn(
-        'rudiment-button',
-        `rudiment-button--${variant}`,
-        `rudiment-button--${size}`,
-        isLoading && 'rudiment-button--loading',
-        className,
-      )}
-      aria-busy={isLoading || undefined}
-    >
-      {isLoading ? (
-        <>
-          <span className="rudiment-button__spinner" aria-hidden="true" />
-          <span>{children}</span>
-        </>
-      ) : (
-        children
-      )}
-    </button>
-  )
-}
+    return (
+      <button
+        {...buttonProps}
+        ref={ref}
+        className={cn(
+          'rudiment-button',
+          `rudiment-button--${variant}`,
+          `rudiment-button--${size}`,
+          isLoading && 'rudiment-button--loading',
+          className,
+        )}
+      >
+        {isLoading ? (
+          <>
+            <span className="rudiment-button__spinner" aria-hidden="true" />
+            <span>{children}</span>
+          </>
+        ) : (
+          children
+        )}
+      </button>
+    )
+  }
+)
 ```
 
 Key points in this implementation:
 
 **`useButton` normalizes press events.** The hook provides `onPress` instead of `onClick`. The difference matters. `onClick` fires on mouse click and Enter key, but its behavior varies across pointer types and browsers. `onPress` fires consistently for mouse, touch, and keyboard, with proper handling for touch delay cancellation and preventing double-fires on Android.
 
-**Loading state disables the button.** When `isLoading` is true, the button is effectively disabled (it won't fire `onPress`), but it uses `aria-busy="true"` instead of `aria-disabled` to communicate that the button is processing rather than permanently unavailable. Screen readers announce this differently.
+**Loading state disables the button.** The `useLoadingButton` hook passes `isDisabled: true` to `useButton` when loading, so `onPress` won't fire. It also sets `aria-busy="true"` instead of `aria-disabled`, because screen readers announce these differently. `aria-disabled` means permanently unavailable; `aria-busy` means processing.
 
-**The focus ring.** React Aria handles focus management, but the visible focus indicator is a CSS concern. The component's CSS uses `:focus-visible` rather than `:focus`:
+**`forwardRef` exposes the underlying element.** Wrapping the component in `React.forwardRef` lets consumers pass a ref and call imperative methods like `.focus()` or `.blur()`. `useObjectRef` from `@react-aria/utils` converts the forwarded ref (which may be a callback ref or null) into the stable `RefObject` that React Aria hooks require.
+
+**The focus ring.** React Aria handles focus management, but the visible focus indicator is your responsibility in CSS. The component's CSS uses `:focus-visible` rather than `:focus`:
 
 ```css
 .rudiment-button:focus-visible {
@@ -97,7 +117,7 @@ Key points in this implementation:
 }
 ```
 
-`:focus-visible` shows the focus ring only for keyboard navigation, not for mouse clicks. This is the correct behavior. Mouse users don't need a focus indicator because they can see where they're clicking. Keyboard users need the ring to track their position.
+`:focus-visible` shows the focus ring only for keyboard navigation, not for mouse clicks. Mouse users don't need a focus indicator because they can see where they're clicking. Keyboard users need the ring to track their position.
 
 ### Button CSS
 
@@ -194,14 +214,15 @@ Component CSS references the Tailwind @theme variable names (for example, `--col
 }
 ```
 
-Notice that every color references a semantic token, not a global one. `var(--color-brand-primary)`, not `var(--color-blue-500)`. This means a buyer can rebrand the entire library by changing the semantic token aliases, without touching any component CSS.
+Notice that every color references a semantic token, not a global one. `var(--color-brand-primary)`, not `var(--color-blue-500)`. This means a consumer can rebrand the entire library by changing the semantic token aliases, without touching any component CSS.
 
 ### Building Input
 
 ```tsx
 // src/components/Input/Input.tsx
-import { useRef } from 'react'
+import React from 'react'
 import { useTextField } from 'react-aria'
+import { useObjectRef } from '@react-aria/utils'
 import { cn } from '@/utils/cn'
 
 export interface InputProps {
@@ -218,75 +239,77 @@ export interface InputProps {
   className?: string
 }
 
-export function Input({
-  label,
-  type = 'text',
-  placeholder,
-  description,
-  errorMessage,
-  isRequired = false,
-  isDisabled = false,
-  value,
-  defaultValue,
-  onChange,
-  className,
-}: InputProps) {
-  const ref = useRef<HTMLInputElement>(null)
-  const {
-    labelProps,
-    inputProps,
-    descriptionProps,
-    errorMessageProps,
-    isInvalid,
-  } = useTextField(
-    {
-      label,
-      type,
-      placeholder,
-      description,
-      errorMessage,
-      isRequired,
-      isDisabled,
-      value,
-      defaultValue,
-      onChange,
-      isInvalid: !!errorMessage,
-    },
-    ref,
-  )
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  function Input({
+    label,
+    type = 'text',
+    placeholder,
+    description,
+    errorMessage,
+    isRequired = false,
+    isDisabled = false,
+    value,
+    defaultValue,
+    onChange,
+    className,
+  }, forwardedRef) {
+    const ref = useObjectRef(forwardedRef)
+    const {
+      labelProps,
+      inputProps,
+      descriptionProps,
+      errorMessageProps,
+      isInvalid,
+    } = useTextField(
+      {
+        label,
+        type,
+        placeholder,
+        description,
+        errorMessage,
+        isRequired,
+        isDisabled,
+        value,
+        defaultValue,
+        onChange,
+        isInvalid: !!errorMessage,
+      },
+      ref,
+    )
 
-  return (
-    <div className={cn('rudiment-input', className)}>
-      <label {...labelProps} className="rudiment-input__label">
-        {label}
-        {isRequired && (
-          <span className="rudiment-input__required" aria-hidden="true">
-            {' '}
-            *
-          </span>
+    return (
+      <div className={cn('rudiment-input', className)}>
+        <label {...labelProps} className="rudiment-input__label">
+          {label}
+          {isRequired && (
+            <span className="rudiment-input__required" aria-hidden="true">
+              {' '}
+              *
+            </span>
+          )}
+        </label>
+        <input
+          {...inputProps}
+          ref={ref}
+          className={cn(
+            'rudiment-input__field',
+            isInvalid && 'rudiment-input__field--error',
+          )}
+        />
+        {description && !isInvalid && (
+          <p {...descriptionProps} className="rudiment-input__description">
+            {description}
+          </p>
         )}
-      </label>
-      <input
-        {...inputProps}
-        ref={ref}
-        className={cn(
-          'rudiment-input__field',
-          isInvalid && 'rudiment-input__field--error',
+        {isInvalid && errorMessage && (
+          <p {...errorMessageProps} className="rudiment-input__error">
+            {errorMessage}
+          </p>
         )}
-      />
-      {description && !isInvalid && (
-        <p {...descriptionProps} className="rudiment-input__description">
-          {description}
-        </p>
-      )}
-      {isInvalid && errorMessage && (
-        <p {...errorMessageProps} className="rudiment-input__error">
-          {errorMessage}
-        </p>
-      )}
-    </div>
-  )
-}
+      </div>
+    )
+  }
+)
 ```
 
 `useTextField` handles all the ARIA wiring. The hook:
@@ -307,10 +330,11 @@ IconButton follows the same pattern as Button, but requires an `aria-label` beca
 
 ```tsx
 // src/components/IconButton/IconButton.tsx
-import { useRef } from 'react'
-import { useButton } from 'react-aria'
+import React from 'react'
+import { useObjectRef } from '@react-aria/utils'
 import type { AriaButtonProps } from 'react-aria'
 import { cn } from '@/utils/cn'
+import { useLoadingButton } from '@/hooks/useLoadingButton'
 
 export interface IconButtonProps extends AriaButtonProps {
   'aria-label': string
@@ -321,39 +345,30 @@ export interface IconButtonProps extends AriaButtonProps {
   children: React.ReactElement
 }
 
-export function IconButton({
-  variant = 'secondary',
-  size = 'md',
-  isLoading = false,
-  className,
-  children,
-  ...ariaProps
-}: IconButtonProps) {
-  const ref = useRef<HTMLButtonElement>(null)
-  const { buttonProps } = useButton(
-    { ...ariaProps, isDisabled: ariaProps.isDisabled || isLoading },
-    ref,
-  )
+export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
+  function IconButton({ variant = 'secondary', size = 'md', isLoading = false, className, children, ...ariaProps }, forwardedRef) {
+    const ref = useObjectRef(forwardedRef)
+    const { buttonProps } = useLoadingButton(ariaProps, isLoading, ref)
 
-  return (
-    <button
-      {...buttonProps}
-      ref={ref}
-      className={cn(
-        'rudiment-icon-button',
-        `rudiment-icon-button--${variant}`,
-        `rudiment-icon-button--${size}`,
-        className,
-      )}
-      aria-busy={isLoading || undefined}
-    >
-      {children}
-    </button>
-  )
-}
+    return (
+      <button
+        {...buttonProps}
+        ref={ref}
+        className={cn(
+          'rudiment-icon-button',
+          `rudiment-icon-button--${variant}`,
+          `rudiment-icon-button--${size}`,
+          className,
+        )}
+      >
+        {children}
+      </button>
+    )
+  }
+)
 ```
 
-The `'aria-label': string` type (without the `?` optional marker) forces consumers to provide an accessible label. TypeScript will produce a compile error if they forget. This is a deliberate design choice: an icon-only button without an accessible name is invisible to screen reader users, and making it a required prop prevents that failure mode at development time rather than in an accessibility audit.
+The `'aria-label': string` type (without the `?` optional marker) forces consumers to provide an accessible label. TypeScript will produce a compile error if they forget. This is a deliberate design choice: an icon-only button without an accessible name is unusable for screen reader users (it's announced as "button" with no label), and making it a required prop prevents that failure mode at development time rather than in an accessibility audit.
 
 ### What you have now
 

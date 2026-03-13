@@ -1,8 +1,8 @@
 ## Chapter 10: Testing accessible components
 
-Tests give you confidence to change things. In a component library, that confidence matters more than usual, because a regression in one component affects every consumer of the library. This chapter sets up the testing tools and establishes what to test for each component type.
+Tests give you confidence to change things. In a component library, that confidence matters more than usual, because a regression in one component affects every consumer of the library. This chapter covers the testing tools and what to test for each component type.
 
-### Setup
+### Install dependencies
 
 ```bash
 npm install -D vitest @testing-library/react @testing-library/user-event @testing-library/jest-dom jsdom vitest-axe
@@ -41,21 +41,21 @@ This extends Vitest's `expect` with DOM matchers (`toBeInTheDocument`, `toHaveCl
 
 ### The two categories of tests
 
-Layout primitive tests verify that the React component correctly sets up the CSS classes and custom properties that the CSS depends on. They don't test the visual layout itself (that's the browser's job).
+Layout primitive tests verify that the React component correctly applies the CSS classes and custom properties that the CSS depends on. They don't test the visual layout itself (that's the browser's job).
 
 UI component tests verify behavior: keyboard interaction, ARIA attributes, focus management, and the absence of axe-core violations. They test that the component is usable by keyboard and screen reader users, not just mouse users.
 
 ### Testing layout primitives
 
-Layout primitive tests are straightforward. They confirm:
+Layout primitive tests confirm:
 
 1. The component renders its children.
-2. The correct CSS class is applied.
-3. Custom `className` is merged.
+2. The component applies the correct CSS class.
+3. The component merges a custom `className`.
 4. Props set inline custom properties.
-5. Omitted props don't set inline styles (the CSS token fallback is used).
+5. Omitted props don't set inline styles; the CSS token fallback applies instead.
 6. The `as` prop changes the rendered element.
-7. Modifier classes are applied for boolean props.
+7. Boolean props apply modifier classes.
 
 The Stack tests from Chapter 4 demonstrate this pattern. Every layout primitive uses the same test structure with primitive-specific additions (Sidebar checks for exactly two children, Switcher checks `limit`).
 
@@ -73,10 +73,15 @@ UI component tests have more to verify. Here's the standard checklist, followed 
 
 **Focus behavior:** Focus moves to the expected element on interaction (for example, into the dialog on open, back to the trigger on close).
 
+**Loading state:** The component sets `aria-busy="true"`, does not respond to interaction, and renders a visible loading indicator.
+
+**Ref forwarding:** The ref reaches the underlying DOM element so consumers can control focus programmatically.
+
 **axe-core audit:** No automated accessibility violations.
 
 ```typescript
 // src/components/Input/Input.test.tsx
+import { createRef } from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe } from 'vitest-axe';
@@ -125,6 +130,12 @@ describe('Input', () => {
     expect(screen.getByRole('textbox')).toBeDisabled();
   });
 
+  it('forwards ref to the underlying input', () => {
+    const ref = createRef<HTMLInputElement>();
+    render(<Input label="Email" ref={ref} />);
+    expect(ref.current).toBe(screen.getByRole('textbox'));
+  });
+
   it('has no accessibility violations', async () => {
     const { container } = render(<Input label="Email" />);
     expect(await axe(container)).toHaveNoViolations();
@@ -137,7 +148,34 @@ describe('Input', () => {
 });
 ```
 
-Notice the testing approach: every assertion uses accessible queries (`getByRole`, `getByText`) or ARIA attributes (`aria-invalid`, `aria-describedby`, `aria-required`). No test queries by CSS class name or internal DOM structure. This is deliberate. If you refactor the component's markup, the tests still pass as long as the behavior and accessibility contract are preserved. Testing implementation details couples your tests to your markup and makes refactoring painful.
+The Button loading state tests follow the same pattern. They verify the ARIA contract and the absence of interaction side effects:
+
+```typescript
+// src/components/Button/Button.test.tsx (loading state tests)
+it('sets aria-busy when loading', () => {
+  render(<Button isLoading>Save</Button>);
+  expect(screen.getByRole('button', { name: 'Save' })).toHaveAttribute('aria-busy', 'true');
+});
+
+it('does not call onClick while loading', async () => {
+  const onClick = vi.fn();
+  render(<Button isLoading onClick={onClick}>Save</Button>);
+  await userEvent.click(screen.getByRole('button'));
+  expect(onClick).not.toHaveBeenCalled();
+});
+
+it('renders a visible loading indicator', () => {
+  render(<Button isLoading>Save</Button>);
+  expect(screen.getByRole('button')).toContainElement(screen.getByRole('img', { hidden: true }));
+});
+
+it('has no accessibility violations while loading', async () => {
+  const { container } = render(<Button isLoading>Save</Button>);
+  expect(await axe(container)).toHaveNoViolations();
+});
+```
+
+Notice the testing approach: every assertion uses accessible queries (`getByRole`, `getByText`) or ARIA attributes (`aria-invalid`, `aria-describedby`, `aria-required`). No test queries by CSS class name or internal DOM structure. This is deliberate. If you refactor the component's markup, the tests still pass as long as you preserve the behavior and accessibility contract. Testing implementation details couples your tests to your markup and makes refactoring painful.
 
 ### Running tests
 

@@ -6,15 +6,15 @@ This chapter covers the decisions you need to make before you write a single lin
 
 ### Choosing your primitives layer
 
-A component library needs an accessibility primitives layer. This is the code that handles keyboard navigation, focus management, ARIA attributes, and screen reader behavior for interactive components like buttons, modals, selects, and tabs.
+The accessibility primitives layer handles keyboard navigation, focus management, ARIA attributes, and screen reader behavior for interactive components like buttons, modals, selects, and tabs.
 
 You have three options:
 
 **Build it yourself.** This means implementing WAI-ARIA patterns from scratch for every interactive component. A correct modal implementation alone requires focus trapping, scroll locking, Escape key handling, focus restoration on close, and `aria-modal` management. Multiply that by every interactive component in your library. Unless accessibility engineering is your core skill, this path produces components that work for mouse users and break for everyone else.
 
-**Use Radix primitives.** Radix provides unstyled, accessible components that you style yourself. It's the layer underneath shadcn/ui, and it has the largest mindshare in the React ecosystem. Radix was originally built by Modulz and is now maintained by WorkOS. It's a mature, battle-tested library. This guide uses React Aria instead of Radix, not because Radix is a bad choice, but because React Aria offers deeper accessibility coverage out of the box, particularly for mobile screen readers and internationalization, which means less custom work per component.
+**Use Radix primitives.** Radix provides unstyled, accessible components that you style yourself. It's the layer underneath shadcn/ui, and it has the largest mindshare in the React ecosystem. Radix was originally built by Modulz and is now maintained by WorkOS. It's a mature, production-proven library. This guide uses React Aria instead of Radix, not because Radix is a bad choice, but because React Aria offers deeper accessibility coverage out of the box, particularly for mobile screen readers and internationalization. That translates directly to less custom work per component.
 
-**Use React Aria.** React Aria is maintained by Adobe's design system team (the same team behind Adobe's Spectrum design system). HeroUI (formerly NextUI) has built on React Aria since v2. Untitled UI React, launched in 2026, also chose React Aria. React Aria handles mobile screen reader interactions, press event normalization across pointer types, and internationalization of ARIA labels.
+**Use React Aria.** React Aria is maintained by Adobe's design system team, the same team behind the Spectrum design system. HeroUI (formerly NextUI) has built on React Aria since v2. Untitled UI React, launched in 2026, also chose React Aria. React Aria handles mobile screen reader interactions, press event normalization across pointer types, and internationalization of ARIA labels.
 
 This guide uses React Aria because it gives you the most accessibility coverage with the least custom work, backed by a maintenance commitment tied to Adobe's own production needs.
 
@@ -38,13 +38,13 @@ A three-tier architecture avoids this by separating _what values exist_ from _wh
 
 **Tier 3 (component tokens, optional)** scopes values to individual components. `button.background.default` references `color.brand.primary`. This tier is useful in large systems where you need to change one component's behavior without affecting others. For a starter library, it's a reference implementation you can skip until you need it.
 
-This guide implements all three tiers so you understand how they work. The token schema uses the [Design Tokens Community Group (DTCG)](https://design-tokens.github.io/community-group/format/) format, the leading interchange format for design tokens. The DTCG specification reached its first stable release (2025.10) in October 2025, with support from more than 10 tools including Figma, Style Dictionary, Tokens Studio, and Penpot. It is a W3C Community Group specification, not a W3C Recommendation, but it is production-ready and widely adopted. Style Dictionary v4 includes first-class DTCG support.
+This guide implements all three tiers so you understand how they work. The token schema uses the [Design Tokens Community Group (DTCG)](https://design-tokens.github.io/community-group/format/) format, the leading interchange format for design tokens. The DTCG specification reached its first stable release (2025.10) in October 2025, with support from more than 10 tools including Figma, Style Dictionary, Tokens Studio, and Penpot. It is a W3C Community Group specification, not a W3C Recommendation, but it is production-ready and widely adopted. Style Dictionary v4 ships with first-class DTCG support.
 
 ### Layout as a first-class concern
 
-Most component libraries stop at UI components: buttons, inputs, modals, cards. They leave layout to the consumer, who either writes custom CSS for every page or copies and pastes page templates and deletes the parts they don't want.
+Most component libraries stop at UI components: buttons, inputs, modals, cards. They leave layout to the consumer, who either writes custom CSS for every page or copies page templates and strips out what they don't need.
 
-This guide treats layout as part of the component library. You'll build eight layout primitives (Stack, Box, Center, Cluster, Sidebar, Switcher, Grid, Cover) that follow the intrinsic design principles described by Heydon Pickering and Andy Bell in [Every Layout](https://every-layout.dev/). These primitives respond to their container's available space rather than the viewport width, which means they work in any context without media query breakpoints.
+This guide treats layout as part of the component library. You'll build eight layout primitives (`Stack`, `Box`, `Center`, `Cluster`, `Sidebar`, `Switcher`, `Grid`, `Cover`) that follow the intrinsic design principles described by Heydon Pickering and Andy Bell in [Every Layout](https://every-layout.dev/). These primitives respond to their container's available space rather than the viewport width, which means they work in any context without media query breakpoints.
 
 The layout primitives are driven by the same token system as the UI components. Changing `layout.sidebar.width` from `20rem` to `24rem` propagates to every Sidebar instance in the application. Changing `layout.stack.space.default` from `1.5rem` to `2rem` adjusts vertical rhythm globally.
 

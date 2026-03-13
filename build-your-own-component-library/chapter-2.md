@@ -107,7 +107,7 @@ Install the dependencies:
 npm install clsx tailwind-merge
 ```
 
-`clsx` handles conditional class joining. `tailwind-merge` resolves Tailwind class conflicts (for example, if a component applies `bg-blue-500` and the consumer passes `bg-red-500`, `tailwind-merge` keeps only the consumer's class). Together, they let consumers override any component style with Tailwind utilities without specificity conflicts.
+`clsx` handles conditional class joining. `tailwind-merge` resolves Tailwind class conflicts: for example, if a component applies `bg-blue-500` and the consumer passes `bg-red-500`, only the consumer's class survives. Together, they let consumers override any component style with Tailwind utilities without specificity conflicts.
 
 ### Verify the setup
 
@@ -130,4 +130,4 @@ If this passes with no errors, your foundation is solid. You have:
 - A directory structure that separates components, layouts, hooks, utils, tokens, and docs
 - A `cn()` utility for class merging
 
-No components, no tokens, no Storybook. That's intentional. The next chapter builds the token system, and every component you write after that will reference tokens from day one. If you build components first and add tokens later, you end up retrofitting, which is slower and produces inconsistencies.
+No components, no tokens, no Storybook. That's intentional. The next chapter builds the token system, and every component you write after that references tokens from day one. If you build components first and add tokens later, you end up retrofitting: slower work and more inconsistencies.

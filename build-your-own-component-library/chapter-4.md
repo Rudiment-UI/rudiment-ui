@@ -33,7 +33,7 @@ The `* + *` selector targets any element that is immediately preceded by another
 Create `src/layouts/Stack/Stack.tsx`:
 
 ```tsx
-import { Children, cloneElement, isValidElement } from 'react'
+import { Children, cloneElement, forwardRef, isValidElement } from 'react'
 import { cn } from '@/utils/cn'
 
 export interface StackProps extends React.HTMLAttributes<HTMLElement> {
@@ -48,7 +48,7 @@ export interface StackProps extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode
 }
 
-export function Stack({
+export const Stack = forwardRef<HTMLElement, StackProps>(function Stack({
   space,
   recursive = false,
   splitAfter,
@@ -57,15 +57,18 @@ export function Stack({
   style,
   children,
   ...props
-}: StackProps) {
+}, ref) {
   const customProperties: Record<string, string> = {}
   if (space) customProperties['--stack-space'] = space
 
   // Apply margin-block-end: auto to the splitAfter child via React.
   // CSS :nth-child() does not accept custom properties, so this must
   // be handled in the component rather than in the stylesheet.
+  // Children.toArray filters null/false values so conditional children
+  // do not shift the numeric index.
+  const childArray = Children.toArray(children)
   const styledChildren = splitAfter
-    ? Children.map(children, (child, index) => {
+    ? childArray.map((child, index) => {
         if (index === splitAfter - 1 && isValidElement(child)) {
           return cloneElement(
             child as React.ReactElement<{ style?: React.CSSProperties }>,
@@ -83,6 +86,7 @@ export function Stack({
 
   return (
     <Element
+      ref={ref}
       className={cn(
         'rudiment-stack',
         recursive && 'rudiment-stack--recursive',
@@ -95,16 +99,18 @@ export function Stack({
       {styledChildren}
     </Element>
   )
-}
+})
 ```
 
-A few things to notice about this implementation:
+Three implementation details are worth understanding:
 
 The component doesn't import or use React Aria. Layout primitives have no interactive behavior, so they don't need accessibility hooks. They're pure CSS layout wrapped in a React component for composability and token integration.
 
-The `space` prop is optional. When omitted, no inline `--stack-space` property is set, and the CSS falls back to the token default via `var(--stack-space, var(--token-layout-stack-space-default))`. When provided, the inline property overrides the token. This pattern gives you token-driven defaults with per-instance overrides, and the CSS does all the work.
+The `space` prop is optional. When omitted, no inline `--stack-space` property is set. The CSS class sets `--stack-space` to `var(--token-layout-stack-space-default, 1.5rem)`, so the token provides the value. When provided, the inline property overrides the class-level value. This pattern gives you token-driven defaults with per-instance overrides, and the CSS does all the work.
 
 The `as` prop lets the consumer render a semantic element. `<Stack as="ul">` renders a `<ul>` instead of a `<div>`, which matters for accessibility when the Stack's children are list items.
+
+The component is wrapped with `forwardRef`, exposing the underlying DOM node to consumers via a `ref`. This is necessary when the Stack is used as a measurement target: scroll containers, `IntersectionObserver` roots, or elements that need programmatic focus. The ref is typed as `HTMLElement` rather than a more specific type because the `as` prop can render any element. This is a deliberate trade-off: stricter typing (where the ref type matches the rendered element) requires a polymorphic ref pattern that TypeScript doesn't support natively without a manual generic wrapper function. For most use cases, `HTMLElement` is sufficient. If your project requires the fully typed polymorphic ref, the pattern is documented in the companion repository.
 
 ### The CSS
 
@@ -138,7 +144,7 @@ Create `src/styles/layouts.css` (or add to it if it already exists):
 }
 ```
 
-Note: the `splitAfter` behavior is applied via React, not pure CSS. CSS `:nth-child()` accepts selector math, not custom properties, so `:nth-child(var(--n))` is invalid. Instead, the Stack component applies an inline `margin-block-end: auto` style to the correct child element. See the component code for the implementation.
+Note: the `splitAfter` behavior is applied via React, not pure CSS. CSS `:nth-child()` accepts selector math, not custom properties, so `:nth-child(var(--n))` is invalid. Instead, the Stack component applies an inline `margin-block-end: auto` style to the correct child element.
 
 Import this file in `src/app.css`:
 
@@ -154,7 +160,7 @@ Import this file in `src/app.css`:
 
 The first rule resets vertical margins on all direct children to zero, preventing any inherited margin from interfering. The second rule applies the stack spacing only between adjacent siblings. The reset-then-apply pattern is what eliminates the orphaned margin problem.
 
-The `--stack-space` custom property has a double fallback: it first checks for a value set inline by the `space` prop, then falls back to the `--layout-stack-space-default` token, then to `1.5rem` as a hardcoded safety net. In practice, the token value always exists (Style Dictionary generates it), so the hardcoded fallback is just insurance.
+The `--stack-space` custom property has a double fallback: it first checks for a value set inline by the `space` prop, then falls back to the `--token-layout-stack-space-default` token, then to `1.5rem` as a hardcoded safety net. In practice, the token value always exists (Style Dictionary generates it), so the hardcoded fallback is just insurance.
 
 ### The recursive prop
 
@@ -184,7 +190,7 @@ This is useful for card-like layouts where you want some content at the top and 
 </Stack>
 ```
 
-The `splitAfter` prop tells the Stack component which child to apply `margin-block-end: auto` to via React's `Children.map` and `cloneElement`. The Stack needs a defined height (or `min-height`) for the split to produce a visible gap. Without a height constraint, the flexbox column collapses to its content height and the auto margin has no space to distribute.
+The `splitAfter` prop tells the Stack component which child to apply `margin-block-end: auto` to via `Children.toArray` and `cloneElement`. The Stack needs a defined height (or `min-height`) for the split to produce a visible gap. Without a height constraint, the flexbox column collapses to its content height and the auto margin has no space to distribute.
 
 ### The barrel export
 
