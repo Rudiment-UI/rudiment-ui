@@ -1,0 +1,93 @@
+.rudiment-select {
+  display: grid;
+  gap: var(--token-spacing-1);
+  font-size: var(--token-font-size-sm);
+}
+
+.rudiment-select__label {
+  font-weight: var(--token-font-weight-medium);
+  color: var(--token-color-text-default);
+  line-height: var(--token-font-line-height-normal);
+}
+
+.rudiment-select__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--token-spacing-2);
+  width: 100%;
+  padding: var(--token-component-input-padding-y) var(--token-component-input-padding-x);
+  background-color: var(--token-color-background-surface);
+  color: var(--token-color-text-default);
+  border: 1px solid var(--token-color-border-default);
+  border-radius: var(--token-radius-md);
+  font-size: inherit;
+  line-height: var(--token-font-line-height-normal);
+  cursor: pointer;
+  transition: border-color 150ms;
+}
+
+.rudiment-select__trigger:focus-visible {
+  outline: 2px solid var(--token-color-border-focus);
+  outline-offset: 2px;
+}
+
+.rudiment-select__trigger[aria-disabled='true'],
+.rudiment-select__trigger[disabled] {
+  background-color: var(--token-color-background-disabled);
+  color: var(--token-color-text-disabled);
+  cursor: not-allowed;
+}
+
+.rudiment-select__trigger--error {
+  border-color: var(--token-color-border-error);
+}
+
+.rudiment-select__popover {
+  position: absolute;
+  z-index: 50;
+  background-color: var(--token-color-background-surface);
+  border: 1px solid var(--token-color-border-default);
+  border-radius: var(--token-radius-md);
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  min-width: var(--trigger-width, 8rem);
+  overflow: hidden;
+}
+
+.rudiment-select__listbox {
+  list-style: none;
+  margin: 0;
+  padding: var(--token-spacing-1);
+}
+
+.rudiment-select__option {
+  display: flex;
+  align-items: center;
+  padding: var(--token-component-input-padding-y) var(--token-component-input-padding-x);
+  border-radius: var(--token-radius-sm);
+  font-size: var(--token-font-size-sm);
+  cursor: pointer;
+}
+
+.rudiment-select__option[aria-selected='true'] {
+  background-color: var(--token-color-brand-primary);
+  color: var(--token-color-text-on-brand);
+}
+
+.rudiment-select__option[data-focused='true']:not([aria-selected='true']) {
+  background-color: var(--token-color-background-surface-raised);
+}
+
+.rudiment-select__description {
+  color: var(--token-color-text-subtle);
+  font-size: var(--token-font-size-xs);
+  line-height: var(--token-font-line-height-normal);
+}
+
+.rudiment-select__error {
+  color: var(--token-color-feedback-error-text);
+  font-size: var(--token-font-size-xs);
+  line-height: var(--token-font-line-height-normal);
+}

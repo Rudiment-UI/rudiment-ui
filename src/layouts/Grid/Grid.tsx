@@ -1,5 +1,6 @@
 import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
+import './grid.css'
 
 export interface GridProps extends React.HTMLAttributes<HTMLElement> {
   minCellWidth?: string

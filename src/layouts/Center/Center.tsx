@@ -1,5 +1,6 @@
 import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
+import './center.css'
 
 export interface CenterProps extends React.HTMLAttributes<HTMLElement> {
   maxWidth?: string

@@ -1,0 +1,62 @@
+.rudiment-input {
+  display: grid;
+  gap: var(--token-spacing-1);
+  font-size: var(--token-font-size-sm);
+}
+
+.rudiment-input__label {
+  font-weight: var(--token-font-weight-medium);
+  color: var(--token-color-text-default);
+  line-height: var(--token-font-line-height-normal);
+}
+
+.rudiment-input__required {
+  color: var(--token-color-feedback-error);
+}
+
+.rudiment-input__field {
+  width: 100%;
+  padding: var(--token-component-input-padding-y) var(--token-component-input-padding-x);
+  background-color: var(--token-color-background-surface);
+  color: var(--token-color-text-default);
+  border: 1px solid var(--token-color-border-default);
+  border-radius: var(--token-radius-md);
+  font-size: inherit;
+  line-height: var(--token-font-line-height-normal);
+  transition: border-color 150ms;
+}
+
+.rudiment-input__field::placeholder {
+  color: var(--token-color-text-disabled);
+}
+
+.rudiment-input__field:focus-visible {
+  outline: 2px solid var(--token-color-border-focus);
+  outline-offset: 2px;
+}
+
+.rudiment-input__field[disabled] {
+  background-color: var(--token-color-background-disabled);
+  color: var(--token-color-text-disabled);
+  cursor: not-allowed;
+}
+
+.rudiment-input__field--error {
+  border-color: var(--token-color-border-error);
+}
+
+.rudiment-input__field--error:focus-visible {
+  outline-color: var(--token-color-border-error);
+}
+
+.rudiment-input__description {
+  color: var(--token-color-text-subtle);
+  font-size: var(--token-font-size-xs);
+  line-height: var(--token-font-line-height-normal);
+}
+
+.rudiment-input__error {
+  color: var(--token-color-feedback-error-text);
+  font-size: var(--token-font-size-xs);
+  line-height: var(--token-font-line-height-normal);
+}

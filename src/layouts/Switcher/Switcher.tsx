@@ -1,5 +1,6 @@
 import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
+import './switcher.css'
 
 export interface SwitcherProps extends React.HTMLAttributes<HTMLElement> {
   threshold?: string

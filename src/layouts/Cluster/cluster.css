@@ -1,0 +1,10 @@
+.rudiment-cluster {
+  --cluster-space: var(--token-layout-cluster-space, 1rem);
+  --cluster-justify: flex-start;
+  --cluster-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cluster-space);
+  justify-content: var(--cluster-justify);
+  align-items: var(--cluster-align);
+}

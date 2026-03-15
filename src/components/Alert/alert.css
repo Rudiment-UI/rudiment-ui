@@ -1,0 +1,43 @@
+/* Alert */
+.rudiment-alert {
+  display: grid;
+  gap: var(--token-spacing-1);
+  padding: var(--token-spacing-3) var(--token-spacing-4);
+  border-radius: var(--token-radius-md);
+  border: 1px solid transparent;
+  font-size: var(--token-font-size-sm);
+  line-height: var(--token-font-line-height-normal);
+}
+
+.rudiment-alert__title {
+  font-weight: var(--token-font-weight-medium);
+}
+
+.rudiment-alert__content {
+  color: inherit;
+}
+
+/* Variants */
+.rudiment-alert--info {
+  background-color: var(--token-color-feedback-info-surface);
+  border-color: var(--token-color-feedback-info-border);
+  color: var(--token-color-feedback-info-text);
+}
+
+.rudiment-alert--success {
+  background-color: var(--token-color-feedback-success-surface);
+  border-color: var(--token-color-feedback-success-border);
+  color: var(--token-color-feedback-success-text);
+}
+
+.rudiment-alert--warning {
+  background-color: var(--token-color-feedback-warning-surface);
+  border-color: var(--token-color-feedback-warning-border);
+  color: var(--token-color-feedback-warning-text);
+}
+
+.rudiment-alert--error {
+  background-color: var(--token-color-feedback-error-surface);
+  border-color: var(--token-color-feedback-error-border);
+  color: var(--token-color-feedback-error-text);
+}

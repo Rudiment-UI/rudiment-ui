@@ -1,0 +1,104 @@
+/* Checkbox */
+.rudiment-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--token-spacing-2);
+  cursor: pointer;
+  font-size: var(--token-font-size-sm);
+  line-height: var(--token-font-line-height-normal);
+  color: var(--token-color-text-default);
+}
+
+.rudiment-checkbox--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.rudiment-checkbox__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.rudiment-checkbox__control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid var(--token-color-border-default);
+  border-radius: var(--token-radius-sm);
+  background-color: var(--token-color-background-surface);
+  transition:
+    background-color 150ms,
+    border-color 150ms;
+}
+
+.rudiment-checkbox__input:focus-visible + .rudiment-checkbox__control {
+  outline: 2px solid var(--token-color-border-focus);
+  outline-offset: 2px;
+}
+
+.rudiment-checkbox__control--checked {
+  background-color: var(--token-color-brand-primary);
+  border-color: var(--token-color-brand-primary);
+}
+
+.rudiment-checkbox__control--checked::after {
+  content: '';
+  width: 0.3125rem;
+  height: 0.5625rem;
+  border: 2px solid var(--token-color-text-on-brand);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translateY(-1px);
+}
+
+.rudiment-checkbox__control--indeterminate {
+  background-color: var(--token-color-brand-primary);
+  border-color: var(--token-color-brand-primary);
+}
+
+.rudiment-checkbox__control--indeterminate::after {
+  content: '';
+  width: 0.5rem;
+  height: 2px;
+  background-color: var(--token-color-text-on-brand);
+  border-radius: 1px;
+}
+
+.rudiment-checkbox__label {
+  color: inherit;
+}
+
+/* CheckboxGroup */
+.rudiment-checkbox-group {
+  display: grid;
+  gap: var(--token-spacing-2);
+}
+
+.rudiment-checkbox-group__label {
+  font-weight: var(--token-font-weight-medium);
+  font-size: var(--token-font-size-sm);
+  color: var(--token-color-text-default);
+  line-height: var(--token-font-line-height-normal);
+}
+
+.rudiment-checkbox-group__description {
+  color: var(--token-color-text-subtle);
+  font-size: var(--token-font-size-xs);
+  line-height: var(--token-font-line-height-normal);
+}
+
+.rudiment-checkbox-group__error {
+  color: var(--token-color-feedback-error-text);
+  font-size: var(--token-font-size-xs);
+  line-height: var(--token-font-line-height-normal);
+}

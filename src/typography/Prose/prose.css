@@ -1,0 +1,241 @@
+/* ── Base ──────────────────────────────────────────────────────────── */
+.rudiment-prose {
+  --prose-space: var(--token-typography-prose-space, 1.5em);
+  --prose-heading-before: var(--token-typography-prose-heading-before, 2em);
+  --prose-heading-after: var(--token-typography-prose-heading-after, 0.75em);
+
+  color: var(--token-color-text-default);
+  font-size: var(--token-typography-body-size);
+  font-weight: var(--token-typography-body-weight);
+  line-height: var(--token-typography-body-line-height);
+}
+
+/* ── Headings ──────────────────────────────────────────────────────── */
+.rudiment-prose h1 {
+  font-size: var(--token-typography-heading-1-size);
+  font-weight: var(--token-typography-heading-1-weight);
+  line-height: var(--token-typography-heading-1-line-height);
+  letter-spacing: var(--token-typography-heading-1-tracking);
+  color: var(--token-color-text-default);
+}
+
+.rudiment-prose h2 {
+  font-size: var(--token-typography-heading-2-size);
+  font-weight: var(--token-typography-heading-2-weight);
+  line-height: var(--token-typography-heading-2-line-height);
+  letter-spacing: var(--token-typography-heading-2-tracking);
+  color: var(--token-color-text-default);
+}
+
+.rudiment-prose h3 {
+  font-size: var(--token-typography-heading-3-size);
+  font-weight: var(--token-typography-heading-3-weight);
+  line-height: var(--token-typography-heading-3-line-height);
+  letter-spacing: var(--token-typography-heading-3-tracking);
+  color: var(--token-color-text-default);
+}
+
+.rudiment-prose h4 {
+  font-size: var(--token-typography-heading-4-size);
+  font-weight: var(--token-typography-heading-4-weight);
+  line-height: var(--token-typography-heading-4-line-height);
+  letter-spacing: var(--token-typography-heading-4-tracking);
+  color: var(--token-color-text-default);
+}
+
+.rudiment-prose h5 {
+  font-size: var(--token-typography-heading-5-size);
+  font-weight: var(--token-typography-heading-5-weight);
+  line-height: var(--token-typography-heading-5-line-height);
+  letter-spacing: var(--token-typography-heading-5-tracking);
+  color: var(--token-color-text-default);
+}
+
+.rudiment-prose h6 {
+  font-size: var(--token-typography-heading-6-size);
+  font-weight: var(--token-typography-heading-6-weight);
+  line-height: var(--token-typography-heading-6-line-height);
+  letter-spacing: var(--token-typography-heading-6-tracking);
+  color: var(--token-color-text-subtle);
+}
+
+/* ── Links ─────────────────────────────────────────────────────────── */
+.rudiment-prose a {
+  color: var(--token-color-brand-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+
+.rudiment-prose a:hover {
+  color: var(--token-color-brand-primary-hover);
+}
+
+/* ── Inline formatting ─────────────────────────────────────────────── */
+.rudiment-prose strong {
+  font-weight: var(--token-font-weight-bold);
+  color: var(--token-color-text-default);
+}
+
+.rudiment-prose em {
+  font-style: italic;
+}
+
+/* ── Lists ─────────────────────────────────────────────────────────── */
+.rudiment-prose ul {
+  padding-inline-start: 1.625em;
+}
+
+.rudiment-prose ol {
+  list-style-type: decimal;
+  padding-inline-start: 1.625em;
+}
+
+.rudiment-prose li {
+  padding-inline-start: 0.375em;
+  list-style: disc;
+  margin-block-start: 0.5em;
+}
+
+.rudiment-prose li:first-child {
+  margin-block-start: 0;
+}
+
+.rudiment-prose ul ul,
+.rudiment-prose ol ol,
+.rudiment-prose ul ol,
+.rudiment-prose ol ul {
+  margin-block-start: 0.5em;
+}
+
+/* ── Blockquote ────────────────────────────────────────────────────── */
+.rudiment-prose blockquote {
+  border-inline-start: 3px solid var(--token-color-border-default);
+  padding-inline-start: 1em;
+  color: var(--token-color-text-subtle);
+  font-style: italic;
+}
+
+/* ── Inline code ───────────────────────────────────────────────────── */
+.rudiment-prose code {
+  font-family: var(--token-font-family-mono);
+  font-size: var(--token-typography-code-font-size);
+  background: var(--token-color-background-surface-raised);
+  padding: var(--token-typography-code-padding-y)
+    var(--token-typography-code-padding-x);
+  border-radius: var(--token-radius-sm);
+}
+
+/* ── Code blocks ───────────────────────────────────────────────────── */
+.rudiment-prose pre {
+  background: var(--token-color-background-surface-raised);
+  border: 1px solid var(--token-color-border-default);
+  border-radius: var(--token-radius-md);
+  padding: 1em 1.25em;
+  overflow-x: auto;
+  font-family: var(--token-font-family-mono);
+  font-size: var(--token-font-size-sm);
+  line-height: var(--token-font-line-height-relaxed);
+}
+
+.rudiment-prose pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+/* ── Horizontal rule ───────────────────────────────────────────────── */
+.rudiment-prose hr {
+  border: none;
+  border-block-start: 1px solid var(--token-color-border-default);
+}
+
+/* ── Tables ────────────────────────────────────────────────────────── */
+.rudiment-prose table {
+  width: 100%;
+  table-layout: auto;
+  text-align: start;
+  font-size: var(--token-typography-body-sm-size);
+  line-height: var(--token-typography-body-sm-line-height);
+  border-collapse: collapse;
+}
+
+.rudiment-prose thead {
+  border-block-end: 1px solid var(--token-color-border-default);
+}
+
+.rudiment-prose thead th {
+  font-weight: var(--token-font-weight-semibold);
+  padding: 0.5em 0.75em;
+  vertical-align: bottom;
+}
+
+.rudiment-prose tbody tr {
+  border-block-end: 1px solid var(--token-color-border-default);
+}
+
+.rudiment-prose tbody tr:last-child {
+  border-block-end: none;
+}
+
+.rudiment-prose tbody td {
+  padding: 0.5em 0.75em;
+  vertical-align: baseline;
+}
+
+/* ── Figures ───────────────────────────────────────────────────────── */
+.rudiment-prose figure > img {
+  border-radius: var(--token-radius-md);
+}
+
+.rudiment-prose figcaption {
+  font-size: var(--token-typography-caption-size);
+  line-height: var(--token-typography-body-line-height);
+  color: var(--token-typography-caption-color);
+  margin-block-start: 0.75em;
+}
+
+/* ── Spacing between direct children ──────────────────────────────── */
+.rudiment-prose > * + * {
+  margin-block-start: var(--prose-space);
+}
+
+/* More space before headings (they signal new sections) */
+.rudiment-prose > :is(h1, h2, h3, h4, h5, h6) {
+  margin-block-start: var(--prose-heading-before);
+}
+
+/* Less space after headings (they belong to what follows) */
+.rudiment-prose > :is(h1, h2, h3, h4, h5, h6) + * {
+  margin-block-start: var(--prose-heading-after);
+}
+
+/* Consecutive headings sit closer together */
+.rudiment-prose > :is(h1, h2, h3, h4, h5, h6) + :is(h1, h2, h3, h4, h5, h6) {
+  margin-block-start: var(--prose-heading-after);
+}
+
+/* Extra breathing room around code blocks */
+.rudiment-prose > pre {
+  margin-block-start: 2em;
+}
+
+.rudiment-prose > pre + * {
+  margin-block-start: 2em;
+}
+
+/* No top margin on the first child */
+.rudiment-prose > :first-child {
+  margin-block-start: 0;
+}
+
+/* ── Size variants ─────────────────────────────────────────────────── */
+/* Scale the base font size; all em-based spacing adjusts proportionally */
+.rudiment-prose--sm {
+  font-size: var(--token-typography-prose-size-sm);
+}
+
+.rudiment-prose--lg {
+  font-size: var(--token-typography-prose-size-lg);
+}

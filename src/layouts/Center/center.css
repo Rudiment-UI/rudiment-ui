@@ -1,0 +1,14 @@
+.rudiment-center {
+  --center-max-width: var(--token-layout-center-max-width, 60rem);
+  --center-gutters: var(--token-layout-center-gutters, 1rem);
+  box-sizing: content-box;
+  max-inline-size: var(--center-max-width);
+  margin-inline: auto;
+  padding-inline: var(--center-gutters);
+}
+
+.rudiment-center--intrinsic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

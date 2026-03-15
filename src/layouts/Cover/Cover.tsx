@@ -1,5 +1,6 @@
 import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
+import './cover.css'
 
 export interface CoverProps extends React.HTMLAttributes<HTMLElement> {
   minHeight?: string
