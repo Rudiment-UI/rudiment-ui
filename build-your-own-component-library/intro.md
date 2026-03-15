@@ -1,6 +1,6 @@
 # Build your own component library
 
-A step-by-step guide to building an accessible, token-driven React component library — from an empty directory to a deployed Storybook.
+A step-by-step guide to building an accessible, token-driven React component library from an empty directory to a deployed Storybook.
 
 **Author:** Josh Briley
 **Version:** Draft 1
@@ -38,6 +38,8 @@ You don't need prior experience with Tailwind CSS, Storybook, design tokens, or 
 
 **Expect things to break.** Build tools and package ecosystems change. If something doesn't work, check the version numbers first, then search for the error message. Each chapter specifies the versions it was written against.
 
+**Use the companion repository as a reference.** A complete implementation of the library built in this guide is available at [[companion-repo-url]]. If you get stuck or want to compare your output against a known-good state, the companion repository is the reference. It mirrors the final state of the guide exactly.
+
 ## Series overview
 
 | Chapter | Title                                 | What you'll build                                          |
@@ -50,7 +52,7 @@ You don't need prior experience with Tailwind CSS, Storybook, design tokens, or 
 | 5b      | Typography: Heading, Text, and Prose  | Three typography components with long-form content rhythm  |
 | 6       | Accessible components with React Aria | Button and Input with full keyboard and ARIA support       |
 | 7       | Form components                       | Select, Checkbox, RadioGroup, Switch                       |
-| 8       | Overlays and feedback                 | Dialog, Tooltip, Alert, Badge                              |
+| 8       | Overlays and feedback                 | Dialog, Tooltip, Alert, Badge, Card, Tabs                  |
 | 9       | Storybook as your documentation layer | Configuration, story conventions, the kitchen sink page    |
 | 10      | Testing accessible components         | Vitest, Testing Library, axe-core patterns                 |
 | 11      | Packaging and distribution            | Vite library mode, npm publishing, versioning              |

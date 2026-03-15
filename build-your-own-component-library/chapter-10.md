@@ -4,6 +4,8 @@ Tests give you confidence to change things. In a component library, that confide
 
 ### Install dependencies
 
+This installs the packages required for the test files introduced in Chapter 4. The Stack tests created there can now be run.
+
 ```bash
 npm install -D vitest @testing-library/react @testing-library/user-event @testing-library/jest-dom jsdom vitest-axe
 ```
@@ -157,11 +159,11 @@ it('sets aria-busy when loading', () => {
   expect(screen.getByRole('button', { name: 'Save' })).toHaveAttribute('aria-busy', 'true');
 });
 
-it('does not call onClick while loading', async () => {
-  const onClick = vi.fn();
-  render(<Button isLoading onClick={onClick}>Save</Button>);
+it('does not call onPress while loading', async () => {
+  const onPress = vi.fn();
+  render(<Button isLoading onPress={onPress}>Save</Button>);
   await userEvent.click(screen.getByRole('button'));
-  expect(onClick).not.toHaveBeenCalled();
+  expect(onPress).not.toHaveBeenCalled();
 });
 
 it('renders a visible loading indicator', () => {
@@ -208,3 +210,5 @@ npm run test:coverage       # Generate a coverage report
 | Visual regression | Deferred to a future release                                |
 
 Full coverage of accessible behavior is more valuable than full line coverage. A test suite that verifies every keyboard path and ARIA attribute catches the regressions that matter most to component library consumers.
+
+The test examples in chapters 4–8 omit axe-core assertions for brevity. The axe-core coverage target applies to every component, not just the Button and Input shown above. Apply the `toHaveNoViolations()` check from the Input and Button examples to each component's test file.

@@ -1,0 +1,63 @@
+{
+  "color": {
+    "brand": {
+      "primary": { "$value": "{color.blue.500}" },
+      "primary-hover": { "$value": "{color.blue.600}" },
+      "primary-active": { "$value": "{color.blue.700}" }
+    },
+    "text": {
+      "default": { "$value": "{color.neutral.900}" },
+      "subtle": { "$value": "{color.neutral.600}" },
+      "disabled": { "$value": "{color.neutral.400}" },
+      "on-brand": { "$value": "{color.neutral.0}" }
+    },
+    "background": {
+      "surface": { "$value": "{color.neutral.0}" },
+      "surface-raised": { "$value": "{color.neutral.50}" },
+      "disabled": { "$value": "{color.neutral.100}" },
+      "overlay": { "$value": "rgb(0 0 0 / 0.5)" }
+    },
+    "border": {
+      "default": { "$value": "{color.neutral.200}" },
+      "focus": { "$value": "{color.blue.500}" },
+      "error": { "$value": "{color.red.500}" }
+    },
+    "feedback": {
+      "error": { "$value": "{color.red.500}" },
+      "success": { "$value": "{color.green.500}" },
+      "warning": { "$value": "{color.amber.500}" }
+    }
+  },
+  "layout": {
+    "stack": {
+      "space": {
+        "default": { "$value": "{spacing.6}" },
+        "dense": { "$value": "{spacing.3}" },
+        "loose": { "$value": "{spacing.12}" }
+      }
+    },
+    "sidebar": {
+      "width": { "$value": "20rem" },
+      "content-min": { "$value": "50%" }
+    },
+    "grid": {
+      "min-cell": { "$value": "15rem" }
+    },
+    "center": {
+      "max-width": { "$value": "60rem" },
+      "gutters": { "$value": "{spacing.4}" }
+    },
+    "cover": {
+      "min-height": { "$value": "100vh" }
+    },
+    "switcher": {
+      "threshold": { "$value": "30rem" }
+    },
+    "cluster": {
+      "space": { "$value": "{spacing.4}" }
+    },
+    "box": {
+      "padding": { "$value": "{spacing.4}" }
+    }
+  }
+}

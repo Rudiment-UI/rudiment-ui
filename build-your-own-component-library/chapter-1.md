@@ -57,8 +57,8 @@ Before you proceed, here's what you're committing to:
 | Framework                | React 19 + TypeScript                        | Largest ecosystem; TypeScript makes component APIs self-documenting                                   |
 | Accessibility primitives | React Aria                                   | Adobe-maintained; deepest a11y coverage; used by HeroUI and Untitled UI React                         |
 | Styling                  | Tailwind CSS 4                               | CSS-first @theme directive; tokens map directly to utilities; no JS config                            |
-| Token format             | DTCG JSON + Style Dictionary                 | Leading interchange format; platform-agnostic source; automated CSS custom property output            |
-| Documentation            | Storybook 10                                 | Industry standard; built-in a11y addon; ESM-only maintenance release that reduced install size by 29% |
+| Token format             | DTCG JSON + Style Dictionary v4              | Leading interchange format; platform-agnostic source; automated CSS custom property output. Style Dictionary v5 exists with a compatible config format; this guide uses v4 |
+| Documentation            | Storybook 10 (installed via `@latest` — pin the version if reproducibility matters) | Industry standard; built-in a11y addon; ESM-only maintenance release that reduced install size by 29% |
 | Testing                  | Vitest + Testing Library                     | Fast; behavior-focused; accessible query selectors                                                    |
 | Build tool               | Vite                                         | Fast dev server; clean library build output                                                           |
 | Layout approach          | Intrinsic primitives (Every Layout-inspired) | Context-independent; no media queries; token-driven                                                   |

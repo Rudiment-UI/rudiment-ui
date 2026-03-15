@@ -1,6 +1,6 @@
 ## Chapter 8: Overlays and feedback
 
-This chapter builds Dialog, Tooltip, Alert, Badge, Card, and Tabs. These components round out the library's coverage: modal interactions, informational overlays, status feedback, content containers, and tabbed navigation.
+Overlays and feedback components complete the interactive layer. This chapter builds Dialog, Tooltip, Alert, Badge, Card, and Tabs — rounding out the library's coverage with modal interactions, informational overlays, status feedback, content containers, and tabbed navigation.
 
 ### Dialog
 
@@ -16,7 +16,6 @@ import {
   usePreventScroll,
 } from 'react-aria'
 import { useObjectRef } from '@react-aria/utils'
-import { useOverlayTriggerState } from 'react-stately'
 import type { OverlayTriggerState } from 'react-stately'
 import { cn } from '@/utils/cn'
 
@@ -98,6 +97,10 @@ Dialog uses `forwardRef` so consumers can hold a ref to the dialog element, whic
 The dialog is controlled-only (`isOpen` and `onClose` are required props). This is a deliberate choice. Uncontrolled dialogs (that manage their own open state) prevent the consumer from coordinating dialog visibility with the rest of their application state.
 
 ### Tooltip
+
+`mergeProps` from `react-aria` merges multiple props objects, combining event handlers by chaining them rather than overwriting — so if both objects have an `onClick`, both fire. It's used here to attach the trigger props to the trigger element without discarding any existing handlers.
+
+`React.cloneElement` creates a new React element by copying an existing one and merging in additional props. The TooltipTrigger uses it to inject the trigger and tooltip props into the caller's elements without requiring consumers to forward those props themselves.
 
 ```tsx
 // src/components/Tooltip/Tooltip.tsx
@@ -204,11 +207,11 @@ export function Alert({
 
 ### Badge, Card, and Tabs
 
-Badge is a presentational `<span>` with variant styling and an optional `aria-label` for standalone usage. Card is a `<div>` (or `<article>` via `as`) with optional interactive behavior via `usePress`. Tabs combine `useTabList`, `useTab`, and `useTabPanel` for keyboard-navigable tabbed content.
+Badge is a presentational `<span>` with variant styling and an optional `aria-label` for standalone usage. Card is a `<div>` (or `<article>` via `as`) with optional interactive behavior via `usePress`. Unlike `useButton`, which requires an actual `<button>` element, `usePress` works on any element where you want pointer and keyboard press behavior — making it the right choice for a clickable Card that renders as a `<div>` or `<article>`. Tabs combine `useTabList`, `useTab`, and `useTabPanel` for keyboard-navigable tabbed content.
 
 These components follow the patterns already established. Badge and Card are simpler versions of the components you've already built. Tabs is structurally similar to RadioGroup: a group component that manages state, with child components that participate in that state via React Aria context.
 
-The full implementations are in the companion repository. The patterns don't vary from what you've seen in chapters 6 and 7.
+The full implementations are in the [companion repository]([companion-repo-url]). The patterns don't vary from what you've seen in chapters 6 and 7.
 
 ### What you have now
 

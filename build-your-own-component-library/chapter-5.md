@@ -2,7 +2,7 @@
 
 You have the pattern down from the Stack chapter: a React component that renders a semantic element with a CSS class and optional inline custom property overrides. The CSS does the layout work, tokens provide the defaults, and props allow per-instance control. This chapter applies that same pattern seven more times.
 
-Each section covers the primitive's CSS, TypeScript interface, and a brief explanation of the layout technique. Stories and tests follow the same conventions established for Stack. The full story and test files are in the companion repository. This chapter focuses on the CSS techniques that make each primitive work.
+Each section covers the primitive's CSS, TypeScript interface, and a brief explanation of the layout technique. Stories and tests follow the same conventions established for Stack. The full story and test files are in the [companion repository]([companion-repo-url]). This chapter focuses on the CSS techniques that make each primitive work.
 
 ### Box
 
@@ -24,6 +24,13 @@ The Box is the simplest layout primitive. It applies consistent padding and an o
   color: var(--color-text-on-inverted, var(--color-neutral-0));
 }
 ```
+
+> **Note:** `--color-bg-surface-inverted` and `--color-text-on-inverted` are not yet defined in `tokens/semantic.json` or the `@theme inline` block from Chapter 3. The CSS falls back to `--color-neutral-900` and `--color-neutral-0` via the comma fallback syntax. To make the primary token references functional (for example, so that a dark theme override can target them), add the following to `tokens/semantic.json` under the `color` namespace and wire them into your `@theme inline` block:
+>
+> ```json
+> "bg-surface-inverted": { "$value": "{color.neutral.900}" },
+> "text-on-inverted": { "$value": "{color.neutral.0}" }
+> ```
 
 ```tsx
 // src/layouts/Box/Box.tsx
@@ -69,7 +76,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(function Box({
 })
 ```
 
-Every primitive in this chapter follows the same `forwardRef` pattern. The ref is typed as `HTMLElement` in all cases for the same reason discussed in Chapter 4: the `as` prop accepts any element type, so a more specific ref type (for example, `HTMLDivElement`) would be incorrect when the consumer passes `as="section"`. `HTMLElement` is the accurate common base. If your project needs the fully typed polymorphic ref, the pattern is documented in the companion repository.
+Every primitive in this chapter follows the same `forwardRef` pattern. The ref is typed as `HTMLElement` in all cases for the same reason discussed in Chapter 4: the `as` prop accepts any element type, so a more specific ref type (for example, `HTMLDivElement`) would be incorrect when the consumer passes `as="section"`. `HTMLElement` is the accurate common base. If your project needs the fully typed polymorphic ref, the pattern is documented in the [companion repository]([companion-repo-url]).
 
 ### Center
 
@@ -313,7 +320,7 @@ export const Sidebar = forwardRef<HTMLElement, SidebarProps>(function Sidebar({
 })
 ```
 
-The Sidebar expects exactly two children. The first child is the sidebar panel (when `side="left"`), and the second is the content panel. When `side="right"`, the roles reverse. The component doesn't enforce this at runtime, but the companion repository's documentation and stories clarify the expectation.
+The Sidebar expects exactly two children. The first child is the sidebar panel (when `side="left"`), and the second is the content panel. When `side="right"`, the roles reverse. The component doesn't enforce this at runtime, but the [companion repository's]([companion-repo-url]) documentation and stories clarify the expectation.
 
 ### Switcher
 
@@ -592,4 +599,4 @@ The layout primitives in this guide are inspired by the intrinsic layout pattern
 
 Eight layout primitives, all following the same pattern: token-driven CSS, React component wrapper, `as` prop for semantic HTML, `className` merging, prop-based overrides via inline custom properties. The layout system is usable independently of the UI components.
 
-Before moving to interactive components, the next section adds the typography layer: Heading, Text, and Prose components that handle your UI's text content.
+Before moving to interactive components, the next chapter adds the typography layer: Heading, Text, and Prose components that handle your UI's text content (Chapter 5b).

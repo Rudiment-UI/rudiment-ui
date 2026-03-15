@@ -8,6 +8,8 @@ A component library without documentation is a collection of files. Storybook tu
 npm create storybook@latest
 ```
 
+This guide uses Storybook 10. `@latest` installs whatever version is current at the time you follow the guide — if the current version is not Storybook 10, the configuration format may differ from the examples below.
+
 The Storybook CLI detects your Vite + React setup and installs the appropriate packages. It creates a `.storybook/` directory with `main.ts` and `preview.ts`. Accept the defaults, then modify both files.
 
 Install the accessibility addon:
@@ -55,7 +57,7 @@ const preview: Preview = {
       const theme = context.globals.theme || 'light';
       return (
         <div className={theme === 'dark' ? 'dark' : ''}>
-          <div className="bg-bg-surface text-text-default p-8 min-h-screen">
+          <div className="bg-surface text-text-default p-8 min-h-screen">
             <Story />
           </div>
         </div>
@@ -86,6 +88,8 @@ The `preview.ts` configuration does three things.
 It imports `app.css`, which loads your token values and Tailwind styles into Storybook's rendering iframe. Without this import, your components render without any styling.
 
 The decorator wraps every story in a themed container. The `theme` global type adds a toggle to Storybook's toolbar, and the decorator reads the current theme selection and applies the `.dark` class to the wrapper. When you add dark theme token overrides (see Chapter 12), the toggle switches between them.
+
+> **Note:** The dark mode toggle is present in Storybook now, but switching to dark mode won't produce any visible change until Chapter 12 adds the `.dark` CSS overrides. If you deploy Storybook after this chapter, the toggle will exist but have no effect.
 
 The a11y addon configuration runs axe-core on every story automatically. Each story page shows an "Accessibility" panel listing violations, passes, and incomplete checks. Buyers see the accessibility status of every component without running any tests.
 
@@ -128,13 +132,23 @@ Build the kitchen sink after all components are complete. Use as many layout pri
 
 ### Deploying Storybook
 
-Build the static Storybook site:
+Add the build script to `package.json` so the command has a named, consistent form:
 
-```bash
-npx storybook build -o storybook-static
+```json
+{
+  "scripts": {
+    "build:storybook": "storybook build -o storybook-static"
+  }
+}
 ```
 
-The `storybook-static` directory is a static site you can deploy to any hosting provider. Vercel and Netlify both deploy static sites from a Git repository with zero configuration. Point the build command to `npx storybook build -o storybook-static` and the output directory to `storybook-static`.
+Then build the static Storybook site:
+
+```bash
+npm run build:storybook
+```
+
+The `storybook-static` directory is a static site you can deploy to any hosting provider. Vercel and Netlify both deploy static sites from a Git repository with zero configuration. Point the build command to `npm run build:storybook` and the output directory to `storybook-static`.
 
 The deployed URL becomes the public demo linked from your sales page and README.
 

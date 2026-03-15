@@ -37,7 +37,7 @@ import { Children, cloneElement, forwardRef, isValidElement } from 'react'
 import { cn } from '@/utils/cn'
 
 export interface StackProps extends React.HTMLAttributes<HTMLElement> {
-  /** CSS spacing value. Defaults to --layout-stack-space-default token. */
+  /** CSS spacing value. Defaults to --token-layout-stack-space-default token. */
   space?: string
   /** Apply spacing recursively to all nested elements, not just direct children. */
   recursive?: boolean
@@ -153,7 +153,7 @@ Import this file in `src/app.css`:
 @import '../tokens/build/tokens.css';
 @import './styles/layouts.css';
 
-@theme {
+@theme inline {
   /* ... your existing @theme block ... */
 }
 ```
@@ -213,6 +213,8 @@ export type { StackProps } from './layouts/Stack'
 
 Create `src/layouts/Stack/Stack.stories.tsx`:
 
+> **Note:** The story file below imports from `@storybook/react`, which is not installed until Chapter 9. The code is included here so you understand the full component API, but it won't run until after you complete the Storybook setup in Chapter 9.
+
 ```tsx
 import type { Meta, StoryObj } from '@storybook/react'
 import { Stack } from './Stack'
@@ -233,7 +235,7 @@ type Story = StoryObj<typeof meta>
 
 function Placeholder({ label }: { label: string }) {
   return (
-    <div className="border border-border-default rounded-md p-4 bg-bg-surface-raised">
+    <div className="border border-border-default rounded-md p-4 bg-surface-raised">
       {label}
     </div>
   )
@@ -305,6 +307,8 @@ Each story demonstrates a specific feature. `Default` shows the token-driven spa
 ### Writing the tests
 
 Create `src/layouts/Stack/Stack.test.tsx`:
+
+> **Note:** The test file below imports from `@testing-library/react` and `vitest`, which are not installed until Chapter 10. The tests are included here alongside the component so you can see what behavior is being verified, but they won't run until after the install step in Chapter 10.
 
 ```tsx
 import { render, screen } from '@testing-library/react'

@@ -5,7 +5,7 @@ Layout primitives handle spatial arrangement. UI components handle interaction. 
 ### Installing React Aria
 
 ```bash
-npm install react-aria react-stately
+npm install react-aria react-stately @react-aria/utils
 ```
 
 `react-aria` provides the hooks that manage keyboard interaction, focus behavior, and ARIA attributes. `react-stately` provides the state management hooks that React Aria depends on (for example, tracking whether a select is open or which tab is selected).
@@ -26,6 +26,8 @@ return (
 The `buttonProps` object includes `onClick`, `onKeyDown`, `tabIndex`, `aria-disabled`, and other attributes that the hook calculates based on the state you pass in. You don't manage these attributes manually. React Aria handles the edge cases (pointer type normalization, touch delay cancellation, keyboard activation) so you don't have to discover them in production.
 
 ### Building Button
+
+Button and IconButton both have a loading state, and they share identical logic for it: disable the button via `useButton`, and set `aria-busy` on the element. Extract that into a shared `useLoadingButton` hook so neither component duplicates the behavior.
 
 ```tsx
 // src/hooks/useLoadingButton.ts
@@ -51,7 +53,7 @@ export function useLoadingButton(
 }
 ```
 
-Button and IconButton both have a loading state, and they share identical logic for it: disable the button via `useButton`, and set `aria-busy` on the element. Extract that into a shared `useLoadingButton` hook so neither component duplicates the behavior.
+`useObjectRef` from `@react-aria/utils` converts a forwarded ref (which may be a callback ref or `null`) into the stable `RefObject` that React Aria hooks require. Any component that uses `React.forwardRef` alongside a React Aria hook needs this utility.
 
 ```tsx
 // src/components/Button/Button.tsx
@@ -172,12 +174,12 @@ Component CSS references the Tailwind @theme variable names (for example, `--col
 }
 
 .rudiment-button--secondary {
-  background-color: var(--color-background-surface);
+  background-color: var(--color-surface);
   color: var(--color-text-default);
   border-color: var(--color-border-default);
 }
 .rudiment-button--secondary:hover:not([aria-disabled='true']) {
-  background-color: var(--color-background-surface-raised);
+  background-color: var(--color-surface-raised);
 }
 
 .rudiment-button--destructive {
@@ -190,7 +192,7 @@ Component CSS references the Tailwind @theme variable names (for example, `--col
   color: var(--color-text-default);
 }
 .rudiment-button--ghost:hover:not([aria-disabled='true']) {
-  background-color: var(--color-background-surface-raised);
+  background-color: var(--color-surface-raised);
 }
 
 /* Loading */

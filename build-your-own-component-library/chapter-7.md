@@ -4,7 +4,7 @@ This chapter builds Select, Checkbox, CheckboxGroup, RadioGroup, and Switch. Eac
 
 ### Select
 
-Select is the most complex form component in the library. It combines multiple React Aria hooks: `useSelect` for the trigger button, `useListBox` for the options list, `useOption` for each individual option, and `usePopover` for the floating panel that contains the list.
+Select is the most complex form component in the library. It combines multiple React Aria hooks: `useSelect` for the trigger button, `useListBox` for the options list, `useOption` for each individual option, and `usePopover` for the floating panel that contains the list. It also uses `useSelectState` from `react-stately`, which manages the open/closed state of the popover and tracks the currently selected option.
 
 ```tsx
 // src/components/Select/Select.tsx (simplified structure)
@@ -94,11 +94,13 @@ export function Select<T extends object>(props: SelectProps<T>) {
 }
 ```
 
-The `HiddenSelect` component from React Aria renders a hidden native `<select>` element for form submission compatibility. The visible trigger is a `<button>` that opens the popover. The listbox inside the popover handles arrow key navigation, typeahead (type a letter to jump to matching options), and `Home`/`End` to jump to the first/last option.
+The `HiddenSelect` component from React Aria renders a hidden native `<select>` element for form submission compatibility. Unlike the hooks imported alongside it, `HiddenSelect` is a React component — the first time a component is imported directly from `react-aria` in this guide rather than following the hook-only pattern. The visible trigger is a `<button>` that opens the popover. The listbox inside the popover handles arrow key navigation, typeahead (type a letter to jump to matching options), and `Home`/`End` to jump to the first/last option.
 
 This is a lot of code for a select input. That's the point. Getting keyboard navigation, ARIA attributes, popover positioning, and focus management right for a select is genuinely difficult. React Aria handles the behavioral complexity so your component code is mostly rendering and styling.
 
 ### Checkbox and CheckboxGroup
+
+`useToggleState` from `react-stately` tracks a single boolean on/off value — it's the state layer for any component that toggles between selected and not selected. Checkbox and Switch both use it.
 
 ```tsx
 // src/components/Checkbox/Checkbox.tsx
@@ -153,7 +155,7 @@ The hidden native `<input>` provides the actual checkbox behavior. The `rudiment
 
 Using `forwardRef` here lets a parent component call `.focus()` on the underlying input directly, which matters when you need to programmatically focus a checkbox, for example after form validation reveals an error. The React Aria hooks expect a `RefObject<T>`, but `forwardRef` gives you a `ForwardedRef<T>`, which can be either an object ref or a callback ref. `useObjectRef` from `@react-aria/utils` normalizes both forms into the `RefObject` the hooks need, so you get full compatibility without extra boilerplate. `@react-aria/utils` is already a transitive dependency of `react-aria`, so no new package is required.
 
-`CheckboxGroup` wraps multiple checkboxes with a group label:
+`CheckboxGroup` wraps multiple checkboxes with a group label. It uses `useCheckboxGroupState` from `react-stately`, which manages the array of currently selected values across the group.
 
 ```tsx
 // src/components/Checkbox/CheckboxGroup.tsx
@@ -163,6 +165,7 @@ import { cn } from '@/utils/cn'
 
 export interface CheckboxGroupProps {
   label: string
+  description?: string
   value?: string[]
   defaultValue?: string[]
   onChange?: (value: string[]) => void
@@ -186,6 +189,11 @@ export function CheckboxGroup(props: CheckboxGroupProps) {
         {props.label}
       </span>
       {props.children}
+      {props.description && !props.errorMessage && (
+        <p {...descriptionProps} className="rudiment-checkbox-group__description">
+          {props.description}
+        </p>
+      )}
       {props.errorMessage && (
         <p {...errorMessageProps} className="rudiment-checkbox-group__error">
           {props.errorMessage}
@@ -198,7 +206,7 @@ export function CheckboxGroup(props: CheckboxGroupProps) {
 
 ### RadioGroup
 
-RadioGroup has an important keyboard behavior difference from individual checkboxes: arrow keys move the selection between radio options within the group, while Tab moves focus into and out of the group (not between options). React Aria handles this automatically.
+RadioGroup has an important keyboard behavior difference from individual checkboxes: arrow keys move the selection between radio options within the group, while Tab moves focus into and out of the group (not between options). React Aria handles this automatically. `useRadioGroupState` from `react-stately` tracks the currently selected value within the group.
 
 ```tsx
 // src/components/RadioGroup/RadioGroup.tsx
@@ -208,6 +216,7 @@ import { cn } from '@/utils/cn'
 
 export interface RadioGroupProps {
   label: string
+  description?: string
   value?: string
   defaultValue?: string
   onChange?: (value: string) => void
@@ -240,6 +249,11 @@ export function RadioGroup(props: RadioGroupProps) {
       >
         {props.children}
       </div>
+      {props.description && !props.errorMessage && (
+        <p {...descriptionProps} className="rudiment-radio-group__description">
+          {props.description}
+        </p>
+      )}
       {props.errorMessage && (
         <p {...errorMessageProps} className="rudiment-radio-group__error">
           {props.errorMessage}
@@ -251,6 +265,8 @@ export function RadioGroup(props: RadioGroupProps) {
 ```
 
 The individual `Radio` component uses `useRadio` and receives the group state via React context (set up internally by React Aria). The implementation follows the same hidden-input-plus-visual-indicator pattern as Checkbox.
+
+Both `CheckboxGroup` and `RadioGroup` include a `description` prop and spread `descriptionProps` onto a visible element, following the same pattern established in Chapter 6's Input. The description is hidden when an error is active, so screen readers don't announce both simultaneously.
 
 ### Switch
 

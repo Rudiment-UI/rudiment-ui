@@ -4,7 +4,7 @@ Your library works in Storybook. Your tests pass. Now you need to package it so 
 
 ### Configure Vite library mode
 
-Vite's library mode produces a clean build output with ECMAScript module (ESM) exports and TypeScript declarations. Install the declaration generation plugin:
+Vite's library mode produces a clean build output with ECMAScript module (ESM) exports and TypeScript declarations. `vite-plugin-dts` generates `.d.ts` TypeScript declaration files alongside the compiled output so consumers get full type information without needing access to the library source. Install it:
 
 ```bash
 npm install -D vite-plugin-dts
@@ -80,6 +80,8 @@ Configure `package.json` for ESM consumption:
 
 The `exports` field defines the public API. Consumers import components from the main entry (`import { Button } from 'rudiment-ui'`) and styles from the CSS entry (`import 'rudiment-ui/styles'`). The `sideEffects` field tells bundlers not to tree-shake the CSS import.
 
+The `build:storybook` script here is the named form of the `npm run build:storybook` command introduced in Chapter 9. Using the same script name in both places keeps the commands consistent across the project.
+
 ### Build and verify
 
 ```bash
@@ -96,9 +98,9 @@ This prints the names of every exported component and utility.
 
 ### Publish your library
 
-For the self-serve kit (Product 1), you're distributing the source code as a template repo, not publishing to npm. The buyer clones the repo and works with the source directly. The Vite build configuration is there for when the buyer wants to package their customized library for internal distribution within their own organization.
+If you're distributing the library as a template repository — source code that the consumer clones, owns, and modifies — you're not publishing to npm. The consumer works with the source directly. The Vite build configuration is there for when they want to package their customized library for internal distribution within their own organization.
 
-If you do publish to npm (for Product 2 clients or your own use), the process is:
+If you're publishing to npm for external consumers who install the library as a dependency, the process is:
 
 ```bash
 npm login
@@ -118,3 +120,7 @@ For a component library, the versioning rules are:
 **Patch (1.0.0 -> 1.0.1):** A bug is fixed without changing the API. A dependency is updated. A documentation error is corrected.
 
 Write a `CHANGELOG.md` that describes each release in human-readable terms. Consuming teams use the changelog to decide whether to upgrade and what to test after upgrading.
+
+### What you have now
+
+A publishable library package with ESM output, TypeScript declarations, a configured `package.json` exports map, and a versioned release workflow. The library is ready to be distributed as a template repository or published to npm. Chapter 12 covers the final layer: dark mode token overrides, expanding the component set, and aligning the token system with Figma.
