@@ -1,0 +1,34 @@
+.rudiment-sidebar {
+  --sidebar-width: var(--token-layout-sidebar-width, 20rem);
+  --sidebar-content-min: var(--token-layout-sidebar-content-min, 50%);
+  --sidebar-space: var(--token-layout-stack-space-default, 1.5rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sidebar-space);
+}
+
+.rudiment-sidebar > :first-child {
+  flex-basis: var(--sidebar-width);
+  flex-grow: 1;
+}
+
+.rudiment-sidebar > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: var(--sidebar-content-min);
+}
+
+.rudiment-sidebar--right > :first-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: var(--sidebar-content-min);
+}
+
+.rudiment-sidebar--right > :last-child {
+  flex-basis: var(--sidebar-width);
+  flex-grow: 1;
+}
+
+.rudiment-sidebar--no-stretch {
+  align-items: flex-start;
+}

@@ -1,0 +1,55 @@
+.rudiment-dialog__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--token-color-background-overlay);
+  padding: var(--token-spacing-4);
+}
+
+.rudiment-dialog {
+  position: relative;
+  z-index: 51;
+  width: 100%;
+  background-color: var(--token-color-background-surface);
+  border-radius: var(--token-radius-lg);
+  box-shadow:
+    0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  padding: var(--token-spacing-6);
+  display: grid;
+  gap: var(--token-spacing-4);
+}
+
+.rudiment-dialog:focus-visible {
+  outline: none;
+}
+
+/* Sizes */
+.rudiment-dialog--sm {
+  max-width: var(--token-component-dialog-max-width-sm);
+}
+
+.rudiment-dialog--md {
+  max-width: var(--token-component-dialog-max-width-md);
+}
+
+.rudiment-dialog--lg {
+  max-width: var(--token-component-dialog-max-width-lg);
+}
+
+.rudiment-dialog__title {
+  font-size: var(--token-font-size-lg);
+  font-weight: var(--token-font-weight-semibold);
+  color: var(--token-color-text-default);
+  line-height: var(--token-font-line-height-tight);
+  margin: 0;
+}
+
+.rudiment-dialog__body {
+  font-size: var(--token-font-size-sm);
+  color: var(--token-color-text-subtle);
+  line-height: var(--token-font-line-height-normal);
+}

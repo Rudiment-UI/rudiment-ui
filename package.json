@@ -4,7 +4,9 @@
   "description": "Template containing a complete, accessible React component library built on React Aria, styled with Tailwind CSS, documented in Storybook, and structured around a three-tier design token architecture. It includes both UI components (buttons, inputs, modals) and intrinsic layout primitives (Stack, Sidebar, Grid, and others) driven by layout tokens. The buyer clones the repo, swaps token values to match their brand, and has a working component library with documentation, tests, layout system, and accessibility baked in.",
   "main": "index.js",
   "scripts": {
-    "build:tokens": "style-dictionary build --config tokens/style-dictionary.config.mjs"
+    "build:tokens": "style-dictionary build --config tokens/style-dictionary.config.mjs",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "repository": {
     "type": "git",
@@ -19,9 +21,12 @@
   },
   "homepage": "https://github.com/Rudiment-UI/rudiment-ui#readme",
   "dependencies": {
+    "@react-aria/utils": "^3.33.1",
     "clsx": "^2.1.1",
     "react": "^19.2.4",
+    "react-aria": "^3.47.0",
     "react-dom": "^19.2.4",
+    "react-stately": "^3.45.0",
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
@@ -32,6 +37,16 @@
     "style-dictionary": "^4.4.0",
     "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3",
-    "vite": "^7.3.1"
+    "vite": "^7.3.1",
+    "storybook": "^10.2.19",
+    "@storybook/react-vite": "^10.2.19",
+    "@chromatic-com/storybook": "^5.0.1",
+    "@storybook/addon-vitest": "^10.2.19",
+    "@storybook/addon-a11y": "^10.2.19",
+    "@storybook/addon-docs": "^10.2.19",
+    "vitest": "^4.1.0",
+    "playwright": "^1.58.2",
+    "@vitest/browser-playwright": "^4.1.0",
+    "@vitest/coverage-v8": "^4.1.0"
   }
 }

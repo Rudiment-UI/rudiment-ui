@@ -1,0 +1,47 @@
+.rudiment-heading--1 {
+  font-size: var(--token-typography-heading-1-size);
+  font-weight: var(--token-typography-heading-1-weight);
+  line-height: var(--token-typography-heading-1-line-height);
+  letter-spacing: var(--token-typography-heading-1-tracking);
+  color: var(--token-color-text-default);
+}
+
+.rudiment-heading--2 {
+  font-size: var(--token-typography-heading-2-size);
+  font-weight: var(--token-typography-heading-2-weight);
+  line-height: var(--token-typography-heading-2-line-height);
+  letter-spacing: var(--token-typography-heading-2-tracking);
+  color: var(--token-color-text-default);
+}
+
+.rudiment-heading--3 {
+  font-size: var(--token-typography-heading-3-size);
+  font-weight: var(--token-typography-heading-3-weight);
+  line-height: var(--token-typography-heading-3-line-height);
+  letter-spacing: var(--token-typography-heading-3-tracking);
+  color: var(--token-color-text-default);
+}
+
+.rudiment-heading--4 {
+  font-size: var(--token-typography-heading-4-size);
+  font-weight: var(--token-typography-heading-4-weight);
+  line-height: var(--token-typography-heading-4-line-height);
+  letter-spacing: var(--token-typography-heading-4-tracking);
+  color: var(--token-color-text-default);
+}
+
+.rudiment-heading--5 {
+  font-size: var(--token-typography-heading-5-size);
+  font-weight: var(--token-typography-heading-5-weight);
+  line-height: var(--token-typography-heading-5-line-height);
+  letter-spacing: var(--token-typography-heading-5-tracking);
+  color: var(--token-color-text-default);
+}
+
+.rudiment-heading--6 {
+  font-size: var(--token-typography-heading-6-size);
+  font-weight: var(--token-typography-heading-6-weight);
+  line-height: var(--token-typography-heading-6-line-height);
+  letter-spacing: var(--token-typography-heading-6-tracking);
+  color: var(--token-color-text-default);
+}

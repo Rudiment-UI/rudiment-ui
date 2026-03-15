@@ -1,6 +1,7 @@
 // src/layouts/Box/Box.tsx
 import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
+import './box.css'
 
 export interface BoxProps extends React.HTMLAttributes<HTMLElement> {
   padding?: string

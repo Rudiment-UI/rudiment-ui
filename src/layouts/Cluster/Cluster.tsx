@@ -1,5 +1,6 @@
 import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
+import './cluster.css'
 
 export interface ClusterProps extends React.HTMLAttributes<HTMLElement> {
   space?: string

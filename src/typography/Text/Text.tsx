@@ -1,5 +1,6 @@
 import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
+import './text.css'
 
 export interface TextProps extends React.HTMLAttributes<HTMLElement> {
   variant?: 'body' | 'body-sm' | 'caption' | 'overline' | 'code'

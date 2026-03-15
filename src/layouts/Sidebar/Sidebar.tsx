@@ -1,5 +1,6 @@
 import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
+import './sidebar.css'
 
 export interface SidebarProps extends React.HTMLAttributes<HTMLElement> {
   side?: 'left' | 'right'

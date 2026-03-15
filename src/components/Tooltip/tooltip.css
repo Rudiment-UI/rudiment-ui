@@ -1,0 +1,21 @@
+.rudiment-tooltip-trigger {
+  display: inline-flex;
+  position: relative;
+}
+
+.rudiment-tooltip {
+  position: absolute;
+  z-index: 60;
+  bottom: calc(100% + 0.375rem);
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: var(--token-component-tooltip-max-width);
+  padding: var(--token-spacing-1) var(--token-spacing-2);
+  background-color: var(--token-component-tooltip-background);
+  color: var(--token-color-text-on-inverted);
+  font-size: var(--token-font-size-xs);
+  line-height: var(--token-font-line-height-normal);
+  border-radius: var(--token-radius-md);
+  white-space: nowrap;
+  pointer-events: none;
+}

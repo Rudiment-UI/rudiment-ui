@@ -1,0 +1,25 @@
+/* Stack */
+.rudiment-stack {
+  --stack-space: var(--token-layout-stack-space-default, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.rudiment-stack > * {
+  margin-block: 0;
+}
+
+.rudiment-stack > * + * {
+  margin-block-start: var(--stack-space);
+}
+
+/* Recursive: apply spacing at any nesting depth */
+.rudiment-stack--recursive * + * {
+  margin-block-start: var(--stack-space);
+}
+
+/* Split: push elements after the nth child to the bottom */
+.rudiment-stack--split {
+  min-block-size: 100%;
+}
