@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import { axe } from 'vitest-axe'
 import { describe, it, expect } from 'vitest'
 import { Tooltip, TooltipTrigger } from './Tooltip'
 
@@ -19,9 +20,16 @@ describe('Tooltip', () => {
   })
 
   it('merges a custom className', () => {
-    const { container } = render(<Tooltip className="my-tip">Helpful hint</Tooltip>)
+    const { container } = render(
+      <Tooltip className="my-tip">Helpful hint</Tooltip>,
+    )
     expect(container.firstChild).toHaveClass('rudiment-tooltip')
     expect(container.firstChild).toHaveClass('my-tip')
+  })
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(<Tooltip>Helpful hint</Tooltip>)
+    expect(await axe(container)).toHaveNoViolations()
   })
 })
 
@@ -31,7 +39,7 @@ describe('TooltipTrigger', () => {
       <TooltipTrigger>
         <button>Hover me</button>
         <Tooltip>Helpful hint</Tooltip>
-      </TooltipTrigger>
+      </TooltipTrigger>,
     )
     expect(screen.getByText('Hover me')).toBeInTheDocument()
   })
@@ -41,7 +49,7 @@ describe('TooltipTrigger', () => {
       <TooltipTrigger>
         <button>Hover me</button>
         <Tooltip>Helpful hint</Tooltip>
-      </TooltipTrigger>
+      </TooltipTrigger>,
     )
     expect(container.firstChild).toHaveClass('rudiment-tooltip-trigger')
   })
@@ -51,8 +59,18 @@ describe('TooltipTrigger', () => {
       <TooltipTrigger>
         <button>Hover me</button>
         <Tooltip>Helpful hint</Tooltip>
-      </TooltipTrigger>
+      </TooltipTrigger>,
     )
     expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
+  })
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(
+      <TooltipTrigger>
+        <button>Hover me</button>
+        <Tooltip>Helpful hint</Tooltip>
+      </TooltipTrigger>,
+    )
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

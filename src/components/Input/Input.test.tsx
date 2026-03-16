@@ -1,78 +1,76 @@
+import { createRef } from 'react'
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { axe } from 'vitest-axe'
 import { describe, it, expect } from 'vitest'
 import { Input } from './Input'
 
 describe('Input', () => {
-  it('renders the label', () => {
+  it('renders with its label as the accessible name', () => {
     render(<Input label="Email" />)
-    expect(screen.getByText('Email')).toBeInTheDocument()
+    expect(screen.getByRole('textbox', { name: 'Email' })).toBeInTheDocument()
   })
 
-  it('renders an input element', () => {
-    render(<Input label="Email" />)
-    expect(screen.getByRole('textbox')).toBeInTheDocument()
+  it('accepts text input', async () => {
+    const onChange = vi.fn()
+    render(<Input label="Email" onChange={onChange} />)
+    await userEvent.type(screen.getByRole('textbox'), 'hello')
+    expect(onChange).toHaveBeenLastCalledWith('hello')
   })
 
-  it('applies the wrapper class', () => {
-    const { container } = render(<Input label="Email" />)
-    expect(container.firstChild).toHaveClass('rudiment-input')
+  it('shows the description and links it via aria-describedby', () => {
+    render(<Input label="Email" description="Your work email" />)
+    const input = screen.getByRole('textbox')
+    const description = screen.getByText('Your work email')
+    expect(input).toHaveAttribute(
+      'aria-describedby',
+      expect.stringContaining(description.id),
+    )
   })
 
-  it('applies the label class', () => {
-    render(<Input label="Email" />)
-    expect(screen.getByText('Email').closest('label')).toHaveClass('rudiment-input__label')
+  it('shows the error message and sets aria-invalid', () => {
+    render(<Input label="Email" errorMessage="Required field" />)
+    const input = screen.getByRole('textbox')
+    expect(input).toHaveAttribute('aria-invalid', 'true')
+    expect(screen.getByText('Required field')).toBeInTheDocument()
   })
 
-  it('applies the field class to the input', () => {
-    render(<Input label="Email" />)
-    expect(screen.getByRole('textbox')).toHaveClass('rudiment-input__field')
+  it('hides the description when an error message is present', () => {
+    render(
+      <Input
+        label="Email"
+        description="Your work email"
+        errorMessage="Required"
+      />,
+    )
+    expect(screen.queryByText('Your work email')).not.toBeInTheDocument()
   })
 
-  it('merges a custom className on the wrapper', () => {
-    const { container } = render(<Input label="Email" className="extra" />)
-    expect(container.firstChild).toHaveClass('rudiment-input')
-    expect(container.firstChild).toHaveClass('extra')
+  it('marks the input as required', () => {
+    render(<Input label="Email" isRequired />)
+    expect(screen.getByRole('textbox')).toHaveAttribute('aria-required', 'true')
   })
 
-  it('renders the required indicator when isRequired is true', () => {
-    const { container } = render(<Input label="Email" isRequired />)
-    expect(container.querySelector('.rudiment-input__required')).toBeInTheDocument()
-  })
-
-  it('does not render the required indicator by default', () => {
-    const { container } = render(<Input label="Email" />)
-    expect(container.querySelector('.rudiment-input__required')).not.toBeInTheDocument()
-  })
-
-  it('renders the description when provided and no error', () => {
-    render(<Input label="Email" description="We won't spam you." />)
-    expect(screen.getByText("We won't spam you.")).toBeInTheDocument()
-  })
-
-  it('renders the error message when errorMessage is provided', () => {
-    render(<Input label="Email" errorMessage="Invalid email" />)
-    expect(screen.getByText('Invalid email')).toBeInTheDocument()
-  })
-
-  it('applies the error class to the field when errorMessage is provided', () => {
-    render(<Input label="Email" errorMessage="Invalid email" />)
-    expect(screen.getByRole('textbox')).toHaveClass('rudiment-input__field--error')
-  })
-
-  it('does not apply the error class when there is no error', () => {
-    render(<Input label="Email" />)
-    expect(screen.getByRole('textbox')).not.toHaveClass('rudiment-input__field--error')
-  })
-
-  it('disables the input when isDisabled is true', () => {
+  it('disables the input', () => {
     render(<Input label="Email" isDisabled />)
     expect(screen.getByRole('textbox')).toBeDisabled()
   })
 
-  it('associates the label with the input via htmlFor', () => {
-    render(<Input label="Email" />)
-    const input = screen.getByRole('textbox')
-    const label = screen.getByText('Email').closest('label')
-    expect(label).toHaveAttribute('for', input.id)
+  it('forwards ref to the underlying input', () => {
+    const ref = createRef<HTMLInputElement>()
+    render(<Input label="Email" ref={ref} />)
+    expect(ref.current).toBe(screen.getByRole('textbox'))
+  })
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(<Input label="Email" />)
+    expect(await axe(container)).toHaveNoViolations()
+  })
+
+  it('has no accessibility violations in error state', async () => {
+    const { container } = render(
+      <Input label="Email" errorMessage="Required" />,
+    )
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

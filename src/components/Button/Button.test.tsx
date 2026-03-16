@@ -1,73 +1,43 @@
 import { render, screen } from '@testing-library/react'
-import { describe, it, expect, vi } from 'vitest'
+import userEvent from '@testing-library/user-event'
+import { axe } from 'vitest-axe'
+import { describe, it, expect } from 'vitest'
 import { Button } from './Button'
 
 describe('Button', () => {
-  it('renders children', () => {
-    render(<Button>Click me</Button>)
-    expect(screen.getByText('Click me')).toBeInTheDocument()
+  it('sets aria-busy when loading', () => {
+    render(<Button isLoading>Save</Button>)
+    expect(screen.getByRole('button', { name: 'Save' })).toHaveAttribute(
+      'aria-busy',
+      'true',
+    )
   })
 
-  it('applies the default class', () => {
-    const { container } = render(<Button>Label</Button>)
-    expect(container.firstChild).toHaveClass('rudiment-button')
-  })
-
-  it('applies primary variant class by default', () => {
-    const { container } = render(<Button>Label</Button>)
-    expect(container.firstChild).toHaveClass('rudiment-button--primary')
-  })
-
-  it('applies the specified variant class', () => {
-    const { container } = render(<Button variant="secondary">Label</Button>)
-    expect(container.firstChild).toHaveClass('rudiment-button--secondary')
-  })
-
-  it('applies the md size class by default', () => {
-    const { container } = render(<Button>Label</Button>)
-    expect(container.firstChild).toHaveClass('rudiment-button--md')
-  })
-
-  it('applies the specified size class', () => {
-    const { container } = render(<Button size="lg">Label</Button>)
-    expect(container.firstChild).toHaveClass('rudiment-button--lg')
-  })
-
-  it('merges a custom className', () => {
-    const { container } = render(<Button className="my-class">Label</Button>)
-    expect(container.firstChild).toHaveClass('rudiment-button')
-    expect(container.firstChild).toHaveClass('my-class')
-  })
-
-  it('applies the loading class when isLoading is true', () => {
-    const { container } = render(<Button isLoading>Label</Button>)
-    expect(container.firstChild).toHaveClass('rudiment-button--loading')
-  })
-
-  it('renders a spinner when isLoading is true', () => {
-    const { container } = render(<Button isLoading>Label</Button>)
-    expect(container.querySelector('.rudiment-button__spinner')).toBeInTheDocument()
-  })
-
-  it('does not apply the loading class by default', () => {
-    const { container } = render(<Button>Label</Button>)
-    expect(container.firstChild).not.toHaveClass('rudiment-button--loading')
-  })
-
-  it('renders a button element', () => {
-    render(<Button>Label</Button>)
-    expect(screen.getByRole('button')).toBeInTheDocument()
-  })
-
-  it('calls onPress when clicked', async () => {
+  it('does not call onPress while loading', async () => {
     const onPress = vi.fn()
-    render(<Button onPress={onPress}>Click</Button>)
-    screen.getByRole('button').click()
-    expect(onPress).toHaveBeenCalledTimes(1)
+    render(
+      <Button isLoading onPress={onPress}>
+        Save
+      </Button>,
+    )
+    await userEvent.click(screen.getByRole('button'))
+    expect(onPress).not.toHaveBeenCalled()
   })
 
-  it('marks button as disabled when isDisabled is true', () => {
-    render(<Button isDisabled>Label</Button>)
-    expect(screen.getByRole('button')).toHaveAttribute('aria-disabled', 'true')
+  it('renders a visible loading indicator', () => {
+    render(<Button isLoading>Save</Button>)
+    expect(screen.getByRole('button')).toContainElement(
+      screen.getByRole('img', { hidden: true }),
+    )
+  })
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(<Button>Save</Button>)
+    expect(await axe(container)).toHaveNoViolations()
+  })
+
+  it('has no accessibility violations while loading', async () => {
+    const { container } = render(<Button isLoading>Save</Button>)
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

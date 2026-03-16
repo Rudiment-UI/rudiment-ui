@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import { axe } from 'vitest-axe'
 import { describe, it, expect } from 'vitest'
 import { RadioGroup } from './RadioGroup'
 
@@ -15,32 +16,38 @@ describe('RadioGroup', () => {
 
   it('applies the label class', () => {
     render(<RadioGroup label="Shipping" />)
-    expect(screen.getByText('Shipping')).toHaveClass('rudiment-radio-group__label')
+    expect(screen.getByText('Shipping')).toHaveClass(
+      'rudiment-radio-group__label',
+    )
   })
 
   it('renders the options container', () => {
     const { container } = render(<RadioGroup label="Shipping" />)
-    expect(container.querySelector('.rudiment-radio-group__options')).toBeInTheDocument()
+    expect(
+      container.querySelector('.rudiment-radio-group__options'),
+    ).toBeInTheDocument()
   })
 
   it('does not apply the horizontal class by default', () => {
     const { container } = render(<RadioGroup label="Shipping" />)
-    expect(container.querySelector('.rudiment-radio-group__options')).not.toHaveClass(
-      'rudiment-radio-group__options--horizontal'
-    )
+    expect(
+      container.querySelector('.rudiment-radio-group__options'),
+    ).not.toHaveClass('rudiment-radio-group__options--horizontal')
   })
 
   it('applies the horizontal class when orientation is horizontal', () => {
     const { container } = render(
-      <RadioGroup label="Shipping" orientation="horizontal" />
+      <RadioGroup label="Shipping" orientation="horizontal" />,
     )
-    expect(container.querySelector('.rudiment-radio-group__options')).toHaveClass(
-      'rudiment-radio-group__options--horizontal'
-    )
+    expect(
+      container.querySelector('.rudiment-radio-group__options'),
+    ).toHaveClass('rudiment-radio-group__options--horizontal')
   })
 
   it('renders the description when provided and no error', () => {
-    render(<RadioGroup label="Shipping" description="Choose a delivery speed." />)
+    render(
+      <RadioGroup label="Shipping" description="Choose a delivery speed." />,
+    )
     expect(screen.getByText('Choose a delivery speed.')).toBeInTheDocument()
   })
 
@@ -55,13 +62,17 @@ describe('RadioGroup', () => {
         label="Shipping"
         description="Choose a delivery speed."
         errorMessage="Select an option."
-      />
+      />,
     )
-    expect(screen.queryByText('Choose a delivery speed.')).not.toBeInTheDocument()
+    expect(
+      screen.queryByText('Choose a delivery speed.'),
+    ).not.toBeInTheDocument()
   })
 
   it('merges a custom className', () => {
-    const { container } = render(<RadioGroup label="Shipping" className="extra" />)
+    const { container } = render(
+      <RadioGroup label="Shipping" className="extra" />,
+    )
     expect(container.firstChild).toHaveClass('rudiment-radio-group')
     expect(container.firstChild).toHaveClass('extra')
   })
@@ -75,8 +86,20 @@ describe('RadioGroup', () => {
     render(
       <RadioGroup label="Shipping">
         <span data-testid="child">Standard</span>
-      </RadioGroup>
+      </RadioGroup>,
     )
     expect(screen.getByTestId('child')).toBeInTheDocument()
+  })
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(<RadioGroup label="Shipping" />)
+    expect(await axe(container)).toHaveNoViolations()
+  })
+
+  it('has no accessibility violations in error state', async () => {
+    const { container } = render(
+      <RadioGroup label="Shipping" errorMessage="Select an option." />,
+    )
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

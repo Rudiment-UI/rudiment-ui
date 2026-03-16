@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import { axe } from 'vitest-axe'
 import { describe, it, expect } from 'vitest'
 import { Dialog } from './Dialog'
 
@@ -7,7 +8,7 @@ describe('Dialog', () => {
     const { container } = render(
       <Dialog isOpen={false} onClose={() => {}} title="Confirm">
         Content
-      </Dialog>
+      </Dialog>,
     )
     expect(container.firstChild).toBeNull()
   })
@@ -16,7 +17,7 @@ describe('Dialog', () => {
     render(
       <Dialog isOpen onClose={() => {}} title="Confirm">
         Content
-      </Dialog>
+      </Dialog>,
     )
     expect(screen.getByRole('dialog')).toBeInTheDocument()
   })
@@ -25,7 +26,7 @@ describe('Dialog', () => {
     render(
       <Dialog isOpen onClose={() => {}} title="Confirm action">
         Content
-      </Dialog>
+      </Dialog>,
     )
     expect(screen.getByText('Confirm action')).toBeInTheDocument()
   })
@@ -34,7 +35,7 @@ describe('Dialog', () => {
     render(
       <Dialog isOpen onClose={() => {}} title="Confirm">
         Content
-      </Dialog>
+      </Dialog>,
     )
     expect(screen.getByRole('dialog')).toHaveClass('rudiment-dialog')
   })
@@ -43,7 +44,7 @@ describe('Dialog', () => {
     render(
       <Dialog isOpen onClose={() => {}} title="Confirm">
         Content
-      </Dialog>
+      </Dialog>,
     )
     expect(screen.getByRole('dialog')).toHaveClass('rudiment-dialog--md')
   })
@@ -52,7 +53,7 @@ describe('Dialog', () => {
     render(
       <Dialog isOpen onClose={() => {}} title="Confirm" size="lg">
         Content
-      </Dialog>
+      </Dialog>,
     )
     expect(screen.getByRole('dialog')).toHaveClass('rudiment-dialog--lg')
   })
@@ -61,7 +62,7 @@ describe('Dialog', () => {
     render(
       <Dialog isOpen onClose={() => {}} title="Confirm">
         Content
-      </Dialog>
+      </Dialog>,
     )
     expect(screen.getByText('Confirm')).toHaveClass('rudiment-dialog__title')
   })
@@ -70,16 +71,18 @@ describe('Dialog', () => {
     const { container } = render(
       <Dialog isOpen onClose={() => {}} title="Confirm">
         Body text
-      </Dialog>
+      </Dialog>,
     )
-    expect(container.querySelector('.rudiment-dialog__body')).toBeInTheDocument()
+    expect(
+      document.body.querySelector('.rudiment-dialog__body'),
+    ).toBeInTheDocument()
   })
 
   it('renders children in the body', () => {
     render(
       <Dialog isOpen onClose={() => {}} title="Confirm">
         Body text
-      </Dialog>
+      </Dialog>,
     )
     expect(screen.getByText('Body text')).toBeInTheDocument()
   })
@@ -88,9 +91,18 @@ describe('Dialog', () => {
     render(
       <Dialog isOpen onClose={() => {}} title="Confirm" className="my-dialog">
         Content
-      </Dialog>
+      </Dialog>,
     )
     expect(screen.getByRole('dialog')).toHaveClass('rudiment-dialog')
     expect(screen.getByRole('dialog')).toHaveClass('my-dialog')
+  })
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(
+      <Dialog isOpen onClose={() => {}} title="Confirm">
+        Content
+      </Dialog>,
+    )
+    expect(await axe(container)).toHaveNoViolations()
   })
 })
