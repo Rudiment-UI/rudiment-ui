@@ -1,6 +1,6 @@
 import { Children, cloneElement, forwardRef, isValidElement } from 'react'
 import { cn } from '@/utils/cn'
-import './Stack.css'
+import './stack.css'
 
 export interface StackProps extends React.HTMLAttributes<HTMLElement> {
   /** CSS spacing value. Defaults to --token-layout-stack-space-default token. */
