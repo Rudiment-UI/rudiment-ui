@@ -3,6 +3,7 @@ import {
   useTooltipTrigger,
   useTooltip as useTooltipAria,
 } from 'react-aria'
+import type { AriaTooltipProps } from 'react-aria'
 import { useTooltipTriggerState } from 'react-stately'
 import { cn } from '@/utils/cn'
 import './tooltip.css'
@@ -35,25 +36,24 @@ export const TooltipTrigger = forwardRef<HTMLSpanElement, TooltipTriggerProps>(
   },
 )
 
-export interface TooltipProps {
+export interface TooltipProps extends AriaTooltipProps {
   children: React.ReactNode
   className?: string
 }
 
-export const Tooltip = forwardRef<
-  HTMLSpanElement,
-  TooltipProps & Record<string, unknown>
->(function Tooltip({ children, className, ...props }, ref) {
-  const { tooltipProps } = useTooltipAria(props)
+export const Tooltip = forwardRef<HTMLSpanElement, TooltipProps>(
+  function Tooltip({ children, className, ...props }, ref) {
+    const { tooltipProps } = useTooltipAria(props)
 
-  return (
-    <span
-      {...tooltipProps}
-      ref={ref}
-      className={cn('rudiment-tooltip', className)}
-      role="tooltip"
-    >
-      {children}
-    </span>
-  )
-})
+    return (
+      <span
+        {...tooltipProps}
+        ref={ref}
+        className={cn('rudiment-tooltip', className)}
+        role="tooltip"
+      >
+        {children}
+      </span>
+    )
+  },
+)

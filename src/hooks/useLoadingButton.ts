@@ -5,7 +5,7 @@ import type { RefObject } from 'react'
 export function useLoadingButton(
   ariaProps: AriaButtonProps,
   isLoading: boolean,
-  ref: RefObject<HTMLButtonElement>,
+  ref: RefObject<HTMLButtonElement | null>,
 ) {
   const { buttonProps } = useButton(
     { ...ariaProps, isDisabled: ariaProps.isDisabled || isLoading },
