@@ -1,16 +1,36 @@
 {
   "name": "rudiment-ui",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Template containing a complete, accessible React component library built on React Aria, styled with Tailwind CSS, documented in Storybook, and structured around a three-tier design token architecture. It includes both UI components (buttons, inputs, modals) and intrinsic layout primitives (Stack, Sidebar, Grid, and others) driven by layout tokens. The buyer clones the repo, swaps token values to match their brand, and has a working component library with documentation, tests, layout system, and accessibility baked in.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build:tokens": "style-dictionary build --config tokens/style-dictionary.config.mjs",
-    "storybook": "storybook dev -p 6006",
+    "dev": "storybook dev -p 6006",
+    "build": "vite build",
     "build-storybook": "storybook build",
+    "build:tokens": "style-dictionary build --config tokens/style-dictionary.config.mjs",
     "test": "vitest",
-    "test:watch": "vitest --watch",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "test:watch": "vitest --watch"
   },
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles": "./dist/style.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Rudiment-UI/rudiment-ui.git"
@@ -54,6 +74,7 @@
     "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3",
     "vite": "^7.3.1",
+    "vite-plugin-dts": "^4.5.4",
     "vitest": "^4.1.0",
     "vitest-axe": "^0.1.0"
   }
