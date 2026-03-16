@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import { axe } from 'vitest-axe'
 import { describe, it, expect } from 'vitest'
 import { Heading } from './Heading'
 
@@ -68,5 +69,10 @@ describe('Heading', () => {
       </Heading>,
     )
     expect(ref.current?.nodeName).toBe('H2')
+  })
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(<Heading level={1}>Hello</Heading>)
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

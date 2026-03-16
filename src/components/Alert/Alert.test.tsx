@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import { axe } from 'vitest-axe'
 import { describe, it, expect } from 'vitest'
 import { Alert } from './Alert'
 
@@ -38,7 +39,9 @@ describe('Alert', () => {
 
   it('does not render the title element when title is omitted', () => {
     const { container } = render(<Alert variant="info">Message</Alert>)
-    expect(container.querySelector('.rudiment-alert__title')).not.toBeInTheDocument()
+    expect(
+      container.querySelector('.rudiment-alert__title'),
+    ).not.toBeInTheDocument()
   })
 
   it('has role="alert" by default', () => {
@@ -52,8 +55,28 @@ describe('Alert', () => {
   })
 
   it('merges a custom className', () => {
-    const { container } = render(<Alert variant="info" className="my-alert">Msg</Alert>)
+    const { container } = render(
+      <Alert variant="info" className="my-alert">
+        Msg
+      </Alert>,
+    )
     expect(container.firstChild).toHaveClass('rudiment-alert')
     expect(container.firstChild).toHaveClass('my-alert')
+  })
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(
+      <Alert variant="info">Something happened.</Alert>,
+    )
+    expect(await axe(container)).toHaveNoViolations()
+  })
+
+  it('has no accessibility violations with a title', async () => {
+    const { container } = render(
+      <Alert variant="warning" title="Watch out">
+        Details here.
+      </Alert>,
+    )
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

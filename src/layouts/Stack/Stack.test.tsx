@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import { axe } from 'vitest-axe'
 import { describe, it, expect } from 'vitest'
 import { Stack } from './Stack'
 
@@ -121,5 +122,15 @@ describe('Stack', () => {
     const el = container.firstChild as HTMLElement
     expect(el).toHaveAttribute('data-testid', 'my-stack')
     expect(el).toHaveAttribute('id', 'stack-1')
+  })
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(
+      <Stack>
+        <p>First</p>
+        <p>Second</p>
+      </Stack>,
+    )
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

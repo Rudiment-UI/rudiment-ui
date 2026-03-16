@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import { axe } from 'vitest-axe'
 import { describe, it, expect } from 'vitest'
 import { Text } from './Text'
 
@@ -53,5 +54,10 @@ describe('Text', () => {
     const ref = { current: null as HTMLElement | null }
     render(<Text ref={ref}>Text</Text>)
     expect(ref.current?.nodeName).toBe('P')
+  })
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(<Text>Hello</Text>)
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

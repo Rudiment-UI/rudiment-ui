@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import { axe } from 'vitest-axe'
 import { describe, it, expect } from 'vitest'
 import { CheckboxGroup } from './CheckboxGroup'
 import { Checkbox } from './Checkbox'
@@ -8,7 +9,7 @@ describe('CheckboxGroup', () => {
     render(
       <CheckboxGroup label="Interests">
         <Checkbox value="a">Option A</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     )
     expect(screen.getByText('Interests')).toBeInTheDocument()
   })
@@ -17,7 +18,7 @@ describe('CheckboxGroup', () => {
     const { container } = render(
       <CheckboxGroup label="Interests">
         <Checkbox value="a">Option A</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     )
     expect(container.firstChild).toHaveClass('rudiment-checkbox-group')
   })
@@ -26,9 +27,11 @@ describe('CheckboxGroup', () => {
     render(
       <CheckboxGroup label="Interests">
         <Checkbox value="a">Option A</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     )
-    expect(screen.getByText('Interests')).toHaveClass('rudiment-checkbox-group__label')
+    expect(screen.getByText('Interests')).toHaveClass(
+      'rudiment-checkbox-group__label',
+    )
   })
 
   it('renders children checkboxes', () => {
@@ -36,7 +39,7 @@ describe('CheckboxGroup', () => {
       <CheckboxGroup label="Interests">
         <Checkbox value="a">Option A</Checkbox>
         <Checkbox value="b">Option B</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     )
     expect(screen.getAllByRole('checkbox')).toHaveLength(2)
   })
@@ -45,7 +48,7 @@ describe('CheckboxGroup', () => {
     render(
       <CheckboxGroup label="Interests" description="Select all that apply.">
         <Checkbox value="a">Option A</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     )
     expect(screen.getByText('Select all that apply.')).toBeInTheDocument()
   })
@@ -54,7 +57,7 @@ describe('CheckboxGroup', () => {
     render(
       <CheckboxGroup label="Interests" errorMessage="Select at least one.">
         <Checkbox value="a">Option A</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     )
     expect(screen.getByText('Select at least one.')).toBeInTheDocument()
   })
@@ -67,7 +70,7 @@ describe('CheckboxGroup', () => {
         errorMessage="Select at least one."
       >
         <Checkbox value="a">Option A</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     )
     expect(screen.queryByText('Select all that apply.')).not.toBeInTheDocument()
   })
@@ -76,7 +79,7 @@ describe('CheckboxGroup', () => {
     const { container } = render(
       <CheckboxGroup label="Interests" className="extra">
         <Checkbox value="a">Option A</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     )
     expect(container.firstChild).toHaveClass('rudiment-checkbox-group')
     expect(container.firstChild).toHaveClass('extra')
@@ -86,8 +89,27 @@ describe('CheckboxGroup', () => {
     render(
       <CheckboxGroup label="Interests">
         <Checkbox value="a">Option A</Checkbox>
-      </CheckboxGroup>
+      </CheckboxGroup>,
     )
     expect(screen.getByRole('group')).toBeInTheDocument()
+  })
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(
+      <CheckboxGroup label="Interests">
+        <Checkbox value="a">Option A</Checkbox>
+        <Checkbox value="b">Option B</Checkbox>
+      </CheckboxGroup>,
+    )
+    expect(await axe(container)).toHaveNoViolations()
+  })
+
+  it('has no accessibility violations in error state', async () => {
+    const { container } = render(
+      <CheckboxGroup label="Interests" errorMessage="Select at least one.">
+        <Checkbox value="a">Option A</Checkbox>
+      </CheckboxGroup>,
+    )
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

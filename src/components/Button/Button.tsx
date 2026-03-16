@@ -42,7 +42,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {isLoading ? (
           <>
-            <span className="rudiment-button__spinner" aria-hidden="true" />
+            <span className="rudiment-button__spinner" role="img" aria-hidden="true" />
             <span>{children}</span>
           </>
         ) : (

@@ -13,6 +13,7 @@
     "declarationMap": true,
     "outDir": "dist",
     "rootDir": "src",
+    "types": ["vitest/globals"],
     "paths": {
       "@/*": ["./src/*"]
     }
