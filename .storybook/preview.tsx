@@ -16,7 +16,7 @@ const preview: Preview = {
       const theme = context.globals.theme || 'light'
       return (
         <div className={theme === 'dark' ? 'dark' : ''}>
-          <div className="bg-surface text-text-default p-8 min-h-screen">
+          <div className="bg-surface text-text-default p-8">
             <Story />
           </div>
         </div>
