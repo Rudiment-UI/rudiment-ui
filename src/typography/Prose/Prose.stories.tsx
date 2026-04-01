@@ -5,9 +5,39 @@ const meta = {
   title: 'Typography/Prose',
   component: Prose,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A container that applies beautiful typographic rhythm to long-form content. Automatically handles spacing for paragraphs, headings, lists, and code blocks.',
+      },
+    },
+  },
   argTypes: {
-    size: { control: 'select', options: ['sm', 'base', 'lg'] },
-    as: { control: 'text' },
+    size: {
+      control: 'select',
+      options: ['sm', 'base', 'lg'],
+      description: 'The overall text size for the prose content',
+      table: { category: 'Appearance' },
+    },
+    as: {
+      control: 'text',
+      description:
+        "The HTML element to render (e.g., 'div', 'article', 'section')",
+      table: { category: 'Content' },
+    },
+    children: {
+      description: 'The long-form content rendered inside the prose container',
+      table: { category: 'Content' },
+    },
+    className: {
+      description:
+        'Additional CSS class names to apply to the prose container',
+      table: { category: 'Appearance' },
+    },
+  },
+  args: {
+    size: 'base',
   },
 } satisfies Meta<typeof Prose>
 

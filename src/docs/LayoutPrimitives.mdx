@@ -1,0 +1,92 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Getting Started/Layout Primitives" />
+
+# Layout Primitives
+
+## Philosophy
+
+Rudiment UI takes a **composition over configuration** approach to layout. Instead of one complex layout component with dozens of props, you get small, single-purpose primitives that combine to create any layout you need.
+
+This approach is inspired by [Every Layout](https://every-layout.dev) and uses intrinsic CSS — layouts that respond to their content and container rather than relying on media query breakpoints.
+
+## When to use each primitive
+
+| Primitive | What it does | Use it for |
+|---|---|---|
+| **Stack** | Vertical list with even spacing | Forms, card content, page sections |
+| **Box** | Container with padding and optional border | Cards, panels, callouts |
+| **Cluster** | Horizontal wrapping items | Tags, button groups, breadcrumbs |
+| **Grid** | Auto-fit responsive grid | Card grids, galleries, dashboards |
+| **Sidebar** | Two-panel layout (one fixed, one flexible) | Nav + content, filters + results |
+| **Center** | Centered content with a max-width | Article content, hero text |
+| **Cover** | Full-height layout with a centered principal element | Hero sections, login pages |
+| **Switcher** | Row that switches to a column when space runs out | Form field groups, pricing cards |
+
+## Decision guide
+
+Not sure which primitive to reach for? Start here:
+
+- **Stacking items vertically?** Use **Stack**
+- **Wrapping items in a row?** Use **Cluster**
+- **Need a responsive grid of equal items?** Use **Grid**
+- **Two panels, one narrow and one wide?** Use **Sidebar**
+- **Centering content on the page?** Use **Center**
+- **Full-screen section with a centered hero?** Use **Cover**
+- **Row that should become a column on small screens?** Use **Switcher**
+- **Need padding or a border around a section?** Use **Box**
+
+## Combining primitives
+
+The real power comes from nesting primitives together. Here is an example of a typical page layout:
+
+```jsx
+<Stack gap="lg">
+  <Sidebar>
+    <nav>
+      {/* navigation links */}
+    </nav>
+    <Box padding="md" border>
+      <Stack gap="sm">
+        <Heading level={2}>Article title</Heading>
+        <Text>Article content goes here.</Text>
+      </Stack>
+    </Box>
+  </Sidebar>
+</Stack>
+```
+
+In this example:
+
+- **Stack** provides vertical spacing between page sections
+- **Sidebar** creates a two-panel layout (navigation beside content)
+- **Box** wraps the content area with padding and a border
+- A nested **Stack** spaces out the heading and text inside the box
+
+## The `as` prop
+
+All layout primitives render as a `<div>` by default. Use the `as` prop to render as any HTML element for better semantic markup:
+
+```jsx
+<Stack as="ul" gap="sm">
+  <li>First item</li>
+  <li>Second item</li>
+</Stack>
+
+<Cluster as="nav" gap="md">
+  <a href="/home">Home</a>
+  <a href="/about">About</a>
+</Cluster>
+```
+
+This keeps your HTML meaningful for accessibility and SEO without giving up the layout behavior.
+
+## Layout tokens
+
+Spacing values used by layout primitives come from the design token system. This means:
+
+- Layouts stay consistent with the rest of the design system
+- Changing a spacing token updates every layout that uses it
+- Designers and developers reference the same spacing scale
+
+See [Token Architecture](?path=/docs/getting-started-token-architecture--docs) for details on how tokens work.

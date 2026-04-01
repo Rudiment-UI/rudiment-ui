@@ -5,9 +5,35 @@ const meta = {
   title: 'Layouts/Grid',
   component: Grid,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A responsive grid that automatically adjusts its column count based on available width and a minimum cell size. No breakpoints needed.',
+      },
+    },
+  },
   argTypes: {
-    minCellWidth: { control: 'text' },
-    space: { control: 'text' },
+    minCellWidth: {
+      control: 'text',
+      description:
+        "The smallest allowed width for each grid cell (e.g., '15rem')",
+      table: { category: 'Layout' },
+    },
+    space: {
+      control: 'text',
+      description: 'Gap between grid cells using any CSS length value',
+      table: { category: 'Layout' },
+    },
+    as: {
+      control: 'text',
+      description: 'The HTML element to render',
+      table: { category: 'Content' },
+    },
+    children: {
+      table: { category: 'Content' },
+      description: 'Content to display inside the grid',
+    },
   },
 } satisfies Meta<typeof Grid>
 

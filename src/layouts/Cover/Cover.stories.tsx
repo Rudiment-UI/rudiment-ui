@@ -5,9 +5,36 @@ const meta = {
   title: 'Layouts/Cover',
   component: Cover,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A vertical layout that fills a minimum height and vertically centers its principal child element. Ideal for hero sections and full-page layouts.',
+      },
+    },
+  },
   argTypes: {
-    minHeight: { control: 'text' },
-    space: { control: 'text' },
+    minHeight: {
+      control: 'text',
+      description:
+        "The minimum height of the cover (e.g., '100vh' for full viewport)",
+      table: { category: 'Layout' },
+    },
+    space: {
+      control: 'text',
+      description:
+        'Vertical padding inside the cover using any CSS length value',
+      table: { category: 'Layout' },
+    },
+    as: {
+      control: 'text',
+      description: 'The HTML element to render',
+      table: { category: 'Content' },
+    },
+    children: {
+      table: { category: 'Content' },
+      description: 'Content to display inside the cover layout',
+    },
   },
 } satisfies Meta<typeof Cover>
 

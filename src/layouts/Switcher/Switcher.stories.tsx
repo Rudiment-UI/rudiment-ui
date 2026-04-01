@@ -5,10 +5,41 @@ const meta = {
   title: 'Layouts/Switcher',
   component: Switcher,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A responsive layout that displays items in a horizontal row above a width threshold and switches to a vertical stack below it. No media queries needed.',
+      },
+    },
+  },
   argTypes: {
-    threshold: { control: 'text' },
-    space: { control: 'text' },
-    limit: { control: 'number' },
+    threshold: {
+      control: 'text',
+      description:
+        "The container width at which the layout switches from row to stack (e.g., '30rem')",
+      table: { category: 'Layout' },
+    },
+    space: {
+      control: 'text',
+      description: 'Gap between items using any CSS length value',
+      table: { category: 'Layout' },
+    },
+    limit: {
+      control: 'number',
+      description:
+        'Maximum number of items before the layout forces a vertical stack',
+      table: { category: 'Layout' },
+    },
+    as: {
+      control: 'text',
+      description: 'The HTML element to render',
+      table: { category: 'Content' },
+    },
+    children: {
+      table: { category: 'Content' },
+      description: 'Content to display inside the switcher layout',
+    },
   },
 } satisfies Meta<typeof Switcher>
 

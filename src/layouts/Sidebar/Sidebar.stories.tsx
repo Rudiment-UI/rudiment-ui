@@ -5,12 +5,57 @@ const meta = {
   title: 'Layouts/Sidebar',
   component: Sidebar,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A two-panel layout with a fixed-width sidebar and a flexible content area. Automatically stacks vertically when the viewport becomes too narrow.',
+      },
+    },
+  },
+  args: {
+    side: 'left',
+    noStretch: false,
+  },
   argTypes: {
-    side: { control: 'radio', options: ['left', 'right'] },
-    sideWidth: { control: 'text' },
-    contentMin: { control: 'text' },
-    space: { control: 'text' },
-    noStretch: { control: 'boolean' },
+    side: {
+      control: 'radio',
+      options: ['left', 'right'],
+      description: 'Which side the sidebar appears on',
+      table: { category: 'Layout' },
+    },
+    sideWidth: {
+      control: 'text',
+      description:
+        "The fixed width of the sidebar panel (e.g., '20rem')",
+      table: { category: 'Layout' },
+    },
+    contentMin: {
+      control: 'text',
+      description:
+        "The minimum width of the content area before stacking (e.g., '50%')",
+      table: { category: 'Layout' },
+    },
+    space: {
+      control: 'text',
+      description: 'Gap between sidebar and content',
+      table: { category: 'Layout' },
+    },
+    noStretch: {
+      control: 'boolean',
+      description:
+        'Prevents children from stretching to fill the container height',
+      table: { category: 'Appearance' },
+    },
+    as: {
+      control: 'text',
+      description: 'The HTML element to render',
+      table: { category: 'Content' },
+    },
+    children: {
+      table: { category: 'Content' },
+      description: 'Content to display inside the sidebar layout',
+    },
   },
 } satisfies Meta<typeof Sidebar>
 

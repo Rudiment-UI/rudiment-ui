@@ -17,6 +17,18 @@ const meta: Meta<TooltipStoryArgs> = {
   title: 'Components/Tooltip',
   component: TooltipTrigger as any,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A small text label that appears on hover or focus to provide supplementary information. Configurable open and close delays.',
+      },
+    },
+  },
+  args: {
+    delay: 500,
+    closeDelay: 0,
+  },
   decorators: [
     (Story) => (
       <div style={{ padding: '4rem', display: 'flex', justifyContent: 'center' }}>
@@ -31,8 +43,16 @@ const meta: Meta<TooltipStoryArgs> = {
     </TooltipTrigger>
   ),
   argTypes: {
-    delay: { control: 'number' },
-    closeDelay: { control: 'number' },
+    delay: {
+      control: 'number',
+      description: 'Milliseconds to wait before showing the tooltip on hover',
+      table: { category: 'Appearance' },
+    },
+    closeDelay: {
+      control: 'number',
+      description: 'Milliseconds to wait before hiding the tooltip after the pointer leaves',
+      table: { category: 'Appearance' },
+    },
   },
 }
 

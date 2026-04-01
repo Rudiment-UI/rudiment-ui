@@ -1,0 +1,95 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Getting Started/Token Architecture" />
+
+# Token Architecture
+
+## What are design tokens?
+
+Design tokens are named design decisions stored as data. Instead of hard-coding a color like `#3B82F6` throughout your code, you give it a name like `color.blue.500` and reference that name everywhere. When the value changes, it updates in one place.
+
+Tokens cover colors, spacing, font sizes, border radii, shadows, and more.
+
+## Three-tier system
+
+Rudiment UI uses a three-tier token system. Each tier builds on the one below it.
+
+### 1. Primitive tokens
+
+**File:** `tokens/tokens.json`
+
+These are the raw values — the full palette of options available to the system.
+
+| Token | Value |
+|---|---|
+| `color.blue.500` | `#3B82F6` |
+| `color.gray.900` | `#111827` |
+| `spacing.4` | `1rem` |
+| `spacing.8` | `2rem` |
+
+Think of primitives as the complete set of crayons in the box. You probably won't use all of them — that's fine.
+
+### 2. Semantic tokens
+
+**File:** `tokens/semantic.json`
+
+These give purpose-based names to primitive values. Instead of saying "use blue 600," you say "use the brand primary color."
+
+| Token | References |
+|---|---|
+| `color.brand.primary` | `color.blue.600` |
+| `color.text.default` | `color.gray.900` |
+| `color.surface.default` | `color.white` |
+
+Semantic tokens are the layer that makes theming possible. A designer can say "change the brand color" and only this layer needs updating.
+
+### 3. Component tokens
+
+**File:** also in `tokens/semantic.json`
+
+These are scoped to individual components and reference semantic tokens.
+
+| Token | References |
+|---|---|
+| `button.background.primary` | `color.brand.primary` |
+| `input.border.default` | `color.border.default` |
+
+Component tokens let you fine-tune a specific component without affecting the rest of the system.
+
+## Light and dark mode
+
+Semantic tokens have both light and dark values. Switching between themes swaps the semantic token layer — primitive values and component structure stay the same.
+
+For example:
+
+| Token | Light value | Dark value |
+|---|---|---|
+| `color.text.default` | `color.gray.900` | `color.gray.100` |
+| `color.surface.default` | `color.white` | `color.gray.900` |
+
+This means components automatically adapt to the active theme without any changes to their code.
+
+## Naming convention
+
+All tokens become CSS custom properties following this pattern:
+
+```
+--token-{category}-{group}-{name}
+```
+
+**Examples:**
+
+- `--token-color-brand-primary`
+- `--token-spacing-4`
+- `--token-font-size-lg`
+- `--token-border-radius-md`
+
+## How to customize
+
+1. **Edit the JSON files** — change values in `tokens/tokens.json` (primitives) or `tokens/semantic.json` (semantic and component tokens)
+2. **Build tokens** — run `npm run build:tokens` to generate updated CSS custom properties
+3. **See the result** — Storybook and your app will reflect the new values
+
+## Why tokens matter for handoff
+
+When designers and developers use the same token names, handoff becomes much smoother. A design file that says "use `color.brand.primary`" translates directly to a CSS variable. No guessing, no mismatched hex codes.

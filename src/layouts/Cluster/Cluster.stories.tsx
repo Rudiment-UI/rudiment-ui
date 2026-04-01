@@ -5,8 +5,20 @@ const meta = {
   title: 'Layouts/Cluster',
   component: Cluster,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A horizontal wrapping layout for inline elements like tags, buttons, or badges. Items flow naturally and wrap to the next line when space runs out.',
+      },
+    },
+  },
   argTypes: {
-    space: { control: 'text' },
+    space: {
+      control: 'text',
+      description: 'Gap between items using any CSS length value',
+      table: { category: 'Layout' },
+    },
     justify: {
       control: 'select',
       options: [
@@ -16,10 +28,23 @@ const meta = {
         'space-between',
         'space-around',
       ],
+      description: 'Horizontal distribution of items within the cluster',
+      table: { category: 'Layout' },
     },
     align: {
       control: 'select',
       options: ['flex-start', 'flex-end', 'center', 'baseline', 'stretch'],
+      description: 'Vertical alignment of items within each row',
+      table: { category: 'Layout' },
+    },
+    as: {
+      control: 'text',
+      description: 'The HTML element to render',
+      table: { category: 'Content' },
+    },
+    children: {
+      table: { category: 'Content' },
+      description: 'Content to display inside the cluster',
     },
   },
 } satisfies Meta<typeof Cluster>

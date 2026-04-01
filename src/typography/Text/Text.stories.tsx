@@ -5,12 +5,39 @@ const meta = {
   title: 'Typography/Text',
   component: Text,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A versatile text element with five typographic styles: body, small body, caption, overline, and inline code. Supports rendering as any HTML element.',
+      },
+    },
+  },
   argTypes: {
     variant: {
       control: 'select',
       options: ['body', 'body-sm', 'caption', 'overline', 'code'],
+      description: 'The typographic style to apply',
+      table: { category: 'Appearance' },
     },
-    as: { control: 'text' },
+    as: {
+      control: 'text',
+      description:
+        "The HTML element to render (e.g., 'p', 'span', 'label', 'strong')",
+      table: { category: 'Content' },
+    },
+    children: {
+      description: 'The content rendered inside the text element',
+      table: { category: 'Content' },
+    },
+    className: {
+      description: 'Additional CSS class names to apply to the text element',
+      table: { category: 'Appearance' },
+    },
+  },
+  args: {
+    variant: 'body',
+    children: 'The quick brown fox jumps over the lazy dog.',
   },
 } satisfies Meta<typeof Text>
 

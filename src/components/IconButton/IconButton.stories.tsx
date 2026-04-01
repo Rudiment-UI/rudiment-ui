@@ -40,13 +40,76 @@ const meta = {
   title: 'Components/IconButton',
   component: IconButton,
   tags: ['autodocs'],
-  argTypes: {
-    variant: { control: 'select', options: ['primary', 'secondary', 'destructive', 'ghost'] },
-    size: { control: 'select', options: ['sm', 'md', 'lg'] },
-    isLoading: { control: 'boolean' },
-    isDisabled: { control: 'boolean' },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A compact button containing only an icon. Requires an accessible label via the aria-label prop. Shares Button\'s visual variants and sizes.',
+      },
+    },
   },
-} satisfies Meta<typeof IconButton>
+  args: {
+    variant: 'secondary',
+    size: 'md',
+    isLoading: false,
+    isDisabled: false,
+    'aria-label': 'Action',
+  },
+  argTypes: {
+    'aria-label': {
+      control: 'text',
+      description: 'An accessible label describing the button action (required for screen readers)',
+      table: { category: 'Content' },
+    },
+    variant: {
+      control: 'select',
+      options: ['primary', 'secondary', 'destructive', 'ghost'],
+      description: 'The visual style of the icon button',
+      table: { category: 'Appearance' },
+    },
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+      description: 'The size of the icon button',
+      table: { category: 'Appearance' },
+    },
+    isLoading: {
+      control: 'boolean',
+      description: 'Whether the button shows a loading state and disables interaction',
+      table: { category: 'State' },
+    },
+    isDisabled: {
+      control: 'boolean',
+      description: 'Whether the button is disabled and non-interactive',
+      table: { category: 'State' },
+    },
+    children: {
+      control: false,
+      description: 'The icon element rendered inside the button',
+      table: { category: 'Content' },
+    },
+    className: {
+      control: 'text',
+      description: 'Additional CSS class names to apply to the icon button',
+      table: { category: 'Appearance' },
+    },
+    onPress: {
+      action: 'pressed',
+      description: 'Called when the button is pressed',
+      table: { category: 'Events' },
+    },
+    onPressStart: {
+      action: 'pressStarted',
+      description: 'Called when a press interaction starts',
+      table: { category: 'Events' },
+    },
+    onPressEnd: {
+      action: 'pressEnded',
+      description: 'Called when a press interaction ends',
+      table: { category: 'Events' },
+    },
+  },
+} as Meta<typeof IconButton>
 
 export default meta
 type Story = StoryObj<typeof meta>

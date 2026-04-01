@@ -5,10 +5,45 @@ const meta = {
   title: 'Layouts/Center',
   component: Center,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Horizontally centers content with a configurable maximum width. Add gutters for edge padding or use intrinsic mode to let children size to their own content.',
+      },
+    },
+  },
+  args: {
+    intrinsic: false,
+  },
   argTypes: {
-    maxWidth: { control: 'text' },
-    gutters: { control: 'text' },
-    intrinsic: { control: 'boolean' },
+    maxWidth: {
+      control: 'text',
+      description:
+        "The maximum width of the centered content (e.g., '60rem')",
+      table: { category: 'Layout' },
+    },
+    gutters: {
+      control: 'text',
+      description:
+        "Horizontal padding on each side to prevent content touching edges (e.g., '1rem')",
+      table: { category: 'Layout' },
+    },
+    intrinsic: {
+      control: 'boolean',
+      description:
+        'When enabled, children shrink-wrap to their content width instead of filling the container',
+      table: { category: 'Appearance' },
+    },
+    as: {
+      control: 'text',
+      description: 'The HTML element to render',
+      table: { category: 'Content' },
+    },
+    children: {
+      table: { category: 'Content' },
+      description: 'Content to display inside the center layout',
+    },
   },
 } satisfies Meta<typeof Center>
 

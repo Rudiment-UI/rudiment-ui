@@ -1,0 +1,132 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Getting Started/Typography" />
+
+# Typography
+
+Rudiment UI provides three typography components that cover all text needs. Each serves a distinct purpose, and together they give you full control over how text appears and behaves.
+
+## Heading
+
+The **Heading** component separates semantic level from visual size, so you can maintain correct document structure while matching the design.
+
+### The `level` prop
+
+The `level` prop determines which HTML element is rendered:
+
+| `level` | Renders as |
+|---|---|
+| `1` | `<h1>` |
+| `2` | `<h2>` |
+| `3` | `<h3>` |
+| `4` | `<h4>` |
+| `5` | `<h5>` |
+| `6` | `<h6>` |
+
+### The `size` prop
+
+The `size` prop optionally overrides the visual appearance without changing the HTML element. This is useful when the design calls for a heading that looks different from its semantic level.
+
+```jsx
+{/* Renders an h2, but visually looks like an h4 */}
+<Heading level={2} size={4}>Section title</Heading>
+```
+
+### Best practice
+
+Use heading levels in order (`h1`, then `h2`, then `h3`, and so on) for accessibility and correct document structure. Adjust the `size` prop when the visual design requires a different appearance.
+
+---
+
+## Text
+
+The **Text** component provides five variants for different text roles.
+
+| Variant | Purpose | Typical use |
+|---|---|---|
+| `body` (default) | Standard paragraph text | Main content, descriptions |
+| `body-sm` | Smaller body text | Secondary content, supporting details |
+| `caption` | Small text | Labels, metadata, timestamps |
+| `overline` | Uppercase small text | Section labels, category names |
+| `code` | Monospace text | Code references, technical values |
+
+### Usage
+
+```jsx
+<Text>This is standard body text.</Text>
+
+<Text variant="body-sm">Smaller supporting text.</Text>
+
+<Text variant="caption">Last updated: March 2026</Text>
+
+<Text variant="overline">Category</Text>
+
+<Text variant="code">npm install</Text>
+```
+
+### The `as` prop
+
+By default, Text renders as a `<p>` element. Use the `as` prop to render as any HTML element:
+
+```jsx
+<Text as="span">Inline text</Text>
+<Text as="label">Form label</Text>
+<Text as="strong">Important text</Text>
+```
+
+This is useful when you need a specific HTML element for semantics or styling but want to keep the typography consistent.
+
+---
+
+## Prose
+
+The **Prose** component applies automatic vertical rhythm to long-form content. It handles spacing between paragraphs, headings, lists, and other block elements so you don't have to manage it manually.
+
+### When to use Prose
+
+Prose is designed for content-heavy sections where multiple elements need consistent spacing:
+
+- Blog posts
+- Documentation pages
+- Terms and conditions
+- Help articles
+
+### Three sizes
+
+| Size | Best for |
+|---|---|
+| `sm` | Compact content areas, sidebars |
+| `base` (default) | Standard reading content |
+| `lg` | Feature pages, large-format articles |
+
+### Usage
+
+```jsx
+<Prose>
+  <h2>Getting started</h2>
+  <p>Follow these steps to set up your project.</p>
+  <ul>
+    <li>Install dependencies</li>
+    <li>Configure your environment</li>
+    <li>Run the development server</li>
+  </ul>
+  <p>You should now see the welcome page.</p>
+</Prose>
+
+<Prose size="lg">
+  <h1>Welcome</h1>
+  <p>Large-format content for feature pages.</p>
+</Prose>
+```
+
+---
+
+## Typography tokens
+
+All font sizes, weights, and line heights come from the design token system. This means:
+
+- Typography stays consistent across every component and page
+- Changing a token value updates typography everywhere it is used
+- Designers and developers share the same type scale
+
+See [Token Architecture](?path=/docs/getting-started-token-architecture--docs) for details on how tokens work.

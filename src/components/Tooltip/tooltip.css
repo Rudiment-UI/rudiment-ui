@@ -15,7 +15,7 @@
   color: var(--token-color-text-on-inverted);
   font-size: var(--token-font-size-xs);
   line-height: var(--token-font-line-height-normal);
-  border-radius: var(--token-radius-md);
+  border-radius: var(--token-radius-sm);
   white-space: nowrap;
   pointer-events: none;
 }

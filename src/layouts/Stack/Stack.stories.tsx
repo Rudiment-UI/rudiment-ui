@@ -5,10 +5,45 @@ const meta = {
   title: 'Layouts/Stack',
   component: Stack,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Arranges children in a vertical stack with consistent spacing between each item. Supports recursive spacing into nested elements and split positioning.',
+      },
+    },
+  },
+  args: {
+    recursive: false,
+  },
   argTypes: {
-    space: { control: 'text' },
-    recursive: { control: 'boolean' },
-    splitAfter: { control: 'number' },
+    space: {
+      control: 'text',
+      description:
+        "Vertical gap between items using any CSS length value (e.g., '1.5rem')",
+      table: { category: 'Layout' },
+    },
+    recursive: {
+      control: 'boolean',
+      description:
+        'When enabled, applies spacing to all nested elements, not just direct children',
+      table: { category: 'Appearance' },
+    },
+    splitAfter: {
+      control: 'number',
+      description:
+        'Pushes all items after this index to the bottom of the stack (1-based)',
+      table: { category: 'Layout' },
+    },
+    as: {
+      control: 'text',
+      description: "The HTML element to render (e.g., 'div', 'ul', 'ol')",
+      table: { category: 'Content' },
+    },
+    children: {
+      table: { category: 'Content' },
+      description: 'Content to display inside the stack',
+    },
   },
 } satisfies Meta<typeof Stack>
 

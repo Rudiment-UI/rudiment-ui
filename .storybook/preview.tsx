@@ -3,6 +3,25 @@ import '../src/app.css'
 
 const preview: Preview = {
   parameters: {
+    options: {
+      storySort: {
+        order: [
+          'Getting Started',
+          [
+            'Introduction',
+            'Accessibility',
+            'Token Architecture',
+            'Component Guidelines',
+            'Layout Primitives',
+            'Typography',
+          ],
+          'Components',
+          'Layouts',
+          'Typography',
+          'Examples',
+        ],
+      },
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -24,18 +43,18 @@ const preview: Preview = {
     },
   ],
   globalTypes: {
-    theme: {
-      description: 'Theme',
-      toolbar: {
-        title: 'Theme',
-        icon: 'circlehollow',
-        items: [
-          { value: 'light', title: 'Light' },
-          { value: 'dark', title: 'Dark' },
-        ],
-        dynamicTitle: true,
-      },
-    },
+    // theme: {
+    //   description: 'Theme',
+    //   toolbar: {
+    //     title: 'Theme',
+    //     icon: 'circlehollow',
+    //     items: [
+    //       { value: 'light', title: 'Light' },
+    //       { value: 'dark', title: 'Dark' },
+    //     ],
+    //     dynamicTitle: true,
+    //   },
+    // },
   },
 }
 

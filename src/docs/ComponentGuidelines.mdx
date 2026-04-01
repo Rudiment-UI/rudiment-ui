@@ -1,0 +1,87 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Getting Started/Component Guidelines" />
+
+# Component Guidelines
+
+Practical do/don't guidance for each interactive component. Following these patterns will help you build consistent, accessible interfaces.
+
+---
+
+## Button
+
+- **Do** use `variant="primary"` for the main action on a page
+- **Do** show a loading state for async actions (like form submissions or API calls)
+- **Don't** use more than one primary button in a section — it creates confusion about what the main action is
+- **Don't** use the ghost variant for important actions — it's easy to overlook
+
+---
+
+## Input
+
+- **Do** always provide a visible label
+- **Do** use the `description` prop to give helpful context (for example, "Must be at least 8 characters")
+- **Don't** use placeholder text as a replacement for labels — placeholders disappear when typing begins
+- **Don't** hide labels — they are required for accessibility and help all users understand the field
+
+---
+
+## Checkbox vs Switch
+
+These two components look similar but serve different purposes:
+
+- **Do** use **Checkbox** for options in a form that will be submitted (for example, "I agree to the terms")
+- **Do** use **Switch** for settings that take effect immediately (for example, "Enable notifications")
+- **Don't** mix Checkbox and Switch for the same type of interaction within the same interface
+
+---
+
+## Select
+
+- **Do** provide a clear placeholder like "Choose a color" so users know what to expect
+- **Don't** use Select for fewer than 3 options — use **RadioGroup** instead, so users can see all choices at once
+- **Don't** use Select when users need to compare all options at a glance — RadioGroup makes comparison easier
+
+---
+
+## Dialog
+
+- **Do** use for confirmations that require user action (for example, "Are you sure you want to delete this?")
+- **Do** provide a clear title and a visible close mechanism
+- **Don't** use for passive notifications — use **Alert** instead
+- **Don't** stack multiple dialogs — if a dialog needs to open another dialog, rethink the flow
+
+---
+
+## RadioGroup
+
+- **Do** use when there are 2 to 5 mutually exclusive options
+- **Do** use horizontal layout only for 2 or 3 short options (long labels work better vertically)
+- **Don't** use for more than 7 options — use **Select** instead to save space
+
+---
+
+## Alert
+
+- **Do** match the variant to the message severity (for example, `variant="success"` for confirmations, `variant="error"` for problems)
+- **Do** use `isPolite` for non-urgent status updates that don't need to interrupt the user
+- **Don't** use `variant="error"` for informational messages — it causes unnecessary alarm
+- **Don't** overuse alerts — when everything is highlighted, nothing stands out
+
+---
+
+## Tooltip
+
+- **Do** keep tooltip text brief (under 80 characters)
+- **Do** use tooltips to explain icon-only buttons (for example, a trash icon with a "Delete item" tooltip)
+- **Don't** put interactive content like links or buttons inside tooltips — they are not keyboard-accessible in that context
+- **Don't** hide essential information in tooltips — if users need the information to complete a task, put it on the page
+
+---
+
+## IconButton
+
+- **Do** always provide a descriptive `aria-label` (for example, `aria-label="Close dialog"`)
+- **Do** use when the icon meaning is universally understood (close, search, menu)
+- **Don't** use without an `aria-label` — screen reader users will not know what the button does
+- **Don't** use for actions where the icon meaning is ambiguous — add a visible text label with a regular **Button** instead

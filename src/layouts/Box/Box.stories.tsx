@@ -5,10 +5,46 @@ const meta = {
   title: 'Layouts/Box',
   component: Box,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A foundational container that applies consistent padding, optional borders, and color inversion. The basic building block for composing layouts.',
+      },
+    },
+  },
+  args: {
+    bordered: false,
+    invert: false,
+  },
   argTypes: {
-    padding: { control: 'text' },
-    bordered: { control: 'boolean' },
-    invert: { control: 'boolean' },
+    padding: {
+      control: 'text',
+      description:
+        "Inner spacing using any CSS length value (e.g., '1rem', '2rem')",
+      table: { category: 'Layout' },
+    },
+    bordered: {
+      control: 'boolean',
+      description: 'Adds a visible border around the container',
+      table: { category: 'Appearance' },
+    },
+    invert: {
+      control: 'boolean',
+      description:
+        'Swaps foreground and background colors for visual emphasis',
+      table: { category: 'Appearance' },
+    },
+    as: {
+      control: 'text',
+      description:
+        "The HTML element to render (e.g., 'div', 'section', 'article')",
+      table: { category: 'Content' },
+    },
+    children: {
+      table: { category: 'Content' },
+      description: 'Content to display inside the box',
+    },
   },
 } satisfies Meta<typeof Box>
 

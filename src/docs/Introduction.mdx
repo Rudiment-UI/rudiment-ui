@@ -1,0 +1,73 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Getting Started/Introduction" />
+
+# Introduction to Rudiment UI
+
+Rudiment UI is a template for building accessible React component libraries. It is built on [React Aria](https://react-spectrum.adobe.com/react-aria/) for accessibility and [Tailwind CSS 4](https://tailwindcss.com/) for styling.
+
+## Who is it for?
+
+Rudiment UI is for teams that want to start with a solid foundation and customize it for their brand. Instead of building a component library from scratch, you get:
+
+- **Components** that are accessible out of the box
+- **Design tokens** that make theming straightforward
+- **Tests** that verify behavior and accessibility
+- **Documentation** powered by Storybook
+
+## Quick start
+
+1. **Clone the repo**
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start Storybook**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Customize design tokens** — edit the values in `tokens/tokens.json` (primitive values) and `tokens/semantic.json` (theme-level decisions)
+
+5. **Build tokens**
+   ```bash
+   npm run build:tokens
+   ```
+
+## Using components
+
+Import any component directly:
+
+```jsx
+import { Button, Input, Stack } from 'rudiment-ui'
+```
+
+## Using styles
+
+Include the stylesheet in your app entry point:
+
+```js
+import 'rudiment-ui/styles'
+```
+
+## What's included
+
+| Category              | Count         | Examples                             |
+| --------------------- | ------------- | ------------------------------------ |
+| UI components         | 10            | Button, Input, Select, Dialog, Alert |
+| Typography components | 3             | Heading, Text, Prose                 |
+| Layout primitives     | 8             | Stack, Box, Grid, Sidebar, Center    |
+| Design tokens         | Full set      | Colors, spacing, sizes, typography   |
+| Tests                 | Per component | Unit tests with accessibility checks |
+
+## Explore the docs
+
+- [Token Architecture](?path=/docs/getting-started-token-architecture--docs) — how the design token system works
+- [Accessibility](?path=/docs/getting-started-accessibility--docs) — keyboard, screen reader, and focus support
+- [Layout Primitives](?path=/docs/getting-started-layout-primitives--docs) — composition-based layout system
+- [Component Guidelines](?path=/docs/getting-started-component-guidelines--docs) — do/don't guidance for each component
+- [Typography](?path=/docs/getting-started-typography--docs) — Heading, Text, and Prose components

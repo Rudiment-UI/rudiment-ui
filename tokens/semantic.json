@@ -1,9 +1,9 @@
 {
   "color": {
     "brand": {
-      "primary": { "$value": "{color.blue.500}" },
-      "primary-hover": { "$value": "{color.blue.600}" },
-      "primary-active": { "$value": "{color.blue.700}" }
+      "primary": { "$value": "{color.neutral.900}" },
+      "primary-hover": { "$value": "{color.neutral.700}" },
+      "primary-active": { "$value": "{color.neutral.800}" }
     },
     "text": {
       "default": { "$value": "{color.neutral.900}" },
