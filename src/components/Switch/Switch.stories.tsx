@@ -84,12 +84,14 @@ export const DisabledOn: Story = {
 }
 
 export const AllStates: Story = {
-  render: () => (
+  render: ({}) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
       <Switch>Off by default</Switch>
       <Switch defaultSelected>On by default</Switch>
       <Switch isDisabled>Disabled off</Switch>
-      <Switch isDisabled defaultSelected>Disabled on</Switch>
+      <Switch isDisabled defaultSelected>
+        Disabled on
+      </Switch>
     </div>
   ),
 }

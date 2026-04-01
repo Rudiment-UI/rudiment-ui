@@ -4,9 +4,20 @@ import { Button } from '../Button/Button'
 import { IconButton } from '../IconButton/IconButton'
 
 const InfoIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    aria-hidden="true"
+  >
     <circle cx="8" cy="8" r="6.5" stroke="currentColor" strokeWidth="1.5" />
-    <path d="M8 7v4M8 5.5v.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    <path
+      d="M8 7v4M8 5.5v.5"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
   </svg>
 )
 
@@ -31,7 +42,9 @@ const meta: Meta<TooltipStoryArgs> = {
   },
   decorators: [
     (Story) => (
-      <div style={{ padding: '4rem', display: 'flex', justifyContent: 'center' }}>
+      <div
+        style={{ padding: '4rem', display: 'flex', justifyContent: 'center' }}
+      >
         <Story />
       </div>
     ),
@@ -50,7 +63,8 @@ const meta: Meta<TooltipStoryArgs> = {
     },
     closeDelay: {
       control: 'number',
-      description: 'Milliseconds to wait before hiding the tooltip after the pointer leaves',
+      description:
+        'Milliseconds to wait before hiding the tooltip after the pointer leaves',
       table: { category: 'Appearance' },
     },
   },
@@ -85,7 +99,7 @@ export const OnIconButton: Story = {
       },
     },
   },
-  render: () => (
+  render: ({}) => (
     <TooltipTrigger>
       <IconButton aria-label="More information" variant="ghost">
         <InfoIcon />
@@ -140,12 +154,19 @@ export const MultipleTooltips: Story = {
   },
   decorators: [
     (Story) => (
-      <div style={{ padding: '4rem', display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+      <div
+        style={{
+          padding: '4rem',
+          display: 'flex',
+          gap: '1rem',
+          justifyContent: 'center',
+        }}
+      >
         <Story />
       </div>
     ),
   ],
-  render: () => (
+  render: ({}) => (
     <>
       <TooltipTrigger>
         <Button variant="primary">Save</Button>

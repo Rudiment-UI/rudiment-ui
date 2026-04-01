@@ -12,24 +12,26 @@ interface RadioProps extends AriaRadioProps {
   children: React.ReactNode
 }
 
-const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(props, forwardedRef) {
-  const state = useContext(RadioGroupContext)!
-  const ref = useObjectRef(forwardedRef)
-  const { inputProps } = useRadio(props, state, ref)
+const Radio = forwardRef<HTMLInputElement, RadioProps>(
+  function Radio(props, forwardedRef) {
+    const state = useContext(RadioGroupContext)!
+    const ref = useObjectRef(forwardedRef)
+    const { inputProps } = useRadio(props, state, ref)
 
-  return (
-    <label
-      className={`rudiment-radio${props.isDisabled ? ' rudiment-radio--disabled' : ''}`}
-    >
-      <input {...inputProps} ref={ref} className="rudiment-radio__input" />
-      <span
-        className={`rudiment-radio__control${state.selectedValue === props.value ? ' rudiment-radio__control--selected' : ''}`}
-        aria-hidden="true"
-      />
-      <span className="rudiment-radio__label">{props.children}</span>
-    </label>
-  )
-})
+    return (
+      <label
+        className={`rudiment-radio${props.isDisabled ? ' rudiment-radio--disabled' : ''}`}
+      >
+        <input {...inputProps} ref={ref} className="rudiment-radio__input" />
+        <span
+          className={`rudiment-radio__control${state.selectedValue === props.value ? ' rudiment-radio__control--selected' : ''}`}
+          aria-hidden="true"
+        />
+        <span className="rudiment-radio__label">{props.children}</span>
+      </label>
+    )
+  },
+)
 
 const meta = {
   title: 'Components/RadioGroup',
@@ -72,7 +74,8 @@ const meta = {
     orientation: {
       control: 'select',
       options: ['vertical', 'horizontal'],
-      description: 'Whether the radio options are stacked vertically or laid out horizontally',
+      description:
+        'Whether the radio options are stacked vertically or laid out horizontally',
       table: { category: 'Appearance' },
     },
     isDisabled: {
@@ -97,7 +100,8 @@ const meta = {
     },
     className: {
       control: 'text',
-      description: 'Additional CSS class names to apply to the radio group wrapper',
+      description:
+        'Additional CSS class names to apply to the radio group wrapper',
       table: { category: 'Appearance' },
     },
   },
@@ -117,8 +121,11 @@ export const Default: Story = {
 }
 
 export const WithDescription: Story = {
-  render: () => (
-    <RadioGroup label="Plan" description="You can change your plan at any time.">
+  render: ({}) => (
+    <RadioGroup
+      label="Plan"
+      description="You can change your plan at any time."
+    >
       <Radio value="starter">Starter — free forever</Radio>
       <Radio value="pro">Pro — $12/month</Radio>
       <Radio value="enterprise">Enterprise — contact us</Radio>
@@ -127,7 +134,7 @@ export const WithDescription: Story = {
 }
 
 export const Horizontal: Story = {
-  render: () => (
+  render: ({}) => (
     <RadioGroup label="Size" orientation="horizontal">
       <Radio value="xs">XS</Radio>
       <Radio value="s">S</Radio>
@@ -139,8 +146,11 @@ export const Horizontal: Story = {
 }
 
 export const WithError: Story = {
-  render: () => (
-    <RadioGroup label="Shipping speed" errorMessage="Please select a shipping option.">
+  render: ({}) => (
+    <RadioGroup
+      label="Shipping speed"
+      errorMessage="Please select a shipping option."
+    >
       <Radio value="standard">Standard (5–7 days)</Radio>
       <Radio value="express">Express (2–3 days)</Radio>
       <Radio value="overnight">Overnight (next day)</Radio>
@@ -149,7 +159,7 @@ export const WithError: Story = {
 }
 
 export const Disabled: Story = {
-  render: () => (
+  render: ({}) => (
     <RadioGroup label="Region" isDisabled>
       <Radio value="us">United States</Radio>
       <Radio value="eu">Europe</Radio>

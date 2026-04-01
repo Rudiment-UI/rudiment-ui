@@ -37,7 +37,8 @@ const meta = {
     },
     isPolite: {
       control: 'boolean',
-      description: 'When true, uses role="status" instead of role="alert" for a less intrusive announcement',
+      description:
+        'When true, uses role="status" instead of role="alert" for a less intrusive announcement',
       table: { category: 'State' },
     },
     className: {
@@ -100,12 +101,20 @@ export const Polite: Story = {
 }
 
 export const AllVariants: Story = {
-  render: () => (
+  render: ({}) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <Alert variant="info" title="Info">This is an info alert.</Alert>
-      <Alert variant="success" title="Success">This is a success alert.</Alert>
-      <Alert variant="warning" title="Warning">This is a warning alert.</Alert>
-      <Alert variant="error" title="Error">This is an error alert.</Alert>
+      <Alert variant="info" title="Info">
+        This is an info alert.
+      </Alert>
+      <Alert variant="success" title="Success">
+        This is a success alert.
+      </Alert>
+      <Alert variant="warning" title="Warning">
+        This is a warning alert.
+      </Alert>
+      <Alert variant="error" title="Error">
+        This is an error alert.
+      </Alert>
     </div>
   ),
 }

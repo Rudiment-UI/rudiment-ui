@@ -38,7 +38,8 @@ const meta = {
     },
     isIndeterminate: {
       control: 'boolean',
-      description: 'Whether the checkbox displays a mixed or partial selection state',
+      description:
+        'Whether the checkbox displays a mixed or partial selection state',
       table: { category: 'State' },
     },
     isDisabled: {
@@ -48,7 +49,8 @@ const meta = {
     },
     value: {
       control: 'text',
-      description: 'The value submitted with a form when the checkbox is checked',
+      description:
+        'The value submitted with a form when the checkbox is checked',
       table: { category: 'State' },
     },
     onChange: {
@@ -58,7 +60,8 @@ const meta = {
     },
     className: {
       control: 'text',
-      description: 'Additional CSS class names to apply to the checkbox wrapper',
+      description:
+        'Additional CSS class names to apply to the checkbox wrapper',
       table: { category: 'Appearance' },
     },
   },
@@ -103,7 +106,7 @@ export const DisabledChecked: Story = {
 }
 
 export const Group: Story = {
-  render: () => (
+  render: ({}) => (
     <CheckboxGroup
       label="Notification preferences"
       description="Choose what updates you want to receive."
@@ -116,7 +119,7 @@ export const Group: Story = {
 }
 
 export const GroupWithError: Story = {
-  render: () => (
+  render: ({}) => (
     <CheckboxGroup
       label="Interests"
       errorMessage="Please select at least one interest."
@@ -129,7 +132,7 @@ export const GroupWithError: Story = {
 }
 
 export const GroupDisabled: Story = {
-  render: () => (
+  render: ({}) => (
     <CheckboxGroup label="Plan features" isDisabled>
       <Checkbox value="storage">Extended storage</Checkbox>
       <Checkbox value="analytics">Advanced analytics</Checkbox>

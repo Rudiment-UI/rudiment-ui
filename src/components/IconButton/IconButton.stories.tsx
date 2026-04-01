@@ -3,7 +3,13 @@ import { IconButton } from './IconButton'
 
 // Minimal inline SVG icons for demonstration purposes
 const CloseIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    aria-hidden="true"
+  >
     <path
       d="M12 4L4 12M4 4l8 8"
       stroke="currentColor"
@@ -14,7 +20,13 @@ const CloseIcon = () => (
 )
 
 const PlusIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    aria-hidden="true"
+  >
     <path
       d="M8 3v10M3 8h10"
       stroke="currentColor"
@@ -25,7 +37,13 @@ const PlusIcon = () => (
 )
 
 const TrashIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    aria-hidden="true"
+  >
     <path
       d="M2 4h12M5 4V2h6v2M6 7v5M10 7v5M3 4l1 9h8l1-9"
       stroke="currentColor"
@@ -44,7 +62,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A compact button containing only an icon. Requires an accessible label via the aria-label prop. Shares Button\'s visual variants and sizes.',
+          "A compact button containing only an icon. Requires an accessible label via the aria-label prop. Shares Button's visual variants and sizes.",
       },
     },
   },
@@ -58,7 +76,8 @@ const meta = {
   argTypes: {
     'aria-label': {
       control: 'text',
-      description: 'An accessible label describing the button action (required for screen readers)',
+      description:
+        'An accessible label describing the button action (required for screen readers)',
       table: { category: 'Content' },
     },
     variant: {
@@ -75,7 +94,8 @@ const meta = {
     },
     isLoading: {
       control: 'boolean',
-      description: 'Whether the button shows a loading state and disables interaction',
+      description:
+        'Whether the button shows a loading state and disables interaction',
       table: { category: 'State' },
     },
     isDisabled: {
@@ -170,12 +190,20 @@ export const Disabled: Story = {
 }
 
 export const AllVariants: Story = {
-  render: () => (
+  render: ({}) => (
     <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-      <IconButton aria-label="Add item" variant="primary"><PlusIcon /></IconButton>
-      <IconButton aria-label="Close" variant="secondary"><CloseIcon /></IconButton>
-      <IconButton aria-label="Delete" variant="destructive"><TrashIcon /></IconButton>
-      <IconButton aria-label="Close" variant="ghost"><CloseIcon /></IconButton>
+      <IconButton aria-label="Add item" variant="primary">
+        <PlusIcon />
+      </IconButton>
+      <IconButton aria-label="Close" variant="secondary">
+        <CloseIcon />
+      </IconButton>
+      <IconButton aria-label="Delete" variant="destructive">
+        <TrashIcon />
+      </IconButton>
+      <IconButton aria-label="Close" variant="ghost">
+        <CloseIcon />
+      </IconButton>
     </div>
   ),
 }

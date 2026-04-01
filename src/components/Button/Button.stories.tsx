@@ -35,7 +35,8 @@ const meta = {
     },
     isLoading: {
       control: 'boolean',
-      description: 'Whether the button shows a loading spinner and disables interaction',
+      description:
+        'Whether the button shows a loading spinner and disables interaction',
       table: { category: 'State' },
     },
     isDisabled: {
@@ -131,8 +132,15 @@ export const Disabled: Story = {
 }
 
 export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
+  render: ({}) => (
+    <div
+      style={{
+        display: 'flex',
+        gap: '0.75rem',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+      }}
+    >
       <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="destructive">Destructive</Button>
@@ -142,7 +150,7 @@ export const AllVariants: Story = {
 }
 
 export const AllSizes: Story = {
-  render: () => (
+  render: ({}) => (
     <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
       <Button size="sm">Small</Button>
       <Button size="md">Medium</Button>
