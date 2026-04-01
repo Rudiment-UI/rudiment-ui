@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   aspect-ratio: 1;
-  border-radius: var(--token-radius-sm);
+  border-radius: var(--token-component-icon-button-radius);
   border: 1px solid transparent;
   cursor: pointer;
   transition:
@@ -12,7 +12,7 @@
 }
 
 .rudiment-icon-button:focus-visible {
-  outline: 2px solid var(--token-color-border-focus);
+  outline: 2px solid var(--token-component-icon-button-focus-outline-color);
   outline-offset: 2px;
 }
 
@@ -24,49 +24,49 @@
 /* Sizes */
 .rudiment-icon-button--sm {
   width: var(--token-component-icon-button-size-sm);
-  font-size: var(--token-font-size-sm);
+  font-size: var(--token-component-icon-button-font-size-sm);
 }
 
 .rudiment-icon-button--md {
   width: var(--token-component-icon-button-size-md);
-  font-size: var(--token-font-size-base);
+  font-size: var(--token-component-icon-button-font-size-md);
 }
 
 .rudiment-icon-button--lg {
   width: var(--token-component-icon-button-size-lg);
-  font-size: var(--token-font-size-lg);
+  font-size: var(--token-component-icon-button-font-size-lg);
 }
 
 /* Variants */
 .rudiment-icon-button--primary {
-  background-color: var(--token-color-brand-primary);
-  color: var(--token-color-text-on-brand);
+  background-color: var(--token-component-icon-button-primary-bg);
+  color: var(--token-component-icon-button-primary-text);
 }
 
 .rudiment-icon-button--primary:hover:not([aria-disabled='true']) {
-  background-color: var(--token-color-brand-primary-hover);
+  background-color: var(--token-component-icon-button-primary-hover-bg);
 }
 
 .rudiment-icon-button--secondary {
-  background-color: var(--token-color-background-surface);
-  color: var(--token-color-text-default);
-  border-color: var(--token-color-border-default);
+  background-color: var(--token-component-icon-button-secondary-bg);
+  color: var(--token-component-icon-button-secondary-text);
+  border-color: var(--token-component-icon-button-secondary-border);
 }
 
 .rudiment-icon-button--secondary:hover:not([aria-disabled='true']) {
-  background-color: var(--token-color-background-surface-raised);
+  background-color: var(--token-component-icon-button-secondary-hover-bg);
 }
 
 .rudiment-icon-button--destructive {
-  background-color: var(--token-color-feedback-error);
-  color: var(--token-color-text-on-brand);
+  background-color: var(--token-component-icon-button-destructive-bg);
+  color: var(--token-component-icon-button-destructive-text);
 }
 
 .rudiment-icon-button--ghost {
   background-color: transparent;
-  color: var(--token-color-text-default);
+  color: var(--token-component-icon-button-ghost-text);
 }
 
 .rudiment-icon-button--ghost:hover:not([aria-disabled='true']) {
-  background-color: var(--token-color-background-surface-raised);
+  background-color: var(--token-component-icon-button-ghost-hover-bg);
 }

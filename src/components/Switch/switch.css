@@ -1,11 +1,11 @@
 .rudiment-switch {
   display: inline-flex;
   align-items: center;
-  gap: var(--token-spacing-2);
+  gap: var(--token-component-switch-gap);
   cursor: pointer;
-  font-size: var(--token-font-size-sm);
-  line-height: var(--token-font-line-height-normal);
-  color: var(--token-color-text-default);
+  font-size: var(--token-component-switch-label-font-size);
+  line-height: var(--token-component-switch-label-line-height);
+  color: var(--token-component-switch-label-color);
 }
 
 .rudiment-switch--disabled {
@@ -19,26 +19,26 @@
   flex-shrink: 0;
   width: var(--token-component-switch-track-width);
   height: var(--token-component-switch-track-height);
-  padding: 0.125rem;
-  border-radius: var(--token-radius-full);
-  background-color: var(--token-color-neutral-300);
+  padding: var(--token-component-switch-track-padding);
+  border-radius: var(--token-component-switch-track-radius);
+  background-color: var(--token-component-switch-track-bg);
   transition: background-color 200ms;
 }
 
 .rudiment-switch:has(input:focus-visible) .rudiment-switch__track {
-  outline: 2px solid var(--token-color-border-focus);
+  outline: 2px solid var(--token-component-switch-focus-outline-color);
   outline-offset: 2px;
 }
 
 .rudiment-switch__track--on {
-  background-color: var(--token-color-brand-primary);
+  background-color: var(--token-component-switch-track-bg-on);
 }
 
 .rudiment-switch__thumb {
   width: calc(var(--token-component-switch-track-height) - var(--token-spacing-1));
   height: calc(var(--token-component-switch-track-height) - var(--token-spacing-1));
-  border-radius: var(--token-radius-full);
-  background-color: var(--token-color-background-surface);
+  border-radius: var(--token-component-switch-track-radius);
+  background-color: var(--token-component-switch-thumb-bg);
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.15);
   transition: transform 200ms;
 }

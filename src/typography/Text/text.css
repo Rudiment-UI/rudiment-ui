@@ -2,14 +2,14 @@
   font-size: var(--token-typography-body-size);
   font-weight: var(--token-typography-body-weight);
   line-height: var(--token-typography-body-line-height);
-  color: var(--token-color-text-default);
+  color: var(--token-typography-body-color);
 }
 
 .rudiment-text--body-sm {
   font-size: var(--token-typography-body-sm-size);
   font-weight: var(--token-typography-body-sm-weight);
   line-height: var(--token-typography-body-sm-line-height);
-  color: var(--token-color-text-default);
+  color: var(--token-typography-body-sm-color);
 }
 
 .rudiment-text--caption {
@@ -29,9 +29,9 @@
 }
 
 .rudiment-text--code {
-  font-family: var(--token-font-family-mono);
+  font-family: var(--token-typography-code-font-family);
   font-size: var(--token-typography-code-font-size);
-  background: var(--token-color-background-surface-raised);
+  background: var(--token-typography-code-bg);
   padding: var(--token-typography-code-padding-y) var(--token-typography-code-padding-x);
-  border-radius: var(--token-radius-sm);
+  border-radius: var(--token-typography-code-radius);
 }

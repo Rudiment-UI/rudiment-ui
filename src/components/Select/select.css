@@ -1,55 +1,55 @@
 .rudiment-select {
   display: grid;
-  gap: var(--token-spacing-1);
-  font-size: var(--token-font-size-sm);
+  gap: var(--token-component-select-gap);
+  font-size: var(--token-component-select-trigger-font-size);
 }
 
 .rudiment-select__label {
-  font-weight: var(--token-font-weight-medium);
-  color: var(--token-color-text-default);
-  line-height: var(--token-font-line-height-normal);
+  font-weight: var(--token-component-select-label-font-weight);
+  color: var(--token-component-select-label-color);
+  line-height: var(--token-component-select-label-line-height);
 }
 
 .rudiment-select__trigger {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--token-spacing-2);
+  gap: var(--token-component-select-trigger-gap);
   width: 100%;
-  padding: var(--token-component-input-padding-y)
-    var(--token-component-input-padding-x);
-  background-color: var(--token-color-background-surface);
-  color: var(--token-color-text-default);
-  border: 1px solid var(--token-color-border-default);
-  border-radius: var(--token-radius-sm);
+  padding: var(--token-component-select-trigger-padding-y)
+    var(--token-component-select-trigger-padding-x);
+  background-color: var(--token-component-select-trigger-bg);
+  color: var(--token-component-select-trigger-text);
+  border: 1px solid var(--token-component-select-trigger-border);
+  border-radius: var(--token-component-select-trigger-radius);
   font-size: inherit;
-  line-height: var(--token-font-line-height-normal);
+  line-height: var(--token-component-select-trigger-line-height);
   cursor: pointer;
   transition: border-color 150ms;
 }
 
 .rudiment-select__trigger:focus-visible {
-  outline: 2px solid var(--token-color-border-focus);
+  outline: 2px solid var(--token-component-select-trigger-focus-outline-color);
   outline-offset: 2px;
 }
 
 .rudiment-select__trigger[aria-disabled='true'],
 .rudiment-select__trigger[disabled] {
-  background-color: var(--token-color-background-disabled);
-  color: var(--token-color-text-disabled);
+  background-color: var(--token-component-select-trigger-disabled-bg);
+  color: var(--token-component-select-trigger-disabled-text);
   cursor: not-allowed;
 }
 
 .rudiment-select__trigger--error {
-  border-color: var(--token-color-border-error);
+  border-color: var(--token-component-select-trigger-error-border);
 }
 
 .rudiment-select__popover {
   position: absolute;
   z-index: 50;
-  background-color: var(--token-color-background-surface);
-  border: 1px solid var(--token-color-border-default);
-  border-radius: var(--token-radius-md);
+  background-color: var(--token-component-select-popover-bg);
+  border: 1px solid var(--token-component-select-popover-border);
+  border-radius: var(--token-component-select-popover-radius);
   box-shadow:
     0 4px 6px -1px rgb(0 0 0 / 0.1),
     0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -60,36 +60,36 @@
 .rudiment-select__listbox {
   list-style: none;
   margin: 0;
-  padding: var(--token-spacing-1);
+  padding: var(--token-component-select-popover-padding);
 }
 
 .rudiment-select__option {
   display: flex;
   align-items: center;
-  padding: var(--token-component-input-padding-y)
-    var(--token-component-input-padding-x);
-  border-radius: var(--token-radius-sm);
-  font-size: var(--token-font-size-sm);
+  padding: var(--token-component-select-option-padding-y)
+    var(--token-component-select-option-padding-x);
+  border-radius: var(--token-component-select-option-radius);
+  font-size: var(--token-component-select-option-font-size);
   cursor: pointer;
 }
 
 .rudiment-select__option[aria-selected='true'] {
-  background-color: var(--token-color-brand-primary);
-  color: var(--token-color-text-on-brand);
+  background-color: var(--token-component-select-option-selected-bg);
+  color: var(--token-component-select-option-selected-text);
 }
 
 .rudiment-select__option[data-focused='true']:not([aria-selected='true']) {
-  background-color: var(--token-color-background-surface-raised);
+  background-color: var(--token-component-select-option-hover-bg);
 }
 
 .rudiment-select__description {
-  color: var(--token-color-text-subtle);
-  font-size: var(--token-font-size-xs);
+  color: var(--token-component-select-description-color);
+  font-size: var(--token-component-select-description-font-size);
   line-height: var(--token-font-line-height-normal);
 }
 
 .rudiment-select__error {
-  color: var(--token-color-feedback-error-text);
-  font-size: var(--token-font-size-xs);
+  color: var(--token-component-select-error-text-color);
+  font-size: var(--token-component-select-error-font-size);
   line-height: var(--token-font-line-height-normal);
 }

@@ -32,10 +32,11 @@ Open [http://localhost:6006](http://localhost:6006) to browse components and doc
 
 ## Customizing for Your Brand
 
-1. Edit design tokens in `tokens/tokens.json` (colors, spacing, typography)
+1. Edit primitive values in `tokens/tokens.json` (colors, spacing, typography)
 2. Update semantic mappings in `tokens/semantic.json` (brand colors, theme values)
-3. Rebuild tokens: `npm run build:tokens`
-4. Preview changes in Storybook: `npm run dev`
+3. Adjust component-level tokens in `tokens/components.json` (per-component overrides)
+4. Rebuild tokens: `npm run build:tokens`
+5. Preview changes in Storybook: `npm run dev`
 
 ## Using Components
 
@@ -79,8 +80,9 @@ src/
 └── stories/        # Example page compositions
 
 tokens/
-├── tokens.json              # Primitive design tokens
-├── semantic.json            # Semantic and component tokens
+├── tokens.json              # Tier 1: Primitive design tokens (raw values)
+├── semantic.json            # Tier 2: Semantic tokens (purpose-driven aliases)
+├── components.json          # Tier 3: Component tokens (per-component overrides)
 ├── style-dictionary.config.mjs  # Token build configuration
 └── build/tokens.css         # Generated CSS custom properties
 ```

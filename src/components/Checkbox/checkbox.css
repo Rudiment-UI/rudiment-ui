@@ -2,11 +2,11 @@
 .rudiment-checkbox {
   display: inline-flex;
   align-items: center;
-  gap: var(--token-spacing-2);
+  gap: var(--token-component-checkbox-gap);
   cursor: pointer;
-  font-size: var(--token-font-size-sm);
-  line-height: var(--token-font-line-height-normal);
-  color: var(--token-color-text-default);
+  font-size: var(--token-component-checkbox-label-font-size);
+  line-height: var(--token-component-checkbox-label-line-height);
+  color: var(--token-component-checkbox-label-color);
 }
 
 .rudiment-checkbox--disabled {
@@ -31,46 +31,46 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 1rem;
-  height: 1rem;
-  border: 1px solid var(--token-color-border-default);
-  border-radius: var(--token-radius-sm);
-  background-color: var(--token-color-background-surface);
+  width: var(--token-component-checkbox-control-size);
+  height: var(--token-component-checkbox-control-size);
+  border: 1px solid var(--token-component-checkbox-control-border);
+  border-radius: var(--token-component-checkbox-control-radius);
+  background-color: var(--token-component-checkbox-control-bg);
   transition:
     background-color 150ms,
     border-color 150ms;
 }
 
 .rudiment-checkbox__input:focus-visible + .rudiment-checkbox__control {
-  outline: 2px solid var(--token-color-border-focus);
+  outline: 2px solid var(--token-component-checkbox-focus-outline-color);
   outline-offset: 2px;
 }
 
 .rudiment-checkbox__control--checked {
-  background-color: var(--token-color-brand-primary);
-  border-color: var(--token-color-brand-primary);
+  background-color: var(--token-component-checkbox-checked-bg);
+  border-color: var(--token-component-checkbox-checked-border);
 }
 
 .rudiment-checkbox__control--checked::after {
   content: '';
   width: 0.3125rem;
   height: 0.5625rem;
-  border: 2px solid var(--token-color-text-on-brand);
+  border: 2px solid var(--token-component-checkbox-check-color);
   border-top: none;
   border-left: none;
   transform: rotate(45deg) translateY(-1px);
 }
 
 .rudiment-checkbox__control--indeterminate {
-  background-color: var(--token-color-brand-primary);
-  border-color: var(--token-color-brand-primary);
+  background-color: var(--token-component-checkbox-checked-bg);
+  border-color: var(--token-component-checkbox-checked-border);
 }
 
 .rudiment-checkbox__control--indeterminate::after {
   content: '';
   width: 0.5rem;
   height: 2px;
-  background-color: var(--token-color-text-on-brand);
+  background-color: var(--token-component-checkbox-check-color);
   border-radius: 1px;
 }
 
@@ -81,24 +81,24 @@
 /* CheckboxGroup */
 .rudiment-checkbox-group {
   display: grid;
-  gap: var(--token-spacing-2);
+  gap: var(--token-component-checkbox-group-gap);
 }
 
 .rudiment-checkbox-group__label {
-  font-weight: var(--token-font-weight-medium);
-  font-size: var(--token-font-size-sm);
-  color: var(--token-color-text-default);
+  font-weight: var(--token-component-checkbox-group-label-font-weight);
+  font-size: var(--token-component-checkbox-group-label-font-size);
+  color: var(--token-component-checkbox-group-label-color);
   line-height: var(--token-font-line-height-normal);
 }
 
 .rudiment-checkbox-group__description {
-  color: var(--token-color-text-subtle);
-  font-size: var(--token-font-size-xs);
+  color: var(--token-component-checkbox-group-description-color);
+  font-size: var(--token-component-checkbox-group-description-font-size);
   line-height: var(--token-font-line-height-normal);
 }
 
 .rudiment-checkbox-group__error {
-  color: var(--token-color-feedback-error-text);
-  font-size: var(--token-font-size-xs);
+  color: var(--token-component-checkbox-group-error-color);
+  font-size: var(--token-component-checkbox-group-error-font-size);
   line-height: var(--token-font-line-height-normal);
 }

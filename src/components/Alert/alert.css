@@ -1,16 +1,16 @@
 /* Alert */
 .rudiment-alert {
   display: grid;
-  gap: var(--token-spacing-1);
-  padding: var(--token-spacing-3) var(--token-spacing-4);
-  border-radius: var(--token-radius-sm);
+  gap: var(--token-component-alert-gap);
+  padding: var(--token-component-alert-padding-y) var(--token-component-alert-padding-x);
+  border-radius: var(--token-component-alert-radius);
   border: 1px solid transparent;
-  font-size: var(--token-font-size-sm);
-  line-height: var(--token-font-line-height-normal);
+  font-size: var(--token-component-alert-font-size);
+  line-height: var(--token-component-alert-line-height);
 }
 
 .rudiment-alert__title {
-  font-weight: var(--token-font-weight-medium);
+  font-weight: var(--token-component-alert-title-font-weight);
 }
 
 .rudiment-alert__content {
@@ -19,25 +19,25 @@
 
 /* Variants */
 .rudiment-alert--info {
-  background-color: var(--token-color-feedback-info-surface);
-  border-color: var(--token-color-feedback-info-border);
-  color: var(--token-color-feedback-info-text);
+  background-color: var(--token-component-alert-info-bg);
+  border-color: var(--token-component-alert-info-border);
+  color: var(--token-component-alert-info-text);
 }
 
 .rudiment-alert--success {
-  background-color: var(--token-color-feedback-success-surface);
-  border-color: var(--token-color-feedback-success-border);
-  color: var(--token-color-feedback-success-text);
+  background-color: var(--token-component-alert-success-bg);
+  border-color: var(--token-component-alert-success-border);
+  color: var(--token-component-alert-success-text);
 }
 
 .rudiment-alert--warning {
-  background-color: var(--token-color-feedback-warning-surface);
-  border-color: var(--token-color-feedback-warning-border);
-  color: var(--token-color-feedback-warning-text);
+  background-color: var(--token-component-alert-warning-bg);
+  border-color: var(--token-component-alert-warning-border);
+  color: var(--token-component-alert-warning-text);
 }
 
 .rudiment-alert--error {
-  background-color: var(--token-color-feedback-error-surface);
-  border-color: var(--token-color-feedback-error-border);
-  color: var(--token-color-feedback-error-text);
+  background-color: var(--token-component-alert-error-bg);
+  border-color: var(--token-component-alert-error-border);
+  color: var(--token-component-alert-error-text);
 }

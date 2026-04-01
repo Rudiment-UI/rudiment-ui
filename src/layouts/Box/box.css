@@ -5,11 +5,11 @@
 }
 
 .rudiment-box--bordered {
-  border: 1px solid var(--token-color-border-default);
-  border-radius: var(--token-radius-md);
+  border: 1px solid var(--token-layout-box-border-color);
+  border-radius: var(--token-layout-box-border-radius);
 }
 
 .rudiment-box--invert {
-  background-color: var(--token-color-background-inverted);
-  color: var(--token-color-text-on-inverted);
+  background-color: var(--token-layout-box-invert-bg);
+  color: var(--token-layout-box-invert-text);
 }
