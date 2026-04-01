@@ -16,11 +16,12 @@
 
 .rudiment-input__field {
   width: 100%;
-  padding: var(--token-component-input-padding-y) var(--token-component-input-padding-x);
+  padding: var(--token-component-input-padding-y)
+    var(--token-component-input-padding-x);
   background-color: var(--token-color-background-surface);
   color: var(--token-color-text-default);
   border: 1px solid var(--token-color-border-default);
-  border-radius: var(--token-radius-md);
+  border-radius: var(--token-radius-sm);
   font-size: inherit;
   line-height: var(--token-font-line-height-normal);
   transition: border-color 150ms;

@@ -5,9 +5,41 @@ const meta = {
   title: 'Typography/Heading',
   component: Heading,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A semantic heading element (h1 through h6) with independent visual sizing. Allows you to maintain a correct document outline while matching any visual hierarchy.',
+      },
+    },
+  },
   argTypes: {
-    level: { control: { type: 'select' }, options: [1, 2, 3, 4, 5, 6] },
-    size: { control: { type: 'select' }, options: [1, 2, 3, 4, 5, 6] },
+    level: {
+      control: { type: 'select' },
+      options: [1, 2, 3, 4, 5, 6],
+      description:
+        'The semantic heading level — determines the HTML element (h1-h6) and document outline',
+      table: { category: 'Appearance' },
+    },
+    size: {
+      control: { type: 'select' },
+      options: [1, 2, 3, 4, 5, 6],
+      description:
+        'The visual size of the heading, independent of semantic level. Defaults to match the level.',
+      table: { category: 'Appearance' },
+    },
+    children: {
+      description: 'The content rendered inside the heading',
+      table: { category: 'Content' },
+    },
+    className: {
+      description: 'Additional CSS class names to apply to the heading element',
+      table: { category: 'Appearance' },
+    },
+  },
+  args: {
+    level: 2,
+    children: 'Section Heading',
   },
 } satisfies Meta<typeof Heading>
 

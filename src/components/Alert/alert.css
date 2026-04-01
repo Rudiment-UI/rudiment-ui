@@ -3,7 +3,7 @@
   display: grid;
   gap: var(--token-spacing-1);
   padding: var(--token-spacing-3) var(--token-spacing-4);
-  border-radius: var(--token-radius-md);
+  border-radius: var(--token-radius-sm);
   border: 1px solid transparent;
   font-size: var(--token-font-size-sm);
   line-height: var(--token-font-line-height-normal);

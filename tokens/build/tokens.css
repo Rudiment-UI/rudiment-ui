@@ -98,9 +98,9 @@
   --token-font-line-height-tight: 1.25;
   --token-font-line-height-normal: 1.5;
   --token-font-line-height-relaxed: 1.75;
-  --token-color-brand-primary: var(--token-color-blue-500);
-  --token-color-brand-primary-hover: var(--token-color-blue-600);
-  --token-color-brand-primary-active: var(--token-color-blue-700);
+  --token-color-brand-primary: var(--token-color-neutral-900);
+  --token-color-brand-primary-hover: var(--token-color-neutral-700);
+  --token-color-brand-primary-active: var(--token-color-neutral-800);
   --token-color-text-default: var(--token-color-neutral-900);
   --token-color-text-subtle: var(--token-color-neutral-600);
   --token-color-text-disabled: var(--token-color-neutral-400);
@@ -172,8 +172,8 @@
   --token-typography-overline-size: var(--token-font-size-xs);
   --token-typography-overline-weight: var(--token-font-weight-semibold);
   --token-typography-overline-line-height: var(--token-font-line-height-normal);
-  --token-typography-overline-color: var(--token-color-text-subtle);
-  --token-typography-caption-color: var(--token-color-text-subtle);
   --token-typography-prose-size-sm: var(--token-font-size-sm);
   --token-typography-prose-size-lg: var(--token-font-size-lg);
+  --token-typography-caption-color: var(--token-color-text-subtle);
+  --token-typography-overline-color: var(--token-color-text-subtle);
 }

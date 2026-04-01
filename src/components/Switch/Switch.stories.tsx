@@ -5,9 +5,50 @@ const meta = {
   title: 'Components/Switch',
   component: Switch,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A toggle switch for binary on/off settings. Visually distinct from a checkbox — best used for settings that take effect immediately.',
+      },
+    },
+  },
+  args: {
+    isDisabled: false,
+    defaultSelected: false,
+    children: 'Enable notifications',
+  },
   argTypes: {
-    isDisabled: { control: 'boolean' },
-    defaultSelected: { control: 'boolean' },
+    children: {
+      control: 'text',
+      description: 'The label text displayed next to the switch',
+      table: { category: 'Content' },
+    },
+    isSelected: {
+      control: 'boolean',
+      description: 'Whether the switch is on (controlled)',
+      table: { category: 'State' },
+    },
+    defaultSelected: {
+      control: 'boolean',
+      description: 'Whether the switch is initially on (uncontrolled)',
+      table: { category: 'State' },
+    },
+    isDisabled: {
+      control: 'boolean',
+      description: 'Whether the switch is disabled and non-interactive',
+      table: { category: 'State' },
+    },
+    onChange: {
+      action: 'changed',
+      description: 'Called when the switch is toggled on or off',
+      table: { category: 'Events' },
+    },
+    className: {
+      control: 'text',
+      description: 'Additional CSS class names to apply to the switch wrapper',
+      table: { category: 'Appearance' },
+    },
   },
 } satisfies Meta<typeof Switch>
 

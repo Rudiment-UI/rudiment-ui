@@ -1,0 +1,61 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Getting Started/Accessibility" />
+
+# Accessibility
+
+## Built on React Aria
+
+Every interactive component in Rudiment UI uses Adobe's [React Aria](https://react-spectrum.adobe.com/react-aria/) library. React Aria is one of the most well-tested accessibility foundations available for React, handling the complex parts of accessible UI so you don't have to.
+
+### What React Aria provides automatically
+
+- **ARIA attributes** — correct roles, states, and properties applied to every component
+- **Keyboard navigation** — full keyboard support following WAI-ARIA design patterns
+- **Focus management** — focus moves to the right place at the right time (for example, into a dialog when it opens)
+- **Screen reader support** — announcements, labels, and descriptions that work across screen readers
+
+## Keyboard support by component
+
+Every component can be operated without a mouse. Here's what keyboard users can expect:
+
+| Component               | Keyboard behavior                                                          |
+| ----------------------- | -------------------------------------------------------------------------- |
+| **Button / IconButton** | `Space` or `Enter` to activate                                             |
+| **Input**               | Standard text input behavior                                               |
+| **Checkbox / Switch**   | `Space` to toggle                                                          |
+| **RadioGroup**          | Arrow keys to move between options, `Space` to select                      |
+| **Select**              | Arrow keys to navigate options, `Enter` to select, `Escape` to close       |
+| **Dialog**              | `Tab` cycles focus within the dialog (focus is trapped), `Escape` to close |
+| **Tooltip**             | Appears on focus, `Escape` to dismiss                                      |
+
+## Focus indicators
+
+All interactive elements display a visible focus ring when navigated to via keyboard. These focus indicators meet WCAG 2.1 AA requirements, ensuring that keyboard users always know where they are on the page.
+
+## Color contrast
+
+Token values have been chosen to meet WCAG 2.1 AA contrast requirements:
+
+- **Text on backgrounds:** 4.5:1 minimum contrast ratio
+- **UI elements** (borders, icons, controls): 3:1 minimum contrast ratio
+
+This applies to both light and dark themes.
+
+## Live regions
+
+The **Alert** component uses ARIA live regions to announce messages to screen readers:
+
+- `role="alert"` — for urgent messages that need immediate attention (the default)
+- `role="status"` — for polite, non-urgent updates (set with the `isPolite` prop)
+
+This ensures that important information reaches screen reader users even when it appears dynamically on the page.
+
+## Testing
+
+Accessibility is verified at two levels:
+
+- **Automated tests** — [vitest-axe](https://github.com/chaance/vitest-axe) runs accessibility checks on every component as part of the test suite. These catch common issues like missing labels, invalid ARIA usage, and contrast problems.
+- **Live audit in Storybook** — the Storybook a11y addon provides a real-time accessibility panel. Open any component story and check the "Accessibility" tab to see the current audit results.
+
+Automated testing catches many issues, but it cannot catch everything. Manual testing with a keyboard and screen reader is always recommended for thorough coverage.

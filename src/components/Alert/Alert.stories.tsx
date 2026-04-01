@@ -5,10 +5,46 @@ const meta = {
   title: 'Components/Alert',
   component: Alert,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A prominent message banner for communicating status, warnings, errors, or confirmations. Uses ARIA live regions so screen readers announce updates automatically.',
+      },
+    },
+  },
+  args: {
+    variant: 'info',
+    isPolite: false,
+    children: 'This is an alert message.',
+  },
   argTypes: {
-    variant: { control: 'select', options: ['info', 'success', 'warning', 'error'] },
-    title: { control: 'text' },
-    isPolite: { control: 'boolean' },
+    variant: {
+      control: 'select',
+      options: ['info', 'success', 'warning', 'error'],
+      description: 'The visual style and semantic meaning of the alert',
+      table: { category: 'Appearance' },
+    },
+    title: {
+      control: 'text',
+      description: 'An optional bold heading displayed above the alert content',
+      table: { category: 'Content' },
+    },
+    children: {
+      control: 'text',
+      description: 'The body content of the alert message',
+      table: { category: 'Content' },
+    },
+    isPolite: {
+      control: 'boolean',
+      description: 'When true, uses role="status" instead of role="alert" for a less intrusive announcement',
+      table: { category: 'State' },
+    },
+    className: {
+      control: 'text',
+      description: 'Additional CSS class names to apply to the alert wrapper',
+      table: { category: 'Appearance' },
+    },
   },
 } satisfies Meta<typeof Alert>
 

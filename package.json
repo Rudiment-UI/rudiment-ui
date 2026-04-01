@@ -36,7 +36,7 @@
     "url": "git+https://github.com/Rudiment-UI/rudiment-ui.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Joshua Briley",
   "license": "ISC",
   "type": "module",
   "bugs": {
@@ -46,9 +46,9 @@
   "dependencies": {
     "@react-aria/utils": "^3.33.1",
     "clsx": "^2.1.1",
-    "react": "^19.2.4",
+    "react": "^19.0.0",
     "react-aria": "^3.47.0",
-    "react-dom": "^19.2.4",
+    "react-dom": "^19.0.0",
     "react-stately": "^3.45.0",
     "tailwind-merge": "^3.5.0"
   },
@@ -69,6 +69,7 @@
     "@vitest/coverage-v8": "^4.1.0",
     "jsdom": "^29.0.0",
     "playwright": "^1.58.2",
+    "remark-gfm": "^4.0.1",
     "storybook": "^10.2.19",
     "style-dictionary": "^4.4.0",
     "tailwindcss": "^4.2.1",
