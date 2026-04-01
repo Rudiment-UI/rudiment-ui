@@ -3,7 +3,7 @@
   font-weight: var(--token-typography-heading-1-weight);
   line-height: var(--token-typography-heading-1-line-height);
   letter-spacing: var(--token-typography-heading-1-tracking);
-  color: var(--token-color-text-default);
+  color: var(--token-typography-heading-1-color);
 }
 
 .rudiment-heading--2 {
@@ -11,7 +11,7 @@
   font-weight: var(--token-typography-heading-2-weight);
   line-height: var(--token-typography-heading-2-line-height);
   letter-spacing: var(--token-typography-heading-2-tracking);
-  color: var(--token-color-text-default);
+  color: var(--token-typography-heading-2-color);
 }
 
 .rudiment-heading--3 {
@@ -19,7 +19,7 @@
   font-weight: var(--token-typography-heading-3-weight);
   line-height: var(--token-typography-heading-3-line-height);
   letter-spacing: var(--token-typography-heading-3-tracking);
-  color: var(--token-color-text-default);
+  color: var(--token-typography-heading-3-color);
 }
 
 .rudiment-heading--4 {
@@ -27,7 +27,7 @@
   font-weight: var(--token-typography-heading-4-weight);
   line-height: var(--token-typography-heading-4-line-height);
   letter-spacing: var(--token-typography-heading-4-tracking);
-  color: var(--token-color-text-default);
+  color: var(--token-typography-heading-4-color);
 }
 
 .rudiment-heading--5 {
@@ -35,7 +35,7 @@
   font-weight: var(--token-typography-heading-5-weight);
   line-height: var(--token-typography-heading-5-line-height);
   letter-spacing: var(--token-typography-heading-5-tracking);
-  color: var(--token-color-text-default);
+  color: var(--token-typography-heading-5-color);
 }
 
 .rudiment-heading--6 {
@@ -43,5 +43,5 @@
   font-weight: var(--token-typography-heading-6-weight);
   line-height: var(--token-typography-heading-6-line-height);
   letter-spacing: var(--token-typography-heading-6-tracking);
-  color: var(--token-color-text-default);
+  color: var(--token-typography-heading-6-color);
 }

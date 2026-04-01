@@ -1,6 +1,6 @@
 .rudiment-switcher {
   --switcher-threshold: var(--token-layout-switcher-threshold, 30rem);
-  --switcher-space: var(--token-layout-stack-space-default, 1.5rem);
+  --switcher-space: var(--token-layout-switcher-space, 1.5rem);
   display: flex;
   flex-wrap: wrap;
   gap: var(--switcher-space);

@@ -1,7 +1,7 @@
 .rudiment-sidebar {
   --sidebar-width: var(--token-layout-sidebar-width, 20rem);
   --sidebar-content-min: var(--token-layout-sidebar-content-min, 50%);
-  --sidebar-space: var(--token-layout-stack-space-default, 1.5rem);
+  --sidebar-space: var(--token-layout-sidebar-space, 1.5rem);
   display: flex;
   flex-wrap: wrap;
   gap: var(--sidebar-space);

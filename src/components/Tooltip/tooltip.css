@@ -10,12 +10,12 @@
   left: 50%;
   transform: translateX(-50%);
   max-width: var(--token-component-tooltip-max-width);
-  padding: var(--token-spacing-1) var(--token-spacing-2);
-  background-color: var(--token-component-tooltip-background);
-  color: var(--token-color-text-on-inverted);
-  font-size: var(--token-font-size-xs);
-  line-height: var(--token-font-line-height-normal);
-  border-radius: var(--token-radius-sm);
+  padding: var(--token-component-tooltip-padding-y) var(--token-component-tooltip-padding-x);
+  background-color: var(--token-component-tooltip-bg);
+  color: var(--token-component-tooltip-text);
+  font-size: var(--token-component-tooltip-font-size);
+  line-height: var(--token-component-tooltip-line-height);
+  border-radius: var(--token-component-tooltip-radius);
   white-space: nowrap;
   pointer-events: none;
 }

@@ -1,6 +1,6 @@
 .rudiment-grid {
   --grid-min-cell: var(--token-layout-grid-min-cell, 15rem);
-  --grid-space: var(--token-layout-stack-space-default, 1.5rem);
+  --grid-space: var(--token-layout-grid-space, 1.5rem);
   display: grid;
   grid-template-columns: repeat(
     auto-fill,

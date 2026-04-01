@@ -4,7 +4,7 @@
   --prose-heading-before: var(--token-typography-prose-heading-before, 2em);
   --prose-heading-after: var(--token-typography-prose-heading-after, 0.75em);
 
-  color: var(--token-color-text-default);
+  color: var(--token-typography-body-color);
   font-size: var(--token-typography-body-size);
   font-weight: var(--token-typography-body-weight);
   line-height: var(--token-typography-body-line-height);
@@ -16,7 +16,7 @@
   font-weight: var(--token-typography-heading-1-weight);
   line-height: var(--token-typography-heading-1-line-height);
   letter-spacing: var(--token-typography-heading-1-tracking);
-  color: var(--token-color-text-default);
+  color: var(--token-typography-heading-1-color);
 }
 
 .rudiment-prose h2 {
@@ -24,7 +24,7 @@
   font-weight: var(--token-typography-heading-2-weight);
   line-height: var(--token-typography-heading-2-line-height);
   letter-spacing: var(--token-typography-heading-2-tracking);
-  color: var(--token-color-text-default);
+  color: var(--token-typography-heading-2-color);
 }
 
 .rudiment-prose h3 {
@@ -32,7 +32,7 @@
   font-weight: var(--token-typography-heading-3-weight);
   line-height: var(--token-typography-heading-3-line-height);
   letter-spacing: var(--token-typography-heading-3-tracking);
-  color: var(--token-color-text-default);
+  color: var(--token-typography-heading-3-color);
 }
 
 .rudiment-prose h4 {
@@ -40,7 +40,7 @@
   font-weight: var(--token-typography-heading-4-weight);
   line-height: var(--token-typography-heading-4-line-height);
   letter-spacing: var(--token-typography-heading-4-tracking);
-  color: var(--token-color-text-default);
+  color: var(--token-typography-heading-4-color);
 }
 
 .rudiment-prose h5 {
@@ -48,7 +48,7 @@
   font-weight: var(--token-typography-heading-5-weight);
   line-height: var(--token-typography-heading-5-line-height);
   letter-spacing: var(--token-typography-heading-5-tracking);
-  color: var(--token-color-text-default);
+  color: var(--token-typography-heading-5-color);
 }
 
 .rudiment-prose h6 {
@@ -56,25 +56,25 @@
   font-weight: var(--token-typography-heading-6-weight);
   line-height: var(--token-typography-heading-6-line-height);
   letter-spacing: var(--token-typography-heading-6-tracking);
-  color: var(--token-color-text-subtle);
+  color: var(--token-typography-prose-h6-color);
 }
 
 /* ── Links ─────────────────────────────────────────────────────────── */
 .rudiment-prose a {
-  color: var(--token-color-brand-primary);
+  color: var(--token-typography-prose-link-color);
   text-decoration: underline;
   text-underline-offset: 2px;
   text-decoration-thickness: 1px;
 }
 
 .rudiment-prose a:hover {
-  color: var(--token-color-brand-primary-hover);
+  color: var(--token-typography-prose-link-hover-color);
 }
 
 /* ── Inline formatting ─────────────────────────────────────────────── */
 .rudiment-prose strong {
-  font-weight: var(--token-font-weight-bold);
-  color: var(--token-color-text-default);
+  font-weight: var(--token-typography-prose-strong-weight);
+  color: var(--token-typography-prose-strong-color);
 }
 
 .rudiment-prose em {
@@ -110,32 +110,32 @@
 
 /* ── Blockquote ────────────────────────────────────────────────────── */
 .rudiment-prose blockquote {
-  border-inline-start: 3px solid var(--token-color-border-default);
+  border-inline-start: 3px solid var(--token-typography-prose-blockquote-border);
   padding-inline-start: 1em;
-  color: var(--token-color-text-subtle);
+  color: var(--token-typography-prose-blockquote-color);
   font-style: italic;
 }
 
 /* ── Inline code ───────────────────────────────────────────────────── */
 .rudiment-prose code {
-  font-family: var(--token-font-family-mono);
+  font-family: var(--token-typography-code-font-family);
   font-size: var(--token-typography-code-font-size);
-  background: var(--token-color-background-surface-raised);
+  background: var(--token-typography-prose-code-bg);
   padding: var(--token-typography-code-padding-y)
     var(--token-typography-code-padding-x);
-  border-radius: var(--token-radius-sm);
+  border-radius: var(--token-typography-code-radius);
 }
 
 /* ── Code blocks ───────────────────────────────────────────────────── */
 .rudiment-prose pre {
-  background: var(--token-color-background-surface-raised);
-  border: 1px solid var(--token-color-border-default);
-  border-radius: var(--token-radius-md);
+  background: var(--token-typography-prose-pre-bg);
+  border: 1px solid var(--token-typography-prose-pre-border);
+  border-radius: var(--token-typography-prose-pre-radius);
   padding: 1em 1.25em;
   overflow-x: auto;
-  font-family: var(--token-font-family-mono);
-  font-size: var(--token-font-size-sm);
-  line-height: var(--token-font-line-height-relaxed);
+  font-family: var(--token-typography-code-font-family);
+  font-size: var(--token-typography-prose-pre-font-size);
+  line-height: var(--token-typography-prose-pre-line-height);
 }
 
 .rudiment-prose pre code {
@@ -148,7 +148,7 @@
 /* ── Horizontal rule ───────────────────────────────────────────────── */
 .rudiment-prose hr {
   border: none;
-  border-block-start: 1px solid var(--token-color-border-default);
+  border-block-start: 1px solid var(--token-typography-prose-hr-color);
 }
 
 /* ── Tables ────────────────────────────────────────────────────────── */
@@ -162,17 +162,17 @@
 }
 
 .rudiment-prose thead {
-  border-block-end: 1px solid var(--token-color-border-default);
+  border-block-end: 1px solid var(--token-typography-prose-table-border);
 }
 
 .rudiment-prose thead th {
-  font-weight: var(--token-font-weight-semibold);
+  font-weight: var(--token-typography-prose-table-header-weight);
   padding: 0.5em 0.75em;
   vertical-align: bottom;
 }
 
 .rudiment-prose tbody tr {
-  border-block-end: 1px solid var(--token-color-border-default);
+  border-block-end: 1px solid var(--token-typography-prose-table-border);
 }
 
 .rudiment-prose tbody tr:last-child {
@@ -186,13 +186,13 @@
 
 /* ── Figures ───────────────────────────────────────────────────────── */
 .rudiment-prose figure > img {
-  border-radius: var(--token-radius-md);
+  border-radius: var(--token-typography-prose-figure-radius);
 }
 
 .rudiment-prose figcaption {
   font-size: var(--token-typography-caption-size);
   line-height: var(--token-typography-body-line-height);
-  color: var(--token-typography-caption-color);
+  color: var(--token-typography-prose-caption-color);
   margin-block-start: 0.75em;
 }
 

@@ -1,63 +1,63 @@
 .rudiment-input {
   display: grid;
-  gap: var(--token-spacing-1);
-  font-size: var(--token-font-size-sm);
+  gap: var(--token-component-input-gap);
+  font-size: var(--token-component-input-font-size);
 }
 
 .rudiment-input__label {
-  font-weight: var(--token-font-weight-medium);
-  color: var(--token-color-text-default);
-  line-height: var(--token-font-line-height-normal);
+  font-weight: var(--token-component-input-label-font-weight);
+  color: var(--token-component-input-label-color);
+  line-height: var(--token-component-input-label-line-height);
 }
 
 .rudiment-input__required {
-  color: var(--token-color-feedback-error);
+  color: var(--token-component-input-required-color);
 }
 
 .rudiment-input__field {
   width: 100%;
   padding: var(--token-component-input-padding-y)
     var(--token-component-input-padding-x);
-  background-color: var(--token-color-background-surface);
-  color: var(--token-color-text-default);
-  border: 1px solid var(--token-color-border-default);
-  border-radius: var(--token-radius-sm);
+  background-color: var(--token-component-input-bg);
+  color: var(--token-component-input-text);
+  border: 1px solid var(--token-component-input-border);
+  border-radius: var(--token-component-input-radius);
   font-size: inherit;
-  line-height: var(--token-font-line-height-normal);
+  line-height: var(--token-component-input-line-height);
   transition: border-color 150ms;
 }
 
 .rudiment-input__field::placeholder {
-  color: var(--token-color-text-disabled);
+  color: var(--token-component-input-placeholder-color);
 }
 
 .rudiment-input__field:focus-visible {
-  outline: 2px solid var(--token-color-border-focus);
+  outline: 2px solid var(--token-component-input-focus-outline-color);
   outline-offset: 2px;
 }
 
 .rudiment-input__field[disabled] {
-  background-color: var(--token-color-background-disabled);
-  color: var(--token-color-text-disabled);
+  background-color: var(--token-component-input-disabled-bg);
+  color: var(--token-component-input-disabled-text);
   cursor: not-allowed;
 }
 
 .rudiment-input__field--error {
-  border-color: var(--token-color-border-error);
+  border-color: var(--token-component-input-error-border);
 }
 
 .rudiment-input__field--error:focus-visible {
-  outline-color: var(--token-color-border-error);
+  outline-color: var(--token-component-input-error-border);
 }
 
 .rudiment-input__description {
-  color: var(--token-color-text-subtle);
-  font-size: var(--token-font-size-xs);
+  color: var(--token-component-input-description-color);
+  font-size: var(--token-component-input-description-font-size);
   line-height: var(--token-font-line-height-normal);
 }
 
 .rudiment-input__error {
-  color: var(--token-color-feedback-error-text);
-  font-size: var(--token-font-size-xs);
+  color: var(--token-component-input-error-text-color);
+  font-size: var(--token-component-input-error-font-size);
   line-height: var(--token-font-line-height-normal);
 }
