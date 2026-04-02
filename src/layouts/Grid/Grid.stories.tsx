@@ -14,6 +14,15 @@ const meta = {
     },
   },
   argTypes: {
+    as: {
+      control: 'text',
+      description: 'The HTML element to render',
+      table: { category: 'Content' },
+    },
+    children: {
+      table: { category: 'Content' },
+      description: 'Content to display inside the grid',
+    },
     minCellWidth: {
       control: 'text',
       description:
@@ -24,15 +33,6 @@ const meta = {
       control: 'text',
       description: 'Gap between grid cells using any CSS length value',
       table: { category: 'Layout' },
-    },
-    as: {
-      control: 'text',
-      description: 'The HTML element to render',
-      table: { category: 'Content' },
-    },
-    children: {
-      table: { category: 'Content' },
-      description: 'Content to display inside the grid',
     },
   },
 } satisfies Meta<typeof Grid>

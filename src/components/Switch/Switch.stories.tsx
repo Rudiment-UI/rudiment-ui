@@ -24,6 +24,11 @@ const meta = {
       description: 'The label text displayed next to the switch',
       table: { category: 'Content' },
     },
+    className: {
+      control: 'text',
+      description: 'Additional CSS class names to apply to the switch wrapper',
+      table: { category: 'Appearance' },
+    },
     isSelected: {
       control: 'boolean',
       description: 'Whether the switch is on (controlled)',
@@ -43,11 +48,6 @@ const meta = {
       action: 'changed',
       description: 'Called when the switch is toggled on or off',
       table: { category: 'Events' },
-    },
-    className: {
-      control: 'text',
-      description: 'Additional CSS class names to apply to the switch wrapper',
-      table: { category: 'Appearance' },
     },
   },
 } satisfies Meta<typeof Switch>

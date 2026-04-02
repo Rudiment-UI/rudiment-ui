@@ -19,12 +19,6 @@ const meta = {
     children: 'This is an alert message.',
   },
   argTypes: {
-    variant: {
-      control: 'select',
-      options: ['info', 'success', 'warning', 'error'],
-      description: 'The visual style and semantic meaning of the alert',
-      table: { category: 'Appearance' },
-    },
     title: {
       control: 'text',
       description: 'An optional bold heading displayed above the alert content',
@@ -35,16 +29,22 @@ const meta = {
       description: 'The body content of the alert message',
       table: { category: 'Content' },
     },
-    isPolite: {
-      control: 'boolean',
-      description:
-        'When true, uses role="status" instead of role="alert" for a less intrusive announcement',
-      table: { category: 'State' },
+    variant: {
+      control: 'select',
+      options: ['info', 'success', 'warning', 'error'],
+      description: 'The visual style and semantic meaning of the alert',
+      table: { category: 'Appearance' },
     },
     className: {
       control: 'text',
       description: 'Additional CSS class names to apply to the alert wrapper',
       table: { category: 'Appearance' },
+    },
+    isPolite: {
+      control: 'boolean',
+      description:
+        'When true, uses role="status" instead of role="alert" for a less intrusive announcement',
+      table: { category: 'State' },
     },
   },
 } satisfies Meta<typeof Alert>

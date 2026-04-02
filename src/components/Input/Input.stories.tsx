@@ -25,12 +25,6 @@ const meta = {
       description: 'The visible label displayed above the input',
       table: { category: 'Content' },
     },
-    type: {
-      control: 'select',
-      options: ['text', 'email', 'password', 'url', 'tel', 'search', 'number'],
-      description: 'The HTML input type, which affects keyboard and validation behavior',
-      table: { category: 'Appearance' },
-    },
     placeholder: {
       control: 'text',
       description: 'Placeholder text shown when the input is empty',
@@ -45,6 +39,17 @@ const meta = {
       control: 'text',
       description: 'Validation error message displayed below the input',
       table: { category: 'Content' },
+    },
+    type: {
+      control: 'select',
+      options: ['text', 'email', 'password', 'url', 'tel', 'search', 'number'],
+      description: 'The HTML input type, which affects keyboard and validation behavior',
+      table: { category: 'Appearance' },
+    },
+    className: {
+      control: 'text',
+      description: 'Additional CSS class names to apply to the input wrapper',
+      table: { category: 'Appearance' },
     },
     isRequired: {
       control: 'boolean',
@@ -70,11 +75,6 @@ const meta = {
       action: 'changed',
       description: 'Called when the input value changes',
       table: { category: 'Events' },
-    },
-    className: {
-      control: 'text',
-      description: 'Additional CSS class names to apply to the input wrapper',
-      table: { category: 'Appearance' },
     },
   },
 } satisfies Meta<typeof Input>

@@ -80,6 +80,11 @@ const meta = {
         'An accessible label describing the button action (required for screen readers)',
       table: { category: 'Content' },
     },
+    children: {
+      control: false,
+      description: 'The icon element rendered inside the button',
+      table: { category: 'Content' },
+    },
     variant: {
       control: 'select',
       options: ['primary', 'secondary', 'destructive', 'ghost'],
@@ -92,6 +97,11 @@ const meta = {
       description: 'The size of the icon button',
       table: { category: 'Appearance' },
     },
+    className: {
+      control: 'text',
+      description: 'Additional CSS class names to apply to the icon button',
+      table: { category: 'Appearance' },
+    },
     isLoading: {
       control: 'boolean',
       description:
@@ -102,16 +112,6 @@ const meta = {
       control: 'boolean',
       description: 'Whether the button is disabled and non-interactive',
       table: { category: 'State' },
-    },
-    children: {
-      control: false,
-      description: 'The icon element rendered inside the button',
-      table: { category: 'Content' },
-    },
-    className: {
-      control: 'text',
-      description: 'Additional CSS class names to apply to the icon button',
-      table: { category: 'Appearance' },
     },
     onPress: {
       action: 'pressed',

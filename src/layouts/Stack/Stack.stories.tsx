@@ -17,24 +17,6 @@ const meta = {
     recursive: false,
   },
   argTypes: {
-    space: {
-      control: 'text',
-      description:
-        "Vertical gap between items using any CSS length value (e.g., '1.5rem')",
-      table: { category: 'Layout' },
-    },
-    recursive: {
-      control: 'boolean',
-      description:
-        'When enabled, applies spacing to all nested elements, not just direct children',
-      table: { category: 'Appearance' },
-    },
-    splitAfter: {
-      control: 'number',
-      description:
-        'Pushes all items after this index to the bottom of the stack (1-based)',
-      table: { category: 'Layout' },
-    },
     as: {
       control: 'text',
       description: "The HTML element to render (e.g., 'div', 'ul', 'ol')",
@@ -43,6 +25,24 @@ const meta = {
     children: {
       table: { category: 'Content' },
       description: 'Content to display inside the stack',
+    },
+    recursive: {
+      control: 'boolean',
+      description:
+        'When enabled, applies spacing to all nested elements, not just direct children',
+      table: { category: 'Appearance' },
+    },
+    space: {
+      control: 'text',
+      description:
+        "Vertical gap between items using any CSS length value (e.g., '1.5rem')",
+      table: { category: 'Layout' },
+    },
+    splitAfter: {
+      control: 'number',
+      description:
+        'Pushes all items after this index to the bottom of the stack (1-based)',
+      table: { category: 'Layout' },
     },
   },
 } satisfies Meta<typeof Stack>

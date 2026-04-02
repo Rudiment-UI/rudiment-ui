@@ -1,9 +1,13 @@
+import { useEffect } from 'react'
 import type { Preview } from '@storybook/react'
 import '../src/app.css'
 
 const preview: Preview = {
   parameters: {
     options: {
+      categorySort: {
+        order: ['Appearance', 'Content', 'Layout', 'State', 'Events'],
+      },
       storySort: {
         order: [
           'Getting Started',
@@ -30,32 +34,43 @@ const preview: Preview = {
     },
     a11y: {},
   },
+  globalTypes: {
+    theme: {
+      description: 'Color theme',
+      toolbar: {
+        title: 'Theme',
+        icon: 'paintbrush',
+        items: [
+          { value: 'light', title: 'Light', icon: 'sun' },
+          { value: 'dark', title: 'Dark', icon: 'moon' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
+  initialGlobals: {
+    theme: 'light',
+  },
   decorators: [
     (Story, context) => {
       const theme = context.globals.theme || 'light'
+      useEffect(() => {
+        document.documentElement.setAttribute('data-theme', theme)
+        return () => document.documentElement.removeAttribute('data-theme')
+      }, [theme])
       return (
-        <div className={theme === 'dark' ? 'dark' : ''}>
-          <div className="bg-surface text-text-default p-8">
-            <Story />
-          </div>
+        <div
+          style={{
+            padding: '2rem',
+            backgroundColor: 'var(--token-color-background-surface)',
+            color: 'var(--token-color-text-default)',
+          }}
+        >
+          <Story />
         </div>
       )
     },
   ],
-  globalTypes: {
-    // theme: {
-    //   description: 'Theme',
-    //   toolbar: {
-    //     title: 'Theme',
-    //     icon: 'circlehollow',
-    //     items: [
-    //       { value: 'light', title: 'Light' },
-    //       { value: 'dark', title: 'Dark' },
-    //     ],
-    //     dynamicTitle: true,
-    //   },
-    // },
-  },
 }
 
 export default preview

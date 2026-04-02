@@ -24,7 +24,7 @@
   border-radius: var(--token-component-input-radius);
   font-size: inherit;
   line-height: var(--token-component-input-line-height);
-  transition: border-color 150ms;
+  transition: border-color var(--token-motion-duration-base) var(--token-motion-easing-standard);
 }
 
 .rudiment-input__field::placeholder {

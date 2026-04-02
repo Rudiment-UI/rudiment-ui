@@ -35,15 +35,15 @@ const meta: Meta<DialogStoryArgs> = {
       description: 'The width of the dialog panel',
       table: { category: 'Appearance' },
     },
-    isDismissable: {
-      control: 'boolean',
-      description: 'Whether the dialog can be closed by clicking the overlay or pressing Escape',
-      table: { category: 'State' },
-    },
     className: {
       control: 'text',
       description: 'Additional CSS class names to apply to the dialog panel',
       table: { category: 'Appearance' },
+    },
+    isDismissable: {
+      control: 'boolean',
+      description: 'Whether the dialog can be closed by clicking the overlay or pressing Escape',
+      table: { category: 'State' },
     },
   },
 }

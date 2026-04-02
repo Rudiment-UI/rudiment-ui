@@ -14,12 +14,6 @@ const meta = {
     },
   },
   argTypes: {
-    size: {
-      control: 'select',
-      options: ['sm', 'base', 'lg'],
-      description: 'The overall text size for the prose content',
-      table: { category: 'Appearance' },
-    },
     as: {
       control: 'text',
       description:
@@ -29,6 +23,12 @@ const meta = {
     children: {
       description: 'The long-form content rendered inside the prose container',
       table: { category: 'Content' },
+    },
+    size: {
+      control: 'select',
+      options: ['sm', 'base', 'lg'],
+      description: 'The overall text size for the prose content',
+      table: { category: 'Appearance' },
     },
     className: {
       description:

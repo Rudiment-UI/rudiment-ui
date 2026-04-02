@@ -14,6 +14,10 @@ const meta = {
     },
   },
   argTypes: {
+    children: {
+      description: 'The content rendered inside the heading',
+      table: { category: 'Content' },
+    },
     level: {
       control: { type: 'select' },
       options: [1, 2, 3, 4, 5, 6],
@@ -27,10 +31,6 @@ const meta = {
       description:
         'The visual size of the heading, independent of semantic level. Defaults to match the level.',
       table: { category: 'Appearance' },
-    },
-    children: {
-      description: 'The content rendered inside the heading',
-      table: { category: 'Content' },
     },
     className: {
       description: 'Additional CSS class names to apply to the heading element',

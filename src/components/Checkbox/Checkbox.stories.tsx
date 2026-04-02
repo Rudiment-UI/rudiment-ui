@@ -26,6 +26,12 @@ const meta = {
       description: 'The label text displayed next to the checkbox',
       table: { category: 'Content' },
     },
+    className: {
+      control: 'text',
+      description:
+        'Additional CSS class names to apply to the checkbox wrapper',
+      table: { category: 'Appearance' },
+    },
     isSelected: {
       control: 'boolean',
       description: 'Whether the checkbox is checked (controlled)',
@@ -57,12 +63,6 @@ const meta = {
       action: 'changed',
       description: 'Called when the checked state changes',
       table: { category: 'Events' },
-    },
-    className: {
-      control: 'text',
-      description:
-        'Additional CSS class names to apply to the checkbox wrapper',
-      table: { category: 'Appearance' },
     },
   },
 } satisfies Meta<typeof Checkbox>

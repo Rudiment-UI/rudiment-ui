@@ -25,7 +25,7 @@
   font-size: inherit;
   line-height: var(--token-component-select-trigger-line-height);
   cursor: pointer;
-  transition: border-color 150ms;
+  transition: border-color var(--token-motion-duration-base) var(--token-motion-easing-standard);
 }
 
 .rudiment-select__trigger:focus-visible {

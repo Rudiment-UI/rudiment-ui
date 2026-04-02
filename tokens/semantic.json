@@ -13,10 +13,13 @@
       "on-inverted": { "$value": "{color.neutral.0}" }
     },
     "background": {
-      "surface": { "$value": "{color.neutral.0}" },
+      "surface-base": { "$value": "{color.neutral.0}" },
+      "surface": { "$value": "{color.background.surface-base}" },
       "surface-raised": { "$value": "{color.neutral.50}" },
+      "surface-sunken": { "$value": "{color.neutral.100}" },
+      "surface-overlay": { "$value": "rgb(0 0 0 / 0.5)" },
       "disabled": { "$value": "{color.neutral.100}" },
-      "overlay": { "$value": "rgb(0 0 0 / 0.5)" },
+      "overlay": { "$value": "{color.background.surface-overlay}" },
       "inverted": { "$value": "{color.neutral.900}" }
     },
     "border": {
@@ -40,6 +43,16 @@
       "info-surface": { "$value": "{color.blue.50}" },
       "info-border": { "$value": "{color.blue.100}" },
       "info-text": { "$value": "{color.blue.700}" }
+    },
+    "dataviz": {
+      "series-1": { "$value": "{color.dataviz.1}" },
+      "series-2": { "$value": "{color.dataviz.2}" },
+      "series-3": { "$value": "{color.dataviz.3}" },
+      "series-4": { "$value": "{color.dataviz.4}" },
+      "series-5": { "$value": "{color.dataviz.5}" },
+      "series-6": { "$value": "{color.dataviz.6}" },
+      "series-7": { "$value": "{color.dataviz.7}" },
+      "series-8": { "$value": "{color.dataviz.8}" }
     }
   }
 }

@@ -21,6 +21,11 @@ const meta = {
     children: 'Button',
   },
   argTypes: {
+    children: {
+      control: 'text',
+      description: 'The text or content displayed inside the button',
+      table: { category: 'Content' },
+    },
     variant: {
       control: 'select',
       options: ['primary', 'secondary', 'destructive', 'ghost'],
@@ -33,6 +38,11 @@ const meta = {
       description: 'The size of the button',
       table: { category: 'Appearance' },
     },
+    className: {
+      control: 'text',
+      description: 'Additional CSS class names to apply to the button',
+      table: { category: 'Appearance' },
+    },
     isLoading: {
       control: 'boolean',
       description:
@@ -43,16 +53,6 @@ const meta = {
       control: 'boolean',
       description: 'Whether the button is disabled and non-interactive',
       table: { category: 'State' },
-    },
-    children: {
-      control: 'text',
-      description: 'The text or content displayed inside the button',
-      table: { category: 'Content' },
-    },
-    className: {
-      control: 'text',
-      description: 'Additional CSS class names to apply to the button',
-      table: { category: 'Appearance' },
     },
     onPress: {
       action: 'pressed',

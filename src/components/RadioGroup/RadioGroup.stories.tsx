@@ -78,6 +78,12 @@ const meta = {
         'Whether the radio options are stacked vertically or laid out horizontally',
       table: { category: 'Appearance' },
     },
+    className: {
+      control: 'text',
+      description:
+        'Additional CSS class names to apply to the radio group wrapper',
+      table: { category: 'Appearance' },
+    },
     isDisabled: {
       control: 'boolean',
       description: 'Whether the entire group is disabled and non-interactive',
@@ -97,12 +103,6 @@ const meta = {
       action: 'changed',
       description: 'Called when the selected radio option changes',
       table: { category: 'Events' },
-    },
-    className: {
-      control: 'text',
-      description:
-        'Additional CSS class names to apply to the radio group wrapper',
-      table: { category: 'Appearance' },
     },
   },
 } as Meta<typeof RadioGroup>

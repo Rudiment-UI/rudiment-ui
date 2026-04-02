@@ -18,11 +18,15 @@ const meta = {
     invert: false,
   },
   argTypes: {
-    padding: {
+    as: {
       control: 'text',
       description:
-        "Inner spacing using any CSS length value (e.g., '1rem', '2rem')",
-      table: { category: 'Layout' },
+        "The HTML element to render (e.g., 'div', 'section', 'article')",
+      table: { category: 'Content' },
+    },
+    children: {
+      table: { category: 'Content' },
+      description: 'Content to display inside the box',
     },
     bordered: {
       control: 'boolean',
@@ -34,15 +38,11 @@ const meta = {
       description: 'Swaps foreground and background colors for visual emphasis',
       table: { category: 'Appearance' },
     },
-    as: {
+    padding: {
       control: 'text',
       description:
-        "The HTML element to render (e.g., 'div', 'section', 'article')",
-      table: { category: 'Content' },
-    },
-    children: {
-      table: { category: 'Content' },
-      description: 'Content to display inside the box',
+        "Inner spacing using any CSS length value (e.g., '1rem', '2rem')",
+      table: { category: 'Layout' },
     },
   },
 } satisfies Meta<typeof Box>

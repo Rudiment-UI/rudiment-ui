@@ -7,8 +7,8 @@
   border: 1px solid transparent;
   cursor: pointer;
   transition:
-    background-color 150ms,
-    color 150ms;
+    background-color var(--token-motion-duration-base) var(--token-motion-easing-standard),
+    color var(--token-motion-duration-base) var(--token-motion-easing-standard);
 }
 
 .rudiment-icon-button:focus-visible {

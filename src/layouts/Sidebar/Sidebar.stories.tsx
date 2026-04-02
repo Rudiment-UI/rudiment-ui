@@ -18,6 +18,21 @@ const meta = {
     noStretch: false,
   },
   argTypes: {
+    as: {
+      control: 'text',
+      description: 'The HTML element to render',
+      table: { category: 'Content' },
+    },
+    children: {
+      table: { category: 'Content' },
+      description: 'Content to display inside the sidebar layout',
+    },
+    noStretch: {
+      control: 'boolean',
+      description:
+        'Prevents children from stretching to fill the container height',
+      table: { category: 'Appearance' },
+    },
     side: {
       control: 'radio',
       options: ['left', 'right'],
@@ -40,21 +55,6 @@ const meta = {
       control: 'text',
       description: 'Gap between sidebar and content',
       table: { category: 'Layout' },
-    },
-    noStretch: {
-      control: 'boolean',
-      description:
-        'Prevents children from stretching to fill the container height',
-      table: { category: 'Appearance' },
-    },
-    as: {
-      control: 'text',
-      description: 'The HTML element to render',
-      table: { category: 'Content' },
-    },
-    children: {
-      table: { category: 'Content' },
-      description: 'Content to display inside the sidebar layout',
     },
   },
 } satisfies Meta<typeof Sidebar>

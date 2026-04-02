@@ -14,6 +14,15 @@ const meta = {
     },
   },
   argTypes: {
+    as: {
+      control: 'text',
+      description: 'The HTML element to render',
+      table: { category: 'Content' },
+    },
+    children: {
+      table: { category: 'Content' },
+      description: 'Content to display inside the switcher layout',
+    },
     threshold: {
       control: 'text',
       description:
@@ -30,15 +39,6 @@ const meta = {
       description:
         'Maximum number of items before the layout forces a vertical stack',
       table: { category: 'Layout' },
-    },
-    as: {
-      control: 'text',
-      description: 'The HTML element to render',
-      table: { category: 'Content' },
-    },
-    children: {
-      table: { category: 'Content' },
-      description: 'Content to display inside the switcher layout',
     },
   },
 } satisfies Meta<typeof Switcher>

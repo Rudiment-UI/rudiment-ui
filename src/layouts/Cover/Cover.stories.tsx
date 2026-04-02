@@ -14,6 +14,15 @@ const meta = {
     },
   },
   argTypes: {
+    as: {
+      control: 'text',
+      description: 'The HTML element to render',
+      table: { category: 'Content' },
+    },
+    children: {
+      table: { category: 'Content' },
+      description: 'Content to display inside the cover layout',
+    },
     minHeight: {
       control: 'text',
       description:
@@ -25,15 +34,6 @@ const meta = {
       description:
         'Vertical padding inside the cover using any CSS length value',
       table: { category: 'Layout' },
-    },
-    as: {
-      control: 'text',
-      description: 'The HTML element to render',
-      table: { category: 'Content' },
-    },
-    children: {
-      table: { category: 'Content' },
-      description: 'Content to display inside the cover layout',
     },
   },
 } satisfies Meta<typeof Cover>

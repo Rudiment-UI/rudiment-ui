@@ -72,8 +72,8 @@
   border-radius: var(--token-component-radio-control-radius);
   background-color: var(--token-component-radio-control-bg);
   transition:
-    background-color 150ms,
-    border-color 150ms;
+    background-color var(--token-motion-duration-base) var(--token-motion-easing-standard),
+    border-color var(--token-motion-duration-base) var(--token-motion-easing-standard);
 }
 
 .rudiment-radio__input:focus-visible + .rudiment-radio__control {

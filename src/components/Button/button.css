@@ -7,8 +7,8 @@
   border-radius: var(--token-component-button-radius);
   cursor: pointer;
   transition:
-    background-color 150ms,
-    color 150ms;
+    background-color var(--token-motion-duration-base) var(--token-motion-easing-standard),
+    color var(--token-motion-duration-base) var(--token-motion-easing-standard);
   border: 1px solid transparent;
 }
 
@@ -81,7 +81,7 @@
   border: 2px solid currentColor;
   border-right-color: transparent;
   border-radius: 50%;
-  animation: rudiment-spin 600ms linear infinite;
+  animation: rudiment-spin var(--token-motion-duration-spinner) linear infinite;
 }
 
 @keyframes rudiment-spin {

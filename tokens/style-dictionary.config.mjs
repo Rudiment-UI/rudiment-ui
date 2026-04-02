@@ -1,5 +1,9 @@
 export default {
-  source: ['tokens/**/*.json'],
+  source: [
+    'tokens/tokens.json',
+    'tokens/semantic.json',
+    'tokens/components.json',
+  ],
   platforms: {
     css: {
       transformGroup: 'css',

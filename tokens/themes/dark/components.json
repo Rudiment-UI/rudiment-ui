@@ -1,0 +1,11 @@
+{
+  "component": {
+    "tooltip": {
+      "bg": { "$value": "{color.neutral.200}" },
+      "text": { "$value": "{color.neutral.900}" }
+    },
+    "dialog": {
+      "bg": { "$value": "{color.background.surface-raised}" }
+    }
+  }
+}

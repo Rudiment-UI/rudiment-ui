@@ -7,7 +7,7 @@
     "dev": "storybook dev -p 6006",
     "build": "vite build",
     "build-storybook": "storybook build",
-    "build:tokens": "style-dictionary build --config tokens/style-dictionary.config.mjs",
+    "build:tokens": "style-dictionary build --config tokens/style-dictionary.config.mjs && style-dictionary build --config tokens/style-dictionary.config.dark.mjs",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "test:watch": "vitest --watch"

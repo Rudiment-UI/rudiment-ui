@@ -37,8 +37,8 @@
   border-radius: var(--token-component-checkbox-control-radius);
   background-color: var(--token-component-checkbox-control-bg);
   transition:
-    background-color 150ms,
-    border-color 150ms;
+    background-color var(--token-motion-duration-base) var(--token-motion-easing-standard),
+    border-color var(--token-motion-duration-base) var(--token-motion-easing-standard);
 }
 
 .rudiment-checkbox__input:focus-visible + .rudiment-checkbox__control {

@@ -81,6 +81,11 @@ const meta: Meta<SelectStoryArgs> = {
       description: 'Validation error message displayed below the select',
       table: { category: 'Content' },
     },
+    className: {
+      control: 'text',
+      description: 'Additional CSS class names to apply to the select wrapper',
+      table: { category: 'Appearance' },
+    },
     selectedKey: {
       control: false,
       description: 'The currently selected option key (controlled)',
@@ -105,11 +110,6 @@ const meta: Meta<SelectStoryArgs> = {
       action: 'selectionChanged',
       description: 'Called when the selected option changes',
       table: { category: 'Events' },
-    },
-    className: {
-      control: 'text',
-      description: 'Additional CSS class names to apply to the select wrapper',
-      table: { category: 'Appearance' },
     },
   },
 }

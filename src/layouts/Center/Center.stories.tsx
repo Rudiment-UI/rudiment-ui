@@ -17,6 +17,21 @@ const meta = {
     intrinsic: false,
   },
   argTypes: {
+    as: {
+      control: 'text',
+      description: 'The HTML element to render',
+      table: { category: 'Content' },
+    },
+    children: {
+      table: { category: 'Content' },
+      description: 'Content to display inside the center layout',
+    },
+    intrinsic: {
+      control: 'boolean',
+      description:
+        'When enabled, children shrink-wrap to their content width instead of filling the container',
+      table: { category: 'Appearance' },
+    },
     maxWidth: {
       control: 'text',
       description:
@@ -28,21 +43,6 @@ const meta = {
       description:
         "Horizontal padding on each side to prevent content touching edges (e.g., '1rem')",
       table: { category: 'Layout' },
-    },
-    intrinsic: {
-      control: 'boolean',
-      description:
-        'When enabled, children shrink-wrap to their content width instead of filling the container',
-      table: { category: 'Appearance' },
-    },
-    as: {
-      control: 'text',
-      description: 'The HTML element to render',
-      table: { category: 'Content' },
-    },
-    children: {
-      table: { category: 'Content' },
-      description: 'Content to display inside the center layout',
     },
   },
 } satisfies Meta<typeof Center>

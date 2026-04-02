@@ -14,12 +14,6 @@ const meta = {
     },
   },
   argTypes: {
-    variant: {
-      control: 'select',
-      options: ['body', 'body-sm', 'caption', 'overline', 'code'],
-      description: 'The typographic style to apply',
-      table: { category: 'Appearance' },
-    },
     as: {
       control: 'text',
       description:
@@ -29,6 +23,12 @@ const meta = {
     children: {
       description: 'The content rendered inside the text element',
       table: { category: 'Content' },
+    },
+    variant: {
+      control: 'select',
+      options: ['body', 'body-sm', 'caption', 'overline', 'code'],
+      description: 'The typographic style to apply',
+      table: { category: 'Appearance' },
     },
     className: {
       description: 'Additional CSS class names to apply to the text element',
