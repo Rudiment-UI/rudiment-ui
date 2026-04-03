@@ -3,6 +3,7 @@ export { cn } from './utils/cn'
 
 // Hooks
 export { useLoadingButton } from './hooks/useLoadingButton'
+export { useChartTheme } from './hooks/useChartTheme'
 
 // Components
 export { Button } from './components/Button/Button'
@@ -66,6 +67,32 @@ export type { StatCardProps } from './components/StatCard/StatCard'
 
 export { NavItem } from './components/NavItem/NavItem'
 export type { NavItemProps } from './components/NavItem/NavItem'
+
+export { CircularProgress } from './components/CircularProgress/CircularProgress'
+export type { CircularProgressProps } from './components/CircularProgress/CircularProgress'
+
+export { BarChart } from './components/Charts/BarChart/BarChart'
+export type { BarChartProps } from './components/Charts/BarChart/BarChart'
+
+export { LineChart } from './components/Charts/LineChart/LineChart'
+export type { LineChartProps } from './components/Charts/LineChart/LineChart'
+
+export { DonutChart } from './components/Charts/DonutChart/DonutChart'
+export type { DonutChartProps, DonutChartDatum } from './components/Charts/DonutChart/DonutChart'
+
+export { KanbanBoard } from './components/Kanban/KanbanBoard'
+export type {
+  KanbanBoardProps,
+  KanbanColumnData,
+  KanbanItem,
+  KanbanCardMoveEvent,
+} from './components/Kanban/KanbanBoard'
+
+export { KanbanColumn } from './components/Kanban/KanbanColumn'
+export type { KanbanColumnProps } from './components/Kanban/KanbanColumn'
+
+export { KanbanCard } from './components/Kanban/KanbanCard'
+export type { KanbanCardProps } from './components/Kanban/KanbanCard'
 
 // Typography
 export { Heading } from './typography/Heading/Heading'

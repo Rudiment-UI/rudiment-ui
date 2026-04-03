@@ -180,75 +180,74 @@ Wrapper component for rendering icons with consistent sizing and color.
 
 ## Phase 3: Specialized Patterns
 
-> **Status: Not started**
+> **Status: Complete**
 
 Higher complexity. Depends on Phase 2 components being stable.
 
 ### 3.1 — Charting Integration Layer
 
-Token-aware wrapper components around a React charting library.
+Token-aware wrapper components around Recharts.
 
-**Library evaluation:**
-- **Recharts** — most React-idiomatic, large community, good for bar/line/donut
-- **Nivo** — more composable, built on D3, better for heatmaps
-- Decision to be made after evaluating bundle size and API ergonomics against our target chart types
+**Library:** Recharts — most React-idiomatic API, declarative JSX components, single package install, `<ResponsiveContainer>` for responsive sizing.
 
-**Components to build:**
-- `BarChart` — categorical comparisons
-- `LineChart` — trends over time
-- `DonutChart` — part-to-whole relationships
-- `HeatmapGrid` — density visualization
+**Components built:**
+- `BarChart` — categorical comparisons (vertical/horizontal layout, stacked/grouped)
+- `LineChart` — trends over time (curved/linear interpolation, configurable dots)
+- `DonutChart` — part-to-whole relationships (configurable inner radius)
+
+**Token injection:** `useChartTheme()` hook resolves CSS custom properties via `getComputedStyle` into Recharts-compatible color strings. Watches `data-theme` attribute changes via MutationObserver for automatic dark mode reactivity.
 
 **Each wrapper provides:**
-- Token-based color props using `color.dataviz.series-*` tokens
+- Token-based color props using `color.dataviz.series-*` tokens (8-color categorical palette)
 - Consistent padding/typography via layout and typography tokens
 - Dark mode support (chart backgrounds, axis colors, legend text all consume tokens)
-- Responsive sizing via container queries or parent-width detection
+- Responsive sizing via Recharts `ResponsiveContainer`
+- `role="img"` and `aria-label` for accessibility
 
-**Tokens needed:** `component.chart.*` — axis colors, grid line colors, label typography, tooltip styling
-**Depends on:** Phase 1 dataviz color ramp, Card (2.6) as common container
+**Tokens:** `component.chart.*` — bg, axis-color, grid-color, label-color, tooltip styling, padding
+**Dependencies:** `recharts`
+**Files:** `src/hooks/useChartTheme.ts`, `src/components/Charts/{BarChart,LineChart,DonutChart}/`
 
 ### 3.2 — Circular Progress
 
 Radial ring indicator for goal/completion tracking (distinct from the charting layer).
 
 **Props:**
-- `value` (0–100)
+- `value` (0–100), `minValue`, `maxValue`
+- `label` — accessible label
+- `showValueLabel` — displays percentage in center
 - `size`: `sm`, `md`, `lg`
-- `strokeWidth` — ring thickness
-- `color` — variant or token reference
-- `children` — center content slot (e.g., percentage label, icon)
+- `variant`: `default`, `success`, `warning`, `error`
+- `children` — center content slot (overrides showValueLabel)
 
-**Implementation:** Standalone SVG component using `stroke-dasharray` / `stroke-dashoffset` for the arc. No charting library dependency.
+**Implementation:** SVG with two `<circle>` elements — track ring and fill arc via `stroke-dasharray`/`stroke-dashoffset`. Animated transitions using motion tokens.
 
-**Tokens needed:** `component.circular-progress.*` — track color, fill color, sizes, stroke widths
+**Tokens:** `component.circular-progress.*` — track-color, fill colors per variant, sizes, stroke widths, label/value typography
 **React Aria:** `useProgressBar` for ARIA semantics (same as linear Progress Bar)
-**Depends on:** Phase 1 tokens, Progress Bar (2.3) for API consistency
+**Files:** `src/components/CircularProgress/`
 
 ### 3.3 — Kanban Surface
 
 Drag-and-drop board with columns and cards.
 
 **Components:**
-- `KanbanBoard` — horizontal scrolling container for columns
-- `KanbanColumn` — vertical droppable lane with header and card list
-- `KanbanCard` — draggable card (builds on Card component)
+- `KanbanBoard` — horizontal scrolling container wrapping `<DndContext>` with pointer and keyboard sensors
+- `KanbanColumn` — vertical droppable lane with header, item count badge, and `<SortableContext>`
+- `KanbanCard` — draggable card with grip-dots drag handle
 
-**DnD approach:**
-- Primary: React Aria's `useDrag` and `useDrop` hooks — keeps the library in the React Aria ecosystem
-- Fallback: `@dnd-kit` if React Aria's DnD primitives prove too limiting for multi-column reorder
+**DnD library:** `@dnd-kit` (core + sortable + utilities) — purpose-built for multi-column sortable patterns with `closestCorners` collision detection.
+
+**API pattern:** `renderCard` render prop gives consumers full control over card contents, composing Badge, Avatar, and other components as needed. Board uses `Object.assign` compound pattern.
 
 **Accessibility:**
-- Keyboard DnD: Space to grab, arrow keys to move, Space to drop
+- Keyboard DnD: Space to grab, arrow keys to move, Space to drop (via `@dnd-kit` keyboard sensor)
 - Live region announcements for drag start, drag over, and drop
-- Focus management after reorder
+- Columns use `role="region"` with `aria-label`
+- Drag handles use `aria-roledescription="sortable"` with descriptive labels
 
-**Props (KanbanBoard):**
-- `columns` — array of column data
-- `onCardMove` — callback with source/destination column and card ID
-
-**Tokens needed:** `component.kanban.*` — column background (surface-sunken), column gap, card gap, drag handle color, drop indicator color
-**Depends on:** Card (2.6), Badge (2.1), Avatar (2.2) — cards typically show assignee and status
+**Tokens:** `component.kanban.*` — board-gap, column-bg/radius/padding/min-width, card-bg/border/shadow/dragging styles, drag-handle colors, drop-indicator
+**Dependencies:** `@dnd-kit/core`, `@dnd-kit/sortable`, `@dnd-kit/utilities`
+**Files:** `src/components/Kanban/`
 
 ---
 

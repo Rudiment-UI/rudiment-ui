@@ -11,7 +11,7 @@ Practical do/don't guidance for each interactive component. Following these patt
 ## Alert
 
 - **Do** match the variant to the message severity (for example, `variant="success"` for confirmations, `variant="error"` for problems)
-- **Do** use `isPolite` for non-urgent status updates that don't need to interrupt the user
+- **Do** use `isPolite` for non-urgent status updates that don't need to interrupt you
 - **Don't** use `variant="error"` for informational messages. It causes unnecessary alarm.
 - **Don't** overuse alerts. When everything is highlighted, nothing stands out.
 
@@ -20,8 +20,8 @@ Practical do/don't guidance for each interactive component. Following these patt
 ## Avatar
 
 - **Do** provide a `name` prop so the component can generate initials as a fallback when the image fails to load
-- **Do** use the `status` prop sparingly — it works best for presence indicators (online/offline) or assignment states
-- **Don't** use Avatar without either `src` or `name`. An empty circle with no context is meaningless to users.
+- **Do** use the `status` prop sparingly. It works best for presence indicators (online/offline) or assignment states
+- **Don't** use Avatar without either `src` or `name`. An empty circle with no context is meaningless.
 - **Don't** rely on the image alone for identification. Pair Avatar with a visible name label in lists and profiles.
 
 ---
@@ -31,7 +31,7 @@ Practical do/don't guidance for each interactive component. Following these patt
 - **Do** use to indicate status, counts, or categories (for example, "New", "3", or "Beta")
 - **Do** use the `dot` variant for a minimal presence indicator without text (for example, unread notifications)
 - **Don't** put long text in a Badge. Keep labels to one or two short words.
-- **Don't** use color as the only way to convey meaning. Pair the variant color with a text label so color-blind users can understand the status.
+- **Don't** use color as the only way to convey meaning. Pair the variant color with a text label so color-blind readers can still understand the status.
 
 ---
 
@@ -39,8 +39,8 @@ Practical do/don't guidance for each interactive component. Following these patt
 
 - **Do** use `variant="primary"` for the main action on a page
 - **Do** show a loading state for async actions (like form submissions or API calls)
-- **Don't** use more than one primary button in a section. It creates confusion about what the main action is.
-- **Don't** use the ghost variant for important actions. It's easy to overlook.
+- **Don't** use more than one primary button in a section. Multiple primary buttons create confusion about the main action.
+- **Don't** use the ghost variant for important actions. Ghost buttons are too easy to overlook.
 
 ---
 
@@ -53,6 +53,16 @@ Practical do/don't guidance for each interactive component. Following these patt
 
 ---
 
+## Charts (BarChart, LineChart, DonutChart)
+
+- **Do** provide an `aria-label` that describes the chart's purpose (for example, `aria-label="Monthly revenue by product line"`)
+- **Do** use `BarChart` for categorical comparisons, `LineChart` for trends over time, and `DonutChart` for part-to-whole relationships
+- **Do** limit chart series to 8 or fewer to stay within the dataviz token palette
+- **Don't** mix chart types to represent the same data set. Pick the chart that best fits the data relationship.
+- **Don't** override series colors with custom hex values. The dataviz tokens are designed for accessible contrast in both light and dark mode.
+
+---
+
 ## Checkbox vs Switch
 
 These two components look similar but serve different purposes:
@@ -60,6 +70,16 @@ These two components look similar but serve different purposes:
 - **Do** use **Checkbox** for options in a form that will be submitted (for example, "I agree to the terms")
 - **Do** use **Switch** for settings that take effect immediately (for example, "Enable notifications")
 - **Don't** mix Checkbox and Switch for the same type of interaction within the same interface
+
+---
+
+## CircularProgress
+
+- **Do** provide a `label`. It's required for accessibility and helps everyone understand what's being measured
+- **Do** use `showValueLabel` or the `children` center slot to display the current value, especially for goal-tracking dashboards
+- **Do** use `variant` to communicate status (for example, `variant="error"` when a metric is below threshold)
+- **Don't** use CircularProgress for indeterminate loading, which requires a numeric `value`. Use a spinner instead.
+- **Don't** use both `showValueLabel` and `children` at the same time. The `children` slot overrides the value label.
 
 ---
 
@@ -74,7 +94,7 @@ These two components look similar but serve different purposes:
 
 ## Icon
 
-- **Do** always provide a `label` prop when the icon conveys meaning that is not present in surrounding text
+- **Do** provide a `label` prop when the icon conveys meaning not present in surrounding text
 - **Do** omit `label` when the icon is purely decorative or accompanies visible text (it will be hidden from screen readers)
 - **Don't** use icons without text labels for critical actions unless the icon meaning is universally understood
 - **Don't** override the `color` prop when the icon should inherit its color from the parent text. The default `currentColor` behavior keeps icons in sync.
@@ -83,19 +103,29 @@ These two components look similar but serve different purposes:
 
 ## IconButton
 
-- **Do** always provide a descriptive `aria-label` (for example, `aria-label="Close dialog"`)
+- **Do** provide a descriptive `aria-label` (for example, `aria-label="Close dialog"`)
 - **Do** use when the icon meaning is universally understood (close, search, and menu)
-- **Don't** use without an `aria-label`. Screen reader users will not know what the button does.
+- **Don't** use without an `aria-label`. Screen reader users won't know what the button does.
 - **Don't** use for actions where the icon meaning is ambiguous. Add a visible text label with a regular **Button** instead.
+
+---
+
+## Kanban (KanbanBoard, KanbanColumn, KanbanCard)
+
+- **Do** provide a `renderCard` prop to control card content. Compose with Badge, Avatar, and other components as needed
+- **Do** keep column counts manageable (3–7 columns). Horizontal scrolling with too many columns hurts usability.
+- **Do** test keyboard drag-and-drop: Space to grab, arrow keys to move, Space to drop
+- **Don't** put complex interactive elements (dialogs, forms) inside KanbanCard. Cards should be scannable at a glance.
+- **Don't** use KanbanBoard for simple lists. It's designed for multi-column workflows with drag-and-drop reordering.
 
 ---
 
 ## Input
 
-- **Do** always provide a visible label
+- **Do** provide a visible label
 - **Do** use the `description` prop to give helpful context (for example, "Must be at least 8 characters")
 - **Don't** use placeholder text as a replacement for labels. Placeholders disappear when typing begins.
-- **Don't** hide labels. They are required for accessibility and help all users understand the field.
+- **Don't** hide labels. They're required for accessibility and help everyone understand the field.
 
 ---
 
@@ -110,9 +140,9 @@ These two components look similar but serve different purposes:
 
 ## ProgressBar
 
-- **Do** always provide a `label` — it is required for accessibility and helps all users understand what the bar represents
+- **Do** provide a `label`. It's required for accessibility and helps everyone understand what the bar represents
 - **Do** use `showValueLabel` when users need to know the exact percentage
-- **Don't** use ProgressBar for indeterminate loading. It requires a numeric `value`. Use a spinner or skeleton instead.
+- **Don't** use ProgressBar for indeterminate loading, which requires a numeric `value`. Use a spinner or skeleton instead.
 - **Don't** use `variant="error"` to indicate failure mid-progress. Change the variant only when the final state is an error.
 
 ---
@@ -137,8 +167,8 @@ These two components look similar but serve different purposes:
 
 - **Do** use `trend` to give color context to the `delta` value (green for up, red for down)
 - **Do** keep the `value` prominent and the `label` descriptive but concise
-- **Don't** use StatCard for non-metric content. It is designed for numbers and KPIs, not paragraphs.
-- **Don't** omit the `label`. A number without context ("12,450") means nothing to the user.
+- **Don't** use StatCard for non-metric content. It's designed for numbers and KPIs, not paragraphs.
+- **Don't** omit the `label`. A number without context ("12,450") is meaningless on its own.
 
 ---
 
@@ -155,5 +185,5 @@ These two components look similar but serve different purposes:
 
 - **Do** keep tooltip text brief (under 80 characters)
 - **Do** use tooltips to explain icon-only buttons (for example, a trash icon with a "Delete item" tooltip)
-- **Don't** put interactive content like links or buttons inside tooltips. They are not keyboard-accessible in that context.
-- **Don't** hide essential information in tooltips. If users need the information to complete a task, put it on the page.
+- **Don't** put interactive content like links or buttons inside tooltips. They aren't keyboard-accessible in that context.
+- **Don't** hide essential information in tooltips. If you need the information to complete a task, put it on the page.

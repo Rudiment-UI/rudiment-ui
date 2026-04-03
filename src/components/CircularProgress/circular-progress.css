@@ -1,0 +1,87 @@
+.rudiment-circular-progress {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--token-spacing-1);
+  position: relative;
+}
+
+.rudiment-circular-progress--sm {
+  width: var(--token-component-circular-progress-size-sm);
+}
+
+.rudiment-circular-progress--md {
+  width: var(--token-component-circular-progress-size-md);
+}
+
+.rudiment-circular-progress--lg {
+  width: var(--token-component-circular-progress-size-lg);
+}
+
+.rudiment-circular-progress__svg {
+  width: 100%;
+  height: auto;
+  transform: rotate(-90deg);
+}
+
+.rudiment-circular-progress__track {
+  fill: none;
+  stroke: var(--token-component-circular-progress-track-color);
+}
+
+.rudiment-circular-progress__fill {
+  fill: none;
+  transition: stroke-dashoffset var(--token-motion-duration-slow) var(--token-motion-easing-standard);
+}
+
+.rudiment-circular-progress__fill--default {
+  stroke: var(--token-component-circular-progress-fill-default);
+}
+
+.rudiment-circular-progress__fill--success {
+  stroke: var(--token-component-circular-progress-fill-success);
+}
+
+.rudiment-circular-progress__fill--warning {
+  stroke: var(--token-component-circular-progress-fill-warning);
+}
+
+.rudiment-circular-progress__fill--error {
+  stroke: var(--token-component-circular-progress-fill-error);
+}
+
+.rudiment-circular-progress__center {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  /* Offset for the label below the SVG */
+  margin-bottom: calc(var(--token-component-circular-progress-label-font-size) + var(--token-spacing-1));
+}
+
+.rudiment-circular-progress__value {
+  font-weight: var(--token-font-weight-semibold);
+  color: var(--token-component-circular-progress-label-color);
+}
+
+.rudiment-circular-progress--sm .rudiment-circular-progress__value {
+  font-size: var(--token-component-circular-progress-value-font-size-sm);
+}
+
+.rudiment-circular-progress--md .rudiment-circular-progress__value {
+  font-size: var(--token-component-circular-progress-value-font-size-md);
+}
+
+.rudiment-circular-progress--lg .rudiment-circular-progress__value {
+  font-size: var(--token-component-circular-progress-value-font-size-lg);
+}
+
+.rudiment-circular-progress__label {
+  font-size: var(--token-component-circular-progress-label-font-size);
+  color: var(--token-component-circular-progress-label-color);
+}

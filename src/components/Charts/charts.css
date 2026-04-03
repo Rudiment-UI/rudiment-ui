@@ -1,0 +1,5 @@
+.rudiment-chart {
+  background: var(--token-component-chart-bg);
+  padding: var(--token-component-chart-padding);
+  border-radius: var(--token-component-card-radius);
+}
