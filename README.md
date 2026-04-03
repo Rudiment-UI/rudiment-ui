@@ -4,18 +4,20 @@ A complete, accessible React component library template built on [React Aria](ht
 
 Clone it. Swap the tokens. Ship your design system.
 
-## What's Included
+## What's included
 
 | Category | Components |
 |----------|-----------|
-| **UI Components** | Button, Input, Checkbox, CheckboxGroup, Select, Dialog, Switch, RadioGroup, Tooltip, Alert, IconButton, Badge, Tag, Avatar, Card, Icon, NavItem, ProgressBar, StatCard |
+| **UI Components** | Button, Input, Checkbox, CheckboxGroup, Select, Dialog, Switch, RadioGroup, Tooltip, Alert, IconButton, Badge, Tag, Avatar, Card, Icon, NavItem, ProgressBar, StatCard, CircularProgress |
+| **Charts** | BarChart, LineChart, DonutChart |
+| **Kanban** | KanbanBoard, KanbanColumn, KanbanCard |
 | **Typography** | Heading, Text, Prose |
 | **Layout Primitives** | Box, Stack, Cluster, Grid, Sidebar, Center, Cover, Switcher |
-| **Page Examples** | App Shell, Settings Page, Sign-In Form, Marketing Hero, Sidebar Layout, Article Page, Simple Form, Empty State |
+| **Page Examples** | App Shell, App Header, App Footer, Settings Page, Sign-In Form, Marketing Hero, Sidebar Layout, Article Page, Simple Form, Empty State |
 
-Plus: three-tier design token architecture, light/dark theming, motion tokens, data visualization palette, surface tokens, Vitest test suite with accessibility checks, and interactive Storybook documentation.
+Also included: a three-tier design token architecture, six built-in themes (Default, Teal, and Cyberpunk in light and dark variants), motion tokens, a data visualization palette, surface tokens, a Vitest test suite with accessibility checks, and interactive Storybook documentation.
 
-## Quick Start
+## Quick start
 
 ```bash
 # Clone the template
@@ -31,7 +33,7 @@ npm run dev
 
 Open [http://localhost:6006](http://localhost:6006) to browse components and documentation.
 
-## Customizing for Your Brand
+## Customizing for your brand
 
 1. Edit primitive values in `tokens/tokens.json` (colors, spacing, typography)
 2. Update semantic mappings in `tokens/semantic.json` (brand colors, theme values)
@@ -39,7 +41,7 @@ Open [http://localhost:6006](http://localhost:6006) to browse components and doc
 4. Rebuild tokens: `npm run build:tokens`
 5. Preview changes in Storybook: `npm run dev`
 
-## Using Components
+## Using components
 
 ```tsx
 import { Button, Input, Stack } from 'rudiment-ui'
@@ -56,7 +58,7 @@ function LoginForm() {
 }
 ```
 
-## Available Scripts
+## Available scripts
 
 | Command | Description |
 |---------|------------|
@@ -68,15 +70,15 @@ function LoginForm() {
 | `npm run test:coverage` | Run tests with coverage report |
 | `npm run test:watch` | Run tests in watch mode |
 
-## Project Structure
+## Project structure
 
 ```
 src/
-├── components/     # Interactive UI components (Button, Input, Dialog, etc.)
+├── components/     # Interactive UI components (Button, Input, Dialog, Charts, Kanban, etc.)
 ├── typography/     # Text components (Heading, Text, Prose)
 ├── layouts/        # Layout primitives (Stack, Grid, Sidebar, etc.)
-├── hooks/          # Custom React hooks
-├── utils/          # Utility functions
+├── hooks/          # Custom React hooks (useLoadingButton, useChartTheme)
+├── utils/          # Utility functions (cn)
 ├── docs/           # Storybook MDX documentation pages
 └── stories/        # Example page compositions
 
@@ -93,8 +95,8 @@ tokens/
 - **React Aria** handles accessibility (ARIA attributes, keyboard navigation, focus management)
 - **Tailwind CSS 4** provides utility-first styling
 - **Style Dictionary 4** transforms design tokens into CSS custom properties
-- **Storybook 10** serves as the living documentation and development environment
-- **Vitest** with vitest-axe ensures components pass automated accessibility checks
+- **Storybook 10** provides the documentation and development environment
+- **Vitest** with vitest-axe runs automated accessibility checks on every component
 
 ## Contributing
 
