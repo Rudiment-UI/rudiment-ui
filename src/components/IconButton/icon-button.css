@@ -16,6 +16,25 @@
   outline-offset: 2px;
 }
 
+[data-theme='teal'] .rudiment-icon-button:focus-visible,
+[data-theme='teal-dark'] .rudiment-icon-button:focus-visible {
+  outline: none;
+}
+
+[data-theme='teal'] .rudiment-icon-button:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--token-color-neutral-0),
+    0 0 0 4px var(--token-color-border-focus),
+    inset 0 0 0 1px rgba(10, 13, 18, 0.18);
+}
+
+[data-theme='teal-dark'] .rudiment-icon-button:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--token-color-neutral-600),
+    0 0 0 4px var(--token-color-neutral-50),
+    inset 0 0 0 1px rgba(10, 13, 18, 0.18);
+}
+
 .rudiment-icon-button[aria-disabled='true'] {
   cursor: not-allowed;
   opacity: 0.5;

@@ -8,14 +8,16 @@ Rudiment UI's theming system is built on CSS custom properties generated from JS
 
 ## How theming works
 
-Rudiment UI generates two CSS files from your token definitions:
+Rudiment UI generates CSS files from your token definitions:
 
 | File | Selector | Purpose |
 |---|---|---|
 | `tokens/build/tokens.css` | `:root` | Base (light) theme |
 | `tokens/build/tokens-dark.css` | `[data-theme="dark"]` | Dark theme overrides |
+| `tokens/build/tokens-teal.css` | `[data-theme="teal"]` | Teal light theme |
+| `tokens/build/tokens-teal-dark.css` | `[data-theme="teal-dark"]` | Teal dark theme |
 
-When `data-theme="dark"` is set on an ancestor element, CSS custom properties resolve to their dark values. Components don't need any conditional logic — the cascade handles everything.
+When a `data-theme` attribute is set on an ancestor element, CSS custom properties resolve to that theme's values. Components don't need any conditional logic because the cascade handles everything.
 
 ## Customizing your brand
 
@@ -127,10 +129,12 @@ window.matchMedia('(prefers-color-scheme: dark)')
 
 ### Theme toggle in React
 
-A minimal toggle component:
+A minimal toggle that cycles through all built-in themes:
 
 ```tsx
 import { useState, useEffect } from 'react'
+
+const themes = ['light', 'dark', 'teal', 'teal-dark'] as const
 
 function ThemeToggle() {
   const [theme, setTheme] = useState(() =>
@@ -141,13 +145,14 @@ function ThemeToggle() {
     document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
 
-  return (
-    <button onClick={() => setTheme(t => t === 'light' ? 'dark' : 'light')}>
-      {theme === 'light' ? 'Switch to dark' : 'Switch to light'}
-    </button>
-  )
+  const next = () =>
+    setTheme(t => themes[(themes.indexOf(t) + 1) % themes.length])
+
+  return <button onClick={next}>Theme: {theme}</button>
 }
 ```
+
+If your app only needs light and dark mode, simplify the toggle to switch between two values instead.
 
 ### Persisting the user's choice
 
@@ -155,7 +160,7 @@ Store the selected theme in `localStorage` so it survives page reloads:
 
 ```js
 // Read on load
-const saved = localStorage.getItem('theme')
+const saved = localStorage.getItem('rudiment-theme')
 const systemPref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 const theme = saved || systemPref
 
@@ -164,9 +169,11 @@ document.documentElement.setAttribute('data-theme', theme)
 // Save on change
 function setTheme(value) {
   document.documentElement.setAttribute('data-theme', value)
-  localStorage.setItem('theme', value)
+  localStorage.setItem('rudiment-theme', value)
 }
 ```
+
+This approach works with any `data-theme` value, so it handles custom themes you add later without changes.
 
 ### Customizing dark mode tokens
 
@@ -239,6 +246,31 @@ The same pattern used for dark mode extends to any number of themes. Here's how 
    <html data-theme="high-contrast">
    ```
 
+## Built-in themes
+
+### Teal theme
+
+Rudiment UI ships with a teal theme in both light and dark variants. The teal theme demonstrates how far you can push token-based customization without modifying component code. Compared to the default theme, teal applies a deep teal brand palette, softer border radii, and a skeuomorphic focus ring style that replaces the standard outline with layered `box-shadow` rings.
+
+Activate the teal light theme:
+
+```html
+<html data-theme="teal">
+```
+
+Activate the teal dark theme:
+
+```html
+<html data-theme="teal-dark">
+```
+
+The teal theme tokens live in:
+
+- `tokens/themes/teal/` — light variant (tokens, semantic, components)
+- `tokens/themes/teal-dark/` — dark variant (tokens, semantic, components)
+
+The focus ring overrides are defined in each component's CSS file (for example, `button.css`, `input.css`) under `[data-theme="teal"]` and `[data-theme="teal-dark"]` selectors. This pattern shows how to add theme-specific visual treatments at the component level while keeping token files responsible for colors, spacing, and radii.
+
 ## Overriding tokens without modifying source files
 
 If you're consuming Rudiment UI as a dependency and don't want to fork the token files, you can override CSS custom properties directly:
@@ -273,7 +305,7 @@ This changes only the button without affecting other components that use the bra
 
 ## Previewing themes
 
-Use the theme toggle in the Storybook toolbar to switch between light and dark mode while developing. Every story automatically renders inside a themed wrapper, so you can verify that your token changes look correct in both themes without leaving the browser.
+Use the theme picker in the Storybook toolbar to switch between all four built-in themes (Default Light, Default Dark, Teal Light, Teal Dark) while developing. Every story renders inside a themed wrapper, so you can verify token changes across all themes without leaving the browser.
 
 ## End-to-end workflow
 

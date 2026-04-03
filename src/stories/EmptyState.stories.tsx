@@ -20,7 +20,7 @@ const meta = {
 <Cover minHeight="60vh">
   <Center intrinsic style={{ flex: 1 }}>
     <Stack space="1rem" style={{ textAlign: 'center', maxWidth: '22rem' }}>
-      <Icon icon="lucide:folder-plus" size={48} />
+      <Icon icon="lucide:folder-plus" size={48} style={{ marginInline: 'auto' }} />
       <Heading level={2} size={3}>No projects yet</Heading>
       <Text variant="caption">
         Create your first project to start deploying. It only takes a minute.
@@ -46,10 +46,15 @@ export const EmptyState: Story = {
     <Cover minHeight="60vh">
       <Center intrinsic style={{ flex: 1 }}>
         <Stack space="1rem" style={{ textAlign: 'center', maxWidth: '22rem' }}>
-          <Icon icon="lucide:folder-plus" size={48} />
-          <Heading level={2} size={3}>No projects yet</Heading>
+          <Center>
+            <Icon icon="lucide:folder-plus" size={48} />
+          </Center>
+          <Heading level={2} size={3}>
+            No projects yet
+          </Heading>
           <Text variant="caption">
-            Create your first project to start deploying. It only takes a minute.
+            Create your first project to start deploying. It only takes a
+            minute.
           </Text>
           <Cluster justify="center" space="0.75rem">
             <Button variant="primary">New project</Button>

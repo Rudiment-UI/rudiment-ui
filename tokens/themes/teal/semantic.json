@@ -1,0 +1,58 @@
+{
+  "color": {
+    "brand": {
+      "primary": { "$value": "{color.teal.900}" },
+      "primary-hover": { "$value": "{color.teal.800}" },
+      "primary-active": { "$value": "{color.teal.950}" }
+    },
+    "text": {
+      "default": { "$value": "{color.neutral.900}" },
+      "subtle": { "$value": "{color.neutral.600}" },
+      "disabled": { "$value": "{color.neutral.400}" },
+      "on-brand": { "$value": "{color.neutral.0}" },
+      "on-inverted": { "$value": "{color.neutral.0}" }
+    },
+    "background": {
+      "surface-base": { "$value": "{color.neutral.0}" },
+      "surface": { "$value": "{color.background.surface-base}" },
+      "surface-raised": { "$value": "{color.neutral.50}" },
+      "surface-sunken": { "$value": "{color.neutral.100}" },
+      "surface-overlay": { "$value": "rgb(0 0 0 / 0.5)" },
+      "disabled": { "$value": "{color.neutral.100}" },
+      "overlay": { "$value": "{color.background.surface-overlay}" },
+      "inverted": { "$value": "{color.teal.900}" }
+    },
+    "border": {
+      "default": { "$value": "{color.neutral.200}" },
+      "focus": { "$value": "{color.teal.700}" },
+      "error": { "$value": "{color.red.500}" }
+    },
+    "feedback": {
+      "error": { "$value": "{color.red.800}" },
+      "error-surface": { "$value": "{color.red.50}" },
+      "error-border": { "$value": "{color.red.100}" },
+      "error-text": { "$value": "{color.red.700}" },
+      "success": { "$value": "{color.teal.600}" },
+      "success-surface": { "$value": "{color.teal.50}" },
+      "success-border": { "$value": "{color.teal.100}" },
+      "success-text": { "$value": "{color.teal.800}" },
+      "warning": { "$value": "{color.amber.500}" },
+      "warning-surface": { "$value": "{color.amber.50}" },
+      "warning-border": { "$value": "{color.amber.100}" },
+      "warning-text": { "$value": "{color.amber.700}" },
+      "info-surface": { "$value": "{color.blue.50}" },
+      "info-border": { "$value": "{color.blue.100}" },
+      "info-text": { "$value": "{color.blue.700}" }
+    },
+    "dataviz": {
+      "series-1": { "$value": "{color.teal.500}" },
+      "series-2": { "$value": "{color.dataviz.2}" },
+      "series-3": { "$value": "{color.dataviz.3}" },
+      "series-4": { "$value": "{color.dataviz.4}" },
+      "series-5": { "$value": "{color.dataviz.5}" },
+      "series-6": { "$value": "{color.dataviz.6}" },
+      "series-7": { "$value": "{color.dataviz.7}" },
+      "series-8": { "$value": "{color.dataviz.8}" }
+    }
+  }
+}

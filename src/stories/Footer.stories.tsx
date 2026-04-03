@@ -14,7 +14,12 @@ const meta = {
   <Center>
     <Cluster justify="space-between" align="flex-start">
       <Stack space="0.5rem">
-        <Heading level={2} size={6}>Acme</Heading>
+        <Cluster space="0.25rem" align="center">
+          <Icon icon="game-icons:circle-cage" width="16" height="16" />
+          <Heading level={2} size={3} style={{ margin: 0 }}>
+            Rudiment-UI
+          </Heading>
+        </Cluster>
         <Text variant="caption">Building better software, together.</Text>
       </Stack>
       <Cluster space="3rem" align="flex-start">

@@ -42,8 +42,10 @@ const preview: Preview = {
         title: 'Theme',
         icon: 'paintbrush',
         items: [
-          { value: 'light', title: 'Light', icon: 'sun' },
-          { value: 'dark', title: 'Dark', icon: 'moon' },
+          { value: 'light', title: 'Default Light', icon: 'sun' },
+          { value: 'dark', title: 'Default Dark', icon: 'moon' },
+          { value: 'teal', title: 'Teal Light', icon: 'sun' },
+          { value: 'teal-dark', title: 'Teal Dark', icon: 'moon' },
         ],
         dynamicTitle: true,
       },

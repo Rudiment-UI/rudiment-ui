@@ -1,0 +1,68 @@
+{
+  "component": {
+    "button": {
+      "radius": { "$value": "{radius.md}" },
+      "font-weight": { "$value": "{font.weight.semibold}" }
+    },
+    "icon-button": {
+      "radius": { "$value": "{radius.md}" }
+    },
+    "input": {
+      "radius": { "$value": "{radius.md}" },
+      "placeholder-color": { "$value": "{color.neutral.200}" }
+    },
+    "select": {
+      "trigger-radius": { "$value": "{radius.md}" },
+      "popover-radius": { "$value": "{radius.lg}" },
+      "option-radius": { "$value": "{radius.md}" }
+    },
+    "checkbox": {
+      "control-radius": { "$value": "{radius.sm}" }
+    },
+    "tooltip": {
+      "bg": { "$value": "{color.neutral.100}" },
+      "text": { "$value": "{color.neutral.800}" }
+    },
+    "dialog": {
+      "bg": { "$value": "{color.background.surface-raised}" },
+      "radius": { "$value": "{radius.lg}" },
+      "title-color": { "$value": "{color.neutral.0}" }
+    },
+    "chart": {
+      "bg": { "$value": "{color.background.surface-raised}" }
+    },
+    "kanban": {
+      "card-shadow": { "$value": "0 1px 2px 0 rgb(0 0 0 / 0.2)" },
+      "card-dragging-shadow": { "$value": "0 4px 12px 0 rgb(0 0 0 / 0.4)" }
+    },
+    "card": {
+      "bg": { "$value": "{color.background.surface-raised}" },
+      "elevated-shadow": { "$value": "0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3)" }
+    },
+    "progress": {
+      "default-bar-bg": { "$value": "{color.teal.500}" }
+    },
+    "circular-progress": {
+      "fill-default": { "$value": "{color.teal.500}" }
+    },
+    "nav-item": {
+      "radius": { "$value": "{radius.md}" }
+    },
+    "alert": {
+      "info-text": { "$value": "{color.neutral.0}" },
+      "success-text": { "$value": "{color.neutral.0}" },
+      "warning-text": { "$value": "{color.neutral.0}" },
+      "error-text": { "$value": "{color.neutral.0}" }
+    }
+  },
+  "typography": {
+    "heading": {
+      "1": { "color": { "$value": "{color.neutral.0}" } },
+      "2": { "color": { "$value": "{color.neutral.0}" } },
+      "3": { "color": { "$value": "{color.neutral.0}" } },
+      "4": { "color": { "$value": "{color.neutral.0}" } },
+      "5": { "color": { "$value": "{color.neutral.0}" } },
+      "6": { "color": { "$value": "{color.neutral.0}" } }
+    }
+  }
+}
