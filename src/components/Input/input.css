@@ -36,6 +36,32 @@
   outline-offset: 2px;
 }
 
+[data-theme='teal'] .rudiment-input__field:focus-visible,
+[data-theme='teal-dark'] .rudiment-input__field:focus-visible {
+  outline: none;
+}
+
+[data-theme='teal'] .rudiment-input__field:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--token-color-neutral-0),
+    0 0 0 4px var(--token-color-border-focus),
+    inset 0 0 0 1px rgba(10, 13, 18, 0.18);
+}
+
+[data-theme='teal-dark'] .rudiment-input__field:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--token-color-neutral-600),
+    0 0 0 4px var(--token-color-neutral-50),
+    inset 0 0 0 1px rgba(10, 13, 18, 0.18);
+}
+
+[data-theme='teal'] .rudiment-input__field--error:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--token-color-neutral-0),
+    0 0 0 4px var(--token-color-feedback-error),
+    inset 0 0 0 1px rgba(10, 13, 18, 0.18);
+}
+
 .rudiment-input__field[disabled] {
   background-color: var(--token-component-input-disabled-bg);
   color: var(--token-component-input-disabled-text);

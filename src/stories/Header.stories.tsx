@@ -13,7 +13,12 @@ const meta = {
 <Box as="header" bordered style={{ borderRadius: 0, borderInline: 'none', borderBlockStart: 'none' }}>
   <Center>
     <Cluster justify="space-between" align="center">
-      <Heading level={1} size={4} style={{ margin: 0 }}>Acme</Heading>
+      <Cluster space="0.25rem" align="center">
+        <Icon icon="game-icons:circle-cage" width="20" height="20" />
+        <Heading level={1} size={4} style={{ margin: 0 }}>
+          Rudiment-UI
+        </Heading>
+      </Cluster>
       <Cluster as="nav" space="0.25rem">
         <Button variant="ghost" size="sm">Features</Button>
         <Button variant="ghost" size="sm">Pricing</Button>

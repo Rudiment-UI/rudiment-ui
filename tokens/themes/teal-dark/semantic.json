@@ -1,0 +1,58 @@
+{
+  "color": {
+    "brand": {
+      "primary": { "$value": "{color.teal.900}" },
+      "primary-hover": { "$value": "{color.teal.800}" },
+      "primary-active": { "$value": "{color.teal.950}" }
+    },
+    "text": {
+      "default": { "$value": "{color.neutral.50}" },
+      "subtle": { "$value": "{color.neutral.100}" },
+      "disabled": { "$value": "{color.neutral.400}" },
+      "on-brand": { "$value": "{color.neutral.0}" },
+      "on-inverted": { "$value": "{color.neutral.50}" }
+    },
+    "background": {
+      "surface-base": { "$value": "{color.teal.950}" },
+      "surface": { "$value": "{color.background.surface-base}" },
+      "surface-raised": { "$value": "{color.teal.900}" },
+      "surface-sunken": { "$value": "{color.teal.950}" },
+      "surface-overlay": { "$value": "rgb(0 0 0 / 0.7)" },
+      "disabled": { "$value": "{color.teal.900}" },
+      "overlay": { "$value": "{color.background.surface-overlay}" },
+      "inverted": { "$value": "{color.neutral.0}" }
+    },
+    "border": {
+      "default": { "$value": "{color.teal.700}" },
+      "focus": { "$value": "{color.teal.400}" },
+      "error": { "$value": "{color.red.500}" }
+    },
+    "feedback": {
+      "error": { "$value": "{color.red.500}" },
+      "error-surface": { "$value": "rgb(127 29 29 / 0.3)" },
+      "error-border": { "$value": "{color.red.700}" },
+      "error-text": { "$value": "{color.red.100}" },
+      "success": { "$value": "{color.teal.400}" },
+      "success-surface": { "$value": "rgb(15 118 110 / 0.3)" },
+      "success-border": { "$value": "{color.teal.700}" },
+      "success-text": { "$value": "{color.teal.100}" },
+      "warning": { "$value": "{color.amber.500}" },
+      "warning-surface": { "$value": "rgb(180 83 9 / 0.3)" },
+      "warning-border": { "$value": "{color.amber.700}" },
+      "warning-text": { "$value": "{color.amber.100}" },
+      "info-surface": { "$value": "rgb(30 64 175 / 0.3)" },
+      "info-border": { "$value": "{color.blue.700}" },
+      "info-text": { "$value": "{color.blue.100}" }
+    },
+    "dataviz": {
+      "series-1": { "$value": "#2DD4BF" },
+      "series-2": { "$value": "#E879F9" },
+      "series-3": { "$value": "#FCD34D" },
+      "series-4": { "$value": "#34D399" },
+      "series-5": { "$value": "#F87171" },
+      "series-6": { "$value": "#A78BFA" },
+      "series-7": { "$value": "#22D3EE" },
+      "series-8": { "$value": "#FB923C" }
+    }
+  }
+}

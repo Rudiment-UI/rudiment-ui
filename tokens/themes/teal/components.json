@@ -1,0 +1,31 @@
+{
+  "component": {
+    "button": {
+      "radius": { "$value": "{radius.md}" },
+      "font-weight": { "$value": "{font.weight.semibold}" }
+    },
+    "icon-button": {
+      "radius": { "$value": "{radius.md}" }
+    },
+    "input": {
+      "radius": { "$value": "{radius.md}" }
+    },
+    "select": {
+      "trigger-radius": { "$value": "{radius.md}" },
+      "popover-radius": { "$value": "{radius.lg}" },
+      "option-radius": { "$value": "{radius.md}" }
+    },
+    "checkbox": {
+      "control-radius": { "$value": "{radius.sm}" }
+    },
+    "dialog": {
+      "radius": { "$value": "{radius.lg}" }
+    },
+    "tooltip": {
+      "radius": { "$value": "{radius.md}" }
+    },
+    "nav-item": {
+      "radius": { "$value": "{radius.md}" }
+    }
+  }
+}
