@@ -8,7 +8,7 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 Design tokens are named design decisions stored as data. Instead of hard-coding a color like `#3B82F6` throughout your code, you give it a name like `color.blue.500` and reference that name everywhere. When the value changes, it updates in one place.
 
-Tokens cover colors, spacing, font sizes, border radii, shadows, and more.
+Tokens cover colors, spacing, font sizes, border radii, motion, and more.
 
 ## Three-tier system
 
@@ -23,51 +23,117 @@ These are the raw values — the full palette of options available to the system
 | Token | Value |
 |---|---|
 | `color.blue.500` | `#3B82F6` |
-| `color.gray.900` | `#111827` |
+| `color.neutral.900` | `#171717` |
 | `spacing.4` | `1rem` |
-| `spacing.8` | `2rem` |
+| `motion.duration.base` | `150ms` |
 
 Think of primitives as the complete set of crayons in the box. You probably won't use all of them — that's fine.
+
+#### Motion primitives
+
+Timing and easing values used across all interactive components.
+
+| Token | Value | Usage |
+|---|---|---|
+| `motion.duration.fast` | `100ms` | Micro-interactions |
+| `motion.duration.base` | `150ms` | Buttons, inputs, checkboxes |
+| `motion.duration.slow` | `300ms` | Switches, larger state changes |
+| `motion.duration.spinner` | `600ms` | Loading spinners |
+| `motion.easing.standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | Standard ease curve |
+
+#### Data visualization palette
+
+An 8-color categorical palette for chart series and data visualizations.
+
+| Token | Light | Dark |
+|---|---|---|
+| `color.dataviz.1` | `#2563EB` | `#60A5FA` |
+| `color.dataviz.2` | `#D946EF` | `#E879F9` |
+| `color.dataviz.3` | `#F59E0B` | `#FCD34D` |
+| `color.dataviz.4` | `#10B981` | `#34D399` |
+| `color.dataviz.5` | `#EF4444` | `#F87171` |
+| `color.dataviz.6` | `#8B5CF6` | `#A78BFA` |
+| `color.dataviz.7` | `#06B6D4` | `#22D3EE` |
+| `color.dataviz.8` | `#F97316` | `#FB923C` |
+
+Use the semantic aliases (`color.dataviz.series-1` through `series-8`) in your components so they automatically adjust per theme.
 
 ### 2. Semantic tokens
 
 **File:** `tokens/semantic.json`
 
-These give purpose-based names to primitive values. Instead of saying "use blue 600," you say "use the brand primary color."
+These give purpose-based names to primitive values. Instead of saying "use neutral 900," you say "use the default text color."
 
 | Token | References |
 |---|---|
-| `color.brand.primary` | `color.blue.600` |
-| `color.text.default` | `color.gray.900` |
-| `color.surface.default` | `color.white` |
+| `color.brand.primary` | `color.neutral.900` |
+| `color.text.default` | `color.neutral.900` |
+| `color.background.surface` | `color.neutral.0` |
 
 Semantic tokens are the layer that makes theming possible. A designer can say "change the brand color" and only this layer needs updating.
 
+#### Surface tokens
+
+Surface tokens control background colors at different elevation levels.
+
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `color.background.surface-base` | `#FFFFFF` | `#171717` | Page-level background |
+| `color.background.surface-raised` | `#FAFAFA` | `#262626` | Cards, dialogs, popovers |
+| `color.background.surface-sunken` | `#F5F5F5` | `#171717` | Inset areas, wells |
+| `color.background.surface-overlay` | `rgb(0 0 0 / 0.5)` | `rgb(0 0 0 / 0.7)` | Modal backdrops |
+
 ### 3. Component tokens
 
-**File:** also in `tokens/semantic.json`
+**File:** `tokens/components.json`
 
 These are scoped to individual components and reference semantic tokens.
 
 | Token | References |
 |---|---|
-| `button.background.primary` | `color.brand.primary` |
-| `input.border.default` | `color.border.default` |
+| `component.button.primary-bg` | `color.brand.primary` |
+| `component.input.border` | `color.border.default` |
 
 Component tokens let you fine-tune a specific component without affecting the rest of the system.
 
-## Light and dark mode
+## Dark mode
 
-Semantic tokens have both light and dark values. Switching between themes swaps the semantic token layer — primitive values and component structure stay the same.
+Rudiment UI supports dark mode through a `data-theme` attribute on the document root. Switching themes swaps the semantic token layer. Primitive values and component structure stay the same.
 
-For example:
+### How it works
 
-| Token | Light value | Dark value |
+Dark mode is implemented as a separate set of CSS custom properties scoped to `[data-theme="dark"]`. These are generated from `tokens/themes/dark/semantic.json`, which overrides only the semantic tokens that differ between themes.
+
+Component tokens don't need separate dark values. Because they reference semantic tokens via CSS variables, they automatically resolve to dark values when the theme changes.
+
+### Enabling dark mode
+
+Set the `data-theme` attribute on your root element:
+
+```html
+<html data-theme="dark">
+```
+
+To auto-detect the user's system preference:
+
+```js
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light')
+```
+
+### Customizing dark mode
+
+Edit `tokens/themes/dark/semantic.json` to change how colors resolve in dark mode. For component-specific dark overrides, use `tokens/themes/dark/components.json`. Then run `npm run build:tokens` to regenerate.
+
+### Token resolution example
+
+| Token | Light | Dark |
 |---|---|---|
-| `color.text.default` | `color.gray.900` | `color.gray.100` |
-| `color.surface.default` | `color.white` | `color.gray.900` |
+| `color.text.default` | `neutral.900` (#171717) | `neutral.50` (#FAFAFA) |
+| `color.background.surface` | `neutral.0` (#FFFFFF) | `neutral.900` (#171717) |
+| `color.border.default` | `neutral.200` (#E5E5E5) | `neutral.500` (#737373) |
 
-This means components automatically adapt to the active theme without any changes to their code.
+Components automatically adapt to the active theme without any changes to their code.
 
 ## Naming convention
 
@@ -81,14 +147,29 @@ All tokens become CSS custom properties following this pattern:
 
 - `--token-color-brand-primary`
 - `--token-spacing-4`
-- `--token-font-size-lg`
-- `--token-border-radius-md`
+- `--token-motion-duration-base`
+- `--token-motion-easing-standard`
+- `--token-color-dataviz-series-1`
+
+## Token files
+
+| File | Purpose |
+|---|---|
+| `tokens/tokens.json` | Primitive values (colors, spacing, typography, motion) |
+| `tokens/semantic.json` | Semantic aliases (brand, text, background, border, feedback, dataviz) |
+| `tokens/components.json` | Component-scoped tokens |
+| `tokens/themes/dark/semantic.json` | Dark mode semantic overrides |
+| `tokens/themes/dark/components.json` | Dark mode component overrides |
+| `tokens/build/tokens.css` | Generated CSS (light/base) — do not edit |
+| `tokens/build/tokens-dark.css` | Generated CSS (dark) — do not edit |
 
 ## How to customize
 
-1. **Edit the JSON files** — change values in `tokens/tokens.json` (primitives) or `tokens/semantic.json` (semantic and component tokens)
+1. **Edit the JSON files** — change values in `tokens/tokens.json` (primitives), `tokens/semantic.json` (semantic), or `tokens/components.json` (component-scoped)
 2. **Build tokens** — run `npm run build:tokens` to generate updated CSS custom properties
 3. **See the result** — Storybook and your app will reflect the new values
+
+Use the theme toggle in the Storybook toolbar to preview both light and dark themes.
 
 ## Why tokens matter for handoff
 

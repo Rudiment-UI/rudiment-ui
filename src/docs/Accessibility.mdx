@@ -10,10 +10,10 @@ Every interactive component in Rudiment UI uses Adobe's [React Aria](https://rea
 
 ### What React Aria provides automatically
 
-- **ARIA attributes** — correct roles, states, and properties applied to every component
-- **Keyboard navigation** — full keyboard support following WAI-ARIA design patterns
-- **Focus management** — focus moves to the right place at the right time (for example, into a dialog when it opens)
-- **Screen reader support** — announcements, labels, and descriptions that work across screen readers
+- **Accessible Rich Internet Applications (ARIA) attributes:** correct roles, states, and properties applied to every component
+- **Keyboard navigation:** full keyboard support following WAI-ARIA design patterns
+- **Focus management:** focus moves to the right place at the right time (for example, into a dialog when it opens)
+- **Screen reader support:** announcements, labels, and descriptions that work across screen readers
 
 ## Keyboard support by component
 
@@ -31,11 +31,11 @@ Every component can be operated without a mouse. Here's what keyboard users can 
 
 ## Focus indicators
 
-All interactive elements display a visible focus ring when navigated to via keyboard. These focus indicators meet WCAG 2.1 AA requirements, ensuring that keyboard users always know where they are on the page.
+All interactive elements display a visible focus ring when navigated to via keyboard. These focus indicators meet Web Content Accessibility Guidelines (WCAG) 2.1 AA requirements, so keyboard users always know where they are on the page.
 
 ## Color contrast
 
-Token values have been chosen to meet WCAG 2.1 AA contrast requirements:
+Token values meet WCAG 2.1 AA contrast requirements:
 
 - **Text on backgrounds:** 4.5:1 minimum contrast ratio
 - **UI elements** (borders, icons, controls): 3:1 minimum contrast ratio
@@ -46,16 +46,16 @@ This applies to both light and dark themes.
 
 The **Alert** component uses ARIA live regions to announce messages to screen readers:
 
-- `role="alert"` — for urgent messages that need immediate attention (the default)
-- `role="status"` — for polite, non-urgent updates (set with the `isPolite` prop)
+- `role="alert"`: for urgent messages that need immediate attention (the default)
+- `role="status"`: for polite, non-urgent updates (set with the `isPolite` prop)
 
-This ensures that important information reaches screen reader users even when it appears dynamically on the page.
+This way, important information reaches screen reader users even when it appears dynamically on the page.
 
 ## Testing
 
 Accessibility is verified at two levels:
 
-- **Automated tests** — [vitest-axe](https://github.com/chaance/vitest-axe) runs accessibility checks on every component as part of the test suite. These catch common issues like missing labels, invalid ARIA usage, and contrast problems.
-- **Live audit in Storybook** — the Storybook a11y addon provides a real-time accessibility panel. Open any component story and check the "Accessibility" tab to see the current audit results.
+- **Automated tests:** [vitest-axe](https://github.com/chaance/vitest-axe) runs accessibility checks on every component as part of the test suite. These catch common issues like missing labels, invalid ARIA usage, and contrast problems.
+- **Live audit in Storybook:** the Storybook a11y addon provides a real-time accessibility panel. Open any component story and check the "Accessibility" tab to see the current audit results.
 
 Automated testing catches many issues, but it cannot catch everything. Manual testing with a keyboard and screen reader is always recommended for thorough coverage.
