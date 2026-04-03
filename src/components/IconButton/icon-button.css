@@ -35,6 +35,66 @@
     inset 0 0 0 1px rgba(10, 13, 18, 0.18);
 }
 
+/* Cyberpunk theme: gradient borders + outer glow */
+[data-theme='cyberpunk'] .rudiment-icon-button:focus-visible,
+[data-theme='cyberpunk-dark'] .rudiment-icon-button:focus-visible {
+  outline: none;
+}
+
+[data-theme='cyberpunk'] .rudiment-icon-button--primary {
+  border-image: linear-gradient(135deg, var(--token-color-magenta-300), var(--token-color-cyber-300)) 1;
+  box-shadow: 0 0 10px 0 rgb(230 0 122 / 0.3);
+}
+
+[data-theme='cyberpunk'] .rudiment-icon-button--secondary {
+  border-image: linear-gradient(135deg, var(--token-color-magenta-300), var(--token-color-cyber-300)) 1;
+  box-shadow: 0 0 10px 0 rgb(6 182 212 / 0.2);
+}
+
+[data-theme='cyberpunk'] .rudiment-icon-button--destructive {
+  border-image: linear-gradient(135deg, var(--token-color-magenta-400), var(--token-color-magenta-200)) 1;
+  box-shadow: 0 0 10px 0 rgb(230 0 122 / 0.3);
+}
+
+[data-theme='cyberpunk'] .rudiment-icon-button--ghost {
+  border-image: none;
+  box-shadow: none;
+}
+
+[data-theme='cyberpunk'] .rudiment-icon-button:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--token-color-neutral-0),
+    0 0 0 4px var(--token-color-border-focus),
+    0 0 16px 4px rgb(6 182 212 / 0.4);
+}
+
+[data-theme='cyberpunk-dark'] .rudiment-icon-button--primary {
+  border-image: linear-gradient(135deg, var(--token-color-cyber-400), var(--token-color-magenta-400)) 1;
+  box-shadow: 0 0 12px 0 rgb(255 26 128 / 0.4);
+}
+
+[data-theme='cyberpunk-dark'] .rudiment-icon-button--secondary {
+  border-image: linear-gradient(135deg, var(--token-color-cyber-400), var(--token-color-magenta-400)) 1;
+  box-shadow: 0 0 12px 0 rgb(34 211 238 / 0.3);
+}
+
+[data-theme='cyberpunk-dark'] .rudiment-icon-button--destructive {
+  border-image: linear-gradient(135deg, var(--token-color-magenta-400), var(--token-color-magenta-200)) 1;
+  box-shadow: 0 0 12px 0 rgb(255 26 128 / 0.4);
+}
+
+[data-theme='cyberpunk-dark'] .rudiment-icon-button--ghost {
+  border-image: none;
+  box-shadow: none;
+}
+
+[data-theme='cyberpunk-dark'] .rudiment-icon-button:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--token-color-neutral-700),
+    0 0 0 4px var(--token-color-border-focus),
+    0 0 20px 6px rgb(34 211 238 / 0.5);
+}
+
 .rudiment-icon-button[aria-disabled='true'] {
   cursor: not-allowed;
   opacity: 0.5;

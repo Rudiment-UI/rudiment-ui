@@ -75,7 +75,7 @@ function AppShellRender() {
           </Grid>
 
           <Grid minCellWidth="20rem" space="1rem">
-            <Card>
+            <Card variant="outlined">
               <Card.Header>
                 <Heading level={3} size={5}>Revenue vs Expenses</Heading>
               </Card.Header>
@@ -90,7 +90,7 @@ function AppShellRender() {
                 />
               </Card.Body>
             </Card>
-            <Card>
+            <Card variant="outlined">
               <Card.Header>
                 <Heading level={3} size={5}>Traffic Sources</Heading>
               </Card.Header>
@@ -106,21 +106,21 @@ function AppShellRender() {
           </Grid>
 
           <Grid minCellWidth="12rem" space="1rem">
-            <Card>
+            <Card variant="outlined">
               <Card.Body>
                 <Stack space="0.5rem" style={{ alignItems: 'center' }}>
                   <CircularProgress value={92} label="Uptime" showValueLabel variant="success" size="lg" />
                 </Stack>
               </Card.Body>
             </Card>
-            <Card>
+            <Card variant="outlined">
               <Card.Body>
                 <Stack space="0.5rem" style={{ alignItems: 'center' }}>
                   <CircularProgress value={67} label="CPU usage" showValueLabel variant="warning" size="lg" />
                 </Stack>
               </Card.Body>
             </Card>
-            <Card>
+            <Card variant="outlined">
               <Card.Body>
                 <Stack space="0.5rem" style={{ alignItems: 'center' }}>
                   <CircularProgress value={34} label="Error rate" showValueLabel variant="error" size="lg" />

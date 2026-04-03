@@ -86,3 +86,40 @@
   border-color: var(--token-component-alert-error-border);
   color: var(--token-component-alert-error-text);
 }
+
+/* Cyberpunk theme: gradient alert borders */
+[data-theme='cyberpunk'] .rudiment-alert--info,
+[data-theme='cyberpunk-dark'] .rudiment-alert--info {
+  border-image: linear-gradient(
+    135deg,
+    var(--token-color-cyber-400),
+    var(--token-color-cyber-200)
+  ) 1;
+}
+
+[data-theme='cyberpunk'] .rudiment-alert--success,
+[data-theme='cyberpunk-dark'] .rudiment-alert--success {
+  border-image: linear-gradient(
+    135deg,
+    var(--token-color-green-500),
+    var(--token-color-cyber-400)
+  ) 1;
+}
+
+[data-theme='cyberpunk'] .rudiment-alert--warning,
+[data-theme='cyberpunk-dark'] .rudiment-alert--warning {
+  border-image: linear-gradient(
+    135deg,
+    var(--token-color-amber-500),
+    var(--token-color-magenta-400)
+  ) 1;
+}
+
+[data-theme='cyberpunk'] .rudiment-alert--error,
+[data-theme='cyberpunk-dark'] .rudiment-alert--error {
+  border-image: linear-gradient(
+    135deg,
+    var(--token-color-magenta-400),
+    var(--token-color-magenta-200)
+  ) 1;
+}

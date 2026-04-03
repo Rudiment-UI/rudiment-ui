@@ -16,6 +16,8 @@ Rudiment UI generates CSS files from your token definitions:
 | `tokens/build/tokens-dark.css` | `[data-theme="dark"]` | Dark theme overrides |
 | `tokens/build/tokens-teal.css` | `[data-theme="teal"]` | Teal light theme |
 | `tokens/build/tokens-teal-dark.css` | `[data-theme="teal-dark"]` | Teal dark theme |
+| `tokens/build/tokens-cyberpunk.css` | `[data-theme="cyberpunk"]` | Cyberpunk light theme |
+| `tokens/build/tokens-cyberpunk-dark.css` | `[data-theme="cyberpunk-dark"]` | Cyberpunk dark theme |
 
 When a `data-theme` attribute is set on an ancestor element, CSS custom properties resolve to that theme's values. Components don't need any conditional logic because the cascade handles everything.
 
@@ -134,7 +136,7 @@ A minimal toggle that cycles through all built-in themes:
 ```tsx
 import { useState, useEffect } from 'react'
 
-const themes = ['light', 'dark', 'teal', 'teal-dark'] as const
+const themes = ['light', 'dark', 'teal', 'teal-dark', 'cyberpunk', 'cyberpunk-dark'] as const
 
 function ThemeToggle() {
   const [theme, setTheme] = useState(() =>
@@ -305,7 +307,200 @@ This changes only the button without affecting other components that use the bra
 
 ## Previewing themes
 
-Use the theme picker in the Storybook toolbar to switch between all four built-in themes (Default Light, Default Dark, Teal Light, Teal Dark) while developing. Every story renders inside a themed wrapper, so you can verify token changes across all themes without leaving the browser.
+Use the theme picker in the Storybook toolbar to switch between all six built-in themes (Default Light, Default Dark, Teal Light, Teal Dark, Cyberpunk Light, Cyberpunk Dark) while developing. Every story renders inside a themed wrapper, so you can verify token changes across all themes without leaving the browser.
+
+## Advanced theming
+
+The token system covers colors, typography, spacing, and radii — but some visual effects go beyond what a single CSS custom property can express. The cyberpunk theme demonstrates several advanced techniques that layer CSS overrides on top of the token foundation.
+
+### Custom fonts via Google Fonts
+
+A theme can override the font family token with any web font. The cyberpunk theme uses [Chakra Petch](https://fonts.google.com/specimen/Chakra+Petch), an angular typeface that looks nothing like a business app but remains legible at all sizes.
+
+**Step 1** — Load the font. In Storybook, add a `<link>` tag to `.storybook/preview-head.html`:
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+```
+
+For a production app, add the same tags to your HTML `<head>` or use a bundler plugin.
+
+**Step 2** — Override the font family token in your theme's `tokens.json`:
+
+```json
+{
+  "font": {
+    "family": {
+      "sans": {
+        "$value": "'Chakra Petch', system-ui, sans-serif",
+        "$type": "fontFamily"
+      }
+    }
+  }
+}
+```
+
+**Step 3** — Adjust your Style Dictionary config filter. The default theme configs exclude the `font` category from themed output (since font tokens are typically shared across themes). To include font overrides, remove `'font'` from the excluded categories:
+
+```js
+// Before (default / teal configs)
+const PRIMITIVE_CATEGORIES = new Set(['spacing', 'radius', 'font', 'motion'])
+
+// After (cyberpunk config — allows font-family through)
+const PRIMITIVE_CATEGORIES = new Set(['spacing', 'radius', 'motion'])
+```
+
+Then refine the filter to only emit the font tokens you actually override:
+
+```js
+filter: (token) => {
+  const category = token.path[0]
+  if (PRIMITIVE_CATEGORIES.has(category)) return false
+  // Allow font-family through, skip font-size/weight/lineHeight
+  if (category === 'font') {
+    return token.path[1] === 'family'
+  }
+  // ... rest of filter
+}
+```
+
+### Gradient borders
+
+CSS custom properties store single values, so a token can't hold a gradient. But `border-image` can — and since it's applied via `[data-theme]` selectors, it layers cleanly on top of the token system.
+
+> **Important:** `border-image` does not work with `border-radius`. The cyberpunk theme uses `radius: none` (sharp corners) specifically to enable this technique. If your theme uses rounded corners, use the pseudo-element approach described below instead.
+
+Apply a gradient border to any component that already has a `border`:
+
+```css
+[data-theme='cyberpunk'] .rudiment-card--outlined {
+  border-image: linear-gradient(
+    135deg,
+    var(--token-color-magenta-400),
+    var(--token-color-cyber-400)
+  ) 1;
+}
+
+[data-theme='cyberpunk-dark'] .rudiment-card--outlined {
+  border-image: linear-gradient(
+    135deg,
+    var(--token-color-cyber-400),
+    var(--token-color-magenta-400)
+  ) 1;
+}
+```
+
+The `1` at the end is the `border-image-slice` value — it tells the browser to use the entire gradient as the border. The gradient direction and colors can differ between light and dark variants.
+
+This same pattern works for inputs, selects, buttons, and alerts. For elements with `border: 1px solid transparent` (like buttons), `border-image` replaces the transparent color with the gradient.
+
+#### Gradient borders with rounded corners
+
+If your theme needs both gradients and rounded corners, `border-image` won't work. Use a pseudo-element instead:
+
+```css
+[data-theme='my-theme'] .rudiment-card--outlined {
+  border: none;
+  position: relative;
+}
+
+[data-theme='my-theme'] .rudiment-card--outlined::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px; /* border thickness */
+  border-radius: inherit;
+  background: linear-gradient(135deg, #ff4d9e, #22d3ee);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+```
+
+### Gradient backgrounds
+
+Cards and other surface elements can use gradient backgrounds via `[data-theme]` selectors. Use the `background` shorthand (not `background-color`) so it overrides the token-driven solid color:
+
+```css
+[data-theme='cyberpunk'] .rudiment-card {
+  background: linear-gradient(
+    135deg,
+    var(--token-color-magenta-50) 0%,
+    var(--token-color-neutral-0) 40%,
+    var(--token-color-cyber-50) 100%
+  );
+}
+```
+
+The component tokens still provide a solid `background-color` as a fallback. The CSS `background` shorthand takes precedence when the theme selector matches.
+
+### Outer glow effects
+
+Neon glows are achieved with `box-shadow` using theme color tokens and transparency. Layer multiple shadows for a richer effect:
+
+```css
+/* Subtle dual-tone glow on cards */
+[data-theme='cyberpunk-dark'] .rudiment-card {
+  box-shadow:
+    0 0 16px 0 rgb(6 182 212 / 0.2),
+    0 0 6px 0 rgb(255 26 128 / 0.15);
+}
+
+/* Stronger glow on buttons */
+[data-theme='cyberpunk-dark'] .rudiment-button--primary {
+  box-shadow: 0 0 12px 0 rgb(255 26 128 / 0.4);
+}
+```
+
+When combining glow with focus rings, the focus-visible rule replaces the resting `box-shadow`. Include the glow in the focus state too, but intensify it:
+
+```css
+[data-theme='cyberpunk-dark'] .rudiment-button--primary:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--token-color-neutral-700),
+    0 0 0 4px var(--token-color-border-focus),
+    0 0 20px 6px rgb(255 26 128 / 0.5);
+}
+```
+
+### Cyberpunk theme
+
+Rudiment UI ships with a cyberpunk theme in both light and dark variants. It demonstrates all of the advanced techniques above:
+
+- **Chakra Petch** typeface from Google Fonts
+- **Neon magenta** brand color with **electric cyan** accents
+- **Zero border-radius** on all components for hard, angular edges
+- **Gradient borders** on cards, inputs, selects, buttons, and alerts
+- **Gradient card backgrounds** sweeping from pink through white to cyan (light) or across deep purples (dark)
+- **Outer glow** on cards and buttons using layered `box-shadow`
+- **Neon glow focus rings** that intensify on `:focus-visible`
+
+Activate the cyberpunk light theme:
+
+```html
+<html data-theme="cyberpunk">
+```
+
+Activate the cyberpunk dark theme:
+
+```html
+<html data-theme="cyberpunk-dark">
+```
+
+The cyberpunk theme tokens live in:
+
+- `tokens/themes/cyberpunk/` — light variant (tokens, semantic, components)
+- `tokens/themes/cyberpunk-dark/` — dark variant (tokens, semantic, components)
+
+The CSS overrides for gradient borders, gradient backgrounds, and glow effects are defined in each component's CSS file under `[data-theme="cyberpunk"]` and `[data-theme="cyberpunk-dark"]` selectors. This pattern shows how to push well beyond what tokens alone can express while still building on the token foundation for colors, spacing, and typography.
 
 ## End-to-end workflow
 

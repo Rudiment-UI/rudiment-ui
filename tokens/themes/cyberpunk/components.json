@@ -1,0 +1,59 @@
+{
+  "component": {
+    "button": {
+      "radius": { "$value": "{radius.none}" },
+      "font-weight": { "$value": "{font.weight.bold}" }
+    },
+    "icon-button": {
+      "radius": { "$value": "{radius.none}" }
+    },
+    "input": {
+      "radius": { "$value": "{radius.none}" }
+    },
+    "select": {
+      "trigger-radius": { "$value": "{radius.none}" },
+      "popover-radius": { "$value": "{radius.none}" },
+      "option-radius": { "$value": "{radius.none}" }
+    },
+    "checkbox": {
+      "control-radius": { "$value": "{radius.none}" }
+    },
+    "dialog": {
+      "radius": { "$value": "{radius.none}" }
+    },
+    "tooltip": {
+      "radius": { "$value": "{radius.none}" }
+    },
+    "nav-item": {
+      "radius": { "$value": "{radius.none}" }
+    },
+    "card": {
+      "radius": { "$value": "{radius.none}" },
+      "bg": { "$value": "{color.magenta.50}" },
+      "border": { "$value": "{color.magenta.400}" },
+      "header-border": { "$value": "{color.magenta.200}" },
+      "footer-border": { "$value": "{color.magenta.200}" },
+      "elevated-shadow": { "$value": "0 0 12px 0 rgb(230 0 122 / 0.15), 0 1px 3px 0 rgb(0 0 0 / 0.1)" }
+    },
+    "alert": {
+      "radius": { "$value": "{radius.none}" },
+      "info-border": { "$value": "{color.cyber.400}" },
+      "success-border": { "$value": "{color.green.500}" },
+      "warning-border": { "$value": "{color.amber.500}" },
+      "error-border": { "$value": "{color.magenta.400}" }
+    },
+    "kanban": {
+      "card-border": { "$value": "{color.magenta.300}" },
+      "column-bg": { "$value": "{color.neutral.100}" }
+    },
+    "chart": {
+      "bg": { "$value": "transparent" }
+    },
+    "badge": {
+      "radius": { "$value": "{radius.sm}" }
+    },
+    "tag": {
+      "radius": { "$value": "{radius.sm}" }
+    }
+  }
+}

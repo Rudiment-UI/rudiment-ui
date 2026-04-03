@@ -46,6 +46,8 @@ const preview: Preview = {
           { value: 'dark', title: 'Default Dark', icon: 'moon' },
           { value: 'teal', title: 'Teal Light', icon: 'sun' },
           { value: 'teal-dark', title: 'Teal Dark', icon: 'moon' },
+          { value: 'cyberpunk', title: 'Cyberpunk Light', icon: 'sun' },
+          { value: 'cyberpunk-dark', title: 'Cyberpunk Dark', icon: 'moon' },
         ],
         dynamicTitle: true,
       },

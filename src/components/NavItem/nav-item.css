@@ -54,6 +54,26 @@
     inset 0 0 0 1px rgba(10, 13, 18, 0.18);
 }
 
+/* Cyberpunk theme: neon glow focus rings */
+[data-theme='cyberpunk'] .rudiment-nav-item:focus-visible,
+[data-theme='cyberpunk-dark'] .rudiment-nav-item:focus-visible {
+  outline: none;
+}
+
+[data-theme='cyberpunk'] .rudiment-nav-item:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--token-color-neutral-0),
+    0 0 0 4px var(--token-color-border-focus),
+    0 0 12px 2px var(--token-color-border-focus);
+}
+
+[data-theme='cyberpunk-dark'] .rudiment-nav-item:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--token-color-neutral-700),
+    0 0 0 4px var(--token-color-border-focus),
+    0 0 16px 4px var(--token-color-border-focus);
+}
+
 .rudiment-nav-item[aria-disabled='true'],
 .rudiment-nav-item:disabled {
   opacity: 0.5;

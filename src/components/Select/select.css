@@ -52,6 +52,42 @@
     inset 0 0 0 1px rgba(10, 13, 18, 0.18);
 }
 
+/* Cyberpunk theme: neon glow focus rings */
+[data-theme='cyberpunk'] .rudiment-select__trigger:focus-visible,
+[data-theme='cyberpunk-dark'] .rudiment-select__trigger:focus-visible {
+  outline: none;
+}
+
+[data-theme='cyberpunk'] .rudiment-select__trigger:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--token-color-neutral-0),
+    0 0 0 4px var(--token-color-border-focus),
+    0 0 12px 2px var(--token-color-border-focus);
+}
+
+[data-theme='cyberpunk-dark'] .rudiment-select__trigger:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--token-color-neutral-700),
+    0 0 0 4px var(--token-color-border-focus),
+    0 0 16px 4px var(--token-color-border-focus);
+}
+
+[data-theme='cyberpunk'] .rudiment-select__trigger {
+  border-image: linear-gradient(
+    135deg,
+    var(--token-color-magenta-300),
+    var(--token-color-cyber-300)
+  ) 1;
+}
+
+[data-theme='cyberpunk-dark'] .rudiment-select__trigger {
+  border-image: linear-gradient(
+    135deg,
+    var(--token-color-cyber-500),
+    var(--token-color-magenta-500)
+  ) 1;
+}
+
 .rudiment-select__trigger[aria-disabled='true'],
 .rudiment-select__trigger[disabled] {
   background-color: var(--token-component-select-trigger-disabled-bg);

@@ -49,3 +49,74 @@
   padding: var(--card-padding);
   border-top: 1px solid var(--token-component-card-footer-border);
 }
+
+/* Cyberpunk theme: gradient card backgrounds + outer glow */
+[data-theme='cyberpunk'] .rudiment-card {
+  background:
+    linear-gradient(
+      135deg,
+      var(--token-color-magenta-50) 0%,
+      var(--token-color-neutral-0) 40%,
+      var(--token-color-cyber-50) 100%
+    );
+  box-shadow: 0 0 12px 0 rgb(230 0 122 / 0.15), 0 0 4px 0 rgb(6 182 212 / 0.1);
+}
+
+[data-theme='cyberpunk-dark'] .rudiment-card {
+  background:
+    linear-gradient(
+      135deg,
+      var(--token-color-neutral-800) 0%,
+      var(--token-color-magenta-950) 50%,
+      var(--token-color-neutral-700) 100%
+    );
+  box-shadow: 0 0 16px 0 rgb(6 182 212 / 0.2), 0 0 6px 0 rgb(255 26 128 / 0.15);
+}
+
+[data-theme='cyberpunk'] .rudiment-card--outlined {
+  border-image: linear-gradient(
+    135deg,
+    var(--token-color-magenta-400),
+    var(--token-color-cyber-400)
+  ) 1;
+}
+
+[data-theme='cyberpunk-dark'] .rudiment-card--outlined {
+  border-image: linear-gradient(
+    135deg,
+    var(--token-color-cyber-400),
+    var(--token-color-magenta-400)
+  ) 1;
+}
+
+[data-theme='cyberpunk'] .rudiment-card__header {
+  border-image: linear-gradient(
+    90deg,
+    var(--token-color-magenta-300),
+    var(--token-color-cyber-300)
+  ) 1;
+}
+
+[data-theme='cyberpunk-dark'] .rudiment-card__header {
+  border-image: linear-gradient(
+    90deg,
+    var(--token-color-cyber-500),
+    var(--token-color-magenta-500)
+  ) 1;
+}
+
+[data-theme='cyberpunk'] .rudiment-card__footer {
+  border-image: linear-gradient(
+    90deg,
+    var(--token-color-magenta-300),
+    var(--token-color-cyber-300)
+  ) 1;
+}
+
+[data-theme='cyberpunk-dark'] .rudiment-card__footer {
+  border-image: linear-gradient(
+    90deg,
+    var(--token-color-cyber-500),
+    var(--token-color-magenta-500)
+  ) 1;
+}
