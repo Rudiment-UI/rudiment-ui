@@ -1,12 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Box } from '../layouts/Box/Box'
 import { Center } from '../layouts/Center/Center'
 import { Cover } from '../layouts/Cover/Cover'
 import { Grid } from '../layouts/Grid/Grid'
 import { Stack } from '../layouts/Stack/Stack'
 import { Heading } from '../typography/Heading/Heading'
 import { Text } from '../typography/Text/Text'
+import { StatCard } from '../components/StatCard/StatCard'
+import { ProgressBar } from '../components/ProgressBar/ProgressBar'
 import { AppHeader, AppFooter } from './shared'
 
 const meta = {
@@ -24,16 +25,12 @@ const meta = {
       <Heading level={2}>Dashboard</Heading>
       <Text variant="caption">Welcome back. Here's what's happening today.</Text>
       <Grid minCellWidth="12rem" space="1rem">
-        {['Total users', 'Active sessions', 'Revenue', 'Conversion'].map((label, i) => (
-          <Box key={label} bordered>
-            <Stack space="0.25rem">
-              <Text variant="overline">{label}</Text>
-              <Heading level={3} size={2}>{(i + 1) * 1247}</Heading>
-              <Text variant="caption">↑ {(i + 1) * 3}% from last month</Text>
-            </Stack>
-          </Box>
-        ))}
+        <StatCard label="Total users" value="1,247" delta="+12%" trend="up" />
+        <StatCard label="Active sessions" value="2,494" delta="+6%" trend="up" />
+        <StatCard label="Revenue" value="$3,741" delta="+9%" trend="up" />
+        <StatCard label="Conversion" value="4.2%" delta="-2%" trend="down" />
       </Grid>
+      <ProgressBar label="Storage usage" value={68} showValueLabel variant="default" />
     </Stack>
   </Center>
   <AppFooter />
@@ -56,16 +53,12 @@ export const AppShell: Story = {
           <Heading level={2}>Dashboard</Heading>
           <Text variant="caption">Welcome back. Here's what's happening today.</Text>
           <Grid minCellWidth="12rem" space="1rem">
-            {['Total users', 'Active sessions', 'Revenue', 'Conversion'].map((label, i) => (
-              <Box key={label} bordered>
-                <Stack space="0.25rem">
-                  <Text variant="overline">{label}</Text>
-                  <Heading level={3} size={2}>{(i + 1) * 1247}</Heading>
-                  <Text variant="caption">↑ {(i + 1) * 3}% from last month</Text>
-                </Stack>
-              </Box>
-            ))}
+            <StatCard label="Total users" value="1,247" delta="+12%" trend="up" />
+            <StatCard label="Active sessions" value="2,494" delta="+6%" trend="up" />
+            <StatCard label="Revenue" value="$3,741" delta="+9%" trend="up" />
+            <StatCard label="Conversion" value="4.2%" delta="-2%" trend="down" />
           </Grid>
+          <ProgressBar label="Storage usage" value={68} showValueLabel variant="default" />
         </Stack>
       </Center>
       <AppFooter />

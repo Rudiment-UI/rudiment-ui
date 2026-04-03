@@ -7,6 +7,8 @@ import { Stack } from '../layouts/Stack/Stack'
 import { Heading } from '../typography/Heading/Heading'
 import { Text } from '../typography/Text/Text'
 import { Prose } from '../typography/Prose/Prose'
+import { Avatar } from '../components/Avatar/Avatar'
+import { Tag } from '../components/Tag/Tag'
 import { AppHeader, AppFooter } from './shared'
 
 const meta = {
@@ -22,11 +24,12 @@ const meta = {
   <Center maxWidth="48rem" style={{ paddingBlock: '3rem' }}>
     <Stack space="2rem">
       <Stack space="0.75rem">
-        <Text variant="overline">Engineering</Text>
+        <Tag variant="info">Engineering</Tag>
         <Heading level={1} size={1} style={{ fontSize: '2.25rem', lineHeight: 1.2 }}>
           How we cut build times by 60% with incremental bundling
         </Heading>
-        <Cluster space="1rem" align="center">
+        <Cluster space="0.75rem" align="center">
+          <Avatar name="Jane Smith" size="sm" />
           <Text variant="caption">Jane Smith · March 15, 2026 · 8 min read</Text>
         </Cluster>
       </Stack>
@@ -42,6 +45,7 @@ const meta = {
 
       <Box bordered>
         <Cluster space="1rem" align="center">
+          <Avatar name="Jane Smith" size="md" status="success" />
           <Stack space="0.25rem">
             <Text variant="body-sm" style={{ fontWeight: 600 }}>Jane Smith</Text>
             <Text variant="caption">Staff Engineer at Acme.</Text>
@@ -68,11 +72,12 @@ export const ArticlePage: Story = {
       <Center maxWidth="48rem" style={{ paddingBlock: '3rem' }}>
         <Stack space="2rem">
           <Stack space="0.75rem">
-            <Text variant="overline">Engineering</Text>
+            <Tag variant="info">Engineering</Tag>
             <Heading level={1} size={1} style={{ fontSize: '2.25rem', lineHeight: 1.2 }}>
               How we cut build times by 60% with incremental bundling
             </Heading>
-            <Cluster space="1rem" align="center">
+            <Cluster space="0.75rem" align="center">
+              <Avatar name="Jane Smith" size="sm" />
               <Text variant="caption">Jane Smith · March 15, 2026 · 8 min read</Text>
             </Cluster>
           </Stack>
@@ -114,6 +119,7 @@ export const ArticlePage: Story = {
 
           <Box bordered>
             <Cluster space="1rem" align="center">
+              <Avatar name="Jane Smith" size="md" status="success" />
               <Stack space="0.25rem">
                 <Text variant="body-sm" style={{ fontWeight: 600 }}>Jane Smith</Text>
                 <Text variant="caption">Staff Engineer at Acme. Writes about infrastructure and developer experience.</Text>

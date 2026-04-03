@@ -8,6 +8,8 @@ import { Stack } from '../layouts/Stack/Stack'
 import { Heading } from '../typography/Heading/Heading'
 import { Text } from '../typography/Text/Text'
 import { Alert } from '../components/Alert/Alert'
+import { StatCard } from '../components/StatCard/StatCard'
+import { ProgressBar } from '../components/ProgressBar/ProgressBar'
 import { AppHeader, SidebarNav } from './shared'
 
 const meta = {
@@ -22,16 +24,7 @@ const meta = {
   <AppHeader />
   <Center as="div" style={{ paddingBlock: '2rem' }}>
     <Sidebar sideWidth="14rem" space="2rem">
-      <Box as="nav" style={{ blockSize: '100%' }}>
-        <Stack space="0.25rem">
-          <Text variant="overline" style={{ marginBlockEnd: '0.5rem' }}>Navigation</Text>
-          <Button variant="secondary" style={{ justifyContent: 'flex-start', width: '100%' }}>Overview</Button>
-          <Button variant="ghost" style={{ justifyContent: 'flex-start', width: '100%' }}>Analytics</Button>
-          <Button variant="ghost" style={{ justifyContent: 'flex-start', width: '100%' }}>Projects</Button>
-          <Button variant="ghost" style={{ justifyContent: 'flex-start', width: '100%' }}>Team</Button>
-          <Button variant="ghost" style={{ justifyContent: 'flex-start', width: '100%' }}>Settings</Button>
-        </Stack>
-      </Box>
+      <SidebarNav />
       <Box as="main">
         <Stack>
           <Stack space="0.25rem">
@@ -42,25 +35,11 @@ const meta = {
             Upgrade to unlock unlimited projects and team members.
           </Alert>
           <Grid minCellWidth="14rem" space="1rem">
-            <Box bordered>
-              <Stack space="0.25rem">
-                <Text variant="overline">Deployments</Text>
-                <Heading level={3} size={3}>42</Heading>
-              </Stack>
-            </Box>
-            <Box bordered>
-              <Stack space="0.25rem">
-                <Text variant="overline">Build minutes</Text>
-                <Heading level={3} size={3}>84</Heading>
-              </Stack>
-            </Box>
-            <Box bordered>
-              <Stack space="0.25rem">
-                <Text variant="overline">Bandwidth</Text>
-                <Heading level={3} size={3}>126</Heading>
-              </Stack>
-            </Box>
+            <StatCard label="Deployments" value="42" delta="+8%" trend="up" />
+            <StatCard label="Build minutes" value="84" delta="+12%" trend="up" />
+            <StatCard label="Bandwidth" value="126 GB" delta="-3%" trend="down" />
           </Grid>
+          <ProgressBar label="Build minutes used" value={84} maxValue={100} showValueLabel />
         </Stack>
       </Box>
     </Sidebar>
@@ -92,15 +71,11 @@ export const SidebarLayout: Story = {
                 Upgrade to unlock unlimited projects and team members.
               </Alert>
               <Grid minCellWidth="14rem" space="1rem">
-                {['Deployments', 'Build minutes', 'Bandwidth'].map((label, i) => (
-                  <Box key={label} bordered>
-                    <Stack space="0.25rem">
-                      <Text variant="overline">{label}</Text>
-                      <Heading level={3} size={3}>{(i + 1) * 42}</Heading>
-                    </Stack>
-                  </Box>
-                ))}
+                <StatCard label="Deployments" value="42" delta="+8%" trend="up" />
+                <StatCard label="Build minutes" value="84" delta="+12%" trend="up" />
+                <StatCard label="Bandwidth" value="126 GB" delta="-3%" trend="down" />
               </Grid>
+              <ProgressBar label="Build minutes used" value={84} maxValue={100} showValueLabel />
             </Stack>
           </Box>
         </Sidebar>

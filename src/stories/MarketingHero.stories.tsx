@@ -8,7 +8,10 @@ import { Grid } from '../layouts/Grid/Grid'
 import { Stack } from '../layouts/Stack/Stack'
 import { Heading } from '../typography/Heading/Heading'
 import { Text } from '../typography/Text/Text'
+import { Badge } from '../components/Badge/Badge'
 import { Button } from '../components/Button/Button'
+import { Card } from '../components/Card/Card'
+import { Icon } from '../components/Icon/Icon'
 import { AppHeader, AppFooter } from './shared'
 
 const meta = {
@@ -24,7 +27,9 @@ const meta = {
   <Cover minHeight="80vh">
     <Center intrinsic style={{ flex: 1 }}>
       <Stack space="1.5rem" style={{ textAlign: 'center', maxWidth: '40rem' }}>
-        <Text variant="overline">Now in public beta</Text>
+        <Cluster justify="center">
+          <Badge variant="info">Now in public beta</Badge>
+        </Cluster>
         <Heading level={1} size={1} style={{ fontSize: '3rem', lineHeight: 1.1 }}>
           Build products your users will love
         </Heading>
@@ -49,42 +54,17 @@ const meta = {
           <Text variant="caption">One platform. Zero compromise.</Text>
         </Stack>
         <Grid minCellWidth="16rem" space="1.5rem">
-          <Box bordered>
-            <Stack space="0.5rem">
-              <Heading level={3} size={5}>Instant deploys</Heading>
-              <Text variant="body-sm">Push to any branch and see your changes live in seconds.</Text>
-            </Stack>
-          </Box>
-          <Box bordered>
-            <Stack space="0.5rem">
-              <Heading level={3} size={5}>Team collaboration</Heading>
-              <Text variant="body-sm">Comments, reviews, and approvals — all in one place.</Text>
-            </Stack>
-          </Box>
-          <Box bordered>
-            <Stack space="0.5rem">
-              <Heading level={3} size={5}>Built-in analytics</Heading>
-              <Text variant="body-sm">Know what your users are doing without leaving the dashboard.</Text>
-            </Stack>
-          </Box>
-          <Box bordered>
-            <Stack space="0.5rem">
-              <Heading level={3} size={5}>Role-based access</Heading>
-              <Text variant="body-sm">Grant the right permissions to the right people.</Text>
-            </Stack>
-          </Box>
-          <Box bordered>
-            <Stack space="0.5rem">
-              <Heading level={3} size={5}>Audit logs</Heading>
-              <Text variant="body-sm">Every action is logged and searchable for compliance and debugging.</Text>
-            </Stack>
-          </Box>
-          <Box bordered>
-            <Stack space="0.5rem">
-              <Heading level={3} size={5}>SSO &amp; 2FA</Heading>
-              <Text variant="body-sm">Enterprise-grade security without the enterprise headache.</Text>
-            </Stack>
-          </Box>
+          {features.map(({ title, body, icon }) => (
+            <Card key={title} variant="outlined">
+              <Card.Body>
+                <Stack space="0.5rem">
+                  <Icon icon={icon} size="lg" />
+                  <Heading level={3} size={5}>{title}</Heading>
+                  <Text variant="body-sm">{body}</Text>
+                </Stack>
+              </Card.Body>
+            </Card>
+          ))}
         </Grid>
       </Stack>
     </Center>
@@ -99,6 +79,39 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+const features = [
+  {
+    title: 'Instant deploys',
+    body: 'Push to any branch and see your changes live in seconds.',
+    icon: 'lucide:rocket',
+  },
+  {
+    title: 'Team collaboration',
+    body: 'Comments, reviews, and approvals — all in one place.',
+    icon: 'lucide:message-square',
+  },
+  {
+    title: 'Built-in analytics',
+    body: 'Know what your users are doing without leaving the dashboard.',
+    icon: 'lucide:bar-chart-2',
+  },
+  {
+    title: 'Role-based access',
+    body: 'Grant the right permissions to the right people.',
+    icon: 'lucide:shield',
+  },
+  {
+    title: 'Audit logs',
+    body: 'Every action is logged and searchable for compliance and debugging.',
+    icon: 'lucide:scroll-text',
+  },
+  {
+    title: 'SSO & 2FA',
+    body: 'Enterprise-grade security without the enterprise headache.',
+    icon: 'lucide:lock',
+  },
+]
+
 export const MarketingHero: Story = {
   name: 'Marketing Hero',
   render: () => (
@@ -110,7 +123,9 @@ export const MarketingHero: Story = {
             space="1.5rem"
             style={{ textAlign: 'center', maxWidth: '40rem' }}
           >
-            <Text variant="overline">Now in public beta</Text>
+            <Cluster justify="center">
+              <Badge variant="info">Now in public beta</Badge>
+            </Cluster>
             <Heading
               level={1}
               size={1}
@@ -153,40 +168,18 @@ export const MarketingHero: Story = {
               <Text variant="caption">One platform. Zero compromise.</Text>
             </Stack>
             <Grid minCellWidth="16rem" space="1.5rem">
-              {[
-                {
-                  title: 'Instant deploys',
-                  body: 'Push to any branch and see your changes live in seconds.',
-                },
-                {
-                  title: 'Team collaboration',
-                  body: 'Comments, reviews, and approvals — all in one place.',
-                },
-                {
-                  title: 'Built-in analytics',
-                  body: 'Know what your users are doing without leaving the dashboard.',
-                },
-                {
-                  title: 'Role-based access',
-                  body: 'Grant the right permissions to the right people.',
-                },
-                {
-                  title: 'Audit logs',
-                  body: 'Every action is logged and searchable for compliance and debugging.',
-                },
-                {
-                  title: 'SSO & 2FA',
-                  body: 'Enterprise-grade security without the enterprise headache.',
-                },
-              ].map(({ title, body }) => (
-                <Box key={title} bordered>
-                  <Stack space="0.5rem">
-                    <Heading level={3} size={5}>
-                      {title}
-                    </Heading>
-                    <Text variant="body-sm">{body}</Text>
-                  </Stack>
-                </Box>
+              {features.map(({ title, body, icon }) => (
+                <Card key={title} variant="outlined">
+                  <Card.Body>
+                    <Stack space="0.5rem">
+                      <Icon icon={icon} size="lg" />
+                      <Heading level={3} size={5}>
+                        {title}
+                      </Heading>
+                      <Text variant="body-sm">{body}</Text>
+                    </Stack>
+                  </Card.Body>
+                </Card>
               ))}
             </Grid>
           </Stack>

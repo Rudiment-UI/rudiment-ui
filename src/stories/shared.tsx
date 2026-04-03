@@ -10,6 +10,9 @@ import { Heading } from '../typography/Heading/Heading'
 import { Text } from '../typography/Text/Text'
 import { Stack } from '../layouts/Stack/Stack'
 import { Button } from '../components/Button/Button'
+import { Avatar } from '../components/Avatar/Avatar'
+import { Badge } from '../components/Badge/Badge'
+import { NavItem } from '../components/NavItem/NavItem'
 import { RadioGroupContext } from '../components/RadioGroup/RadioGroup'
 import '../components/RadioGroup/radio-group.css'
 
@@ -36,9 +39,10 @@ export function AppHeader() {
             <Button variant="ghost" size="sm">Pricing</Button>
             <Button variant="ghost" size="sm">Docs</Button>
           </Cluster>
-          <Cluster space="0.5rem">
+          <Cluster space="0.5rem" align="center">
+            <Badge variant="info" size="sm">Beta</Badge>
             <Button variant="secondary" size="sm">Log in</Button>
-            <Button variant="primary" size="sm">Sign up</Button>
+            <Avatar name="Jane Smith" size="sm" status="success" />
           </Cluster>
         </Cluster>
       </Center>
@@ -84,15 +88,24 @@ export function AppFooter() {
 }
 
 export function SidebarNav() {
-  const items = ['Overview', 'Analytics', 'Projects', 'Team', 'Settings']
+  const items = [
+    { label: 'Overview', icon: 'lucide:home' },
+    { label: 'Analytics', icon: 'lucide:bar-chart-2' },
+    { label: 'Projects', icon: 'lucide:folder' },
+    { label: 'Team', icon: 'lucide:users' },
+    { label: 'Settings', icon: 'lucide:settings' },
+  ]
   return (
     <Box as="nav" style={{ blockSize: '100%' }}>
       <Stack space="0.25rem">
         <Text variant="overline" style={{ marginBlockEnd: '0.5rem' }}>Navigation</Text>
         {items.map((item, i) => (
-          <Button key={item} variant={i === 0 ? 'secondary' : 'ghost'} style={{ justifyContent: 'flex-start', width: '100%' }}>
-            {item}
-          </Button>
+          <NavItem
+            key={item.label}
+            label={item.label}
+            icon={item.icon}
+            isActive={i === 0}
+          />
         ))}
       </Stack>
     </Box>

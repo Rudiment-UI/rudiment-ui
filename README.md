@@ -11,6 +11,7 @@ Clone it. Swap the tokens. Ship your design system.
 | **UI Components** | Button, Input, Checkbox, CheckboxGroup, Select, Dialog, Switch, RadioGroup, Tooltip, Alert, IconButton, Badge, Tag, Avatar, Card, Icon, NavItem, ProgressBar, StatCard |
 | **Typography** | Heading, Text, Prose |
 | **Layout Primitives** | Box, Stack, Cluster, Grid, Sidebar, Center, Cover, Switcher |
+| **Page Examples** | App Shell, Settings Page, Sign-In Form, Marketing Hero, Sidebar Layout, Article Page, Simple Form, Empty State |
 
 Plus: three-tier design token architecture, light/dark theming, motion tokens, data visualization palette, surface tokens, Vitest test suite with accessibility checks, and interactive Storybook documentation.
 

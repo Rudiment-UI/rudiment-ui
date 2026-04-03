@@ -7,6 +7,7 @@ import { Stack } from '../layouts/Stack/Stack'
 import { Heading } from '../typography/Heading/Heading'
 import { Text } from '../typography/Text/Text'
 import { Button } from '../components/Button/Button'
+import { Icon } from '../components/Icon/Icon'
 
 const meta = {
   title: 'Examples/Empty State',
@@ -19,6 +20,7 @@ const meta = {
 <Cover minHeight="60vh">
   <Center intrinsic style={{ flex: 1 }}>
     <Stack space="1rem" style={{ textAlign: 'center', maxWidth: '22rem' }}>
+      <Icon icon="lucide:folder-plus" size={48} />
       <Heading level={2} size={3}>No projects yet</Heading>
       <Text variant="caption">
         Create your first project to start deploying. It only takes a minute.
@@ -44,6 +46,7 @@ export const EmptyState: Story = {
     <Cover minHeight="60vh">
       <Center intrinsic style={{ flex: 1 }}>
         <Stack space="1rem" style={{ textAlign: 'center', maxWidth: '22rem' }}>
+          <Icon icon="lucide:folder-plus" size={48} />
           <Heading level={2} size={3}>No projects yet</Heading>
           <Text variant="caption">
             Create your first project to start deploying. It only takes a minute.
