@@ -17,6 +17,8 @@ const meta = {
     isDisabled: false,
     defaultSelected: false,
     children: 'Enable notifications',
+    isSelected: false,
+    className: '',
   },
   argTypes: {
     children: {

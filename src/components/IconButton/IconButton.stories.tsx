@@ -72,6 +72,7 @@ const meta = {
     isLoading: false,
     isDisabled: false,
     'aria-label': 'Action',
+    className: '',
   },
   argTypes: {
     'aria-label': {

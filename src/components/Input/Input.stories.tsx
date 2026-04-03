@@ -18,6 +18,11 @@ const meta = {
     type: 'text',
     isRequired: false,
     isDisabled: false,
+    description: '',
+    errorMessage: '',
+    defaultValue: '',
+    className: '',
+    value: '',
   },
   argTypes: {
     label: {
@@ -32,7 +37,8 @@ const meta = {
     },
     description: {
       control: 'text',
-      description: 'Helper text displayed below the input for additional guidance',
+      description:
+        'Helper text displayed below the input for additional guidance',
       table: { category: 'Content' },
     },
     errorMessage: {
@@ -43,7 +49,8 @@ const meta = {
     type: {
       control: 'select',
       options: ['text', 'email', 'password', 'url', 'tel', 'search', 'number'],
-      description: 'The HTML input type, which affects keyboard and validation behavior',
+      description:
+        'The HTML input type, which affects keyboard and validation behavior',
       table: { category: 'Appearance' },
     },
     className: {
@@ -53,7 +60,8 @@ const meta = {
     },
     isRequired: {
       control: 'boolean',
-      description: 'Whether the input is required and shows a required indicator',
+      description:
+        'Whether the input is required and shows a required indicator',
       table: { category: 'State' },
     },
     isDisabled: {

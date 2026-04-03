@@ -49,6 +49,11 @@ const meta = {
     orientation: 'vertical',
     isDisabled: false,
     label: 'Options',
+    description: '',
+    errorMessage: '',
+    value: '',
+    defaultValue: '',
+    className: '',
   },
   argTypes: {
     label: {

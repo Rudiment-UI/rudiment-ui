@@ -28,6 +28,9 @@ Every component can be operated without a mouse. Here's what keyboard users can 
 | **Select**              | Arrow keys to navigate options, `Enter` to select, `Escape` to close       |
 | **Dialog**              | `Tab` cycles focus within the dialog (focus is trapped), `Escape` to close |
 | **Tooltip**             | Appears on focus, `Escape` to dismiss                                      |
+| **Tag**                 | `Space` or `Enter` to activate (when interactive), `Space` or `Enter` on close button to dismiss |
+| **NavItem**             | `Space` or `Enter` to activate (link or button), `Tab` to move between items |
+| **ProgressBar**         | Not interactive — reports progress via `aria-valuenow` to assistive technology |
 
 ## Focus indicators
 
@@ -50,6 +53,19 @@ The **Alert** component uses ARIA live regions to announce messages to screen re
 - `role="status"`: for polite, non-urgent updates (set with the `isPolite` prop)
 
 This way, important information reaches screen reader users even when it appears dynamically on the page.
+
+## Progress reporting
+
+The **ProgressBar** component uses `role="progressbar"` with `aria-valuenow`, `aria-valuemin`, and `aria-valuemax` attributes (provided by React Aria's `useProgressBar` hook). Screen readers announce the current progress value along with the associated label.
+
+## Decorative vs labeled icons
+
+The **Icon** component supports two modes:
+
+- **Labeled:** pass a `label` prop to set `role="img"` and `aria-label`, making the icon announced by screen readers
+- **Decorative:** omit the `label` prop and the icon receives `aria-hidden="true"`, hiding it from assistive technology
+
+Use labeled icons when the icon conveys meaning on its own. Use decorative icons when accompanying visible text.
 
 ## Testing
 

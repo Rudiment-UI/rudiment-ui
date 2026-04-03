@@ -44,6 +44,7 @@
   },
   "homepage": "https://github.com/Rudiment-UI/rudiment-ui#readme",
   "dependencies": {
+    "@iconify/react": "^6.0.2",
     "@react-aria/utils": "^3.33.1",
     "clsx": "^2.1.1",
     "react": "^19.0.0",

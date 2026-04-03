@@ -1,0 +1,34 @@
+.rudiment-stat-card .rudiment-card__body {
+  display: grid;
+  gap: var(--token-component-stat-card-gap);
+}
+
+.rudiment-stat-card__label {
+  font-size: var(--token-component-stat-card-label-font-size);
+  color: var(--token-component-stat-card-label-color);
+  font-weight: var(--token-component-stat-card-label-font-weight);
+}
+
+.rudiment-stat-card__value {
+  font-size: var(--token-component-stat-card-value-font-size);
+  color: var(--token-component-stat-card-value-color);
+  font-weight: var(--token-component-stat-card-value-font-weight);
+  line-height: 1;
+}
+
+.rudiment-stat-card__delta {
+  font-size: var(--token-component-stat-card-delta-font-size);
+  font-weight: var(--token-component-stat-card-delta-font-weight);
+}
+
+.rudiment-stat-card__delta--up {
+  color: var(--token-component-stat-card-delta-up-color);
+}
+
+.rudiment-stat-card__delta--down {
+  color: var(--token-component-stat-card-delta-down-color);
+}
+
+.rudiment-stat-card__delta--neutral {
+  color: var(--token-component-stat-card-delta-neutral-color);
+}

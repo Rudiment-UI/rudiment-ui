@@ -61,7 +61,7 @@ Implemented CSS custom property scoping via `data-theme` attribute.
 
 ## Phase 2: Missing Component Families
 
-> **Status: Not started**
+> **Status: Complete**
 
 Built in priority order. Each component follows the existing pattern: TypeScript component with React Aria, colocated CSS consuming component tokens, Storybook stories, unit tests with accessibility checks, and documentation.
 

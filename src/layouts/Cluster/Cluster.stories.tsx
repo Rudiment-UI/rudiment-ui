@@ -13,6 +13,12 @@ const meta = {
       },
     },
   },
+  args: {
+    as: 'div',
+    space: '0.5rem',
+    justify: 'flex-start',
+    align: 'flex-start',
+  },
   argTypes: {
     as: {
       control: 'text',

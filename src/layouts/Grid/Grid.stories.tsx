@@ -49,6 +49,7 @@ function Placeholder({ label }: { label: string }) {
 }
 
 export const Default: Story = {
+  args: { minCellWidth: '15rem', space: '1rem', as: 'div' },
   render: (args) => (
     <Grid {...args}>
       <Placeholder label="Item 1" />

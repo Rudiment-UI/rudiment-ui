@@ -1,0 +1,78 @@
+/* Badge */
+.rudiment-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--token-component-badge-radius);
+  font-weight: var(--token-component-badge-font-weight);
+  line-height: var(--token-component-badge-line-height);
+}
+
+/* Sizes */
+.rudiment-badge--sm {
+  padding: var(--token-component-badge-padding-y-sm) var(--token-component-badge-padding-x-sm);
+  font-size: var(--token-component-badge-font-size-sm);
+}
+
+.rudiment-badge--md {
+  padding: var(--token-component-badge-padding-y-md) var(--token-component-badge-padding-x-md);
+  font-size: var(--token-component-badge-font-size-md);
+}
+
+/* Variants */
+.rudiment-badge--default {
+  background-color: var(--token-component-badge-default-bg);
+  color: var(--token-component-badge-default-text);
+}
+
+.rudiment-badge--success {
+  background-color: var(--token-component-badge-success-bg);
+  color: var(--token-component-badge-success-text);
+}
+
+.rudiment-badge--warning {
+  background-color: var(--token-component-badge-warning-bg);
+  color: var(--token-component-badge-warning-text);
+}
+
+.rudiment-badge--error {
+  background-color: var(--token-component-badge-error-bg);
+  color: var(--token-component-badge-error-text);
+}
+
+.rudiment-badge--info {
+  background-color: var(--token-component-badge-info-bg);
+  color: var(--token-component-badge-info-text);
+}
+
+/* Dot indicator */
+.rudiment-badge--dot {
+  padding: 0;
+  border-radius: 50%;
+}
+
+.rudiment-badge--dot.rudiment-badge--sm {
+  width: var(--token-component-badge-dot-size-sm);
+  height: var(--token-component-badge-dot-size-sm);
+}
+
+.rudiment-badge--dot.rudiment-badge--md {
+  width: var(--token-component-badge-dot-size-md);
+  height: var(--token-component-badge-dot-size-md);
+}
+
+.rudiment-badge--dot.rudiment-badge--success {
+  background-color: var(--token-color-feedback-success);
+}
+
+.rudiment-badge--dot.rudiment-badge--warning {
+  background-color: var(--token-color-feedback-warning);
+}
+
+.rudiment-badge--dot.rudiment-badge--error {
+  background-color: var(--token-color-feedback-error);
+}
+
+.rudiment-badge--dot.rudiment-badge--info {
+  background-color: var(--token-color-blue-500);
+}

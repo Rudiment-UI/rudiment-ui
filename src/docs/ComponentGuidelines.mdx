@@ -8,6 +8,33 @@ Practical do/don't guidance for each interactive component. Following these patt
 
 ---
 
+## Alert
+
+- **Do** match the variant to the message severity (for example, `variant="success"` for confirmations, `variant="error"` for problems)
+- **Do** use `isPolite` for non-urgent status updates that don't need to interrupt the user
+- **Don't** use `variant="error"` for informational messages. It causes unnecessary alarm.
+- **Don't** overuse alerts. When everything is highlighted, nothing stands out.
+
+---
+
+## Avatar
+
+- **Do** provide a `name` prop so the component can generate initials as a fallback when the image fails to load
+- **Do** use the `status` prop sparingly — it works best for presence indicators (online/offline) or assignment states
+- **Don't** use Avatar without either `src` or `name`. An empty circle with no context is meaningless to users.
+- **Don't** rely on the image alone for identification. Pair Avatar with a visible name label in lists and profiles.
+
+---
+
+## Badge
+
+- **Do** use to indicate status, counts, or categories (for example, "New", "3", or "Beta")
+- **Do** use the `dot` variant for a minimal presence indicator without text (for example, unread notifications)
+- **Don't** put long text in a Badge. Keep labels to one or two short words.
+- **Don't** use color as the only way to convey meaning. Pair the variant color with a text label so color-blind users can understand the status.
+
+---
+
 ## Button
 
 - **Do** use `variant="primary"` for the main action on a page
@@ -17,12 +44,12 @@ Practical do/don't guidance for each interactive component. Following these patt
 
 ---
 
-## Input
+## Card
 
-- **Do** always provide a visible label
-- **Do** use the `description` prop to give helpful context (for example, "Must be at least 8 characters")
-- **Don't** use placeholder text as a replacement for labels. Placeholders disappear when typing begins.
-- **Don't** hide labels. They are required for accessibility and help all users understand the field.
+- **Do** use `variant="outlined"` as the default for most content containers
+- **Do** use `Card.Header` and `Card.Footer` to separate distinct sections (navigation, titles, actions)
+- **Don't** nest Cards inside Cards. It creates visual noise and confusing depth hierarchy.
+- **Don't** use `variant="elevated"` for every card in a dense layout. Reserve elevation for the card that needs emphasis.
 
 ---
 
@@ -36,20 +63,57 @@ These two components look similar but serve different purposes:
 
 ---
 
-## Select
-
-- **Do** provide a clear placeholder like "Choose a color" so users know what to expect
-- **Don't** use Select for fewer than three options. Use **RadioGroup** instead, so users can see all choices at once.
-- **Don't** use Select when users need to compare all options at a glance. RadioGroup makes comparison easier.
-
----
-
 ## Dialog
 
 - **Do** use for confirmations that require user action (for example, "Are you sure you want to delete this?")
 - **Do** provide a clear title and a visible close mechanism
 - **Don't** use for passive notifications. Use **Alert** instead.
 - **Don't** stack multiple dialogs. If a dialog needs to open another dialog, rethink the flow.
+
+---
+
+## Icon
+
+- **Do** always provide a `label` prop when the icon conveys meaning that is not present in surrounding text
+- **Do** omit `label` when the icon is purely decorative or accompanies visible text (it will be hidden from screen readers)
+- **Don't** use icons without text labels for critical actions unless the icon meaning is universally understood
+- **Don't** override the `color` prop when the icon should inherit its color from the parent text. The default `currentColor` behavior keeps icons in sync.
+
+---
+
+## IconButton
+
+- **Do** always provide a descriptive `aria-label` (for example, `aria-label="Close dialog"`)
+- **Do** use when the icon meaning is universally understood (close, search, and menu)
+- **Don't** use without an `aria-label`. Screen reader users will not know what the button does.
+- **Don't** use for actions where the icon meaning is ambiguous. Add a visible text label with a regular **Button** instead.
+
+---
+
+## Input
+
+- **Do** always provide a visible label
+- **Do** use the `description` prop to give helpful context (for example, "Must be at least 8 characters")
+- **Don't** use placeholder text as a replacement for labels. Placeholders disappear when typing begins.
+- **Don't** hide labels. They are required for accessibility and help all users understand the field.
+
+---
+
+## NavItem
+
+- **Do** use `href` for real page navigation so the browser handles it natively (and users can right-click to open in a new tab)
+- **Do** use `onPress` for SPA navigation where you control the routing
+- **Don't** provide both `href` and `onPress` for the same navigation action. Pick the appropriate mechanism.
+- **Don't** use NavItem outside of a sidebar or navigation context. For in-page actions, use **Button** instead.
+
+---
+
+## ProgressBar
+
+- **Do** always provide a `label` — it is required for accessibility and helps all users understand what the bar represents
+- **Do** use `showValueLabel` when users need to know the exact percentage
+- **Don't** use ProgressBar for indeterminate loading. It requires a numeric `value`. Use a spinner or skeleton instead.
+- **Don't** use `variant="error"` to indicate failure mid-progress. Change the variant only when the final state is an error.
 
 ---
 
@@ -61,12 +125,29 @@ These two components look similar but serve different purposes:
 
 ---
 
-## Alert
+## Select
 
-- **Do** match the variant to the message severity (for example, `variant="success"` for confirmations, `variant="error"` for problems)
-- **Do** use `isPolite` for non-urgent status updates that don't need to interrupt the user
-- **Don't** use `variant="error"` for informational messages. It causes unnecessary alarm.
-- **Don't** overuse alerts. When everything is highlighted, nothing stands out.
+- **Do** provide a clear placeholder like "Choose a color" so users know what to expect
+- **Don't** use Select for fewer than three options. Use **RadioGroup** instead, so users can see all choices at once.
+- **Don't** use Select when users need to compare all options at a glance. RadioGroup makes comparison easier.
+
+---
+
+## StatCard
+
+- **Do** use `trend` to give color context to the `delta` value (green for up, red for down)
+- **Do** keep the `value` prominent and the `label` descriptive but concise
+- **Don't** use StatCard for non-metric content. It is designed for numbers and KPIs, not paragraphs.
+- **Don't** omit the `label`. A number without context ("12,450") means nothing to the user.
+
+---
+
+## Tag
+
+- **Do** use for user-generated labels, filters, or categorization that users may need to add or remove
+- **Do** provide `onDismiss` when users should be able to remove the tag
+- **Don't** use Tag when the label is system-defined and non-removable. Use **Badge** instead.
+- **Don't** mix interactive (`onPress`) and dismissible (`onDismiss`) behavior on the same tag. Pick one interaction model.
 
 ---
 
@@ -76,12 +157,3 @@ These two components look similar but serve different purposes:
 - **Do** use tooltips to explain icon-only buttons (for example, a trash icon with a "Delete item" tooltip)
 - **Don't** put interactive content like links or buttons inside tooltips. They are not keyboard-accessible in that context.
 - **Don't** hide essential information in tooltips. If users need the information to complete a task, put it on the page.
-
----
-
-## IconButton
-
-- **Do** always provide a descriptive `aria-label` (for example, `aria-label="Close dialog"`)
-- **Do** use when the icon meaning is universally understood (close, search, and menu)
-- **Don't** use without an `aria-label`. Screen reader users will not know what the button does.
-- **Don't** use for actions where the icon meaning is ambiguous. Add a visible text label with a regular **Button** instead.

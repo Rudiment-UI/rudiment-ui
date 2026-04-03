@@ -17,6 +17,9 @@ const meta = {
     variant: 'info',
     isPolite: false,
     children: 'This is an alert message.',
+    className: '',
+    dismissible: false,
+    icon: '',
   },
   argTypes: {
     title: {
@@ -27,6 +30,12 @@ const meta = {
     children: {
       control: 'text',
       description: 'The body content of the alert message',
+      table: { category: 'Content' },
+    },
+    icon: {
+      control: 'text',
+      description:
+        'An optional Iconify icon name displayed before the alert content',
       table: { category: 'Content' },
     },
     variant: {
@@ -45,6 +54,17 @@ const meta = {
       description:
         'When true, uses role="status" instead of role="alert" for a less intrusive announcement',
       table: { category: 'State' },
+    },
+    dismissible: {
+      control: 'boolean',
+      description:
+        'When true, renders a close button that removes the alert from the DOM',
+      table: { category: 'State' },
+    },
+    onDismiss: {
+      action: 'dismissed',
+      description: 'Callback fired when the dismiss button is clicked',
+      table: { category: 'Events' },
     },
   },
 } satisfies Meta<typeof Alert>
@@ -91,6 +111,15 @@ export const WithoutTitle: Story = {
   },
 }
 
+export const WithIcon: Story = {
+  args: {
+    variant: 'info',
+    icon: 'mdi:information',
+    title: 'Did you know?',
+    children: 'This alert includes an icon for extra visual emphasis.',
+  },
+}
+
 export const Polite: Story = {
   args: {
     variant: 'success',
@@ -100,19 +129,29 @@ export const Polite: Story = {
   },
 }
 
+export const Dismissible: Story = {
+  args: {
+    variant: 'info',
+    icon: 'mdi:information',
+    title: 'Did you know?',
+    dismissible: true,
+    children: 'This alert can be dismissed by clicking the close button.',
+  },
+}
+
 export const AllVariants: Story = {
   render: ({}) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <Alert variant="info" title="Info">
+      <Alert variant="info" icon="mdi:information" title="Info">
         This is an info alert.
       </Alert>
-      <Alert variant="success" title="Success">
+      <Alert variant="success" icon="mdi:check-circle" title="Success">
         This is a success alert.
       </Alert>
-      <Alert variant="warning" title="Warning">
+      <Alert variant="warning" icon="mdi:alert" title="Warning">
         This is a warning alert.
       </Alert>
-      <Alert variant="error" title="Error">
+      <Alert variant="error" icon="mdi:alert-circle" title="Error">
         This is an error alert.
       </Alert>
     </div>

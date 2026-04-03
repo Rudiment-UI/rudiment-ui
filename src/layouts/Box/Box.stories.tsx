@@ -16,6 +16,8 @@ const meta = {
   args: {
     bordered: false,
     invert: false,
+    padding: '1rem',
+    as: 'div',
   },
   argTypes: {
     as: {

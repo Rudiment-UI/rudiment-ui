@@ -1,0 +1,56 @@
+.rudiment-progress {
+  display: grid;
+  gap: var(--token-spacing-1);
+}
+
+.rudiment-progress__label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.rudiment-progress__label {
+  font-size: var(--token-component-progress-label-font-size);
+  color: var(--token-component-progress-label-color);
+}
+
+.rudiment-progress__value {
+  font-size: var(--token-component-progress-value-font-size);
+  color: var(--token-component-progress-value-color);
+}
+
+.rudiment-progress__track {
+  background-color: var(--token-component-progress-track-bg);
+  border-radius: var(--token-component-progress-track-radius);
+  overflow: hidden;
+}
+
+.rudiment-progress__track--sm {
+  height: var(--token-component-progress-track-height-sm);
+}
+
+.rudiment-progress__track--md {
+  height: var(--token-component-progress-track-height-md);
+}
+
+.rudiment-progress__bar {
+  height: 100%;
+  border-radius: var(--token-component-progress-bar-radius);
+  transition: width var(--token-motion-duration-slow) var(--token-motion-easing-standard);
+}
+
+.rudiment-progress__bar--default {
+  background-color: var(--token-component-progress-default-bar-bg);
+}
+
+.rudiment-progress__bar--success {
+  background-color: var(--token-component-progress-success-bar-bg);
+}
+
+.rudiment-progress__bar--warning {
+  background-color: var(--token-component-progress-warning-bar-bg);
+}
+
+.rudiment-progress__bar--error {
+  background-color: var(--token-component-progress-error-bar-bg);
+}

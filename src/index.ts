@@ -38,6 +38,35 @@ export type { AlertProps } from './components/Alert/Alert'
 export { IconButton } from './components/IconButton/IconButton'
 export type { IconButtonProps } from './components/IconButton/IconButton'
 
+export { Badge } from './components/Badge/Badge'
+export type { BadgeProps } from './components/Badge/Badge'
+
+export { Tag } from './components/Tag/Tag'
+export type { TagProps } from './components/Tag/Tag'
+
+export { Icon } from './components/Icon/Icon'
+export type { IconProps } from './components/Icon/Icon'
+
+export { Card } from './components/Card/Card'
+export type {
+  CardProps,
+  CardHeaderProps,
+  CardBodyProps,
+  CardFooterProps,
+} from './components/Card/Card'
+
+export { ProgressBar } from './components/ProgressBar/ProgressBar'
+export type { ProgressBarProps } from './components/ProgressBar/ProgressBar'
+
+export { Avatar } from './components/Avatar/Avatar'
+export type { AvatarProps } from './components/Avatar/Avatar'
+
+export { StatCard } from './components/StatCard/StatCard'
+export type { StatCardProps } from './components/StatCard/StatCard'
+
+export { NavItem } from './components/NavItem/NavItem'
+export type { NavItemProps } from './components/NavItem/NavItem'
+
 // Typography
 export { Heading } from './typography/Heading/Heading'
 export type { HeadingProps } from './typography/Heading/Heading'

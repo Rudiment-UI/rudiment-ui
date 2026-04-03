@@ -54,6 +54,10 @@ const meta: Meta<SelectStoryArgs> = {
     placeholder: 'Choose a colour',
     isRequired: false,
     isDisabled: false,
+    description: '',
+    errorMessage: '',
+    selectedKey: undefined,
+    className: '',
   },
   argTypes: {
     label: {
@@ -73,7 +77,8 @@ const meta: Meta<SelectStoryArgs> = {
     },
     description: {
       control: 'text',
-      description: 'Helper text displayed below the select for additional guidance',
+      description:
+        'Helper text displayed below the select for additional guidance',
       table: { category: 'Content' },
     },
     errorMessage: {

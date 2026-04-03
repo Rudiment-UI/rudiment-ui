@@ -1,0 +1,78 @@
+/* Tag */
+.rudiment-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--token-component-tag-gap);
+  padding: var(--token-component-tag-padding-y) var(--token-component-tag-padding-x);
+  border-radius: var(--token-component-tag-radius);
+  font-size: var(--token-component-tag-font-size);
+  font-weight: var(--token-component-tag-font-weight);
+  line-height: var(--token-component-tag-line-height);
+  border: 1px solid transparent;
+}
+
+/* Variants */
+.rudiment-tag--default {
+  background-color: var(--token-component-tag-default-bg);
+  color: var(--token-component-tag-default-text);
+  border-color: var(--token-component-tag-default-border-color);
+}
+
+.rudiment-tag--success {
+  background-color: var(--token-component-tag-success-bg);
+  color: var(--token-component-tag-success-text);
+  border-color: var(--token-component-tag-success-border-color);
+}
+
+.rudiment-tag--warning {
+  background-color: var(--token-component-tag-warning-bg);
+  color: var(--token-component-tag-warning-text);
+  border-color: var(--token-component-tag-warning-border-color);
+}
+
+.rudiment-tag--error {
+  background-color: var(--token-component-tag-error-bg);
+  color: var(--token-component-tag-error-text);
+  border-color: var(--token-component-tag-error-border-color);
+}
+
+.rudiment-tag--info {
+  background-color: var(--token-component-tag-info-bg);
+  color: var(--token-component-tag-info-text);
+  border-color: var(--token-component-tag-info-border-color);
+}
+
+/* Interactive */
+.rudiment-tag--interactive {
+  cursor: pointer;
+  transition: background-color var(--token-motion-duration-base) var(--token-motion-easing-standard);
+}
+
+.rudiment-tag--interactive:hover:not([aria-disabled='true']) {
+  filter: brightness(0.95);
+}
+
+/* Disabled */
+.rudiment-tag[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Close button */
+.rudiment-tag__close {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--token-component-tag-close-size);
+  height: var(--token-component-tag-close-size);
+  cursor: pointer;
+  border-radius: var(--token-component-tag-radius);
+  line-height: 1;
+}
+
+.rudiment-tag__close:focus-visible {
+  outline: 2px solid var(--token-component-tag-focus-outline-color);
+  outline-offset: 2px;
+}

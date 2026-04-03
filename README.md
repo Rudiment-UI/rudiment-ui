@@ -8,11 +8,11 @@ Clone it. Swap the tokens. Ship your design system.
 
 | Category | Components |
 |----------|-----------|
-| **UI Components** | Button, Input, Checkbox, CheckboxGroup, Select, Dialog, Switch, RadioGroup, Tooltip, Alert, IconButton |
+| **UI Components** | Button, Input, Checkbox, CheckboxGroup, Select, Dialog, Switch, RadioGroup, Tooltip, Alert, IconButton, Badge, Tag, Avatar, Card, Icon, NavItem, ProgressBar, StatCard |
 | **Typography** | Heading, Text, Prose |
 | **Layout Primitives** | Box, Stack, Cluster, Grid, Sidebar, Center, Cover, Switcher |
 
-Plus: three-tier design token architecture, light/dark theming, Vitest test suite with accessibility checks, and interactive Storybook documentation.
+Plus: three-tier design token architecture, light/dark theming, motion tokens, data visualization palette, surface tokens, Vitest test suite with accessibility checks, and interactive Storybook documentation.
 
 ## Quick Start
 

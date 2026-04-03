@@ -15,6 +15,9 @@ const meta = {
   },
   args: {
     intrinsic: false,
+    maxWidth: '60rem',
+    gutters: '1rem',
+    as: 'div',
   },
   argTypes: {
     as: {
@@ -34,8 +37,7 @@ const meta = {
     },
     maxWidth: {
       control: 'text',
-      description:
-        "The maximum width of the centered content (e.g., '60rem')",
+      description: "The maximum width of the centered content (e.g., '60rem')",
       table: { category: 'Layout' },
     },
     gutters: {

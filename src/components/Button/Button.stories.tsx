@@ -19,6 +19,9 @@ const meta = {
     isLoading: false,
     isDisabled: false,
     children: 'Button',
+    iconBefore: '',
+    iconAfter: '',
+    className: '',
   },
   argTypes: {
     children: {
@@ -37,6 +40,16 @@ const meta = {
       options: ['sm', 'md', 'lg'],
       description: 'The size of the button',
       table: { category: 'Appearance' },
+    },
+    iconBefore: {
+      control: 'text',
+      description: 'Iconify icon name to display before the button label',
+      table: { category: 'Content' },
+    },
+    iconAfter: {
+      control: 'text',
+      description: 'Iconify icon name to display after the button label',
+      table: { category: 'Content' },
     },
     className: {
       control: 'text',
@@ -128,6 +141,28 @@ export const Disabled: Story = {
   args: {
     isDisabled: true,
     children: 'Unavailable',
+  },
+}
+
+export const WithIconBefore: Story = {
+  args: {
+    iconBefore: 'mdi:plus',
+    children: 'Add item',
+  },
+}
+
+export const WithIconAfter: Story = {
+  args: {
+    iconAfter: 'mdi:arrow-right',
+    children: 'Next',
+  },
+}
+
+export const WithBothIcons: Story = {
+  args: {
+    iconBefore: 'mdi:download',
+    iconAfter: 'mdi:arrow-down',
+    children: 'Download',
   },
 }
 

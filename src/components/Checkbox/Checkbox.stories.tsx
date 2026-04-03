@@ -19,6 +19,8 @@ const meta = {
     isIndeterminate: false,
     defaultSelected: false,
     children: 'Checkbox label',
+    isSelected: false,
+    className: '',
   },
   argTypes: {
     children: {

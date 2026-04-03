@@ -13,6 +13,11 @@ const meta = {
       },
     },
   },
+  args: {
+    minHeight: '25rem',
+    space: '2rem',
+    as: 'div',
+  },
   argTypes: {
     as: {
       control: 'text',
@@ -41,7 +46,13 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-function Placeholder({ label, centered }: { label: string; centered?: boolean }) {
+function Placeholder({
+  label,
+  centered,
+}: {
+  label: string
+  centered?: boolean
+}) {
   return (
     <div
       className={
@@ -56,7 +67,6 @@ function Placeholder({ label, centered }: { label: string; centered?: boolean })
 }
 
 export const Default: Story = {
-  args: { minHeight: '400px' },
   render: (args) => (
     <Cover {...args}>
       <Placeholder label="Header" />
@@ -67,7 +77,6 @@ export const Default: Story = {
 }
 
 export const CenteredOnly: Story = {
-  args: { minHeight: '400px' },
   render: (args) => (
     <Cover {...args}>
       <Placeholder label="Centered content" centered />
@@ -76,7 +85,6 @@ export const CenteredOnly: Story = {
 }
 
 export const HeaderAndCentered: Story = {
-  args: { minHeight: '400px' },
   render: (args) => (
     <Cover {...args}>
       <Placeholder label="Header" />

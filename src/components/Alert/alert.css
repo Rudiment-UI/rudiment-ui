@@ -9,6 +9,51 @@
   line-height: var(--token-component-alert-line-height);
 }
 
+.rudiment-alert--has-icon {
+  grid-template-columns: auto 1fr;
+}
+
+.rudiment-alert--dismissible {
+  grid-template-columns: 1fr auto;
+}
+
+.rudiment-alert--has-icon.rudiment-alert--dismissible {
+  grid-template-columns: auto 1fr auto;
+}
+
+.rudiment-alert__dismiss {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+  border-radius: var(--token-component-alert-radius);
+  padding: 0.125rem;
+  align-self: start;
+}
+
+.rudiment-alert__dismiss:hover {
+  opacity: 1;
+}
+
+.rudiment-alert__dismiss:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.rudiment-alert__icon {
+  align-self: start;
+  margin-top: 0.125em;
+  color: inherit;
+}
+
+.rudiment-alert__body {
+  display: grid;
+  gap: var(--token-component-alert-gap);
+}
+
 .rudiment-alert__title {
   font-weight: var(--token-component-alert-title-font-weight);
 }

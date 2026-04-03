@@ -1,0 +1,28 @@
+.rudiment-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--token-component-icon-color);
+  flex-shrink: 0;
+}
+
+.rudiment-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.rudiment-icon--sm {
+  width: var(--token-component-icon-size-sm);
+  height: var(--token-component-icon-size-sm);
+}
+
+.rudiment-icon--md {
+  width: var(--token-component-icon-size-md);
+  height: var(--token-component-icon-size-md);
+}
+
+.rudiment-icon--lg {
+  width: var(--token-component-icon-size-lg);
+  height: var(--token-component-icon-size-lg);
+}
+

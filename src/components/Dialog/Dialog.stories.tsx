@@ -22,6 +22,7 @@ const meta: Meta<DialogStoryArgs> = {
     size: 'md',
     isDismissable: true,
     title: 'Dialog Title',
+    className: '',
   },
   argTypes: {
     title: {
@@ -42,7 +43,8 @@ const meta: Meta<DialogStoryArgs> = {
     },
     isDismissable: {
       control: 'boolean',
-      description: 'Whether the dialog can be closed by clicking the overlay or pressing Escape',
+      description:
+        'Whether the dialog can be closed by clicking the overlay or pressing Escape',
       table: { category: 'State' },
     },
   },
@@ -85,9 +87,20 @@ export const Default: Story = {
           title="Confirm action"
         >
           <p>Are you sure you want to continue? This cannot be undone.</p>
-          <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1.5rem', justifyContent: 'flex-end' }}>
-            <Button variant="secondary" onPress={() => setIsOpen(false)}>Cancel</Button>
-            <Button variant="primary" onPress={() => setIsOpen(false)}>Confirm</Button>
+          <div
+            style={{
+              display: 'flex',
+              gap: '0.5rem',
+              marginTop: '1.5rem',
+              justifyContent: 'flex-end',
+            }}
+          >
+            <Button variant="secondary" onPress={() => setIsOpen(false)}>
+              Cancel
+            </Button>
+            <Button variant="primary" onPress={() => setIsOpen(false)}>
+              Confirm
+            </Button>
           </div>
         </Dialog>
       </>
@@ -131,9 +144,20 @@ export const Small: Story = {
           size="sm"
         >
           <p>This item will be permanently deleted.</p>
-          <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1.5rem', justifyContent: 'flex-end' }}>
-            <Button variant="secondary" onPress={() => setIsOpen(false)}>Cancel</Button>
-            <Button variant="destructive" onPress={() => setIsOpen(false)}>Delete</Button>
+          <div
+            style={{
+              display: 'flex',
+              gap: '0.5rem',
+              marginTop: '1.5rem',
+              justifyContent: 'flex-end',
+            }}
+          >
+            <Button variant="secondary" onPress={() => setIsOpen(false)}>
+              Cancel
+            </Button>
+            <Button variant="destructive" onPress={() => setIsOpen(false)}>
+              Delete
+            </Button>
           </div>
         </Dialog>
       </>
@@ -180,14 +204,32 @@ export const Large: Story = {
           size="lg"
         >
           <p>Please read the following terms carefully before proceeding.</p>
-          <p style={{ marginTop: '1rem', color: 'var(--token-color-text-subtle)', fontSize: '0.875rem' }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          <p
+            style={{
+              marginTop: '1rem',
+              color: 'var(--token-color-text-subtle)',
+              fontSize: '0.875rem',
+            }}
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
           </p>
-          <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1.5rem', justifyContent: 'flex-end' }}>
-            <Button variant="secondary" onPress={() => setIsOpen(false)}>Decline</Button>
-            <Button variant="primary" onPress={() => setIsOpen(false)}>Accept</Button>
+          <div
+            style={{
+              display: 'flex',
+              gap: '0.5rem',
+              marginTop: '1.5rem',
+              justifyContent: 'flex-end',
+            }}
+          >
+            <Button variant="secondary" onPress={() => setIsOpen(false)}>
+              Decline
+            </Button>
+            <Button variant="primary" onPress={() => setIsOpen(false)}>
+              Accept
+            </Button>
           </div>
         </Dialog>
       </>
@@ -222,7 +264,9 @@ export const NonDismissable: Story = {
     const [isOpen, setIsOpen] = useState(false)
     return (
       <>
-        <Button onPress={() => setIsOpen(true)}>Open non-dismissable dialog</Button>
+        <Button onPress={() => setIsOpen(true)}>
+          Open non-dismissable dialog
+        </Button>
         <Dialog
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
@@ -230,8 +274,17 @@ export const NonDismissable: Story = {
           isDismissable={false}
         >
           <p>You must complete this step before continuing.</p>
-          <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1.5rem', justifyContent: 'flex-end' }}>
-            <Button variant="primary" onPress={() => setIsOpen(false)}>Got it</Button>
+          <div
+            style={{
+              display: 'flex',
+              gap: '0.5rem',
+              marginTop: '1.5rem',
+              justifyContent: 'flex-end',
+            }}
+          >
+            <Button variant="primary" onPress={() => setIsOpen(false)}>
+              Got it
+            </Button>
           </div>
         </Dialog>
       </>

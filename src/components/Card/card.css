@@ -1,0 +1,51 @@
+/* Card */
+.rudiment-card {
+  background-color: var(--token-component-card-bg);
+  border-radius: var(--token-component-card-radius);
+  overflow: hidden;
+}
+
+/* Variants */
+.rudiment-card--default {
+  /* bg only, no border */
+}
+
+.rudiment-card--outlined {
+  border: 1px solid var(--token-component-card-border);
+}
+
+.rudiment-card--elevated {
+  box-shadow: var(--token-component-card-elevated-shadow);
+}
+
+/* Padding */
+.rudiment-card--padding-none {
+  --card-padding: var(--token-component-card-padding-none);
+}
+
+.rudiment-card--padding-sm {
+  --card-padding: var(--token-component-card-padding-sm);
+}
+
+.rudiment-card--padding-md {
+  --card-padding: var(--token-component-card-padding-md);
+}
+
+.rudiment-card--padding-lg {
+  --card-padding: var(--token-component-card-padding-lg);
+}
+
+/* Subcomponents */
+.rudiment-card__header {
+  padding: var(--card-padding);
+  border-bottom: 1px solid var(--token-component-card-header-border);
+}
+
+.rudiment-card__body {
+  padding: var(--card-padding);
+}
+
+.rudiment-card__footer {
+  padding: var(--card-padding);
+  border-top: 1px solid var(--token-component-card-footer-border);
+}

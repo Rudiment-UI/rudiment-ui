@@ -1,0 +1,56 @@
+.rudiment-avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--token-component-avatar-radius);
+  overflow: visible;
+  flex-shrink: 0;
+}
+
+.rudiment-avatar--sm {
+  width: var(--token-component-avatar-size-sm);
+  height: var(--token-component-avatar-size-sm);
+  font-size: var(--token-component-avatar-font-size-sm);
+}
+
+.rudiment-avatar--md {
+  width: var(--token-component-avatar-size-md);
+  height: var(--token-component-avatar-size-md);
+  font-size: var(--token-component-avatar-font-size-md);
+}
+
+.rudiment-avatar--lg {
+  width: var(--token-component-avatar-size-lg);
+  height: var(--token-component-avatar-size-lg);
+  font-size: var(--token-component-avatar-font-size-lg);
+}
+
+.rudiment-avatar__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--token-component-avatar-radius);
+}
+
+.rudiment-avatar__initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--token-component-avatar-bg);
+  color: var(--token-component-avatar-text);
+  font-weight: var(--token-component-avatar-font-weight);
+  border-radius: var(--token-component-avatar-radius);
+  user-select: none;
+}
+
+.rudiment-avatar__status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: var(--token-component-avatar-status-size);
+  height: var(--token-component-avatar-status-size);
+  box-shadow: 0 0 0 var(--token-component-avatar-status-border-width) var(--token-component-avatar-status-border-color);
+}
