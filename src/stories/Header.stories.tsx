@@ -24,9 +24,21 @@ const meta = {
         <Button variant="ghost" size="sm">Pricing</Button>
         <Button variant="ghost" size="sm">Docs</Button>
       </Cluster>
-      <Cluster space="0.5rem">
+      <Cluster space="0.5rem" align="center">
+        <Badge variant="info" size="sm">Beta</Badge>
         <Button variant="secondary" size="sm">Log in</Button>
-        <Button variant="primary" size="sm">Sign up</Button>
+        <MenuTrigger>
+          <Button variant="ghost" size="sm" aria-label="User menu">
+            <Avatar name="Jane Smith" size="sm" status="success" />
+          </Button>
+          <Menu onAction={(key) => alert(key)}>
+            <MenuItem id="profile">Profile</MenuItem>
+            <MenuItem id="settings">Settings</MenuItem>
+            <MenuItem id="billing">Billing</MenuItem>
+            <Separator />
+            <MenuItem id="sign-out" isDestructive>Sign out</MenuItem>
+          </Menu>
+        </MenuTrigger>
       </Cluster>
     </Cluster>
   </Center>

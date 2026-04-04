@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Item } from 'react-stately'
+import { Icon } from '@iconify/react'
 
 import { Center } from '../layouts/Center/Center'
 import { Cluster } from '../layouts/Cluster/Cluster'
@@ -17,6 +18,10 @@ import { Input } from '../components/Input/Input'
 import { RadioGroup } from '../components/RadioGroup/RadioGroup'
 import { Select } from '../components/Select/Select'
 import { Switch } from '../components/Switch/Switch'
+import { MenuTrigger } from '../components/Menu/MenuTrigger'
+import { Menu } from '../components/Menu/Menu'
+import { MenuItem } from '../components/Menu/MenuItem'
+import { Separator, Text as AriaText } from 'react-aria-components'
 import { AppHeader, Radio } from './shared'
 
 const meta = {
@@ -50,7 +55,16 @@ const meta = {
               <Input label="Last name" defaultValue="Smith" isRequired />
             </Switcher>
             <Input label="Email address" type="email" defaultValue="jane@example.com" isRequired />
-            <Cluster justify="flex-end">
+            <Cluster justify="flex-end" space="0.5rem">
+              <MenuTrigger>
+                <Button variant="ghost" size="sm" aria-label="More profile actions">⋯</Button>
+                <Menu>
+                  <MenuItem id="upload-photo">Upload photo</MenuItem>
+                  <MenuItem id="export">Export data</MenuItem>
+                  <Separator />
+                  <MenuItem id="reset" isDestructive>Reset to defaults</MenuItem>
+                </Menu>
+              </MenuTrigger>
               <Button variant="primary" size="sm">Save profile</Button>
             </Cluster>
           </Stack>
@@ -155,7 +169,27 @@ export const SettingsPage: Story = {
                   <Input label="Last name" defaultValue="Smith" isRequired />
                 </Switcher>
                 <Input label="Email address" type="email" defaultValue="jane@example.com" isRequired />
-                <Cluster justify="flex-end">
+                <Cluster justify="flex-end" space="0.5rem">
+                  <MenuTrigger>
+                    <Button variant="ghost" size="sm" aria-label="More profile actions">
+                      <Icon icon="lucide:ellipsis" width="16" height="16" />
+                    </Button>
+                    <Menu onAction={(key) => alert(key)}>
+                      <MenuItem id="upload-photo" textValue="Upload photo">
+                        <Icon icon="lucide:camera" className="rudiment-menu__item-icon" />
+                        <AriaText slot="label">Upload photo</AriaText>
+                      </MenuItem>
+                      <MenuItem id="export" textValue="Export data">
+                        <Icon icon="lucide:download" className="rudiment-menu__item-icon" />
+                        <AriaText slot="label">Export data</AriaText>
+                      </MenuItem>
+                      <Separator className="rudiment-menu__separator" />
+                      <MenuItem id="reset" textValue="Reset to defaults" isDestructive>
+                        <Icon icon="lucide:rotate-ccw" className="rudiment-menu__item-icon" />
+                        <AriaText slot="label">Reset to defaults</AriaText>
+                      </MenuItem>
+                    </Menu>
+                  </MenuTrigger>
                   <Button variant="primary" size="sm">Save profile</Button>
                 </Cluster>
               </Stack>

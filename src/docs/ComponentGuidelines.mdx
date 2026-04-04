@@ -110,6 +110,15 @@ These two components look similar but serve different purposes:
 
 ---
 
+## Input
+
+- **Do** provide a visible label
+- **Do** use the `description` prop to give helpful context (for example, "Must be at least 8 characters")
+- **Don't** use placeholder text as a replacement for labels. Placeholders disappear when typing begins.
+- **Don't** hide labels. They're required for accessibility and help everyone understand the field.
+
+---
+
 ## Kanban (KanbanBoard, KanbanColumn, KanbanCard)
 
 - **Do** provide a `renderCard` prop to control card content. Compose with Badge, Avatar, and other components as needed
@@ -120,12 +129,14 @@ These two components look similar but serve different purposes:
 
 ---
 
-## Input
+## Menu (MenuTrigger, Menu, MenuItem, MenuSection)
 
-- **Do** provide a visible label
-- **Do** use the `description` prop to give helpful context (for example, "Must be at least 8 characters")
-- **Don't** use placeholder text as a replacement for labels. Placeholders disappear when typing begins.
-- **Don't** hide labels. They're required for accessibility and help everyone understand the field.
+- **Do** use `MenuTrigger` with a `Button` to open the menu. This ensures proper keyboard and focus handling.
+- **Do** use `MenuSection` with a `title` to group related items when the menu has more than five or six actions
+- **Do** provide a `textValue` on each `MenuItem` when it contains icons or custom content, so screen readers announce a meaningful label
+- **Do** use the `isDestructive` prop on `MenuItem` for dangerous actions like "Delete" so they are visually distinct
+- **Don't** use Menu for navigation between pages. Use **NavItem** for that. Menus are for contextual actions.
+- **Don't** nest submenus more than one level deep. Deeply nested menus are hard to navigate, especially on mobile.
 
 ---
 

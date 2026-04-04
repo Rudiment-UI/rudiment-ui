@@ -21,6 +21,23 @@ export type { CheckboxGroupProps } from './components/Checkbox/CheckboxGroup'
 export { Select } from './components/Select/Select'
 export type { SelectProps } from './components/Select/Select'
 
+export { MenuTrigger } from './components/Menu/MenuTrigger'
+export type { MenuTriggerProps } from './components/Menu/MenuTrigger'
+
+export { Menu } from './components/Menu/Menu'
+export type { MenuProps } from './components/Menu/Menu'
+
+export { MenuItem } from './components/Menu/MenuItem'
+export type { MenuItemProps } from './components/Menu/MenuItem'
+
+export { MenuSection } from './components/Menu/MenuSection'
+export type { MenuSectionProps } from './components/Menu/MenuSection'
+
+export { Keyboard } from './components/Menu/Keyboard'
+export type { KeyboardProps } from './components/Menu/Keyboard'
+
+export { Separator, SubmenuTrigger } from 'react-aria-components'
+
 export { Dialog } from './components/Dialog/Dialog'
 export type { DialogProps } from './components/Dialog/Dialog'
 

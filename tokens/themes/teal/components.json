@@ -24,6 +24,10 @@
     "tooltip": {
       "radius": { "$value": "{radius.md}" }
     },
+    "menu": {
+      "popover-radius": { "$value": "{radius.lg}" },
+      "item-radius": { "$value": "{radius.md}" }
+    },
     "nav-item": {
       "radius": { "$value": "{radius.md}" }
     }

@@ -14,6 +14,12 @@ import { Button } from '../components/Button/Button'
 import { Avatar } from '../components/Avatar/Avatar'
 import { Badge } from '../components/Badge/Badge'
 import { NavItem } from '../components/NavItem/NavItem'
+import { MenuTrigger } from '../components/Menu/MenuTrigger'
+import { Menu } from '../components/Menu/Menu'
+import { MenuItem } from '../components/Menu/MenuItem'
+import { Keyboard } from '../components/Menu/Keyboard'
+import { Separator } from 'react-aria-components'
+import { Text as AriaText } from 'react-aria-components'
 import { RadioGroupContext } from '../components/RadioGroup/RadioGroup'
 import '../components/RadioGroup/radio-group.css'
 
@@ -64,7 +70,31 @@ export function AppHeader() {
             <Button variant="secondary" size="sm">
               Log in
             </Button>
-            <Avatar name="Jane Smith" size="sm" status="success" />
+            <MenuTrigger>
+              <Button variant="ghost" size="sm" aria-label="User menu">
+                <Avatar name="Jane Smith" size="sm" status="success" />
+              </Button>
+              <Menu onAction={(key) => alert(key)}>
+                <MenuItem id="profile" textValue="Profile">
+                  <Icon icon="lucide:user" className="rudiment-menu__item-icon" />
+                  <AriaText slot="label">Profile</AriaText>
+                  <Keyboard>⌘P</Keyboard>
+                </MenuItem>
+                <MenuItem id="settings" textValue="Settings">
+                  <Icon icon="lucide:settings" className="rudiment-menu__item-icon" />
+                  <AriaText slot="label">Settings</AriaText>
+                </MenuItem>
+                <MenuItem id="billing" textValue="Billing">
+                  <Icon icon="lucide:credit-card" className="rudiment-menu__item-icon" />
+                  <AriaText slot="label">Billing</AriaText>
+                </MenuItem>
+                <Separator className="rudiment-menu__separator" />
+                <MenuItem id="sign-out" textValue="Sign out" isDestructive>
+                  <Icon icon="lucide:log-out" className="rudiment-menu__item-icon" />
+                  <AriaText slot="label">Sign out</AriaText>
+                </MenuItem>
+              </Menu>
+            </MenuTrigger>
           </Cluster>
         </Cluster>
       </Center>

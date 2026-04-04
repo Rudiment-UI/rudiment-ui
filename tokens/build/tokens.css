@@ -119,6 +119,8 @@
   --token-component-circular-progress-stroke-width-sm: 3;
   --token-component-circular-progress-stroke-width-md: 4;
   --token-component-circular-progress-stroke-width-lg: 6;
+  --token-component-menu-popover-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --token-component-menu-item-icon-size: 1rem;
   --token-component-kanban-column-min-width: 18rem;
   --token-component-kanban-card-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --token-component-kanban-card-dragging-shadow: 0 4px 12px 0 rgb(0 0 0 / 0.15);
@@ -323,6 +325,19 @@
   --token-component-alert-font-size: var(--token-font-size-sm);
   --token-component-alert-line-height: var(--token-font-line-height-normal);
   --token-component-alert-title-font-weight: var(--token-font-weight-medium);
+  --token-component-menu-popover-radius: var(--token-radius-md);
+  --token-component-menu-popover-padding: var(--token-spacing-1);
+  --token-component-menu-item-padding-y: var(--token-component-input-padding-y);
+  --token-component-menu-item-radius: var(--token-radius-sm);
+  --token-component-menu-item-font-size: var(--token-font-size-sm);
+  --token-component-menu-item-line-height: var(--token-font-line-height-normal);
+  --token-component-menu-item-gap: var(--token-spacing-2);
+  --token-component-menu-item-description-font-size: var(--token-font-size-xs);
+  --token-component-menu-item-shortcut-font-size: var(--token-font-size-xs);
+  --token-component-menu-separator-margin: var(--token-spacing-1);
+  --token-component-menu-section-header-font-size: var(--token-font-size-xs);
+  --token-component-menu-section-header-font-weight: var(--token-font-weight-semibold);
+  --token-component-menu-section-header-padding-y: var(--token-spacing-1);
   --token-component-kanban-board-gap: var(--token-spacing-4);
   --token-component-kanban-column-radius: var(--token-radius-md);
   --token-component-kanban-column-padding: var(--token-spacing-3);
@@ -527,6 +542,19 @@
   --token-component-alert-error-bg: var(--token-color-feedback-error-surface);
   --token-component-alert-error-border: var(--token-color-feedback-error-border);
   --token-component-alert-error-text: var(--token-color-feedback-error-text);
+  --token-component-menu-popover-border: var(--token-color-border-default);
+  --token-component-menu-item-padding-x: var(--token-component-input-padding-x);
+  --token-component-menu-item-text: var(--token-color-text-default);
+  --token-component-menu-item-hover-bg: var(--token-color-background-surface-raised);
+  --token-component-menu-item-disabled-text: var(--token-color-text-disabled);
+  --token-component-menu-item-destructive-text: var(--token-color-feedback-error);
+  --token-component-menu-item-destructive-hover-bg: var(--token-color-feedback-error-surface);
+  --token-component-menu-item-icon-color: var(--token-color-text-subtle);
+  --token-component-menu-item-description-color: var(--token-color-text-subtle);
+  --token-component-menu-item-shortcut-color: var(--token-color-text-subtle);
+  --token-component-menu-separator-color: var(--token-color-border-default);
+  --token-component-menu-section-header-color: var(--token-color-text-subtle);
+  --token-component-menu-section-header-padding-x: var(--token-component-input-padding-x);
   --token-component-kanban-column-bg: var(--token-color-background-surface-sunken);
   --token-component-kanban-column-header-color: var(--token-color-text-default);
   --token-component-kanban-column-count-bg: var(--token-color-background-surface-raised);
@@ -577,6 +605,7 @@
   --token-component-avatar-status-border-color: var(--token-color-background-surface);
   --token-component-chart-bg: var(--token-color-background-surface);
   --token-component-chart-tooltip-bg: var(--token-color-background-surface);
+  --token-component-menu-popover-bg: var(--token-color-background-surface);
   --token-component-kanban-card-bg: var(--token-color-background-surface);
   --token-typography-prose-caption-color: var(--token-typography-caption-color);
 }

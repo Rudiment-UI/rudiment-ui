@@ -42,6 +42,12 @@
       "warning-border": { "$value": "{color.amber.500}" },
       "error-border": { "$value": "{color.magenta.400}" }
     },
+    "menu": {
+      "popover-radius": { "$value": "{radius.none}" },
+      "popover-border": { "$value": "{color.magenta.400}" },
+      "popover-shadow": { "$value": "0 0 12px 0 rgb(230 0 122 / 0.15), 0 4px 6px -1px rgb(0 0 0 / 0.1)" },
+      "item-radius": { "$value": "{radius.none}" }
+    },
     "kanban": {
       "card-border": { "$value": "{color.magenta.300}" },
       "column-bg": { "$value": "{color.neutral.100}" }

@@ -19,6 +19,12 @@ import { DonutChart } from '../components/Charts/DonutChart/DonutChart'
 import { ProgressBar } from '../components/ProgressBar/ProgressBar'
 import { StatCard } from '../components/StatCard/StatCard'
 import { Tooltip, TooltipTrigger } from '../components/Tooltip/Tooltip'
+import { MenuTrigger } from '../components/Menu/MenuTrigger'
+import { Menu } from '../components/Menu/Menu'
+import { MenuItem } from '../components/Menu/MenuItem'
+import { MenuSection } from '../components/Menu/MenuSection'
+import { Keyboard } from '../components/Menu/Keyboard'
+import { Separator, Text as AriaText } from 'react-aria-components'
 import { AppHeader, AppFooter } from './shared'
 
 const revenueData = [
@@ -57,12 +63,45 @@ function AppShellRender() {
                 </IconButton>
                 <Tooltip>Refresh data</Tooltip>
               </TooltipTrigger>
-              <TooltipTrigger>
-                <IconButton aria-label="Download report" variant="ghost" size="sm">
-                  <Icon icon="lucide:download" />
-                </IconButton>
-                <Tooltip>Download report</Tooltip>
-              </TooltipTrigger>
+              <MenuTrigger>
+                <Button variant="secondary" size="sm" aria-label="More actions">
+                  <Icon icon="lucide:ellipsis" />
+                </Button>
+                <Menu onAction={(key) => {
+                  if (key === 'view-report') setDialogOpen(true)
+                  else alert(key)
+                }}>
+                  <MenuSection title="Reports">
+                    <MenuItem id="view-report" textValue="View report">
+                      <Icon icon="lucide:file-text" className="rudiment-menu__item-icon" />
+                      <AriaText slot="label">View report</AriaText>
+                      <Keyboard>⌘R</Keyboard>
+                    </MenuItem>
+                    <MenuItem id="download" textValue="Download CSV">
+                      <Icon icon="lucide:download" className="rudiment-menu__item-icon" />
+                      <AriaText slot="label">Download CSV</AriaText>
+                      <Keyboard>⌘D</Keyboard>
+                    </MenuItem>
+                    <MenuItem id="share" textValue="Share dashboard">
+                      <Icon icon="lucide:share" className="rudiment-menu__item-icon" />
+                      <AriaText slot="label">Share dashboard</AriaText>
+                    </MenuItem>
+                  </MenuSection>
+                  <Separator className="rudiment-menu__separator" />
+                  <MenuSection title="View">
+                    <MenuItem id="fullscreen" textValue="Fullscreen">
+                      <Icon icon="lucide:maximize" className="rudiment-menu__item-icon" />
+                      <AriaText slot="label">Fullscreen</AriaText>
+                      <Keyboard>F11</Keyboard>
+                    </MenuItem>
+                    <MenuItem id="print" textValue="Print">
+                      <Icon icon="lucide:printer" className="rudiment-menu__item-icon" />
+                      <AriaText slot="label">Print</AriaText>
+                      <Keyboard>⌘P</Keyboard>
+                    </MenuItem>
+                  </MenuSection>
+                </Menu>
+              </MenuTrigger>
               <Button size="sm" onPress={() => setDialogOpen(true)}>View Report</Button>
             </Cluster>
           </Cluster>
@@ -185,12 +224,23 @@ const meta = {
             </IconButton>
             <Tooltip>Refresh data</Tooltip>
           </TooltipTrigger>
-          <TooltipTrigger>
-            <IconButton aria-label="Download report" variant="ghost" size="sm">
-              <Icon icon="lucide:download" />
-            </IconButton>
-            <Tooltip>Download report</Tooltip>
-          </TooltipTrigger>
+          <MenuTrigger>
+            <Button variant="secondary" size="sm" aria-label="More actions">
+              <Icon icon="lucide:ellipsis" />
+            </Button>
+            <Menu>
+              <MenuSection title="Reports">
+                <MenuItem id="view-report">View report</MenuItem>
+                <MenuItem id="download">Download CSV</MenuItem>
+                <MenuItem id="share">Share dashboard</MenuItem>
+              </MenuSection>
+              <Separator />
+              <MenuSection title="View">
+                <MenuItem id="fullscreen">Fullscreen</MenuItem>
+                <MenuItem id="print">Print</MenuItem>
+              </MenuSection>
+            </Menu>
+          </MenuTrigger>
           <Button size="sm" onPress={() => setDialogOpen(true)}>View Report</Button>
         </Cluster>
       </Cluster>

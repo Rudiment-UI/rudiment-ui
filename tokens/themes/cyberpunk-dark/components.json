@@ -60,6 +60,12 @@
     "chart": {
       "bg": { "$value": "transparent" }
     },
+    "menu": {
+      "popover-radius": { "$value": "{radius.none}" },
+      "popover-border": { "$value": "{color.cyber.500}" },
+      "popover-shadow": { "$value": "0 0 16px 0 rgb(6 182 212 / 0.25), 0 4px 6px -1px rgb(0 0 0 / 0.3)" },
+      "item-radius": { "$value": "{radius.none}" }
+    },
     "kanban": {
       "card-border": { "$value": "{color.cyber.500}" },
       "card-shadow": { "$value": "0 0 8px 0 rgb(6 182 212 / 0.2)" },
