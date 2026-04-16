@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import type { Preview } from '@storybook/react'
+import { useArgs } from 'storybook/preview-api'
 import '../src/app.css'
 
 const preview: Preview = {
@@ -74,6 +75,45 @@ const preview: Preview = {
           <Story />
         </div>
       )
+    },
+    // Sync controlled-prop args with onChange so form elements (Checkbox,
+    // Switch, Input, RadioGroup, Select) remain interactive when a controlled
+    // prop like `value`, `isSelected`, or `selectedKey` is set in meta.args.
+    (Story) => {
+      const [args, updateArgs] = useArgs<Record<string, unknown>>()
+      const hasIsSelected = 'isSelected' in args
+      const hasValue = 'value' in args
+      const hasSelectedKey = 'selectedKey' in args
+
+      if (!hasIsSelected && !hasValue && !hasSelectedKey) {
+        return <Story />
+      }
+
+      const originalOnChange = args.onChange as
+        | ((v: unknown) => void)
+        | undefined
+      const originalOnSelectionChange = args.onSelectionChange as
+        | ((v: unknown) => void)
+        | undefined
+
+      const override: Record<string, unknown> = {}
+
+      if (hasIsSelected || hasValue) {
+        override.onChange = (newValue: unknown) => {
+          if (hasIsSelected) updateArgs({ isSelected: newValue })
+          if (hasValue) updateArgs({ value: newValue })
+          originalOnChange?.(newValue)
+        }
+      }
+
+      if (hasSelectedKey) {
+        override.onSelectionChange = (newValue: unknown) => {
+          updateArgs({ selectedKey: newValue })
+          originalOnSelectionChange?.(newValue)
+        }
+      }
+
+      return <Story args={{ ...args, ...override }} />
     },
   ],
 }
