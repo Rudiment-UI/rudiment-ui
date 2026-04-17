@@ -15,40 +15,42 @@ The **Heading** component separates semantic level from visual size, so you can 
 The `level` prop determines which HTML element is rendered:
 
 | `level` | Renders as |
-|---|---|
-| `1` | `<h1>` |
-| `2` | `<h2>` |
-| `3` | `<h3>` |
-| `4` | `<h4>` |
-| `5` | `<h5>` |
-| `6` | `<h6>` |
+| ------- | ---------- |
+| `1`     | `<h1>`     |
+| `2`     | `<h2>`     |
+| `3`     | `<h3>`     |
+| `4`     | `<h4>`     |
+| `5`     | `<h5>`     |
+| `6`     | `<h6>`     |
 
 ### The `size` prop
 
 The `size` prop optionally overrides the visual appearance without changing the HTML element. This is useful when the design calls for a heading that looks different from its semantic level.
 
 ```jsx
-{/* Renders an h2, but visually looks like an h4 */}
-<Heading level={2} size={4}>Section title</Heading>
+{
+  /* Renders an h2, but visually looks like an h4 */
+}
+;<Heading level={2} size={4}>
+  Section title
+</Heading>
 ```
 
 ### Best practice
 
 Use heading levels in order (`h1`, then `h2`, then `h3`, and so on) for accessibility and correct document structure. Adjust the `size` prop when the visual design requires a different appearance.
 
----
-
 ## Text
 
 The **Text** component provides five variants for different text roles.
 
-| Variant | Purpose | Typical use |
-|---|---|---|
-| `body` (default) | Standard paragraph text | Main content, descriptions |
-| `body-sm` | Smaller body text | Secondary content, supporting details |
-| `caption` | Small text | Labels, metadata, timestamps |
-| `overline` | Uppercase small text | Section labels, category names |
-| `code` | Monospace text | Code references, technical values |
+| Variant          | Purpose                 | Typical use                           |
+| ---------------- | ----------------------- | ------------------------------------- |
+| `body` (default) | Standard paragraph text | Main content, descriptions            |
+| `body-sm`        | Smaller body text       | Secondary content, supporting details |
+| `caption`        | Small text              | Labels, metadata, timestamps          |
+| `overline`       | Uppercase small text    | Section labels, category names        |
+| `code`           | Monospace text          | Code references, technical values     |
 
 ### Usage
 
@@ -76,8 +78,6 @@ By default, Text renders as a `<p>` element. Use the `as` prop to render as any 
 
 This is useful when you need a specific HTML element for semantics or styling but want to keep the typography consistent.
 
----
-
 ## Prose
 
 The **Prose** component applies automatic vertical rhythm to long-form content. It handles spacing between paragraphs, headings, lists, and other block elements so you don't have to manage it manually.
@@ -93,11 +93,11 @@ Prose is designed for content-heavy sections where multiple elements need consis
 
 ### Three sizes
 
-| Size | Best for |
-|---|---|
-| `sm` | Compact content areas, sidebars |
-| `base` (default) | Standard reading content |
-| `lg` | Feature pages, large-format articles |
+| Size             | Best for                             |
+| ---------------- | ------------------------------------ |
+| `sm`             | Compact content areas, sidebars      |
+| `base` (default) | Standard reading content             |
+| `lg`             | Feature pages, large-format articles |
 
 ### Usage
 
@@ -118,8 +118,6 @@ Prose is designed for content-heavy sections where multiple elements need consis
   <p>Large-format content for feature pages.</p>
 </Prose>
 ```
-
----
 
 ## Typography tokens
 

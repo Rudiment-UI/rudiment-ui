@@ -70,6 +70,8 @@ const preview: Preview = {
             padding: '2rem',
             backgroundColor: 'var(--token-color-background-surface)',
             color: 'var(--token-color-text-default)',
+            fontFamily:
+              '"InterVariable", "Inter", ui-sans-serif, system-ui, sans-serif',
           }}
         >
           <Story />

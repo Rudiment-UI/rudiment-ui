@@ -6,16 +6,12 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 Practical do/don't guidance for each interactive component. Following these patterns will help you build consistent, accessible interfaces.
 
----
-
 ## Alert
 
 - **Do** match the variant to the message severity (for example, `variant="success"` for confirmations, `variant="error"` for problems)
 - **Do** use `isPolite` for non-urgent status updates that don't need to interrupt you
 - **Don't** use `variant="error"` for informational messages. It causes unnecessary alarm.
 - **Don't** overuse alerts. When everything is highlighted, nothing stands out.
-
----
 
 ## Avatar
 
@@ -24,16 +20,12 @@ Practical do/don't guidance for each interactive component. Following these patt
 - **Don't** use Avatar without either `src` or `name`. An empty circle with no context is meaningless.
 - **Don't** rely on the image alone for identification. Pair Avatar with a visible name label in lists and profiles.
 
----
-
 ## Badge
 
 - **Do** use to indicate status, counts, or categories (for example, "New", "3", or "Beta")
 - **Do** use the `dot` variant for a minimal presence indicator without text (for example, unread notifications)
 - **Don't** put long text in a Badge. Keep labels to one or two short words.
 - **Don't** use color as the only way to convey meaning. Pair the variant color with a text label so color-blind readers can still understand the status.
-
----
 
 ## Button
 
@@ -42,16 +34,12 @@ Practical do/don't guidance for each interactive component. Following these patt
 - **Don't** use more than one primary button in a section. Multiple primary buttons create confusion about the main action.
 - **Don't** use the ghost variant for important actions. Ghost buttons are too easy to overlook.
 
----
-
 ## Card
 
 - **Do** use `variant="outlined"` as the default for most content containers
 - **Do** use `Card.Header` and `Card.Footer` to separate distinct sections (navigation, titles, actions)
 - **Don't** nest Cards inside Cards. It creates visual noise and confusing depth hierarchy.
 - **Don't** use `variant="elevated"` for every card in a dense layout. Reserve elevation for the card that needs emphasis.
-
----
 
 ## Charts (BarChart, LineChart, DonutChart)
 
@@ -61,8 +49,6 @@ Practical do/don't guidance for each interactive component. Following these patt
 - **Don't** mix chart types to represent the same data set. Pick the chart that best fits the data relationship.
 - **Don't** override series colors with custom hex values. The dataviz tokens are designed for accessible contrast in both light and dark mode.
 
----
-
 ## Checkbox vs Switch
 
 These two components look similar but serve different purposes:
@@ -70,8 +56,6 @@ These two components look similar but serve different purposes:
 - **Do** use **Checkbox** for options in a form that will be submitted (for example, "I agree to the terms")
 - **Do** use **Switch** for settings that take effect immediately (for example, "Enable notifications")
 - **Don't** mix Checkbox and Switch for the same type of interaction within the same interface
-
----
 
 ## CircularProgress
 
@@ -81,16 +65,12 @@ These two components look similar but serve different purposes:
 - **Don't** use CircularProgress for indeterminate loading, which requires a numeric `value`. Use a spinner instead.
 - **Don't** use both `showValueLabel` and `children` at the same time. The `children` slot overrides the value label.
 
----
-
 ## Dialog
 
 - **Do** use for confirmations that require user action (for example, "Are you sure you want to delete this?")
 - **Do** provide a clear title and a visible close mechanism
 - **Don't** use for passive notifications. Use **Alert** instead.
 - **Don't** stack multiple dialogs. If a dialog needs to open another dialog, rethink the flow.
-
----
 
 ## Icon
 
@@ -99,16 +79,12 @@ These two components look similar but serve different purposes:
 - **Don't** use icons without text labels for critical actions unless the icon meaning is universally understood
 - **Don't** override the `color` prop when the icon should inherit its color from the parent text. The default `currentColor` behavior keeps icons in sync.
 
----
-
 ## IconButton
 
 - **Do** provide a descriptive `aria-label` (for example, `aria-label="Close dialog"`)
 - **Do** use when the icon meaning is universally understood (close, search, and menu)
 - **Don't** use without an `aria-label`. Screen reader users won't know what the button does.
 - **Don't** use for actions where the icon meaning is ambiguous. Add a visible text label with a regular **Button** instead.
-
----
 
 ## Input
 
@@ -117,8 +93,6 @@ These two components look similar but serve different purposes:
 - **Don't** use placeholder text as a replacement for labels. Placeholders disappear when typing begins.
 - **Don't** hide labels. They're required for accessibility and help everyone understand the field.
 
----
-
 ## Kanban (KanbanBoard, KanbanColumn, KanbanCard)
 
 - **Do** provide a `renderCard` prop to control card content. Compose with Badge, Avatar, and other components as needed
@@ -126,8 +100,6 @@ These two components look similar but serve different purposes:
 - **Do** test keyboard drag-and-drop: Space to grab, arrow keys to move, Space to drop
 - **Don't** put complex interactive elements (dialogs, forms) inside KanbanCard. Cards should be scannable at a glance.
 - **Don't** use KanbanBoard for simple lists. It's designed for multi-column workflows with drag-and-drop reordering.
-
----
 
 ## Menu (MenuTrigger, Menu, MenuItem, MenuSection)
 
@@ -138,16 +110,12 @@ These two components look similar but serve different purposes:
 - **Don't** use Menu for navigation between pages. Use **NavItem** for that. Menus are for contextual actions.
 - **Don't** nest submenus more than one level deep. Deeply nested menus are hard to navigate, especially on mobile.
 
----
-
 ## NavItem
 
 - **Do** use `href` for real page navigation so the browser handles it natively (and users can right-click to open in a new tab)
 - **Do** use `onPress` for SPA navigation where you control the routing
 - **Don't** provide both `href` and `onPress` for the same navigation action. Pick the appropriate mechanism.
 - **Don't** use NavItem outside of a sidebar or navigation context. For in-page actions, use **Button** instead.
-
----
 
 ## ProgressBar
 
@@ -156,23 +124,17 @@ These two components look similar but serve different purposes:
 - **Don't** use ProgressBar for indeterminate loading, which requires a numeric `value`. Use a spinner or skeleton instead.
 - **Don't** use `variant="error"` to indicate failure mid-progress. Change the variant only when the final state is an error.
 
----
-
 ## RadioGroup
 
 - **Do** use when there are two to five mutually exclusive options
 - **Do** use horizontal layout only for two or three short options (long labels work better vertically)
 - **Don't** use for more than seven options. Use **Select** instead to save space.
 
----
-
 ## Select
 
 - **Do** provide a clear placeholder like "Choose a color" so users know what to expect
 - **Don't** use Select for fewer than three options. Use **RadioGroup** instead, so users can see all choices at once.
 - **Don't** use Select when users need to compare all options at a glance. RadioGroup makes comparison easier.
-
----
 
 ## StatCard
 
@@ -181,16 +143,12 @@ These two components look similar but serve different purposes:
 - **Don't** use StatCard for non-metric content. It's designed for numbers and KPIs, not paragraphs.
 - **Don't** omit the `label`. A number without context ("12,450") is meaningless on its own.
 
----
-
 ## Tag
 
 - **Do** use for user-generated labels, filters, or categorization that users may need to add or remove
 - **Do** provide `onDismiss` when users should be able to remove the tag
 - **Don't** use Tag when the label is system-defined and non-removable. Use **Badge** instead.
 - **Don't** mix interactive (`onPress`) and dismissible (`onDismiss`) behavior on the same tag. Pick one interaction model.
-
----
 
 ## Tooltip
 

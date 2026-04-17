@@ -1,6 +1,148 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://rsms.me" crossorigin />
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 <link
-  href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=Chakra+Petch:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
   rel="stylesheet"
 />
+
+<style>
+  :root {
+    --sb-font-sans:
+      'InterVariable', 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --sb-font-display: 'Instrument Serif', ui-serif, Georgia, serif;
+    --sb-font-mono:
+      'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      monospace;
+  }
+
+  /* Storybook's MDX DocsContainer applies emotion-generated classes with
+     `:where(h1:not(...))` rules (zero-specificity). Target the elements
+     directly inside the docs wrapper and use !important so our fonts win
+     against the runtime emotion stylesheet. Scoped to docs only — component
+     stories render in .docs-story / iframe and are unaffected. */
+  .sbdocs-wrapper,
+  .sbdocs-content {
+    font-family: var(--sb-font-sans) !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizelegibility;
+  }
+
+  .sbdocs-wrapper :is(h1, h2, h3, h4, h5, h6, th),
+  .sbdocs-content :is(h1, h2, h3, h4, h5, h6, th) {
+    font-family: var(--sb-font-display) !important;
+    font-weight: 400 !important;
+    font-style: normal;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    font-weight: bold;
+    line-height: 1.15;
+    border: none !important;
+  }
+
+  .sbdocs-wrapper code,
+  .sbdocs-content code {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+  }
+
+  .sbdocs-wrapper pre,
+  .sbdocs-content pre {
+    background-color: rgb(246, 249, 252) !important;
+  }
+
+  .sbdocs-wrapper h1,
+  .sbdocs-content h1 {
+    font-size: 3.5rem !important;
+  }
+
+  .sbdocs-wrapper h2,
+  .sbdocs-content h2 {
+    font-size: 2.5rem !important;
+    margin-top: 4rem !important;
+  }
+
+  .sbdocs-wrapper h3,
+  .sbdocs-content h3 {
+    font-size: 1.875rem !important;
+  }
+
+  .sbdocs-wraper ol,
+  .sbdocs-wrapper ul,
+  .sbdocs-wrapper table {
+    margin-top: 1rem !important;
+  }
+
+  .sbdocs-wraper ol,
+  .sbdocs-content ol {
+    list-style: number !important;
+  }
+
+  .sbdocs-wraper ol li,
+  .sbdocs-content ol li {
+    margin-top: 0.5rem !important;
+  }
+
+  .sbdocs-wrapper h4,
+  .sbdocs-content h4 {
+    font-size: 1.5rem !important;
+  }
+
+  .sbdocs-wrapper h5,
+  .sbdocs-content h5 {
+    font-size: 1.25rem !important;
+  }
+
+  .sbdocs-wrapper h6,
+  .sbdocs-content h6 {
+    font-size: 1.125rem !important;
+  }
+
+  .sbdocs-wrapper th,
+  .sbdocs-content th {
+    font-size: 1.125rem !important;
+  }
+
+  /* .sbdocs-wrapper h2::before,
+  .sbdocs-content h2::before {
+    content: '';
+    display: block;
+    width: 2.5rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.25;
+    margin-bottom: 1.5rem;
+  } */
+
+  .sbdocs-wrapper h3,
+  .sbdocs-content h3 {
+    margin-top: 2.5rem !important;
+  }
+
+  .sbdocs-wrapper :is(h4, h5, h6),
+  .sbdocs-content :is(h4, h5, h6) {
+    margin-top: 2rem !important;
+  }
+
+  .sbdocs-wrapper :is(p, li, blockquote, td, strong, em),
+  .sbdocs-content :is(p, li, blockquote, td, strong, em) {
+    font-family: var(--sb-font-sans) !important;
+    font-size: 1rem !important;
+    line-height: 1.65;
+  }
+
+  /* Constrain measure (line length) to ~70ch for readability. Excludes
+     table cells, which need to respect column layout. */
+  .sbdocs-wrapper :is(h1, h2, h3, h4, h5, h6, p, li, blockquote),
+  .sbdocs-content :is(h1, h2, h3, h4, h5, h6, p, li, blockquote) {
+    max-width: 70ch;
+  }
+
+  .sbdocs-wrapper :is(code, pre, kbd, samp),
+  .sbdocs-content :is(code, pre, kbd, samp),
+  .sbdocs-wrapper .docblock-source,
+  .sbdocs-content .docblock-source {
+    font-family: var(--sb-font-mono) !important;
+  }
+</style>
