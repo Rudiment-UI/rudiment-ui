@@ -5,3 +5,18 @@
 @import '../tokens/build/tokens-teal-dark.css';
 @import '../tokens/build/tokens-cyberpunk.css';
 @import '../tokens/build/tokens-cyberpunk-dark.css';
+
+.sbdocs-pre {
+  background-color: #1e1e1e !important;
+  border: 2px solid #3b82f6 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.prismjs {
+  padding: 0 !important;
+  > div {
+    padding: 1rem !important;
+    background-color: #1e1e1e !important;
+  }
+}

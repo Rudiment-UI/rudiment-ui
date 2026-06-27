@@ -1,10 +1,26 @@
 import { useEffect } from 'react'
 import type { Preview } from '@storybook/react'
 import { useArgs } from 'storybook/preview-api'
+import { create } from 'storybook/theming/create'
 import '../src/app.css'
+
+// Light docs theme so the "Show code" Source block renders the dark-on-light
+// `lightSyntaxColors` palette. Without it the block falls back to the dark
+// syntax palette (light tokens), which is illegible on the light code surface
+// set in preview-head.html. Mirrors the light brand theme in manager.ts.
+const docsTheme = create({
+  base: 'light',
+  fontBase:
+    '"InterVariable", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif',
+  fontCode:
+    '"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+})
 
 const preview: Preview = {
   parameters: {
+    docs: {
+      theme: docsTheme,
+    },
     options: {
       categorySort: {
         order: ['Appearance', 'Content', 'Layout', 'State', 'Events'],

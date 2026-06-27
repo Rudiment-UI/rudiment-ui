@@ -26,7 +26,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: () => (
+  render: ({}) => (
     <MenuTrigger>
       <Button variant="secondary">Actions</Button>
       <Menu onAction={(key) => alert(key)}>
@@ -40,12 +40,15 @@ export const Default: Story = {
 }
 
 export const WithIcons: Story = {
-  render: () => (
+  render: ({}) => (
     <MenuTrigger>
       <Button variant="secondary">Actions</Button>
       <Menu onAction={(key) => alert(key)}>
         <MenuItem id="open" textValue="Open">
-          <Icon icon="lucide:folder-open" className="rudiment-menu__item-icon" />
+          <Icon
+            icon="lucide:folder-open"
+            className="rudiment-menu__item-icon"
+          />
           <Text slot="label">Open</Text>
         </MenuItem>
         <MenuItem id="rename" textValue="Rename">
@@ -66,7 +69,7 @@ export const WithIcons: Story = {
 }
 
 export const WithKeyboardShortcuts: Story = {
-  render: () => (
+  render: ({}) => (
     <MenuTrigger>
       <Button variant="secondary">Edit</Button>
       <Menu onAction={(key) => alert(key)}>
@@ -88,15 +91,20 @@ export const WithKeyboardShortcuts: Story = {
 }
 
 export const WithDescriptions: Story = {
-  render: () => (
+  render: ({}) => (
     <MenuTrigger>
       <Button variant="secondary">Account</Button>
       <Menu onAction={(key) => alert(key)}>
         <MenuItem id="profile" textValue="Profile">
           <Icon icon="lucide:user" className="rudiment-menu__item-icon" />
           <div className="rudiment-menu__item-content">
-            <Text slot="label" className="rudiment-menu__item-label">Profile</Text>
-            <Text slot="description" className="rudiment-menu__item-description">
+            <Text slot="label" className="rudiment-menu__item-label">
+              Profile
+            </Text>
+            <Text
+              slot="description"
+              className="rudiment-menu__item-description"
+            >
               View and edit your profile
             </Text>
           </div>
@@ -104,17 +112,30 @@ export const WithDescriptions: Story = {
         <MenuItem id="settings" textValue="Settings">
           <Icon icon="lucide:settings" className="rudiment-menu__item-icon" />
           <div className="rudiment-menu__item-content">
-            <Text slot="label" className="rudiment-menu__item-label">Settings</Text>
-            <Text slot="description" className="rudiment-menu__item-description">
+            <Text slot="label" className="rudiment-menu__item-label">
+              Settings
+            </Text>
+            <Text
+              slot="description"
+              className="rudiment-menu__item-description"
+            >
               Manage your preferences
             </Text>
           </div>
         </MenuItem>
         <MenuItem id="billing" textValue="Billing">
-          <Icon icon="lucide:credit-card" className="rudiment-menu__item-icon" />
+          <Icon
+            icon="lucide:credit-card"
+            className="rudiment-menu__item-icon"
+          />
           <div className="rudiment-menu__item-content">
-            <Text slot="label" className="rudiment-menu__item-label">Billing</Text>
-            <Text slot="description" className="rudiment-menu__item-description">
+            <Text slot="label" className="rudiment-menu__item-label">
+              Billing
+            </Text>
+            <Text
+              slot="description"
+              className="rudiment-menu__item-description"
+            >
               Manage payment methods
             </Text>
           </div>
@@ -125,18 +146,24 @@ export const WithDescriptions: Story = {
 }
 
 export const WithSections: Story = {
-  render: () => (
+  render: ({}) => (
     <MenuTrigger>
       <Button variant="secondary">File</Button>
       <Menu onAction={(key) => alert(key)}>
         <MenuSection title="File">
           <MenuItem id="new" textValue="New file">
-            <Icon icon="lucide:file-plus" className="rudiment-menu__item-icon" />
+            <Icon
+              icon="lucide:file-plus"
+              className="rudiment-menu__item-icon"
+            />
             <Text slot="label">New file</Text>
             <Keyboard>⌘N</Keyboard>
           </MenuItem>
           <MenuItem id="open" textValue="Open">
-            <Icon icon="lucide:folder-open" className="rudiment-menu__item-icon" />
+            <Icon
+              icon="lucide:folder-open"
+              className="rudiment-menu__item-icon"
+            />
             <Text slot="label">Open</Text>
             <Keyboard>⌘O</Keyboard>
           </MenuItem>
@@ -165,7 +192,7 @@ export const WithSections: Story = {
 }
 
 export const SingleSelection: Story = {
-  render: () => (
+  render: ({}) => (
     <MenuTrigger>
       <Button variant="secondary">Sort by</Button>
       <Menu selectionMode="single" defaultSelectedKeys={['date']}>
@@ -179,7 +206,7 @@ export const SingleSelection: Story = {
 }
 
 export const MultipleSelection: Story = {
-  render: () => (
+  render: ({}) => (
     <MenuTrigger>
       <Button variant="secondary">View</Button>
       <Menu selectionMode="multiple" defaultSelectedKeys={['files']}>
@@ -192,12 +219,15 @@ export const MultipleSelection: Story = {
 }
 
 export const WithSubmenu: Story = {
-  render: () => (
+  render: ({}) => (
     <MenuTrigger>
       <Button variant="secondary">Actions</Button>
       <Menu onAction={(key) => alert(key)}>
         <MenuItem id="open" textValue="Open">
-          <Icon icon="lucide:folder-open" className="rudiment-menu__item-icon" />
+          <Icon
+            icon="lucide:folder-open"
+            className="rudiment-menu__item-icon"
+          />
           <Text slot="label">Open</Text>
         </MenuItem>
         <SubmenuTrigger>
@@ -211,7 +241,10 @@ export const WithSubmenu: Story = {
               <Text slot="label">Email</Text>
             </MenuItem>
             <MenuItem id="sms" textValue="SMS">
-              <Icon icon="lucide:smartphone" className="rudiment-menu__item-icon" />
+              <Icon
+                icon="lucide:smartphone"
+                className="rudiment-menu__item-icon"
+              />
               <Text slot="label">SMS</Text>
             </MenuItem>
           </Menu>
@@ -222,7 +255,7 @@ export const WithSubmenu: Story = {
 }
 
 export const DisabledItems: Story = {
-  render: () => (
+  render: ({}) => (
     <MenuTrigger>
       <Button variant="secondary">Options</Button>
       <Menu onAction={(key) => alert(key)}>
@@ -244,7 +277,7 @@ export const DisabledItems: Story = {
 }
 
 export const DestructiveItems: Story = {
-  render: () => (
+  render: ({}) => (
     <MenuTrigger>
       <Button variant="secondary">Manage</Button>
       <Menu onAction={(key) => alert(key)}>
@@ -266,7 +299,7 @@ export const DestructiveItems: Story = {
 }
 
 export const CompleteExample: Story = {
-  render: () => (
+  render: ({}) => (
     <MenuTrigger>
       <Button variant="ghost" aria-label="Actions">
         <Icon icon="lucide:ellipsis" />
@@ -274,7 +307,10 @@ export const CompleteExample: Story = {
       <Menu>
         <MenuSection>
           <MenuItem onAction={() => alert('open')} textValue="Open">
-            <Icon icon="lucide:folder-open" className="rudiment-menu__item-icon" />
+            <Icon
+              icon="lucide:folder-open"
+              className="rudiment-menu__item-icon"
+            />
             <Text slot="label">Open</Text>
             <Keyboard>⌘O</Keyboard>
           </MenuItem>
@@ -288,7 +324,11 @@ export const CompleteExample: Story = {
             <Text slot="label">Duplicate</Text>
             <Keyboard>⌘D</Keyboard>
           </MenuItem>
-          <MenuItem onAction={() => alert('delete')} isDestructive textValue="Delete">
+          <MenuItem
+            onAction={() => alert('delete')}
+            isDestructive
+            textValue="Delete"
+          >
             <Icon icon="lucide:trash-2" className="rudiment-menu__item-icon" />
             <Text slot="label">Delete…</Text>
             <Keyboard>⌘⌫</Keyboard>
@@ -304,7 +344,10 @@ export const CompleteExample: Story = {
                 <Text slot="label">Email</Text>
               </MenuItem>
               <MenuItem id="sms" textValue="SMS">
-                <Icon icon="lucide:smartphone" className="rudiment-menu__item-icon" />
+                <Icon
+                  icon="lucide:smartphone"
+                  className="rudiment-menu__item-icon"
+                />
                 <Text slot="label">SMS</Text>
               </MenuItem>
             </Menu>

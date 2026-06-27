@@ -1,6 +1,10 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { KanbanBoard, type KanbanColumnData, type KanbanCardMoveEvent } from './KanbanBoard'
+import {
+  KanbanBoard,
+  type KanbanColumnData,
+  type KanbanCardMoveEvent,
+} from './KanbanBoard'
 import { KanbanCard } from './KanbanCard'
 import { Badge } from '../Badge/Badge'
 import { Avatar } from '../Avatar/Avatar'
@@ -10,31 +14,66 @@ const initialColumns: KanbanColumnData[] = [
     id: 'todo',
     title: 'To Do',
     items: [
-      { id: 'card-1', title: 'Design homepage mockups', priority: 'info', assignee: 'Alice Chen' },
-      { id: 'card-2', title: 'Fix login validation bug', priority: 'error', assignee: 'Bob Kim' },
-      { id: 'card-3', title: 'Write API documentation', priority: 'default', assignee: 'Carol Diaz' },
+      {
+        id: 'card-1',
+        title: 'Design homepage mockups',
+        priority: 'info',
+        assignee: 'Alice Chen',
+      },
+      {
+        id: 'card-2',
+        title: 'Fix login validation bug',
+        priority: 'error',
+        assignee: 'Bob Kim',
+      },
+      {
+        id: 'card-3',
+        title: 'Write API documentation',
+        priority: 'default',
+        assignee: 'Carol Diaz',
+      },
     ],
   },
   {
     id: 'in-progress',
     title: 'In Progress',
     items: [
-      { id: 'card-4', title: 'Build user dashboard', priority: 'warning', assignee: 'Dan Lee' },
-      { id: 'card-5', title: 'Implement search feature', priority: 'info', assignee: 'Eva Patel' },
+      {
+        id: 'card-4',
+        title: 'Build user dashboard',
+        priority: 'warning',
+        assignee: 'Dan Lee',
+      },
+      {
+        id: 'card-5',
+        title: 'Implement search feature',
+        priority: 'info',
+        assignee: 'Eva Patel',
+      },
     ],
   },
   {
     id: 'review',
     title: 'In Review',
     items: [
-      { id: 'card-6', title: 'Refactor auth middleware', priority: 'success', assignee: 'Frank Wu' },
+      {
+        id: 'card-6',
+        title: 'Refactor auth middleware',
+        priority: 'success',
+        assignee: 'Frank Wu',
+      },
     ],
   },
   {
     id: 'done',
     title: 'Done',
     items: [
-      { id: 'card-7', title: 'Set up CI/CD pipeline', priority: 'success', assignee: 'Grace Tan' },
+      {
+        id: 'card-7',
+        title: 'Set up CI/CD pipeline',
+        priority: 'success',
+        assignee: 'Grace Tan',
+      },
     ],
   },
 ]
@@ -66,12 +105,30 @@ function InteractiveBoard() {
       onCardMove={handleCardMove}
       renderCard={(item) => (
         <KanbanCard key={item.id} id={item.id}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <div
+            style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
+          >
             <span style={{ fontSize: '0.875rem', fontWeight: 500 }}>
               {String(item.title)}
             </span>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <Badge variant={item.priority as 'default' | 'success' | 'warning' | 'error' | 'info'} size="sm">
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Badge
+                variant={
+                  item.priority as
+                    | 'default'
+                    | 'success'
+                    | 'warning'
+                    | 'error'
+                    | 'info'
+                }
+                size="sm"
+              >
                 {String(item.priority)}
               </Badge>
               <Avatar name={String(item.assignee)} size="sm" />
@@ -102,11 +159,11 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: () => <InteractiveBoard />,
+  render: ({}) => <InteractiveBoard />,
 }
 
 export const EmptyColumns: Story = {
-  render: () => {
+  render: ({}) => {
     const emptyColumns: KanbanColumnData[] = [
       { id: 'todo', title: 'To Do', items: [] },
       { id: 'in-progress', title: 'In Progress', items: [] },
@@ -128,7 +185,7 @@ export const EmptyColumns: Story = {
 }
 
 export const SimpleCards: Story = {
-  render: () => {
+  render: ({}) => {
     const simpleColumns: KanbanColumnData[] = [
       {
         id: 'backlog',
