@@ -1,0 +1,15 @@
+/**
+ * Library CSS entry — imported by src/index.ts so the published build ships
+ * token definitions alongside the per-component BEM stylesheets.
+ *
+ * Deliberately does NOT import Tailwind. Components use plain BEM classes and
+ * custom properties only, so pulling in Tailwind would ship a preflight reset
+ * that clobbers consumer styles for no benefit. Storybook loads src/app.css
+ * instead, which adds Tailwind plus docs-only overrides.
+ */
+@import '../tokens/build/tokens.css';
+@import '../tokens/build/tokens-dark.css';
+@import '../tokens/build/tokens-teal.css';
+@import '../tokens/build/tokens-teal-dark.css';
+@import '../tokens/build/tokens-cyberpunk.css';
+@import '../tokens/build/tokens-cyberpunk-dark.css';

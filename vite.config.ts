@@ -35,7 +35,17 @@ export default defineConfig({
       fileName: 'index',
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      // Externalize every bare specifier. All runtime imports are declared in
+      // `dependencies`, so consumers resolve their own copies — critical for
+      // react-aria-components, whose React context breaks across duplicates.
+      // `@/` is our own source alias and must stay bundled.
+      external: (id) =>
+        !id.startsWith('.') && !id.startsWith('@/') && !path.isAbsolute(id),
+      output: {
+        // Single ES output, so one directive at the top marks every export as a
+        // client component for the Next.js App Router.
+        banner: "'use client';",
+      },
     },
   },
   test: {

@@ -36,10 +36,12 @@ export function KanbanCard({ id, children, className }: KanbanCardProps) {
       <button
         type="button"
         className="rudiment-kanban__card-handle"
-        aria-roledescription="sortable"
         aria-label={`Drag handle for card ${id}`}
         {...attributes}
         {...listeners}
+        // After the spread so it wins — `attributes` also carries
+        // aria-roledescription and would otherwise overwrite it.
+        aria-roledescription="sortable"
       >
         <svg
           width="12"

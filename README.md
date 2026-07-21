@@ -19,6 +19,8 @@ Also included: a three-tier design token architecture, six built-in themes (Defa
 
 ## Quick start
 
+### As a template (recommended for your own design system)
+
 ```bash
 # Clone the template
 git clone https://github.com/Rudiment-UI/rudiment-ui.git my-design-system
@@ -33,6 +35,26 @@ npm run dev
 
 Open [http://localhost:6006](http://localhost:6006) to browse components and documentation.
 
+### As a dependency
+
+```bash
+npm install rudiment-ui
+# or straight from source
+npm install github:Rudiment-UI/rudiment-ui
+```
+
+`react` and `react-dom` 19 are peer dependencies — install them alongside.
+
+Import the stylesheet once at your app's entry point:
+
+```tsx
+import 'rudiment-ui/styles'
+```
+
+This ships the component styles plus all six themes. It does **not** include Tailwind — components are styled with plain CSS custom properties, so nothing resets your app's own styles.
+
+Every export is marked `"use client"`, so the package can be imported directly into a Next.js App Router Server Component without a re-export barrel.
+
 ## Customizing for your brand
 
 1. Edit primitive values in `tokens/tokens.json` (colors, spacing, typography)
@@ -40,6 +62,23 @@ Open [http://localhost:6006](http://localhost:6006) to browse components and doc
 3. Adjust component-level tokens in `tokens/components.json` (per-component overrides)
 4. Rebuild tokens: `npm run build:tokens`
 5. Preview changes in Storybook: `npm run dev`
+
+## Switching themes
+
+Set `data-theme` on a root element. The default theme lives on `:root`, so **omit the attribute** for it — there is no `data-theme="light"`.
+
+```html
+<html data-theme="dark">          <!-- dark, teal, teal-dark, cyberpunk, cyberpunk-dark -->
+<html>                            <!-- default -->
+```
+
+Themes are plain custom-property blocks, so consuming the package as a dependency and overriding a few tokens downstream also works:
+
+```css
+:root {
+  --token-component-button-primary-bg: #7c3aed;
+}
+```
 
 ## Using components
 

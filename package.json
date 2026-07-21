@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "vite build",
+    "prepare": "npm run build:tokens && npm run build",
+    "prepublishOnly": "npm run build:tokens && npm run build",
     "build-storybook": "storybook build",
     "build:tokens": "style-dictionary build --config tokens/style-dictionary.config.mjs && style-dictionary build --config tokens/style-dictionary.config.dark.mjs && style-dictionary build --config tokens/style-dictionary.config.teal.mjs && style-dictionary build --config tokens/style-dictionary.config.teal-dark.mjs && style-dictionary build --config tokens/style-dictionary.config.cyberpunk.mjs && style-dictionary build --config tokens/style-dictionary.config.cyberpunk-dark.mjs",
     "test": "vitest",
@@ -16,10 +18,11 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     },
-    "./styles": "./dist/style.css"
+    "./styles": "./dist/index.css",
+    "./package.json": "./package.json"
   },
   "files": [
     "dist"
@@ -50,10 +53,8 @@
     "@iconify/react": "^6.0.2",
     "@react-aria/utils": "^3.33.1",
     "clsx": "^2.1.1",
-    "react": "^19.0.0",
     "react-aria": "^3.47.0",
     "react-aria-components": "^1.16.0",
-    "react-dom": "^19.0.0",
     "react-stately": "^3.45.0",
     "recharts": "^3.8.1",
     "tailwind-merge": "^3.5.0"
@@ -75,6 +76,8 @@
     "@vitest/coverage-v8": "^4.1.0",
     "jsdom": "^29.0.0",
     "playwright": "^1.58.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "remark-gfm": "^4.0.1",
     "storybook": "^10.2.19",
     "style-dictionary": "^4.4.0",
