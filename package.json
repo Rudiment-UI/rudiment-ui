@@ -1,7 +1,7 @@
 {
   "name": "rudiment-ui",
   "version": "0.1.0",
-  "description": "Template containing a complete, accessible React component library built on React Aria, styled with Tailwind CSS, documented in Storybook, and structured around a three-tier design token architecture. It includes both UI components (buttons, inputs, modals) and intrinsic layout primitives (Stack, Sidebar, Grid, and others) driven by layout tokens. The buyer clones the repo, swaps token values to match their brand, and has a working component library with documentation, tests, layout system, and accessibility baked in.",
+  "description": "Accessible React component library built on React Aria, with layout primitives, charts, and a three-tier design token architecture supporting six built-in themes.",
   "main": "dist/index.js",
   "scripts": {
     "dev": "storybook dev -p 6006",
@@ -38,9 +38,20 @@
     "type": "git",
     "url": "git+https://github.com/Rudiment-UI/rudiment-ui.git"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "component-library",
+    "design-system",
+    "react-aria",
+    "accessibility",
+    "a11y",
+    "design-tokens",
+    "ui-components",
+    "layout-primitives",
+    "theming"
+  ],
   "author": "Joshua Briley",
-  "license": "ISC",
+  "license": "MIT",
   "type": "module",
   "bugs": {
     "url": "https://github.com/Rudiment-UI/rudiment-ui/issues"
