@@ -1,48 +1,48 @@
 import { render, screen } from '@testing-library/react'
 import { axe } from 'vitest-axe'
 import { describe, it, expect } from 'vitest'
-import { Badge } from './Badge'
+import { RudiBadge } from './Badge'
 
 describe('Badge', () => {
   it('renders children', () => {
-    render(<Badge>New</Badge>)
+    render(<RudiBadge>New</RudiBadge>)
     expect(screen.getByText('New')).toBeInTheDocument()
   })
 
   it('applies the base class', () => {
-    const { container } = render(<Badge>Label</Badge>)
-    expect(container.firstChild).toHaveClass('rudiment-badge')
+    const { container } = render(<RudiBadge>Label</RudiBadge>)
+    expect(container.firstChild).toHaveClass('rudi-badge')
   })
 
   it('applies each supported variant class', () => {
     const variants = ['default', 'success', 'warning', 'error', 'info'] as const
     for (const variant of variants) {
-      const { container } = render(<Badge variant={variant}>Msg</Badge>)
-      expect(container.firstChild).toHaveClass(`rudiment-badge--${variant}`)
+      const { container } = render(<RudiBadge variant={variant}>Msg</RudiBadge>)
+      expect(container.firstChild).toHaveClass(`rudi-badge--${variant}`)
     }
   })
 
   it('applies the size class', () => {
-    const { container } = render(<Badge size="sm">Small</Badge>)
-    expect(container.firstChild).toHaveClass('rudiment-badge--sm')
+    const { container } = render(<RudiBadge size="sm">Small</RudiBadge>)
+    expect(container.firstChild).toHaveClass('rudi-badge--sm')
   })
 
   it('renders dot indicator and hides children', () => {
-    const { container } = render(<Badge dot>Hidden</Badge>)
-    expect(container.firstChild).toHaveClass('rudiment-badge--dot')
+    const { container } = render(<RudiBadge dot>Hidden</RudiBadge>)
+    expect(container.firstChild).toHaveClass('rudi-badge--dot')
     expect(screen.queryByText('Hidden')).not.toBeInTheDocument()
   })
 
   it('merges a custom className', () => {
     const { container } = render(
-      <Badge className="my-badge">Label</Badge>,
+      <RudiBadge className="my-badge">Label</RudiBadge>,
     )
-    expect(container.firstChild).toHaveClass('rudiment-badge')
+    expect(container.firstChild).toHaveClass('rudi-badge')
     expect(container.firstChild).toHaveClass('my-badge')
   })
 
   it('has no accessibility violations', async () => {
-    const { container } = render(<Badge>Status</Badge>)
+    const { container } = render(<RudiBadge>Status</RudiBadge>)
     expect(await axe(container)).toHaveNoViolations()
   })
 })

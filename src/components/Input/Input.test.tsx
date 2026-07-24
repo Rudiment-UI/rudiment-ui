@@ -3,23 +3,23 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { describe, it, expect } from 'vitest'
-import { Input } from './Input'
+import { RudiInput } from './Input'
 
 describe('Input', () => {
   it('renders with its label as the accessible name', () => {
-    render(<Input label="Email" />)
+    render(<RudiInput label="Email" />)
     expect(screen.getByRole('textbox', { name: 'Email' })).toBeInTheDocument()
   })
 
   it('accepts text input', async () => {
     const onChange = vi.fn()
-    render(<Input label="Email" onChange={onChange} />)
+    render(<RudiInput label="Email" onChange={onChange} />)
     await userEvent.type(screen.getByRole('textbox'), 'hello')
     expect(onChange).toHaveBeenLastCalledWith('hello')
   })
 
   it('shows the description and links it via aria-describedby', () => {
-    render(<Input label="Email" description="Your work email" />)
+    render(<RudiInput label="Email" description="Your work email" />)
     const input = screen.getByRole('textbox')
     const description = screen.getByText('Your work email')
     expect(input).toHaveAttribute(
@@ -29,7 +29,7 @@ describe('Input', () => {
   })
 
   it('shows the error message and sets aria-invalid', () => {
-    render(<Input label="Email" errorMessage="Required field" />)
+    render(<RudiInput label="Email" errorMessage="Required field" />)
     const input = screen.getByRole('textbox')
     expect(input).toHaveAttribute('aria-invalid', 'true')
     expect(screen.getByText('Required field')).toBeInTheDocument()
@@ -37,7 +37,7 @@ describe('Input', () => {
 
   it('hides the description when an error message is present', () => {
     render(
-      <Input
+      <RudiInput
         label="Email"
         description="Your work email"
         errorMessage="Required"
@@ -47,29 +47,29 @@ describe('Input', () => {
   })
 
   it('marks the input as required', () => {
-    render(<Input label="Email" isRequired />)
+    render(<RudiInput label="Email" isRequired />)
     expect(screen.getByRole('textbox')).toHaveAttribute('aria-required', 'true')
   })
 
   it('disables the input', () => {
-    render(<Input label="Email" isDisabled />)
+    render(<RudiInput label="Email" isDisabled />)
     expect(screen.getByRole('textbox')).toBeDisabled()
   })
 
   it('forwards ref to the underlying input', () => {
     const ref = createRef<HTMLInputElement>()
-    render(<Input label="Email" ref={ref} />)
+    render(<RudiInput label="Email" ref={ref} />)
     expect(ref.current).toBe(screen.getByRole('textbox'))
   })
 
   it('has no accessibility violations', async () => {
-    const { container } = render(<Input label="Email" />)
+    const { container } = render(<RudiInput label="Email" />)
     expect(await axe(container)).toHaveNoViolations()
   })
 
   it('has no accessibility violations in error state', async () => {
     const { container } = render(
-      <Input label="Email" errorMessage="Required" />,
+      <RudiInput label="Email" errorMessage="Required" />,
     )
     expect(await axe(container)).toHaveNoViolations()
   })

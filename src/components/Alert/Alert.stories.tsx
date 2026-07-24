@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Alert } from './Alert'
+import { RudiAlert } from './Alert'
 
 const meta = {
   title: 'Components/Alert',
-  component: Alert,
+  component: RudiAlert,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -67,7 +67,7 @@ const meta = {
       table: { category: 'Events' },
     },
   },
-} satisfies Meta<typeof Alert>
+} satisfies Meta<typeof RudiAlert>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -142,18 +142,18 @@ export const Dismissible: Story = {
 export const AllVariants: Story = {
   render: ({}) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <Alert variant="info" icon="mdi:information" title="Info">
+      <RudiAlert variant="info" icon="mdi:information" title="Info">
         This is an info alert.
-      </Alert>
-      <Alert variant="success" icon="mdi:check-circle" title="Success">
+      </RudiAlert>
+      <RudiAlert variant="success" icon="mdi:check-circle" title="Success">
         This is a success alert.
-      </Alert>
-      <Alert variant="warning" icon="mdi:alert" title="Warning">
+      </RudiAlert>
+      <RudiAlert variant="warning" icon="mdi:alert" title="Warning">
         This is a warning alert.
-      </Alert>
-      <Alert variant="error" icon="mdi:alert-circle" title="Error">
+      </RudiAlert>
+      <RudiAlert variant="error" icon="mdi:alert-circle" title="Error">
         This is an error alert.
-      </Alert>
+      </RudiAlert>
     </div>
   ),
 }

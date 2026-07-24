@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Text } from './Text'
+import { RudiText } from './Text'
 
 const meta = {
   title: 'Typography/Text',
-  component: Text,
+  component: RudiText,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -39,7 +39,7 @@ const meta = {
     variant: 'body',
     children: 'The quick brown fox jumps over the lazy dog.',
   },
-} satisfies Meta<typeof Text>
+} satisfies Meta<typeof RudiText>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -53,11 +53,11 @@ export const Default: Story = {
 export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <Text variant="body">body — The quick brown fox jumps over the lazy dog.</Text>
-      <Text variant="body-sm">body-sm — The quick brown fox jumps over the lazy dog.</Text>
-      <Text variant="caption">caption — Supporting detail or image description.</Text>
-      <Text variant="overline">overline — Section label</Text>
-      <Text variant="code">code — const x = 42</Text>
+      <RudiText variant="body">body — The quick brown fox jumps over the lazy dog.</RudiText>
+      <RudiText variant="body-sm">body-sm — The quick brown fox jumps over the lazy dog.</RudiText>
+      <RudiText variant="caption">caption — Supporting detail or image description.</RudiText>
+      <RudiText variant="overline">overline — Section label</RudiText>
+      <RudiText variant="code">code — const x = 42</RudiText>
     </div>
   ),
 }
@@ -66,9 +66,9 @@ export const AsSpan: Story = {
   render: () => (
     <p>
       This is a paragraph with a{' '}
-      <Text as="span" variant="code">
+      <RudiText as="span" variant="code">
         code
-      </Text>{' '}
+      </RudiText>{' '}
       snippet inline.
     </p>
   ),
@@ -76,9 +76,9 @@ export const AsSpan: Story = {
 
 export const AsLabel: Story = {
   render: () => (
-    <Text as="label" variant="overline" htmlFor="example-input">
+    <RudiText as="label" variant="overline" htmlFor="example-input">
       Field label
-    </Text>
+    </RudiText>
   ),
 }
 

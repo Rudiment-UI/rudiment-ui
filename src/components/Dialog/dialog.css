@@ -1,55 +1,55 @@
-.rudiment-dialog__overlay {
+.rudi-dialog__overlay {
   position: fixed;
   inset: 0;
   z-index: 50;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--token-component-dialog-overlay-bg);
-  padding: var(--token-component-dialog-overlay-padding);
+  background-color: var(--rudi-component-dialog-overlay-bg);
+  padding: var(--rudi-component-dialog-overlay-padding);
 }
 
-.rudiment-dialog {
+.rudi-dialog {
   position: relative;
   z-index: 51;
   width: 100%;
-  background-color: var(--token-component-dialog-bg);
-  border-radius: var(--token-component-dialog-radius);
+  background-color: var(--rudi-component-dialog-bg);
+  border-radius: var(--rudi-component-dialog-radius);
   box-shadow:
     0 20px 25px -5px rgb(0 0 0 / 0.1),
     0 8px 10px -6px rgb(0 0 0 / 0.1);
-  padding: var(--token-component-dialog-padding);
+  padding: var(--rudi-component-dialog-padding);
   display: grid;
-  gap: var(--token-component-dialog-gap);
+  gap: var(--rudi-component-dialog-gap);
 }
 
-.rudiment-dialog:focus-visible {
+.rudi-dialog:focus-visible {
   outline: none;
 }
 
 /* Sizes */
-.rudiment-dialog--sm {
-  max-width: var(--token-component-dialog-max-width-sm);
+.rudi-dialog--sm {
+  max-width: var(--rudi-component-dialog-max-width-sm);
 }
 
-.rudiment-dialog--md {
-  max-width: var(--token-component-dialog-max-width-md);
+.rudi-dialog--md {
+  max-width: var(--rudi-component-dialog-max-width-md);
 }
 
-.rudiment-dialog--lg {
-  max-width: var(--token-component-dialog-max-width-lg);
+.rudi-dialog--lg {
+  max-width: var(--rudi-component-dialog-max-width-lg);
 }
 
-.rudiment-dialog__title {
-  font-size: var(--token-component-dialog-title-font-size);
-  font-weight: var(--token-component-dialog-title-font-weight);
-  color: var(--token-component-dialog-title-color);
-  line-height: var(--token-component-dialog-title-line-height);
+.rudi-dialog__title {
+  font-size: var(--rudi-component-dialog-title-font-size);
+  font-weight: var(--rudi-component-dialog-title-font-weight);
+  color: var(--rudi-component-dialog-title-color);
+  line-height: var(--rudi-component-dialog-title-line-height);
   margin: 0;
 }
 
-.rudiment-dialog__body {
-  font-size: var(--token-component-dialog-body-font-size);
-  color: var(--token-component-dialog-body-color);
-  line-height: var(--token-component-dialog-body-line-height);
+.rudi-dialog__body {
+  font-size: var(--rudi-component-dialog-body-font-size);
+  color: var(--rudi-component-dialog-body-color);
+  line-height: var(--rudi-component-dialog-body-line-height);
 }

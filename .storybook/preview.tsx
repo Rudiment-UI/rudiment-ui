@@ -84,8 +84,8 @@ const preview: Preview = {
         <div
           style={{
             padding: '2rem',
-            backgroundColor: 'var(--token-color-background-surface)',
-            color: 'var(--token-color-text-default)',
+            backgroundColor: 'var(--rudi-color-background-surface)',
+            color: 'var(--rudi-color-text-default)',
             fontFamily:
               '"InterVariable", "Inter", ui-sans-serif, system-ui, sans-serif',
           }}

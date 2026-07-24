@@ -44,7 +44,7 @@ Edit `tokens/semantic.json` to point brand tokens at a different primitive:
 }
 ```
 
-Every component that uses `--token-color-brand-primary` (buttons, links, focus rings) will update automatically.
+Every component that uses `--rudi-color-brand-primary` (buttons, links, focus rings) will update automatically.
 
 ### Change the color palette
 
@@ -162,7 +162,7 @@ Store the selected theme in `localStorage` so it survives page reloads:
 
 ```js
 // Read on load
-const saved = localStorage.getItem('rudiment-theme')
+const saved = localStorage.getItem('rudi-theme')
 const systemPref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 const theme = saved || systemPref
 
@@ -171,7 +171,7 @@ document.documentElement.setAttribute('data-theme', theme)
 // Save on change
 function setTheme(value) {
   document.documentElement.setAttribute('data-theme', value)
-  localStorage.setItem('rudiment-theme', value)
+  localStorage.setItem('rudi-theme', value)
 }
 ```
 
@@ -279,13 +279,13 @@ If you're consuming Rudiment UI as a dependency and don't want to fork the token
 
 ```css
 :root {
-  --token-color-brand-primary: #7C3AED;
-  --token-color-brand-primary-hover: #6D28D9;
+  --rudi-color-brand-primary: #7C3AED;
+  --rudi-color-brand-primary-hover: #6D28D9;
 }
 
 [data-theme="dark"] {
-  --token-color-brand-primary: #A78BFA;
-  --token-color-brand-primary-hover: #8B5CF6;
+  --rudi-color-brand-primary: #A78BFA;
+  --rudi-color-brand-primary-hover: #8B5CF6;
 }
 ```
 
@@ -297,9 +297,9 @@ To restyle a single component, override its component tokens:
 
 ```css
 :root {
-  --token-component-button-primary-bg: #7C3AED;
-  --token-component-button-primary-hover-bg: #6D28D9;
-  --token-component-button-primary-text: #FFFFFF;
+  --rudi-component-button-primary-bg: #7C3AED;
+  --rudi-component-button-primary-hover-bg: #6D28D9;
+  --rudi-component-button-primary-text: #FFFFFF;
 }
 ```
 
@@ -378,19 +378,19 @@ CSS custom properties store single values, so a token can't hold a gradient. But
 Apply a gradient border to any component that already has a `border`:
 
 ```css
-[data-theme='cyberpunk'] .rudiment-card--outlined {
+[data-theme='cyberpunk'] .rudi-card--outlined {
   border-image: linear-gradient(
     135deg,
-    var(--token-color-magenta-400),
-    var(--token-color-cyber-400)
+    var(--rudi-color-magenta-400),
+    var(--rudi-color-cyber-400)
   ) 1;
 }
 
-[data-theme='cyberpunk-dark'] .rudiment-card--outlined {
+[data-theme='cyberpunk-dark'] .rudi-card--outlined {
   border-image: linear-gradient(
     135deg,
-    var(--token-color-cyber-400),
-    var(--token-color-magenta-400)
+    var(--rudi-color-cyber-400),
+    var(--rudi-color-magenta-400)
   ) 1;
 }
 ```
@@ -404,12 +404,12 @@ This same pattern works for inputs, selects, buttons, and alerts. For elements w
 If your theme needs both gradients and rounded corners, `border-image` won't work. Use a pseudo-element instead:
 
 ```css
-[data-theme='my-theme'] .rudiment-card--outlined {
+[data-theme='my-theme'] .rudi-card--outlined {
   border: none;
   position: relative;
 }
 
-[data-theme='my-theme'] .rudiment-card--outlined::before {
+[data-theme='my-theme'] .rudi-card--outlined::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -430,12 +430,12 @@ If your theme needs both gradients and rounded corners, `border-image` won't wor
 Cards and other surface elements can use gradient backgrounds via `[data-theme]` selectors. Use the `background` shorthand (not `background-color`) so it overrides the token-driven solid color:
 
 ```css
-[data-theme='cyberpunk'] .rudiment-card {
+[data-theme='cyberpunk'] .rudi-card {
   background: linear-gradient(
     135deg,
-    var(--token-color-magenta-50) 0%,
-    var(--token-color-neutral-0) 40%,
-    var(--token-color-cyber-50) 100%
+    var(--rudi-color-magenta-50) 0%,
+    var(--rudi-color-neutral-0) 40%,
+    var(--rudi-color-cyber-50) 100%
   );
 }
 ```
@@ -448,14 +448,14 @@ Neon glows are achieved with `box-shadow` using theme color tokens and transpare
 
 ```css
 /* Subtle dual-tone glow on cards */
-[data-theme='cyberpunk-dark'] .rudiment-card {
+[data-theme='cyberpunk-dark'] .rudi-card {
   box-shadow:
     0 0 16px 0 rgb(6 182 212 / 0.2),
     0 0 6px 0 rgb(255 26 128 / 0.15);
 }
 
 /* Stronger glow on buttons */
-[data-theme='cyberpunk-dark'] .rudiment-button--primary {
+[data-theme='cyberpunk-dark'] .rudi-button--primary {
   box-shadow: 0 0 12px 0 rgb(255 26 128 / 0.4);
 }
 ```
@@ -463,10 +463,10 @@ Neon glows are achieved with `box-shadow` using theme color tokens and transpare
 When combining glow with focus rings, the focus-visible rule replaces the resting `box-shadow`. Include the glow in the focus state too, but intensify it:
 
 ```css
-[data-theme='cyberpunk-dark'] .rudiment-button--primary:focus-visible {
+[data-theme='cyberpunk-dark'] .rudi-button--primary:focus-visible {
   box-shadow:
-    0 0 0 2px var(--token-color-neutral-700),
-    0 0 0 4px var(--token-color-border-focus),
+    0 0 0 2px var(--rudi-color-neutral-700),
+    0 0 0 4px var(--rudi-color-border-focus),
     0 0 20px 6px rgb(255 26 128 / 0.5);
 }
 ```

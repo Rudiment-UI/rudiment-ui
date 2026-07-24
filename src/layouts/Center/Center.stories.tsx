@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Center } from './Center'
+import { RudiCenter } from './Center'
 
 const meta = {
   title: 'Layouts/Center',
-  component: Center,
+  component: RudiCenter,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -47,7 +47,7 @@ const meta = {
       table: { category: 'Layout' },
     },
   },
-} satisfies Meta<typeof Center>
+} satisfies Meta<typeof RudiCenter>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -62,54 +62,54 @@ function Placeholder({ label }: { label: string }) {
 
 export const Default: Story = {
   render: (args) => (
-    <Center {...args}>
+    <RudiCenter {...args}>
       <Placeholder label="Centered content" />
-    </Center>
+    </RudiCenter>
   ),
 }
 
 export const NarrowMaxWidth: Story = {
   args: { maxWidth: '30rem' },
   render: (args) => (
-    <Center {...args}>
+    <RudiCenter {...args}>
       <Placeholder label="Narrow centered content" />
-    </Center>
+    </RudiCenter>
   ),
 }
 
 export const WideMaxWidth: Story = {
   args: { maxWidth: '90rem' },
   render: (args) => (
-    <Center {...args}>
+    <RudiCenter {...args}>
       <Placeholder label="Wide centered content" />
-    </Center>
+    </RudiCenter>
   ),
 }
 
 export const WithGutters: Story = {
   args: { gutters: '3rem' },
   render: (args) => (
-    <Center {...args}>
+    <RudiCenter {...args}>
       <Placeholder label="Content with large gutters" />
-    </Center>
+    </RudiCenter>
   ),
 }
 
 export const Intrinsic: Story = {
   args: { intrinsic: true },
   render: (args) => (
-    <Center {...args}>
+    <RudiCenter {...args}>
       <Placeholder label="Short label" />
       <Placeholder label="A slightly longer label" />
       <Placeholder label="Short" />
-    </Center>
+    </RudiCenter>
   ),
 }
 
 export const AsSection: Story = {
   render: () => (
-    <Center as="section" maxWidth="40rem">
+    <RudiCenter as="section" maxWidth="40rem">
       <Placeholder label="Inside a section element" />
-    </Center>
+    </RudiCenter>
   ),
 }

@@ -1,15 +1,15 @@
 /* Box */
-.rudiment-box {
-  --box-padding: var(--token-layout-box-padding, 1rem);
+.rudi-box {
+  --box-padding: var(--rudi-layout-box-padding, 1rem);
   padding: var(--box-padding);
 }
 
-.rudiment-box--bordered {
-  border: 1px solid var(--token-layout-box-border-color);
-  border-radius: var(--token-layout-box-border-radius);
+.rudi-box--bordered {
+  border: 1px solid var(--rudi-layout-box-border-color);
+  border-radius: var(--rudi-layout-box-border-radius);
 }
 
-.rudiment-box--invert {
-  background-color: var(--token-layout-box-invert-bg);
-  color: var(--token-layout-box-invert-text);
+.rudi-box--invert {
+  background-color: var(--rudi-layout-box-invert-bg);
+  color: var(--rudi-layout-box-invert-text);
 }

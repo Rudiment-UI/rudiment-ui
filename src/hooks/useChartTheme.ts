@@ -13,18 +13,18 @@ interface ChartTheme {
 }
 
 const TOKEN_MAP = {
-  axisColor: '--token-component-chart-axis-color',
-  gridColor: '--token-component-chart-grid-color',
-  labelColor: '--token-component-chart-label-color',
-  legendColor: '--token-component-chart-legend-color',
-  tooltipBg: '--token-component-chart-tooltip-bg',
-  tooltipText: '--token-component-chart-tooltip-text',
-  tooltipBorder: '--token-component-chart-tooltip-border',
-  chartBg: '--token-component-chart-bg',
+  axisColor: '--rudi-component-chart-axis-color',
+  gridColor: '--rudi-component-chart-grid-color',
+  labelColor: '--rudi-component-chart-label-color',
+  legendColor: '--rudi-component-chart-legend-color',
+  tooltipBg: '--rudi-component-chart-tooltip-bg',
+  tooltipText: '--rudi-component-chart-tooltip-text',
+  tooltipBorder: '--rudi-component-chart-tooltip-border',
+  chartBg: '--rudi-component-chart-bg',
 } as const
 
 const SERIES_TOKENS = Array.from({ length: 8 }, (_, i) =>
-  `--token-color-dataviz-series-${i + 1}`,
+  `--rudi-color-dataviz-series-${i + 1}`,
 )
 
 const FALLBACK_COLORS = [

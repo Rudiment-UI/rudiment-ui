@@ -1,110 +1,110 @@
-.rudiment-select {
+.rudi-select {
   display: grid;
-  gap: var(--token-component-select-gap);
-  font-size: var(--token-component-select-trigger-font-size);
+  gap: var(--rudi-component-select-gap);
+  font-size: var(--rudi-component-select-trigger-font-size);
 }
 
-.rudiment-select__label {
-  font-weight: var(--token-component-select-label-font-weight);
-  color: var(--token-component-select-label-color);
-  line-height: var(--token-component-select-label-line-height);
+.rudi-select__label {
+  font-weight: var(--rudi-component-select-label-font-weight);
+  color: var(--rudi-component-select-label-color);
+  line-height: var(--rudi-component-select-label-line-height);
 }
 
-.rudiment-select__trigger {
+.rudi-select__trigger {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--token-component-select-trigger-gap);
+  gap: var(--rudi-component-select-trigger-gap);
   width: 100%;
-  padding: var(--token-component-select-trigger-padding-y)
-    var(--token-component-select-trigger-padding-x);
-  background-color: var(--token-component-select-trigger-bg);
-  color: var(--token-component-select-trigger-text);
-  border: 1px solid var(--token-component-select-trigger-border);
-  border-radius: var(--token-component-select-trigger-radius);
+  padding: var(--rudi-component-select-trigger-padding-y)
+    var(--rudi-component-select-trigger-padding-x);
+  background-color: var(--rudi-component-select-trigger-bg);
+  color: var(--rudi-component-select-trigger-text);
+  border: 1px solid var(--rudi-component-select-trigger-border);
+  border-radius: var(--rudi-component-select-trigger-radius);
   font-size: inherit;
-  line-height: var(--token-component-select-trigger-line-height);
+  line-height: var(--rudi-component-select-trigger-line-height);
   cursor: pointer;
-  transition: border-color var(--token-motion-duration-base) var(--token-motion-easing-standard);
+  transition: border-color var(--rudi-motion-duration-base) var(--rudi-motion-easing-standard);
 }
 
-.rudiment-select__trigger:focus-visible {
-  outline: 2px solid var(--token-component-select-trigger-focus-outline-color);
+.rudi-select__trigger:focus-visible {
+  outline: 2px solid var(--rudi-component-select-trigger-focus-outline-color);
   outline-offset: 2px;
 }
 
-[data-theme='teal'] .rudiment-select__trigger:focus-visible,
-[data-theme='teal-dark'] .rudiment-select__trigger:focus-visible {
+[data-theme='teal'] .rudi-select__trigger:focus-visible,
+[data-theme='teal-dark'] .rudi-select__trigger:focus-visible {
   outline: none;
 }
 
-[data-theme='teal'] .rudiment-select__trigger:focus-visible {
+[data-theme='teal'] .rudi-select__trigger:focus-visible {
   box-shadow:
-    0 0 0 2px var(--token-color-neutral-0),
-    0 0 0 4px var(--token-color-border-focus),
+    0 0 0 2px var(--rudi-color-neutral-0),
+    0 0 0 4px var(--rudi-color-border-focus),
     inset 0 0 0 1px rgba(10, 13, 18, 0.18);
 }
 
-[data-theme='teal-dark'] .rudiment-select__trigger:focus-visible {
+[data-theme='teal-dark'] .rudi-select__trigger:focus-visible {
   box-shadow:
-    0 0 0 2px var(--token-color-neutral-600),
-    0 0 0 4px var(--token-color-neutral-50),
+    0 0 0 2px var(--rudi-color-neutral-600),
+    0 0 0 4px var(--rudi-color-neutral-50),
     inset 0 0 0 1px rgba(10, 13, 18, 0.18);
 }
 
 /* Cyberpunk theme: neon glow focus rings */
-[data-theme='cyberpunk'] .rudiment-select__trigger:focus-visible,
-[data-theme='cyberpunk-dark'] .rudiment-select__trigger:focus-visible {
+[data-theme='cyberpunk'] .rudi-select__trigger:focus-visible,
+[data-theme='cyberpunk-dark'] .rudi-select__trigger:focus-visible {
   outline: none;
 }
 
-[data-theme='cyberpunk'] .rudiment-select__trigger:focus-visible {
+[data-theme='cyberpunk'] .rudi-select__trigger:focus-visible {
   box-shadow:
-    0 0 0 2px var(--token-color-neutral-0),
-    0 0 0 4px var(--token-color-border-focus),
-    0 0 12px 2px var(--token-color-border-focus);
+    0 0 0 2px var(--rudi-color-neutral-0),
+    0 0 0 4px var(--rudi-color-border-focus),
+    0 0 12px 2px var(--rudi-color-border-focus);
 }
 
-[data-theme='cyberpunk-dark'] .rudiment-select__trigger:focus-visible {
+[data-theme='cyberpunk-dark'] .rudi-select__trigger:focus-visible {
   box-shadow:
-    0 0 0 2px var(--token-color-neutral-700),
-    0 0 0 4px var(--token-color-border-focus),
-    0 0 16px 4px var(--token-color-border-focus);
+    0 0 0 2px var(--rudi-color-neutral-700),
+    0 0 0 4px var(--rudi-color-border-focus),
+    0 0 16px 4px var(--rudi-color-border-focus);
 }
 
-[data-theme='cyberpunk'] .rudiment-select__trigger {
+[data-theme='cyberpunk'] .rudi-select__trigger {
   border-image: linear-gradient(
     135deg,
-    var(--token-color-magenta-300),
-    var(--token-color-cyber-300)
+    var(--rudi-color-magenta-300),
+    var(--rudi-color-cyber-300)
   ) 1;
 }
 
-[data-theme='cyberpunk-dark'] .rudiment-select__trigger {
+[data-theme='cyberpunk-dark'] .rudi-select__trigger {
   border-image: linear-gradient(
     135deg,
-    var(--token-color-cyber-500),
-    var(--token-color-magenta-500)
+    var(--rudi-color-cyber-500),
+    var(--rudi-color-magenta-500)
   ) 1;
 }
 
-.rudiment-select__trigger[aria-disabled='true'],
-.rudiment-select__trigger[disabled] {
-  background-color: var(--token-component-select-trigger-disabled-bg);
-  color: var(--token-component-select-trigger-disabled-text);
+.rudi-select__trigger[aria-disabled='true'],
+.rudi-select__trigger[disabled] {
+  background-color: var(--rudi-component-select-trigger-disabled-bg);
+  color: var(--rudi-component-select-trigger-disabled-text);
   cursor: not-allowed;
 }
 
-.rudiment-select__trigger--error {
-  border-color: var(--token-component-select-trigger-error-border);
+.rudi-select__trigger--error {
+  border-color: var(--rudi-component-select-trigger-error-border);
 }
 
-.rudiment-select__popover {
+.rudi-select__popover {
   position: absolute;
   z-index: 50;
-  background-color: var(--token-component-select-popover-bg);
-  border: 1px solid var(--token-component-select-popover-border);
-  border-radius: var(--token-component-select-popover-radius);
+  background-color: var(--rudi-component-select-popover-bg);
+  border: 1px solid var(--rudi-component-select-popover-border);
+  border-radius: var(--rudi-component-select-popover-radius);
   box-shadow:
     0 4px 6px -1px rgb(0 0 0 / 0.1),
     0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -112,39 +112,39 @@
   overflow: hidden;
 }
 
-.rudiment-select__listbox {
+.rudi-select__listbox {
   list-style: none;
   margin: 0;
-  padding: var(--token-component-select-popover-padding);
+  padding: var(--rudi-component-select-popover-padding);
 }
 
-.rudiment-select__option {
+.rudi-select__option {
   display: flex;
   align-items: center;
-  padding: var(--token-component-select-option-padding-y)
-    var(--token-component-select-option-padding-x);
-  border-radius: var(--token-component-select-option-radius);
-  font-size: var(--token-component-select-option-font-size);
+  padding: var(--rudi-component-select-option-padding-y)
+    var(--rudi-component-select-option-padding-x);
+  border-radius: var(--rudi-component-select-option-radius);
+  font-size: var(--rudi-component-select-option-font-size);
   cursor: pointer;
 }
 
-.rudiment-select__option[aria-selected='true'] {
-  background-color: var(--token-component-select-option-selected-bg);
-  color: var(--token-component-select-option-selected-text);
+.rudi-select__option[aria-selected='true'] {
+  background-color: var(--rudi-component-select-option-selected-bg);
+  color: var(--rudi-component-select-option-selected-text);
 }
 
-.rudiment-select__option[data-focused='true']:not([aria-selected='true']) {
-  background-color: var(--token-component-select-option-hover-bg);
+.rudi-select__option[data-focused='true']:not([aria-selected='true']) {
+  background-color: var(--rudi-component-select-option-hover-bg);
 }
 
-.rudiment-select__description {
-  color: var(--token-component-select-description-color);
-  font-size: var(--token-component-select-description-font-size);
-  line-height: var(--token-font-line-height-normal);
+.rudi-select__description {
+  color: var(--rudi-component-select-description-color);
+  font-size: var(--rudi-component-select-description-font-size);
+  line-height: var(--rudi-font-line-height-normal);
 }
 
-.rudiment-select__error {
-  color: var(--token-component-select-error-text-color);
-  font-size: var(--token-component-select-error-font-size);
-  line-height: var(--token-font-line-height-normal);
+.rudi-select__error {
+  color: var(--rudi-component-select-error-text-color);
+  font-size: var(--rudi-component-select-error-font-size);
+  line-height: var(--rudi-font-line-height-normal);
 }

@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 import './switcher.css'
 
-export interface SwitcherProps extends React.HTMLAttributes<HTMLElement> {
+export interface RudiSwitcherProps extends React.HTMLAttributes<HTMLElement> {
   threshold?: string
   space?: string
   limit?: number
@@ -10,8 +10,8 @@ export interface SwitcherProps extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode
 }
 
-export const Switcher = forwardRef<HTMLElement, SwitcherProps>(
-  function Switcher(
+export const RudiSwitcher = forwardRef<HTMLElement, RudiSwitcherProps>(
+  function RudiSwitcher(
     {
       threshold,
       space,
@@ -31,7 +31,7 @@ export const Switcher = forwardRef<HTMLElement, SwitcherProps>(
     return (
       <Element
         ref={ref}
-        className={cn('rudiment-switcher', className)}
+        className={cn('rudi-switcher', className)}
         style={{ ...customProperties, ...style } as React.CSSProperties}
         {...props}
       >

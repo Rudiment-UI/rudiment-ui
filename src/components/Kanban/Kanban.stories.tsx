@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import {
-  KanbanBoard,
-  type KanbanColumnData,
-  type KanbanCardMoveEvent,
+  RudiKanbanBoard,
+  type RudiKanbanColumnData,
+  type RudiKanbanCardMoveEvent,
 } from './KanbanBoard'
-import { KanbanCard } from './KanbanCard'
-import { Badge } from '../Badge/Badge'
-import { Avatar } from '../Avatar/Avatar'
+import { RudiKanbanCard } from './KanbanCard'
+import { RudiBadge } from '../Badge/Badge'
+import { RudiAvatar } from '../Avatar/Avatar'
 
-const initialColumns: KanbanColumnData[] = [
+const initialColumns: RudiKanbanColumnData[] = [
   {
     id: 'todo',
     title: 'To Do',
@@ -79,9 +79,9 @@ const initialColumns: KanbanColumnData[] = [
 ]
 
 function InteractiveBoard() {
-  const [columns, setColumns] = useState<KanbanColumnData[]>(initialColumns)
+  const [columns, setColumns] = useState<RudiKanbanColumnData[]>(initialColumns)
 
-  const handleCardMove = (event: KanbanCardMoveEvent) => {
+  const handleCardMove = (event: RudiKanbanCardMoveEvent) => {
     setColumns((prev) => {
       const next = prev.map((col) => ({
         ...col,
@@ -100,11 +100,11 @@ function InteractiveBoard() {
   }
 
   return (
-    <KanbanBoard
+    <RudiKanbanBoard
       columns={columns}
       onCardMove={handleCardMove}
       renderCard={(item) => (
-        <KanbanCard key={item.id} id={item.id}>
+        <RudiKanbanCard key={item.id} id={item.id}>
           <div
             style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
           >
@@ -118,7 +118,7 @@ function InteractiveBoard() {
                 justifyContent: 'space-between',
               }}
             >
-              <Badge
+              <RudiBadge
                 variant={
                   item.priority as
                     | 'default'
@@ -130,11 +130,11 @@ function InteractiveBoard() {
                 size="sm"
               >
                 {String(item.priority)}
-              </Badge>
-              <Avatar name={String(item.assignee)} size="sm" />
+              </RudiBadge>
+              <RudiAvatar name={String(item.assignee)} size="sm" />
             </div>
           </div>
-        </KanbanCard>
+        </RudiKanbanCard>
       )}
     />
   )
@@ -142,7 +142,7 @@ function InteractiveBoard() {
 
 const meta = {
   title: 'Components/KanbanBoard',
-  component: KanbanBoard,
+  component: RudiKanbanBoard,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -153,7 +153,7 @@ const meta = {
     },
     layout: 'fullscreen',
   },
-} satisfies Meta<typeof KanbanBoard>
+} satisfies Meta<typeof RudiKanbanBoard>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -164,20 +164,20 @@ export const Default: Story = {
 
 export const EmptyColumns: Story = {
   render: ({}) => {
-    const emptyColumns: KanbanColumnData[] = [
+    const emptyColumns: RudiKanbanColumnData[] = [
       { id: 'todo', title: 'To Do', items: [] },
       { id: 'in-progress', title: 'In Progress', items: [] },
       { id: 'done', title: 'Done', items: [] },
     ]
 
     return (
-      <KanbanBoard
+      <RudiKanbanBoard
         columns={emptyColumns}
         onCardMove={() => {}}
         renderCard={(item) => (
-          <KanbanCard key={item.id} id={item.id}>
+          <RudiKanbanCard key={item.id} id={item.id}>
             <span>{String(item.title)}</span>
-          </KanbanCard>
+          </RudiKanbanCard>
         )}
       />
     )
@@ -186,7 +186,7 @@ export const EmptyColumns: Story = {
 
 export const SimpleCards: Story = {
   render: ({}) => {
-    const simpleColumns: KanbanColumnData[] = [
+    const simpleColumns: RudiKanbanColumnData[] = [
       {
         id: 'backlog',
         title: 'Backlog',
@@ -204,13 +204,13 @@ export const SimpleCards: Story = {
     ]
 
     return (
-      <KanbanBoard
+      <RudiKanbanBoard
         columns={simpleColumns}
         onCardMove={() => {}}
         renderCard={(item) => (
-          <KanbanCard key={item.id} id={item.id}>
+          <RudiKanbanCard key={item.id} id={item.id}>
             <span style={{ fontSize: '0.875rem' }}>{String(item.title)}</span>
-          </KanbanCard>
+          </RudiKanbanCard>
         )}
       />
     )

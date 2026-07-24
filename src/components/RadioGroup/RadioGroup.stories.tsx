@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { useRadio } from 'react-aria'
 import { useObjectRef } from '@react-aria/utils'
 import type { AriaRadioProps } from 'react-aria'
-import { RadioGroup, RadioGroupContext } from './RadioGroup'
+import { RudiRadioGroup, RadioGroupContext } from './RadioGroup'
 import './radio-group.css'
 
 // Minimal Radio component for story demonstration.
@@ -20,14 +20,14 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
 
     return (
       <label
-        className={`rudiment-radio${props.isDisabled ? ' rudiment-radio--disabled' : ''}`}
+        className={`rudi-radio${props.isDisabled ? ' rudi-radio--disabled' : ''}`}
       >
-        <input {...inputProps} ref={ref} className="rudiment-radio__input" />
+        <input {...inputProps} ref={ref} className="rudi-radio__input" />
         <span
-          className={`rudiment-radio__control${state.selectedValue === props.value ? ' rudiment-radio__control--selected' : ''}`}
+          className={`rudi-radio__control${state.selectedValue === props.value ? ' rudi-radio__control--selected' : ''}`}
           aria-hidden="true"
         />
-        <span className="rudiment-radio__label">{props.children}</span>
+        <span className="rudi-radio__label">{props.children}</span>
       </label>
     )
   },
@@ -35,7 +35,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
 
 const meta = {
   title: 'Components/RadioGroup',
-  component: RadioGroup,
+  component: RudiRadioGroup,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -110,65 +110,65 @@ const meta = {
       table: { category: 'Events' },
     },
   },
-} as Meta<typeof RadioGroup>
+} as Meta<typeof RudiRadioGroup>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: (args) => (
-    <RadioGroup {...args} label="Shipping speed">
+    <RudiRadioGroup {...args} label="Shipping speed">
       <Radio value="standard">Standard (5–7 days)</Radio>
       <Radio value="express">Express (2–3 days)</Radio>
       <Radio value="overnight">Overnight (next day)</Radio>
-    </RadioGroup>
+    </RudiRadioGroup>
   ),
 }
 
 export const WithDescription: Story = {
   render: ({}) => (
-    <RadioGroup
+    <RudiRadioGroup
       label="Plan"
       description="You can change your plan at any time."
     >
       <Radio value="starter">Starter — free forever</Radio>
       <Radio value="pro">Pro — $12/month</Radio>
       <Radio value="enterprise">Enterprise — contact us</Radio>
-    </RadioGroup>
+    </RudiRadioGroup>
   ),
 }
 
 export const Horizontal: Story = {
   render: ({}) => (
-    <RadioGroup label="Size" orientation="horizontal">
+    <RudiRadioGroup label="Size" orientation="horizontal">
       <Radio value="xs">XS</Radio>
       <Radio value="s">S</Radio>
       <Radio value="m">M</Radio>
       <Radio value="l">L</Radio>
       <Radio value="xl">XL</Radio>
-    </RadioGroup>
+    </RudiRadioGroup>
   ),
 }
 
 export const WithError: Story = {
   render: ({}) => (
-    <RadioGroup
+    <RudiRadioGroup
       label="Shipping speed"
       errorMessage="Please select a shipping option."
     >
       <Radio value="standard">Standard (5–7 days)</Radio>
       <Radio value="express">Express (2–3 days)</Radio>
       <Radio value="overnight">Overnight (next day)</Radio>
-    </RadioGroup>
+    </RudiRadioGroup>
   ),
 }
 
 export const Disabled: Story = {
   render: ({}) => (
-    <RadioGroup label="Region" isDisabled>
+    <RudiRadioGroup label="Region" isDisabled>
       <Radio value="us">United States</Radio>
       <Radio value="eu">Europe</Radio>
       <Radio value="ap">Asia Pacific</Radio>
-    </RadioGroup>
+    </RudiRadioGroup>
   ),
 }

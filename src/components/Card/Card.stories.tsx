@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Card } from './Card'
+import { RudiCard } from './Card'
 
 const meta = {
   title: 'Components/Card',
-  component: Card,
+  component: RudiCard,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -37,7 +37,7 @@ const meta = {
       table: { category: 'Appearance' },
     },
   },
-} satisfies Meta<typeof Card>
+} satisfies Meta<typeof RudiCard>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -47,11 +47,11 @@ export const Default: Story = {
     children: undefined,
   },
   render: (args) => (
-    <Card {...args}>
-      <Card.Body>
+    <RudiCard {...args}>
+      <RudiCard.Body>
         <p>This is a basic card with body content.</p>
-      </Card.Body>
-    </Card>
+      </RudiCard.Body>
+    </RudiCard>
   ),
   parameters: {
     docs: {
@@ -71,20 +71,20 @@ export const WithHeaderAndFooter: Story = {
     children: undefined,
   },
   render: (args) => (
-    <Card {...args}>
-      <Card.Header>
+    <RudiCard {...args}>
+      <RudiCard.Header>
         <h3>Card Title</h3>
-      </Card.Header>
-      <Card.Body>
+      </RudiCard.Header>
+      <RudiCard.Body>
         <p>
           This card uses all three slots: Header, Body, and Footer. Each slot
           inherits the padding set on the parent Card.
         </p>
-      </Card.Body>
-      <Card.Footer>
+      </RudiCard.Body>
+      <RudiCard.Footer>
         <button type="button">Action</button>
-      </Card.Footer>
-    </Card>
+      </RudiCard.Footer>
+    </RudiCard>
   ),
   parameters: {
     docs: {
@@ -111,11 +111,11 @@ export const Outlined: Story = {
     children: undefined,
   },
   render: (args) => (
-    <Card {...args}>
-      <Card.Body>
+    <RudiCard {...args}>
+      <RudiCard.Body>
         <p>An outlined card with a visible border.</p>
-      </Card.Body>
-    </Card>
+      </RudiCard.Body>
+    </RudiCard>
   ),
   parameters: {
     docs: {
@@ -136,11 +136,11 @@ export const Elevated: Story = {
     children: undefined,
   },
   render: (args) => (
-    <Card {...args}>
-      <Card.Body>
+    <RudiCard {...args}>
+      <RudiCard.Body>
         <p>An elevated card with a box shadow.</p>
-      </Card.Body>
-    </Card>
+      </RudiCard.Body>
+    </RudiCard>
   ),
   parameters: {
     docs: {
@@ -162,13 +162,13 @@ export const NoPadding: Story = {
     children: undefined,
   },
   render: (args) => (
-    <Card {...args}>
-      <Card.Body>
+    <RudiCard {...args}>
+      <RudiCard.Body>
         <p>
           A card with no padding, useful for full-bleed content like images.
         </p>
-      </Card.Body>
-    </Card>
+      </RudiCard.Body>
+    </RudiCard>
   ),
   parameters: {
     docs: {
@@ -186,30 +186,30 @@ export const NoPadding: Story = {
 export const AllVariants: Story = {
   render: ({}) => (
     <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-      <Card variant="default" padding="md">
-        <Card.Header>
+      <RudiCard variant="default" padding="md">
+        <RudiCard.Header>
           <h3>Default</h3>
-        </Card.Header>
-        <Card.Body>
+        </RudiCard.Header>
+        <RudiCard.Body>
           <p>Background only.</p>
-        </Card.Body>
-      </Card>
-      <Card variant="outlined" padding="md">
-        <Card.Header>
+        </RudiCard.Body>
+      </RudiCard>
+      <RudiCard variant="outlined" padding="md">
+        <RudiCard.Header>
           <h3>Outlined</h3>
-        </Card.Header>
-        <Card.Body>
+        </RudiCard.Header>
+        <RudiCard.Body>
           <p>With a border.</p>
-        </Card.Body>
-      </Card>
-      <Card variant="elevated" padding="md">
-        <Card.Header>
+        </RudiCard.Body>
+      </RudiCard>
+      <RudiCard variant="elevated" padding="md">
+        <RudiCard.Header>
           <h3>Elevated</h3>
-        </Card.Header>
-        <Card.Body>
+        </RudiCard.Header>
+        <RudiCard.Body>
           <p>With a shadow.</p>
-        </Card.Body>
-      </Card>
+        </RudiCard.Body>
+      </RudiCard>
     </div>
   ),
 }

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Item } from 'react-stately'
-import { Select, type SelectProps } from './Select'
+import { RudiSelect, type RudiSelectProps } from './Select'
 
 interface SelectItem {
   id: string
@@ -21,12 +21,12 @@ const roles: SelectItem[] = [
   { id: 'admin', label: 'Admin' },
 ]
 
-type SelectStoryArgs = Omit<SelectProps<SelectItem>, 'children'>
+type SelectStoryArgs = Omit<RudiSelectProps<SelectItem>, 'children'>
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const meta: Meta<SelectStoryArgs> = {
   title: 'Components/Select',
-  component: Select as any,
+  component: RudiSelect as any,
   tags: ['autodocs'],
   decorators: [
     (Story) => (
@@ -36,9 +36,9 @@ const meta: Meta<SelectStoryArgs> = {
     ),
   ],
   render: (args) => (
-    <Select {...(args as SelectProps<SelectItem>)}>
+    <RudiSelect {...(args as RudiSelectProps<SelectItem>)}>
       {(item) => <Item key={item.id}>{item.label}</Item>}
-    </Select>
+    </RudiSelect>
   ),
   parameters: {
     docs: {

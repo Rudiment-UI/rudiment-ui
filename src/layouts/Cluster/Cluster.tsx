@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 import './cluster.css'
 
-export interface ClusterProps extends React.HTMLAttributes<HTMLElement> {
+export interface RudiClusterProps extends React.HTMLAttributes<HTMLElement> {
   space?: string
   justify?:
     | 'flex-start'
@@ -15,7 +15,7 @@ export interface ClusterProps extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode
 }
 
-export const Cluster = forwardRef<HTMLElement, ClusterProps>(function Cluster(
+export const RudiCluster = forwardRef<HTMLElement, RudiClusterProps>(function RudiCluster(
   {
     space,
     justify,
@@ -36,7 +36,7 @@ export const Cluster = forwardRef<HTMLElement, ClusterProps>(function Cluster(
   return (
     <Element
       ref={ref}
-      className={cn('rudiment-cluster', className)}
+      className={cn('rudi-cluster', className)}
       style={{ ...customProperties, ...style } as React.CSSProperties}
       {...props}
     >

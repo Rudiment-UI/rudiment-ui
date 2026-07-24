@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import { axe } from 'vitest-axe'
 import { describe, it, expect, vi } from 'vitest'
-import { KanbanBoard } from './KanbanBoard'
-import { KanbanCard } from './KanbanCard'
+import { RudiKanbanBoard } from './KanbanBoard'
+import { RudiKanbanCard } from './KanbanCard'
 
 const sampleColumns = [
   {
@@ -26,15 +26,15 @@ const sampleColumns = [
 ]
 
 const renderCard = (item: { id: string; [key: string]: unknown }) => (
-  <KanbanCard key={item.id} id={item.id}>
+  <RudiKanbanCard key={item.id} id={item.id}>
     <span>{String(item.title)}</span>
-  </KanbanCard>
+  </RudiKanbanCard>
 )
 
 describe('KanbanBoard', () => {
   it('renders all columns', () => {
     render(
-      <KanbanBoard
+      <RudiKanbanBoard
         columns={sampleColumns}
         onCardMove={vi.fn()}
         renderCard={renderCard}
@@ -47,7 +47,7 @@ describe('KanbanBoard', () => {
 
   it('renders all cards', () => {
     render(
-      <KanbanBoard
+      <RudiKanbanBoard
         columns={sampleColumns}
         onCardMove={vi.fn()}
         renderCard={renderCard}
@@ -60,7 +60,7 @@ describe('KanbanBoard', () => {
 
   it('displays column item counts', () => {
     render(
-      <KanbanBoard
+      <RudiKanbanBoard
         columns={sampleColumns}
         onCardMove={vi.fn()}
         renderCard={renderCard}
@@ -73,7 +73,7 @@ describe('KanbanBoard', () => {
 
   it('renders drag handles with accessible labels', () => {
     render(
-      <KanbanBoard
+      <RudiKanbanBoard
         columns={sampleColumns}
         onCardMove={vi.fn()}
         renderCard={renderCard}
@@ -83,33 +83,33 @@ describe('KanbanBoard', () => {
     expect(handles).toHaveLength(3)
   })
 
-  it('applies rudiment-kanban class', () => {
+  it('applies rudi-kanban class', () => {
     const { container } = render(
-      <KanbanBoard
+      <RudiKanbanBoard
         columns={sampleColumns}
         onCardMove={vi.fn()}
         renderCard={renderCard}
       />,
     )
-    expect(container.querySelector('.rudiment-kanban')).toBeInTheDocument()
+    expect(container.querySelector('.rudi-kanban')).toBeInTheDocument()
   })
 
   it('merges custom className', () => {
     const { container } = render(
-      <KanbanBoard
+      <RudiKanbanBoard
         columns={sampleColumns}
         onCardMove={vi.fn()}
         renderCard={renderCard}
         className="my-board"
       />,
     )
-    const board = container.querySelector('.rudiment-kanban')
+    const board = container.querySelector('.rudi-kanban')
     expect(board).toHaveClass('my-board')
   })
 
   it('has live regions for announcements', () => {
     render(
-      <KanbanBoard
+      <RudiKanbanBoard
         columns={sampleColumns}
         onCardMove={vi.fn()}
         renderCard={renderCard}
@@ -121,7 +121,7 @@ describe('KanbanBoard', () => {
 
   it('has no accessibility violations', async () => {
     const { container } = render(
-      <KanbanBoard
+      <RudiKanbanBoard
         columns={sampleColumns}
         onCardMove={vi.fn()}
         renderCard={renderCard}

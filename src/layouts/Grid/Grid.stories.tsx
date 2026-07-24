@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Grid } from './Grid'
+import { RudiGrid } from './Grid'
 
 const meta = {
   title: 'Layouts/Grid',
-  component: Grid,
+  component: RudiGrid,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -35,7 +35,7 @@ const meta = {
       table: { category: 'Layout' },
     },
   },
-} satisfies Meta<typeof Grid>
+} satisfies Meta<typeof RudiGrid>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -51,67 +51,67 @@ function Placeholder({ label }: { label: string }) {
 export const Default: Story = {
   args: { minCellWidth: '15rem', space: '1rem', as: 'div' },
   render: (args) => (
-    <Grid {...args}>
+    <RudiGrid {...args}>
       <Placeholder label="Item 1" />
       <Placeholder label="Item 2" />
       <Placeholder label="Item 3" />
       <Placeholder label="Item 4" />
       <Placeholder label="Item 5" />
       <Placeholder label="Item 6" />
-    </Grid>
+    </RudiGrid>
   ),
 }
 
 export const NarrowCells: Story = {
   args: { minCellWidth: '8rem' },
   render: (args) => (
-    <Grid {...args}>
+    <RudiGrid {...args}>
       <Placeholder label="Item 1" />
       <Placeholder label="Item 2" />
       <Placeholder label="Item 3" />
       <Placeholder label="Item 4" />
       <Placeholder label="Item 5" />
       <Placeholder label="Item 6" />
-    </Grid>
+    </RudiGrid>
   ),
 }
 
 export const WideCells: Story = {
   args: { minCellWidth: '24rem' },
   render: (args) => (
-    <Grid {...args}>
+    <RudiGrid {...args}>
       <Placeholder label="Item 1" />
       <Placeholder label="Item 2" />
       <Placeholder label="Item 3" />
       <Placeholder label="Item 4" />
-    </Grid>
+    </RudiGrid>
   ),
 }
 
 export const TightGap: Story = {
   args: { space: '0.5rem' },
   render: (args) => (
-    <Grid {...args}>
+    <RudiGrid {...args}>
       <Placeholder label="Item 1" />
       <Placeholder label="Item 2" />
       <Placeholder label="Item 3" />
       <Placeholder label="Item 4" />
       <Placeholder label="Item 5" />
       <Placeholder label="Item 6" />
-    </Grid>
+    </RudiGrid>
   ),
 }
 
 export const LooseGap: Story = {
   args: { space: '3rem' },
   render: (args) => (
-    <Grid {...args}>
+    <RudiGrid {...args}>
       <Placeholder label="Item 1" />
       <Placeholder label="Item 2" />
       <Placeholder label="Item 3" />
       <Placeholder label="Item 4" />
       <Placeholder label="Item 5" />
       <Placeholder label="Item 6" />
-    </Grid>
+    </RudiGrid>
   ),
 }

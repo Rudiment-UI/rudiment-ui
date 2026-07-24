@@ -13,21 +13,21 @@ import {
 } from '@dnd-kit/core'
 import { sortableKeyboardCoordinates } from '@dnd-kit/sortable'
 import { cn } from '@/utils/cn'
-import { KanbanColumn } from './KanbanColumn'
+import { RudiKanbanColumn } from './KanbanColumn'
 import './kanban.css'
 
-export interface KanbanItem {
+export interface RudiKanbanItem {
   id: string
   [key: string]: unknown
 }
 
-export interface KanbanColumnData {
+export interface RudiKanbanColumnData {
   id: string
   title: string
-  items: KanbanItem[]
+  items: RudiKanbanItem[]
 }
 
-export interface KanbanCardMoveEvent {
+export interface RudiKanbanCardMoveEvent {
   cardId: string
   fromColumnId: string
   toColumnId: string
@@ -35,17 +35,17 @@ export interface KanbanCardMoveEvent {
   toIndex: number
 }
 
-export interface KanbanBoardProps {
-  columns: KanbanColumnData[]
-  onCardMove: (event: KanbanCardMoveEvent) => void
-  renderCard: (item: KanbanItem) => React.ReactNode
+export interface RudiKanbanBoardProps {
+  columns: RudiKanbanColumnData[]
+  onCardMove: (event: RudiKanbanCardMoveEvent) => void
+  renderCard: (item: RudiKanbanItem) => React.ReactNode
   className?: string
 }
 
 function findColumnOfItem(
-  columns: KanbanColumnData[],
+  columns: RudiKanbanColumnData[],
   itemId: string,
-): KanbanColumnData | undefined {
+): RudiKanbanColumnData | undefined {
   return columns.find((col) => col.items.some((item) => item.id === itemId))
 }
 
@@ -54,7 +54,7 @@ function KanbanBoardRoot({
   onCardMove,
   renderCard,
   className,
-}: KanbanBoardProps) {
+}: RudiKanbanBoardProps) {
   const [activeId, setActiveId] = useState<string | null>(null)
   const announcementRef = useRef<HTMLDivElement>(null)
 
@@ -164,9 +164,9 @@ function KanbanBoardRoot({
       onDragOver={handleDragOver}
       onDragEnd={handleDragEnd}
     >
-      <div className={cn('rudiment-kanban', className)}>
+      <div className={cn('rudi-kanban', className)}>
         {columns.map((column) => (
-          <KanbanColumn
+          <RudiKanbanColumn
             key={column.id}
             id={column.id}
             title={column.title}
@@ -177,7 +177,7 @@ function KanbanBoardRoot({
       </div>
       <DragOverlay>
         {activeItem ? (
-          <div className="rudiment-kanban__card rudiment-kanban__card--overlay">
+          <div className="rudi-kanban__card rudi-kanban__card--overlay">
             {renderCard(activeItem)}
           </div>
         ) : null}
@@ -187,12 +187,12 @@ function KanbanBoardRoot({
         role="status"
         aria-live="assertive"
         aria-atomic="true"
-        className="rudiment-kanban__sr-only"
+        className="rudi-kanban__sr-only"
       />
     </DndContext>
   )
 }
 
-export const KanbanBoard = Object.assign(KanbanBoardRoot, {
-  Column: KanbanColumn,
+export const RudiKanbanBoard = Object.assign(KanbanBoardRoot, {
+  Column: RudiKanbanColumn,
 })

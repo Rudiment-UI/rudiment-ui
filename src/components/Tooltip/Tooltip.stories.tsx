@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Tooltip, TooltipTrigger, type TooltipTriggerProps } from './Tooltip'
-import { Button } from '../Button/Button'
-import { IconButton } from '../IconButton/IconButton'
+import { RudiTooltip, RudiTooltipTrigger, type RudiTooltipTriggerProps } from './Tooltip'
+import { RudiButton } from '../Button/Button'
+import { RudiIconButton } from '../IconButton/IconButton'
 
 const InfoIcon = () => (
   <svg
@@ -21,12 +21,12 @@ const InfoIcon = () => (
   </svg>
 )
 
-type TooltipStoryArgs = Omit<TooltipTriggerProps, 'children'>
+type TooltipStoryArgs = Omit<RudiTooltipTriggerProps, 'children'>
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const meta: Meta<TooltipStoryArgs> = {
   title: 'Components/Tooltip',
-  component: TooltipTrigger as any,
+  component: RudiTooltipTrigger as any,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -50,10 +50,10 @@ const meta: Meta<TooltipStoryArgs> = {
     ),
   ],
   render: (args) => (
-    <TooltipTrigger {...(args as TooltipTriggerProps)}>
-      <Button variant="secondary">Hover me</Button>
-      <Tooltip>This is a helpful tooltip</Tooltip>
-    </TooltipTrigger>
+    <RudiTooltipTrigger {...(args as RudiTooltipTriggerProps)}>
+      <RudiButton variant="secondary">Hover me</RudiButton>
+      <RudiTooltip>This is a helpful tooltip</RudiTooltip>
+    </RudiTooltipTrigger>
   ),
   argTypes: {
     delay: {
@@ -100,12 +100,12 @@ export const OnIconButton: Story = {
     },
   },
   render: ({}) => (
-    <TooltipTrigger>
-      <IconButton aria-label="More information" variant="ghost">
+    <RudiTooltipTrigger>
+      <RudiIconButton aria-label="More information" variant="ghost">
         <InfoIcon />
-      </IconButton>
-      <Tooltip>Additional context about this field</Tooltip>
-    </TooltipTrigger>
+      </RudiIconButton>
+      <RudiTooltip>Additional context about this field</RudiTooltip>
+    </RudiTooltipTrigger>
   ),
 }
 
@@ -124,10 +124,10 @@ export const NoDelay: Story = {
     },
   },
   render: (args) => (
-    <TooltipTrigger {...(args as TooltipTriggerProps)}>
-      <Button variant="secondary">Instant tooltip</Button>
-      <Tooltip>Appears immediately on hover</Tooltip>
-    </TooltipTrigger>
+    <RudiTooltipTrigger {...(args as RudiTooltipTriggerProps)}>
+      <RudiButton variant="secondary">Instant tooltip</RudiButton>
+      <RudiTooltip>Appears immediately on hover</RudiTooltip>
+    </RudiTooltipTrigger>
   ),
 }
 
@@ -168,18 +168,18 @@ export const MultipleTooltips: Story = {
   ],
   render: ({}) => (
     <>
-      <TooltipTrigger>
-        <Button variant="primary">Save</Button>
-        <Tooltip>Save all changes</Tooltip>
-      </TooltipTrigger>
-      <TooltipTrigger>
-        <Button variant="secondary">Preview</Button>
-        <Tooltip>Preview before publishing</Tooltip>
-      </TooltipTrigger>
-      <TooltipTrigger>
-        <Button variant="ghost">Discard</Button>
-        <Tooltip>Discard unsaved changes</Tooltip>
-      </TooltipTrigger>
+      <RudiTooltipTrigger>
+        <RudiButton variant="primary">Save</RudiButton>
+        <RudiTooltip>Save all changes</RudiTooltip>
+      </RudiTooltipTrigger>
+      <RudiTooltipTrigger>
+        <RudiButton variant="secondary">Preview</RudiButton>
+        <RudiTooltip>Preview before publishing</RudiTooltip>
+      </RudiTooltipTrigger>
+      <RudiTooltipTrigger>
+        <RudiButton variant="ghost">Discard</RudiButton>
+        <RudiTooltip>Discard unsaved changes</RudiTooltip>
+      </RudiTooltipTrigger>
     </>
   ),
 }

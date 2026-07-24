@@ -1,56 +1,56 @@
-.rudiment-circular-progress {
+.rudi-circular-progress {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--token-spacing-1);
+  gap: var(--rudi-spacing-1);
   position: relative;
 }
 
-.rudiment-circular-progress--sm {
-  width: var(--token-component-circular-progress-size-sm);
+.rudi-circular-progress--sm {
+  width: var(--rudi-component-circular-progress-size-sm);
 }
 
-.rudiment-circular-progress--md {
-  width: var(--token-component-circular-progress-size-md);
+.rudi-circular-progress--md {
+  width: var(--rudi-component-circular-progress-size-md);
 }
 
-.rudiment-circular-progress--lg {
-  width: var(--token-component-circular-progress-size-lg);
+.rudi-circular-progress--lg {
+  width: var(--rudi-component-circular-progress-size-lg);
 }
 
-.rudiment-circular-progress__svg {
+.rudi-circular-progress__svg {
   width: 100%;
   height: auto;
   transform: rotate(-90deg);
 }
 
-.rudiment-circular-progress__track {
+.rudi-circular-progress__track {
   fill: none;
-  stroke: var(--token-component-circular-progress-track-color);
+  stroke: var(--rudi-component-circular-progress-track-color);
 }
 
-.rudiment-circular-progress__fill {
+.rudi-circular-progress__fill {
   fill: none;
-  transition: stroke-dashoffset var(--token-motion-duration-slow) var(--token-motion-easing-standard);
+  transition: stroke-dashoffset var(--rudi-motion-duration-slow) var(--rudi-motion-easing-standard);
 }
 
-.rudiment-circular-progress__fill--default {
-  stroke: var(--token-component-circular-progress-fill-default);
+.rudi-circular-progress__fill--default {
+  stroke: var(--rudi-component-circular-progress-fill-default);
 }
 
-.rudiment-circular-progress__fill--success {
-  stroke: var(--token-component-circular-progress-fill-success);
+.rudi-circular-progress__fill--success {
+  stroke: var(--rudi-component-circular-progress-fill-success);
 }
 
-.rudiment-circular-progress__fill--warning {
-  stroke: var(--token-component-circular-progress-fill-warning);
+.rudi-circular-progress__fill--warning {
+  stroke: var(--rudi-component-circular-progress-fill-warning);
 }
 
-.rudiment-circular-progress__fill--error {
-  stroke: var(--token-component-circular-progress-fill-error);
+.rudi-circular-progress__fill--error {
+  stroke: var(--rudi-component-circular-progress-fill-error);
 }
 
-.rudiment-circular-progress__center {
+.rudi-circular-progress__center {
   position: absolute;
   top: 0;
   left: 0;
@@ -61,27 +61,27 @@
   justify-content: center;
   pointer-events: none;
   /* Offset for the label below the SVG */
-  margin-bottom: calc(var(--token-component-circular-progress-label-font-size) + var(--token-spacing-1));
+  margin-bottom: calc(var(--rudi-component-circular-progress-label-font-size) + var(--rudi-spacing-1));
 }
 
-.rudiment-circular-progress__value {
-  font-weight: var(--token-font-weight-semibold);
-  color: var(--token-component-circular-progress-label-color);
+.rudi-circular-progress__value {
+  font-weight: var(--rudi-font-weight-semibold);
+  color: var(--rudi-component-circular-progress-label-color);
 }
 
-.rudiment-circular-progress--sm .rudiment-circular-progress__value {
-  font-size: var(--token-component-circular-progress-value-font-size-sm);
+.rudi-circular-progress--sm .rudi-circular-progress__value {
+  font-size: var(--rudi-component-circular-progress-value-font-size-sm);
 }
 
-.rudiment-circular-progress--md .rudiment-circular-progress__value {
-  font-size: var(--token-component-circular-progress-value-font-size-md);
+.rudi-circular-progress--md .rudi-circular-progress__value {
+  font-size: var(--rudi-component-circular-progress-value-font-size-md);
 }
 
-.rudiment-circular-progress--lg .rudiment-circular-progress__value {
-  font-size: var(--token-component-circular-progress-value-font-size-lg);
+.rudi-circular-progress--lg .rudi-circular-progress__value {
+  font-size: var(--rudi-component-circular-progress-value-font-size-lg);
 }
 
-.rudiment-circular-progress__label {
-  font-size: var(--token-component-circular-progress-label-font-size);
-  color: var(--token-component-circular-progress-label-color);
+.rudi-circular-progress__label {
+  font-size: var(--rudi-component-circular-progress-label-font-size);
+  color: var(--rudi-component-circular-progress-label-color);
 }

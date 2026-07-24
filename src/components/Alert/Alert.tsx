@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { cn } from '@/utils/cn'
-import { Icon } from '@/components/Icon/Icon'
+import { RudiIcon } from '@/components/Icon/Icon'
 import './alert.css'
 
-export interface AlertProps {
+export interface RudiAlertProps {
   variant: 'info' | 'success' | 'warning' | 'error'
   title?: string
   icon?: string
@@ -14,7 +14,7 @@ export interface AlertProps {
   className?: string
 }
 
-export function Alert({
+export function RudiAlert({
   variant,
   title,
   icon,
@@ -23,7 +23,7 @@ export function Alert({
   onDismiss,
   children,
   className,
-}: AlertProps) {
+}: RudiAlertProps) {
   const [dismissed, setDismissed] = useState(false)
 
   if (dismissed) return null
@@ -32,31 +32,31 @@ export function Alert({
     <div
       role={isPolite ? 'status' : 'alert'}
       className={cn(
-        'rudiment-alert',
-        `rudiment-alert--${variant}`,
-        icon && 'rudiment-alert--has-icon',
-        dismissible && 'rudiment-alert--dismissible',
+        'rudi-alert',
+        `rudi-alert--${variant}`,
+        icon && 'rudi-alert--has-icon',
+        dismissible && 'rudi-alert--dismissible',
         className,
       )}
     >
       {icon && (
-        <Icon icon={icon} size="md" className="rudiment-alert__icon" aria-hidden="true" />
+        <RudiIcon icon={icon} size="md" className="rudi-alert__icon" aria-hidden="true" />
       )}
-      <div className="rudiment-alert__body">
-        {title && <p className="rudiment-alert__title">{title}</p>}
-        <div className="rudiment-alert__content">{children}</div>
+      <div className="rudi-alert__body">
+        {title && <p className="rudi-alert__title">{title}</p>}
+        <div className="rudi-alert__content">{children}</div>
       </div>
       {dismissible && (
         <button
           type="button"
-          className="rudiment-alert__dismiss"
+          className="rudi-alert__dismiss"
           aria-label="Dismiss alert"
           onClick={() => {
             setDismissed(true)
             onDismiss?.()
           }}
         >
-          <Icon icon="mdi:close" size="sm" aria-hidden="true" />
+          <RudiIcon icon="mdi:close" size="sm" aria-hidden="true" />
         </button>
       )}
     </div>

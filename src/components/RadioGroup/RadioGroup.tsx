@@ -7,7 +7,7 @@ import './radio-group.css'
 
 export const RadioGroupContext = createContext<RadioGroupState | null>(null)
 
-export interface RadioGroupProps {
+export interface RudiRadioGroupProps {
   label: string
   description?: string
   value?: string
@@ -20,7 +20,7 @@ export interface RadioGroupProps {
   className?: string
 }
 
-export function RadioGroup(props: RadioGroupProps) {
+export function RudiRadioGroup(props: RudiRadioGroupProps) {
   const state = useRadioGroupState(props)
   const { radioGroupProps, labelProps, descriptionProps, errorMessageProps } =
     useRadioGroup(props, state)
@@ -29,27 +29,27 @@ export function RadioGroup(props: RadioGroupProps) {
     <RadioGroupContext.Provider value={state}>
       <div
         {...radioGroupProps}
-        className={cn('rudiment-radio-group', props.className)}
+        className={cn('rudi-radio-group', props.className)}
       >
-        <span {...labelProps} className="rudiment-radio-group__label">
+        <span {...labelProps} className="rudi-radio-group__label">
           {props.label}
         </span>
         <div
           className={cn(
-            'rudiment-radio-group__options',
+            'rudi-radio-group__options',
             props.orientation === 'horizontal' &&
-              'rudiment-radio-group__options--horizontal',
+              'rudi-radio-group__options--horizontal',
           )}
         >
           {props.children}
         </div>
         {props.description && !props.errorMessage && (
-          <p {...descriptionProps} className="rudiment-radio-group__description">
+          <p {...descriptionProps} className="rudi-radio-group__description">
             {props.description}
           </p>
         )}
         {props.errorMessage && (
-          <p {...errorMessageProps} className="rudiment-radio-group__error">
+          <p {...errorMessageProps} className="rudi-radio-group__error">
             {props.errorMessage}
           </p>
         )}

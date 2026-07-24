@@ -11,7 +11,7 @@ import type { OverlayTriggerState } from 'react-stately'
 import { cn } from '@/utils/cn'
 import './dialog.css'
 
-export interface DialogProps {
+export interface RudiDialogProps {
   isOpen: boolean
   onClose: () => void
   title: string
@@ -21,7 +21,7 @@ export interface DialogProps {
   className?: string
 }
 
-export const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
+export const RudiDialog = forwardRef<HTMLDivElement, RudiDialogProps>(function RudiDialog(
   {
     isOpen,
     onClose,
@@ -30,7 +30,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
     size = 'md',
     children,
     className,
-  }: DialogProps,
+  }: RudiDialogProps,
   ref,
 ) {
   const underlayRef = useRef<HTMLDivElement>(null)
@@ -64,7 +64,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
       <div
         {...underlayProps}
         ref={underlayRef}
-        className="rudiment-dialog__overlay"
+        className="rudi-dialog__overlay"
       >
         {/* FocusScope provides tab trapping and restores focus on close */}
         <FocusScope contain restoreFocus autoFocus>
@@ -73,15 +73,15 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
             {...dialogProps}
             ref={dialogRef}
             className={cn(
-              'rudiment-dialog',
-              `rudiment-dialog--${size}`,
+              'rudi-dialog',
+              `rudi-dialog--${size}`,
               className,
             )}
           >
-            <h2 {...titleProps} className="rudiment-dialog__title">
+            <h2 {...titleProps} className="rudi-dialog__title">
               {title}
             </h2>
-            <div className="rudiment-dialog__body">{children}</div>
+            <div className="rudi-dialog__body">{children}</div>
           </div>
         </FocusScope>
       </div>

@@ -2,14 +2,14 @@ import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 import './prose.css'
 
-export interface ProseProps extends React.HTMLAttributes<HTMLElement> {
+export interface RudiProseProps extends React.HTMLAttributes<HTMLElement> {
   size?: 'sm' | 'base' | 'lg'
   as?: React.ElementType
   children: React.ReactNode
   className?: string
 }
 
-export const Prose = forwardRef<HTMLElement, ProseProps>(function Prose(
+export const RudiProse = forwardRef<HTMLElement, RudiProseProps>(function RudiProse(
   { size = 'base', as: Element = 'div', className, children, ...props },
   ref,
 ) {
@@ -17,8 +17,8 @@ export const Prose = forwardRef<HTMLElement, ProseProps>(function Prose(
     <Element
       ref={ref}
       className={cn(
-        'rudiment-prose',
-        size !== 'base' && `rudiment-prose--${size}`,
+        'rudi-prose',
+        size !== 'base' && `rudi-prose--${size}`,
         className,
       )}
       {...props}

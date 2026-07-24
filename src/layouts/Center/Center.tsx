@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 import './center.css'
 
-export interface CenterProps extends React.HTMLAttributes<HTMLElement> {
+export interface RudiCenterProps extends React.HTMLAttributes<HTMLElement> {
   maxWidth?: string
   gutters?: string
   intrinsic?: boolean
@@ -10,7 +10,7 @@ export interface CenterProps extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode
 }
 
-export const Center = forwardRef<HTMLElement, CenterProps>(function Center(
+export const RudiCenter = forwardRef<HTMLElement, RudiCenterProps>(function RudiCenter(
   {
     maxWidth,
     gutters,
@@ -31,8 +31,8 @@ export const Center = forwardRef<HTMLElement, CenterProps>(function Center(
     <Element
       ref={ref}
       className={cn(
-        'rudiment-center',
-        intrinsic && 'rudiment-center--intrinsic',
+        'rudi-center',
+        intrinsic && 'rudi-center--intrinsic',
         className,
       )}
       style={{ ...customProperties, ...style } as React.CSSProperties}

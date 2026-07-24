@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Sidebar } from './Sidebar'
+import { RudiSidebar } from './Sidebar'
 
 const meta = {
   title: 'Layouts/Sidebar',
-  component: Sidebar,
+  component: RudiSidebar,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -57,7 +57,7 @@ const meta = {
       table: { category: 'Layout' },
     },
   },
-} satisfies Meta<typeof Sidebar>
+} satisfies Meta<typeof RudiSidebar>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -80,69 +80,69 @@ function ContentPane({ label }: { label: string }) {
 
 export const Default: Story = {
   render: (args) => (
-    <Sidebar {...args}>
+    <RudiSidebar {...args}>
       <SidebarPane label="Sidebar" />
       <ContentPane label="Main content" />
-    </Sidebar>
+    </RudiSidebar>
   ),
 }
 
 export const RightSide: Story = {
   args: { side: 'right' },
   render: (args) => (
-    <Sidebar {...args}>
+    <RudiSidebar {...args}>
       <ContentPane label="Main content" />
       <SidebarPane label="Sidebar" />
-    </Sidebar>
+    </RudiSidebar>
   ),
 }
 
 export const NarrowSidebar: Story = {
   args: { sideWidth: '12rem' },
   render: (args) => (
-    <Sidebar {...args}>
+    <RudiSidebar {...args}>
       <SidebarPane label="Narrow sidebar" />
       <ContentPane label="Main content" />
-    </Sidebar>
+    </RudiSidebar>
   ),
 }
 
 export const WideSidebar: Story = {
   args: { sideWidth: '30rem' },
   render: (args) => (
-    <Sidebar {...args}>
+    <RudiSidebar {...args}>
       <SidebarPane label="Wide sidebar" />
       <ContentPane label="Main content" />
-    </Sidebar>
+    </RudiSidebar>
   ),
 }
 
 export const NoStretch: Story = {
   args: { noStretch: true },
   render: (args) => (
-    <Sidebar {...args}>
+    <RudiSidebar {...args}>
       <SidebarPane label="Sidebar (not stretched)" />
       <ContentPane label="Taller main content area that demonstrates the sidebar will not stretch to match height." />
-    </Sidebar>
+    </RudiSidebar>
   ),
 }
 
 export const TightGap: Story = {
   args: { space: '0.5rem' },
   render: (args) => (
-    <Sidebar {...args}>
+    <RudiSidebar {...args}>
       <SidebarPane label="Sidebar" />
       <ContentPane label="Main content" />
-    </Sidebar>
+    </RudiSidebar>
   ),
 }
 
 export const WideGap: Story = {
   args: { space: '3rem' },
   render: (args) => (
-    <Sidebar {...args}>
+    <RudiSidebar {...args}>
       <SidebarPane label="Sidebar" />
       <ContentPane label="Main content" />
-    </Sidebar>
+    </RudiSidebar>
   ),
 }

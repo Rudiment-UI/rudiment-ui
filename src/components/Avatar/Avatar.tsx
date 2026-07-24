@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { cn } from '@/utils/cn'
-import { Badge } from '@/components/Badge/Badge'
+import { RudiBadge } from '@/components/Badge/Badge'
 import './avatar.css'
 
-export interface AvatarProps {
+export interface RudiAvatarProps {
   src?: string
   alt?: string
   name?: string
@@ -20,14 +20,14 @@ function getInitials(name: string): string {
   return (parts[0]?.[0] ?? '').toUpperCase()
 }
 
-export function Avatar({
+export function RudiAvatar({
   src,
   alt,
   name,
   size = 'md',
   status,
   className,
-}: AvatarProps) {
+}: RudiAvatarProps) {
   const [imgError, setImgError] = useState(false)
   const showImage = src && !imgError
   const initials = name ? getInitials(name) : ''
@@ -36,8 +36,8 @@ export function Avatar({
   return (
     <span
       className={cn(
-        'rudiment-avatar',
-        `rudiment-avatar--${size}`,
+        'rudi-avatar',
+        `rudi-avatar--${size}`,
         className,
       )}
       role="img"
@@ -47,19 +47,19 @@ export function Avatar({
         <img
           src={src}
           alt={alt || ''}
-          className="rudiment-avatar__image"
+          className="rudi-avatar__image"
           onError={() => setImgError(true)}
         />
       ) : (
-        <span className="rudiment-avatar__initials" aria-hidden="true">
+        <span className="rudi-avatar__initials" aria-hidden="true">
           {initials}
         </span>
       )}
       {status && (
-        <Badge
+        <RudiBadge
           variant={status}
           dot
-          className="rudiment-avatar__status"
+          className="rudi-avatar__status"
         />
       )}
     </span>

@@ -2,7 +2,7 @@ import { useProgressBar } from 'react-aria'
 import { cn } from '@/utils/cn'
 import './circular-progress.css'
 
-export interface CircularProgressProps {
+export interface RudiCircularProgressProps {
   value: number
   minValue?: number
   maxValue?: number
@@ -17,7 +17,7 @@ export interface CircularProgressProps {
 const VIEWBOX_SIZE = 100
 const CENTER = VIEWBOX_SIZE / 2
 
-export function CircularProgress({
+export function RudiCircularProgress({
   value,
   minValue = 0,
   maxValue = 100,
@@ -27,7 +27,7 @@ export function CircularProgress({
   size = 'md',
   children,
   className,
-}: CircularProgressProps) {
+}: RudiCircularProgressProps) {
   const { progressBarProps, labelProps } = useProgressBar({
     label,
     value,
@@ -45,20 +45,20 @@ export function CircularProgress({
     <div
       {...progressBarProps}
       className={cn(
-        'rudiment-circular-progress',
-        `rudiment-circular-progress--${size}`,
+        'rudi-circular-progress',
+        `rudi-circular-progress--${size}`,
         className,
       )}
     >
       <svg
         viewBox={`0 0 ${VIEWBOX_SIZE} ${VIEWBOX_SIZE}`}
-        className="rudiment-circular-progress__svg"
+        className="rudi-circular-progress__svg"
       >
         <circle
           cx={CENTER}
           cy={CENTER}
           r={radius}
-          className="rudiment-circular-progress__track"
+          className="rudi-circular-progress__track"
           strokeWidth={strokeWidth}
         />
         <circle
@@ -66,8 +66,8 @@ export function CircularProgress({
           cy={CENTER}
           r={radius}
           className={cn(
-            'rudiment-circular-progress__fill',
-            `rudiment-circular-progress__fill--${variant}`,
+            'rudi-circular-progress__fill',
+            `rudi-circular-progress__fill--${variant}`,
           )}
           strokeWidth={strokeWidth}
           strokeDasharray={circumference}
@@ -75,14 +75,14 @@ export function CircularProgress({
           strokeLinecap="round"
         />
       </svg>
-      <div className="rudiment-circular-progress__center">
+      <div className="rudi-circular-progress__center">
         {children ?? (showValueLabel && (
-          <span className="rudiment-circular-progress__value">
+          <span className="rudi-circular-progress__value">
             {Math.round(percentage)}%
           </span>
         ))}
       </div>
-      <span {...labelProps} className="rudiment-circular-progress__label">
+      <span {...labelProps} className="rudi-circular-progress__label">
         {label}
       </span>
     </div>

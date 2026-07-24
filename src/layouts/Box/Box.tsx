@@ -3,7 +3,7 @@ import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 import './box.css'
 
-export interface BoxProps extends React.HTMLAttributes<HTMLElement> {
+export interface RudiBoxProps extends React.HTMLAttributes<HTMLElement> {
   padding?: string
   bordered?: boolean
   invert?: boolean
@@ -11,7 +11,7 @@ export interface BoxProps extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode
 }
 
-export const Box = forwardRef<HTMLElement, BoxProps>(function Box(
+export const RudiBox = forwardRef<HTMLElement, RudiBoxProps>(function RudiBox(
   {
     padding,
     bordered = false,
@@ -31,9 +31,9 @@ export const Box = forwardRef<HTMLElement, BoxProps>(function Box(
     <Element
       ref={ref}
       className={cn(
-        'rudiment-box',
-        bordered && 'rudiment-box--bordered',
-        invert && 'rudiment-box--invert',
+        'rudi-box',
+        bordered && 'rudi-box--bordered',
+        invert && 'rudi-box--invert',
         className,
       )}
       style={{ ...customProperties, ...style } as React.CSSProperties}

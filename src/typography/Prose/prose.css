@@ -1,144 +1,144 @@
 /* ── Base ──────────────────────────────────────────────────────────── */
-.rudiment-prose {
-  --prose-space: var(--token-typography-prose-space, 1.5em);
-  --prose-heading-before: var(--token-typography-prose-heading-before, 2em);
-  --prose-heading-after: var(--token-typography-prose-heading-after, 0.75em);
+.rudi-prose {
+  --prose-space: var(--rudi-typography-prose-space, 1.5em);
+  --prose-heading-before: var(--rudi-typography-prose-heading-before, 2em);
+  --prose-heading-after: var(--rudi-typography-prose-heading-after, 0.75em);
 
-  color: var(--token-typography-body-color);
-  font-size: var(--token-typography-body-size);
-  font-weight: var(--token-typography-body-weight);
-  line-height: var(--token-typography-body-line-height);
+  color: var(--rudi-typography-body-color);
+  font-size: var(--rudi-typography-body-size);
+  font-weight: var(--rudi-typography-body-weight);
+  line-height: var(--rudi-typography-body-line-height);
 }
 
 /* ── Headings ──────────────────────────────────────────────────────── */
-.rudiment-prose h1 {
-  font-size: var(--token-typography-heading-1-size);
-  font-weight: var(--token-typography-heading-1-weight);
-  line-height: var(--token-typography-heading-1-line-height);
-  letter-spacing: var(--token-typography-heading-1-tracking);
-  color: var(--token-typography-heading-1-color);
+.rudi-prose h1 {
+  font-size: var(--rudi-typography-heading-1-size);
+  font-weight: var(--rudi-typography-heading-1-weight);
+  line-height: var(--rudi-typography-heading-1-line-height);
+  letter-spacing: var(--rudi-typography-heading-1-tracking);
+  color: var(--rudi-typography-heading-1-color);
 }
 
-.rudiment-prose h2 {
-  font-size: var(--token-typography-heading-2-size);
-  font-weight: var(--token-typography-heading-2-weight);
-  line-height: var(--token-typography-heading-2-line-height);
-  letter-spacing: var(--token-typography-heading-2-tracking);
-  color: var(--token-typography-heading-2-color);
+.rudi-prose h2 {
+  font-size: var(--rudi-typography-heading-2-size);
+  font-weight: var(--rudi-typography-heading-2-weight);
+  line-height: var(--rudi-typography-heading-2-line-height);
+  letter-spacing: var(--rudi-typography-heading-2-tracking);
+  color: var(--rudi-typography-heading-2-color);
 }
 
-.rudiment-prose h3 {
-  font-size: var(--token-typography-heading-3-size);
-  font-weight: var(--token-typography-heading-3-weight);
-  line-height: var(--token-typography-heading-3-line-height);
-  letter-spacing: var(--token-typography-heading-3-tracking);
-  color: var(--token-typography-heading-3-color);
+.rudi-prose h3 {
+  font-size: var(--rudi-typography-heading-3-size);
+  font-weight: var(--rudi-typography-heading-3-weight);
+  line-height: var(--rudi-typography-heading-3-line-height);
+  letter-spacing: var(--rudi-typography-heading-3-tracking);
+  color: var(--rudi-typography-heading-3-color);
 }
 
-.rudiment-prose h4 {
-  font-size: var(--token-typography-heading-4-size);
-  font-weight: var(--token-typography-heading-4-weight);
-  line-height: var(--token-typography-heading-4-line-height);
-  letter-spacing: var(--token-typography-heading-4-tracking);
-  color: var(--token-typography-heading-4-color);
+.rudi-prose h4 {
+  font-size: var(--rudi-typography-heading-4-size);
+  font-weight: var(--rudi-typography-heading-4-weight);
+  line-height: var(--rudi-typography-heading-4-line-height);
+  letter-spacing: var(--rudi-typography-heading-4-tracking);
+  color: var(--rudi-typography-heading-4-color);
 }
 
-.rudiment-prose h5 {
-  font-size: var(--token-typography-heading-5-size);
-  font-weight: var(--token-typography-heading-5-weight);
-  line-height: var(--token-typography-heading-5-line-height);
-  letter-spacing: var(--token-typography-heading-5-tracking);
-  color: var(--token-typography-heading-5-color);
+.rudi-prose h5 {
+  font-size: var(--rudi-typography-heading-5-size);
+  font-weight: var(--rudi-typography-heading-5-weight);
+  line-height: var(--rudi-typography-heading-5-line-height);
+  letter-spacing: var(--rudi-typography-heading-5-tracking);
+  color: var(--rudi-typography-heading-5-color);
 }
 
-.rudiment-prose h6 {
-  font-size: var(--token-typography-heading-6-size);
-  font-weight: var(--token-typography-heading-6-weight);
-  line-height: var(--token-typography-heading-6-line-height);
-  letter-spacing: var(--token-typography-heading-6-tracking);
-  color: var(--token-typography-prose-h6-color);
+.rudi-prose h6 {
+  font-size: var(--rudi-typography-heading-6-size);
+  font-weight: var(--rudi-typography-heading-6-weight);
+  line-height: var(--rudi-typography-heading-6-line-height);
+  letter-spacing: var(--rudi-typography-heading-6-tracking);
+  color: var(--rudi-typography-prose-h6-color);
 }
 
 /* ── Links ─────────────────────────────────────────────────────────── */
-.rudiment-prose a {
-  color: var(--token-typography-prose-link-color);
+.rudi-prose a {
+  color: var(--rudi-typography-prose-link-color);
   text-decoration: underline;
   text-underline-offset: 2px;
   text-decoration-thickness: 1px;
 }
 
-.rudiment-prose a:hover {
-  color: var(--token-typography-prose-link-hover-color);
+.rudi-prose a:hover {
+  color: var(--rudi-typography-prose-link-hover-color);
 }
 
 /* ── Inline formatting ─────────────────────────────────────────────── */
-.rudiment-prose strong {
-  font-weight: var(--token-typography-prose-strong-weight);
-  color: var(--token-typography-prose-strong-color);
+.rudi-prose strong {
+  font-weight: var(--rudi-typography-prose-strong-weight);
+  color: var(--rudi-typography-prose-strong-color);
 }
 
-.rudiment-prose em {
+.rudi-prose em {
   font-style: italic;
 }
 
 /* ── Lists ─────────────────────────────────────────────────────────── */
-.rudiment-prose ul {
+.rudi-prose ul {
   padding-inline-start: 1.625em;
 }
 
-.rudiment-prose ol {
+.rudi-prose ol {
   list-style-type: decimal;
   padding-inline-start: 1.625em;
 }
 
-.rudiment-prose li {
+.rudi-prose li {
   padding-inline-start: 0.375em;
   list-style: disc;
   margin-block-start: 0.5em;
 }
 
-.rudiment-prose li:first-child {
+.rudi-prose li:first-child {
   margin-block-start: 0;
 }
 
-.rudiment-prose ul ul,
-.rudiment-prose ol ol,
-.rudiment-prose ul ol,
-.rudiment-prose ol ul {
+.rudi-prose ul ul,
+.rudi-prose ol ol,
+.rudi-prose ul ol,
+.rudi-prose ol ul {
   margin-block-start: 0.5em;
 }
 
 /* ── Blockquote ────────────────────────────────────────────────────── */
-.rudiment-prose blockquote {
-  border-inline-start: 3px solid var(--token-typography-prose-blockquote-border);
+.rudi-prose blockquote {
+  border-inline-start: 3px solid var(--rudi-typography-prose-blockquote-border);
   padding-inline-start: 1em;
-  color: var(--token-typography-prose-blockquote-color);
+  color: var(--rudi-typography-prose-blockquote-color);
   font-style: italic;
 }
 
 /* ── Inline code ───────────────────────────────────────────────────── */
-.rudiment-prose code {
-  font-family: var(--token-typography-code-font-family);
-  font-size: var(--token-typography-code-font-size);
-  background: var(--token-typography-prose-code-bg);
-  padding: var(--token-typography-code-padding-y)
-    var(--token-typography-code-padding-x);
-  border-radius: var(--token-typography-code-radius);
+.rudi-prose code {
+  font-family: var(--rudi-typography-code-font-family);
+  font-size: var(--rudi-typography-code-font-size);
+  background: var(--rudi-typography-prose-code-bg);
+  padding: var(--rudi-typography-code-padding-y)
+    var(--rudi-typography-code-padding-x);
+  border-radius: var(--rudi-typography-code-radius);
 }
 
 /* ── Code blocks ───────────────────────────────────────────────────── */
-.rudiment-prose pre {
-  background: var(--token-typography-prose-pre-bg);
-  border: 1px solid var(--token-typography-prose-pre-border);
-  border-radius: var(--token-typography-prose-pre-radius);
+.rudi-prose pre {
+  background: var(--rudi-typography-prose-pre-bg);
+  border: 1px solid var(--rudi-typography-prose-pre-border);
+  border-radius: var(--rudi-typography-prose-pre-radius);
   padding: 1em 1.25em;
   overflow-x: auto;
-  font-family: var(--token-typography-code-font-family);
-  font-size: var(--token-typography-prose-pre-font-size);
-  line-height: var(--token-typography-prose-pre-line-height);
+  font-family: var(--rudi-typography-code-font-family);
+  font-size: var(--rudi-typography-prose-pre-font-size);
+  line-height: var(--rudi-typography-prose-pre-line-height);
 }
 
-.rudiment-prose pre code {
+.rudi-prose pre code {
   background: none;
   padding: 0;
   border-radius: 0;
@@ -146,96 +146,96 @@
 }
 
 /* ── Horizontal rule ───────────────────────────────────────────────── */
-.rudiment-prose hr {
+.rudi-prose hr {
   border: none;
-  border-block-start: 1px solid var(--token-typography-prose-hr-color);
+  border-block-start: 1px solid var(--rudi-typography-prose-hr-color);
 }
 
 /* ── Tables ────────────────────────────────────────────────────────── */
-.rudiment-prose table {
+.rudi-prose table {
   width: 100%;
   table-layout: auto;
   text-align: start;
-  font-size: var(--token-typography-body-sm-size);
-  line-height: var(--token-typography-body-sm-line-height);
+  font-size: var(--rudi-typography-body-sm-size);
+  line-height: var(--rudi-typography-body-sm-line-height);
   border-collapse: collapse;
 }
 
-.rudiment-prose thead {
-  border-block-end: 1px solid var(--token-typography-prose-table-border);
+.rudi-prose thead {
+  border-block-end: 1px solid var(--rudi-typography-prose-table-border);
 }
 
-.rudiment-prose thead th {
-  font-weight: var(--token-typography-prose-table-header-weight);
+.rudi-prose thead th {
+  font-weight: var(--rudi-typography-prose-table-header-weight);
   padding: 0.5em 0.75em;
   vertical-align: bottom;
 }
 
-.rudiment-prose tbody tr {
-  border-block-end: 1px solid var(--token-typography-prose-table-border);
+.rudi-prose tbody tr {
+  border-block-end: 1px solid var(--rudi-typography-prose-table-border);
 }
 
-.rudiment-prose tbody tr:last-child {
+.rudi-prose tbody tr:last-child {
   border-block-end: none;
 }
 
-.rudiment-prose tbody td {
+.rudi-prose tbody td {
   padding: 0.5em 0.75em;
   vertical-align: baseline;
 }
 
 /* ── Figures ───────────────────────────────────────────────────────── */
-.rudiment-prose figure > img {
-  border-radius: var(--token-typography-prose-figure-radius);
+.rudi-prose figure > img {
+  border-radius: var(--rudi-typography-prose-figure-radius);
 }
 
-.rudiment-prose figcaption {
-  font-size: var(--token-typography-caption-size);
-  line-height: var(--token-typography-body-line-height);
-  color: var(--token-typography-prose-caption-color);
+.rudi-prose figcaption {
+  font-size: var(--rudi-typography-caption-size);
+  line-height: var(--rudi-typography-body-line-height);
+  color: var(--rudi-typography-prose-caption-color);
   margin-block-start: 0.75em;
 }
 
 /* ── Spacing between direct children ──────────────────────────────── */
-.rudiment-prose > * + * {
+.rudi-prose > * + * {
   margin-block-start: var(--prose-space);
 }
 
 /* More space before headings (they signal new sections) */
-.rudiment-prose > :is(h1, h2, h3, h4, h5, h6) {
+.rudi-prose > :is(h1, h2, h3, h4, h5, h6) {
   margin-block-start: var(--prose-heading-before);
 }
 
 /* Less space after headings (they belong to what follows) */
-.rudiment-prose > :is(h1, h2, h3, h4, h5, h6) + * {
+.rudi-prose > :is(h1, h2, h3, h4, h5, h6) + * {
   margin-block-start: var(--prose-heading-after);
 }
 
 /* Consecutive headings sit closer together */
-.rudiment-prose > :is(h1, h2, h3, h4, h5, h6) + :is(h1, h2, h3, h4, h5, h6) {
+.rudi-prose > :is(h1, h2, h3, h4, h5, h6) + :is(h1, h2, h3, h4, h5, h6) {
   margin-block-start: var(--prose-heading-after);
 }
 
 /* Extra breathing room around code blocks */
-.rudiment-prose > pre {
+.rudi-prose > pre {
   margin-block-start: 2em;
 }
 
-.rudiment-prose > pre + * {
+.rudi-prose > pre + * {
   margin-block-start: 2em;
 }
 
 /* No top margin on the first child */
-.rudiment-prose > :first-child {
+.rudi-prose > :first-child {
   margin-block-start: 0;
 }
 
 /* ── Size variants ─────────────────────────────────────────────────── */
 /* Scale the base font size; all em-based spacing adjusts proportionally */
-.rudiment-prose--sm {
-  font-size: var(--token-typography-prose-size-sm);
+.rudi-prose--sm {
+  font-size: var(--rudi-typography-prose-size-sm);
 }
 
-.rudiment-prose--lg {
-  font-size: var(--token-typography-prose-size-lg);
+.rudi-prose--lg {
+  font-size: var(--rudi-typography-prose-size-lg);
 }

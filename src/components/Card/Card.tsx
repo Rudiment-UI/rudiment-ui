@@ -2,30 +2,30 @@ import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 import './card.css'
 
-export interface CardProps {
+export interface RudiCardProps {
   variant?: 'default' | 'outlined' | 'elevated'
   padding?: 'none' | 'sm' | 'md' | 'lg'
   children: React.ReactNode
   className?: string
 }
 
-export interface CardHeaderProps {
+export interface RudiCardHeaderProps {
   children: React.ReactNode
   className?: string
 }
 
-export interface CardBodyProps {
+export interface RudiCardBodyProps {
   children: React.ReactNode
   className?: string
 }
 
-export interface CardFooterProps {
+export interface RudiCardFooterProps {
   children: React.ReactNode
   className?: string
 }
 
-const CardRoot = forwardRef<HTMLDivElement, CardProps>(
-  function Card(
+const CardRoot = forwardRef<HTMLDivElement, RudiCardProps>(
+  function RudiCard(
     { variant = 'default', padding = 'md', children, className },
     ref,
   ) {
@@ -33,9 +33,9 @@ const CardRoot = forwardRef<HTMLDivElement, CardProps>(
       <div
         ref={ref}
         className={cn(
-          'rudiment-card',
-          `rudiment-card--${variant}`,
-          `rudiment-card--padding-${padding}`,
+          'rudi-card',
+          `rudi-card--${variant}`,
+          `rudi-card--padding-${padding}`,
           className,
         )}
       >
@@ -45,25 +45,25 @@ const CardRoot = forwardRef<HTMLDivElement, CardProps>(
   },
 )
 
-function CardHeader({ children, className }: CardHeaderProps) {
+function CardHeader({ children, className }: RudiCardHeaderProps) {
   return (
-    <div className={cn('rudiment-card__header', className)}>{children}</div>
+    <div className={cn('rudi-card__header', className)}>{children}</div>
   )
 }
 
-function CardBody({ children, className }: CardBodyProps) {
+function CardBody({ children, className }: RudiCardBodyProps) {
   return (
-    <div className={cn('rudiment-card__body', className)}>{children}</div>
+    <div className={cn('rudi-card__body', className)}>{children}</div>
   )
 }
 
-function CardFooter({ children, className }: CardFooterProps) {
+function CardFooter({ children, className }: RudiCardFooterProps) {
   return (
-    <div className={cn('rudiment-card__footer', className)}>{children}</div>
+    <div className={cn('rudi-card__footer', className)}>{children}</div>
   )
 }
 
-export const Card = Object.assign(CardRoot, {
+export const RudiCard = Object.assign(CardRoot, {
   Header: CardHeader,
   Body: CardBody,
   Footer: CardFooter,

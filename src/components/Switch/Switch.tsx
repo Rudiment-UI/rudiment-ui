@@ -5,7 +5,7 @@ import { useToggleState } from 'react-stately'
 import { cn } from '@/utils/cn'
 import './switch.css'
 
-export interface SwitchProps {
+export interface RudiSwitchProps {
   children: React.ReactNode
   isSelected?: boolean
   defaultSelected?: boolean
@@ -14,8 +14,8 @@ export interface SwitchProps {
   className?: string
 }
 
-export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
-  function Switch(props, forwardedRef) {
+export const RudiSwitch = forwardRef<HTMLInputElement, RudiSwitchProps>(
+  function RudiSwitch(props, forwardedRef) {
     const ref = useObjectRef(forwardedRef)
     const state = useToggleState(props)
     const { inputProps } = useSwitch(props, state, ref)
@@ -23,8 +23,8 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
     return (
       <label
         className={cn(
-          'rudiment-switch',
-          props.isDisabled && 'rudiment-switch--disabled',
+          'rudi-switch',
+          props.isDisabled && 'rudi-switch--disabled',
           props.className,
         )}
       >
@@ -33,14 +33,14 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
         </VisuallyHidden>
         <span
           className={cn(
-            'rudiment-switch__track',
-            state.isSelected && 'rudiment-switch__track--on',
+            'rudi-switch__track',
+            state.isSelected && 'rudi-switch__track--on',
           )}
           aria-hidden="true"
         >
-          <span className="rudiment-switch__thumb" />
+          <span className="rudi-switch__thumb" />
         </span>
-        <span className="rudiment-switch__label">{props.children}</span>
+        <span className="rudi-switch__label">{props.children}</span>
       </label>
     )
   },

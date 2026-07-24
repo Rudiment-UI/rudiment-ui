@@ -1,91 +1,91 @@
 import { render, screen } from '@testing-library/react'
 import { axe } from 'vitest-axe'
 import { describe, it, expect } from 'vitest'
-import { Prose } from './Prose'
+import { RudiProse } from './Prose'
 
 describe('Prose', () => {
   it('renders children', () => {
     render(
-      <Prose>
+      <RudiProse>
         <p>Hello</p>
-      </Prose>,
+      </RudiProse>,
     )
     expect(screen.getByText('Hello')).toBeInTheDocument()
   })
 
   it('renders a <div> element by default', () => {
     const { container } = render(
-      <Prose>
+      <RudiProse>
         <p>Text</p>
-      </Prose>,
+      </RudiProse>,
     )
     expect(container.firstChild?.nodeName).toBe('DIV')
   })
 
-  it('always applies the base rudiment-prose class', () => {
+  it('always applies the base rudi-prose class', () => {
     const { container } = render(
-      <Prose>
+      <RudiProse>
         <p>Text</p>
-      </Prose>,
+      </RudiProse>,
     )
-    expect(container.firstChild).toHaveClass('rudiment-prose')
+    expect(container.firstChild).toHaveClass('rudi-prose')
   })
 
   it('does not apply a size modifier class for the default base size', () => {
     const { container } = render(
-      <Prose>
+      <RudiProse>
         <p>Text</p>
-      </Prose>,
+      </RudiProse>,
     )
     const el = container.firstChild as HTMLElement
-    expect(el).not.toHaveClass('rudiment-prose--base')
-    expect(el).not.toHaveClass('rudiment-prose--sm')
-    expect(el).not.toHaveClass('rudiment-prose--lg')
+    expect(el).not.toHaveClass('rudi-prose--base')
+    expect(el).not.toHaveClass('rudi-prose--sm')
+    expect(el).not.toHaveClass('rudi-prose--lg')
   })
 
-  it('applies rudiment-prose--sm for size="sm"', () => {
+  it('applies rudi-prose--sm for size="sm"', () => {
     const { container } = render(
-      <Prose size="sm">
+      <RudiProse size="sm">
         <p>Text</p>
-      </Prose>,
+      </RudiProse>,
     )
-    expect(container.firstChild).toHaveClass('rudiment-prose--sm')
+    expect(container.firstChild).toHaveClass('rudi-prose--sm')
   })
 
-  it('applies rudiment-prose--lg for size="lg"', () => {
+  it('applies rudi-prose--lg for size="lg"', () => {
     const { container } = render(
-      <Prose size="lg">
+      <RudiProse size="lg">
         <p>Text</p>
-      </Prose>,
+      </RudiProse>,
     )
-    expect(container.firstChild).toHaveClass('rudiment-prose--lg')
+    expect(container.firstChild).toHaveClass('rudi-prose--lg')
   })
 
   it('renders the element specified by the as prop', () => {
     const { container } = render(
-      <Prose as="article">
+      <RudiProse as="article">
         <p>Text</p>
-      </Prose>,
+      </RudiProse>,
     )
     expect(container.firstChild?.nodeName).toBe('ARTICLE')
   })
 
   it('merges a custom className', () => {
     const { container } = render(
-      <Prose className="mt-4">
+      <RudiProse className="mt-4">
         <p>Text</p>
-      </Prose>,
+      </RudiProse>,
     )
     const el = container.firstChild as HTMLElement
-    expect(el).toHaveClass('rudiment-prose')
+    expect(el).toHaveClass('rudi-prose')
     expect(el).toHaveClass('mt-4')
   })
 
   it('forwards additional HTML attributes', () => {
     render(
-      <Prose data-testid="my-prose" id="prose-1">
+      <RudiProse data-testid="my-prose" id="prose-1">
         <p>Text</p>
-      </Prose>,
+      </RudiProse>,
     )
     const el = screen.getByTestId('my-prose')
     expect(el).toHaveAttribute('id', 'prose-1')
@@ -94,18 +94,18 @@ describe('Prose', () => {
   it('forwards a ref to the rendered element', () => {
     const ref = { current: null as HTMLElement | null }
     render(
-      <Prose ref={ref}>
+      <RudiProse ref={ref}>
         <p>Text</p>
-      </Prose>,
+      </RudiProse>,
     )
     expect(ref.current?.nodeName).toBe('DIV')
   })
 
   it('has no accessibility violations', async () => {
     const { container } = render(
-      <Prose>
+      <RudiProse>
         <p>Hello</p>
-      </Prose>,
+      </RudiProse>,
     )
     expect(await axe(container)).toHaveNoViolations()
   })

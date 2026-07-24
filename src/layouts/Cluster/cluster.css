@@ -1,5 +1,5 @@
-.rudiment-cluster {
-  --cluster-space: var(--token-layout-cluster-space, 1rem);
+.rudi-cluster {
+  --cluster-space: var(--rudi-layout-cluster-space, 1rem);
   --cluster-justify: flex-start;
   --cluster-align: center;
   display: flex;

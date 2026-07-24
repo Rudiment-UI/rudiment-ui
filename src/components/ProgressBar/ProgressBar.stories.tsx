@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ProgressBar } from './ProgressBar'
+import { RudiProgressBar } from './ProgressBar'
 
 const meta = {
   title: 'Components/ProgressBar',
-  component: ProgressBar,
+  component: RudiProgressBar,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -67,7 +67,7 @@ const meta = {
       table: { category: 'State' },
     },
   },
-} satisfies Meta<typeof ProgressBar>
+} satisfies Meta<typeof RudiProgressBar>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -136,25 +136,25 @@ export const CustomRange: Story = {
 export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <ProgressBar
+      <RudiProgressBar
         label="Default"
         value={60}
         variant="default"
         showValueLabel
       />
-      <ProgressBar
+      <RudiProgressBar
         label="Success"
         value={75}
         variant="success"
         showValueLabel
       />
-      <ProgressBar
+      <RudiProgressBar
         label="Warning"
         value={45}
         variant="warning"
         showValueLabel
       />
-      <ProgressBar label="Error" value={30} variant="error" showValueLabel />
+      <RudiProgressBar label="Error" value={30} variant="error" showValueLabel />
     </div>
   ),
 }

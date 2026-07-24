@@ -2,14 +2,14 @@ import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 import './grid.css'
 
-export interface GridProps extends React.HTMLAttributes<HTMLElement> {
+export interface RudiGridProps extends React.HTMLAttributes<HTMLElement> {
   minCellWidth?: string
   space?: string
   as?: React.ElementType
   children?: React.ReactNode
 }
 
-export const Grid = forwardRef<HTMLElement, GridProps>(function Grid(
+export const RudiGrid = forwardRef<HTMLElement, RudiGridProps>(function RudiGrid(
   {
     minCellWidth,
     space,
@@ -28,7 +28,7 @@ export const Grid = forwardRef<HTMLElement, GridProps>(function Grid(
   return (
     <Element
       ref={ref}
-      className={cn('rudiment-grid', className)}
+      className={cn('rudi-grid', className)}
       style={{ ...customProperties, ...style } as React.CSSProperties}
       {...props}
     >

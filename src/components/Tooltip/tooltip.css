@@ -1,21 +1,21 @@
-.rudiment-tooltip-trigger {
+.rudi-tooltip-trigger {
   display: inline-flex;
   position: relative;
 }
 
-.rudiment-tooltip {
+.rudi-tooltip {
   position: absolute;
   z-index: 60;
   bottom: calc(100% + 0.375rem);
   left: 50%;
   transform: translateX(-50%);
-  max-width: var(--token-component-tooltip-max-width);
-  padding: var(--token-component-tooltip-padding-y) var(--token-component-tooltip-padding-x);
-  background-color: var(--token-component-tooltip-bg);
-  color: var(--token-component-tooltip-text);
-  font-size: var(--token-component-tooltip-font-size);
-  line-height: var(--token-component-tooltip-line-height);
-  border-radius: var(--token-component-tooltip-radius);
+  max-width: var(--rudi-component-tooltip-max-width);
+  padding: var(--rudi-component-tooltip-padding-y) var(--rudi-component-tooltip-padding-x);
+  background-color: var(--rudi-component-tooltip-bg);
+  color: var(--rudi-component-tooltip-text);
+  font-size: var(--rudi-component-tooltip-font-size);
+  line-height: var(--rudi-component-tooltip-line-height);
+  border-radius: var(--rudi-component-tooltip-radius);
   white-space: nowrap;
   pointer-events: none;
 }

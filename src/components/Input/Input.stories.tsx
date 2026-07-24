@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Input } from './Input'
+import { RudiInput } from './Input'
 
 const meta = {
   title: 'Components/Input',
-  component: Input,
+  component: RudiInput,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -85,7 +85,7 @@ const meta = {
       table: { category: 'Events' },
     },
   },
-} satisfies Meta<typeof Input>
+} satisfies Meta<typeof RudiInput>
 
 export default meta
 type Story = StoryObj<typeof meta>

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Avatar } from './Avatar'
+import { RudiAvatar } from './Avatar'
 
 const meta = {
   title: 'Components/Avatar',
-  component: Avatar,
+  component: RudiAvatar,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -55,7 +55,7 @@ const meta = {
       table: { category: 'Appearance' },
     },
   },
-} satisfies Meta<typeof Avatar>
+} satisfies Meta<typeof RudiAvatar>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -111,9 +111,9 @@ export const SingleName: Story = {
 export const AllSizes: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-      <Avatar name="John Doe" size="sm" />
-      <Avatar name="John Doe" size="md" />
-      <Avatar name="John Doe" size="lg" />
+      <RudiAvatar name="John Doe" size="sm" />
+      <RudiAvatar name="John Doe" size="md" />
+      <RudiAvatar name="John Doe" size="lg" />
     </div>
   ),
 }
@@ -121,10 +121,10 @@ export const AllSizes: Story = {
 export const AllStatuses: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-      <Avatar name="John Doe" status="success" />
-      <Avatar name="John Doe" status="warning" />
-      <Avatar name="John Doe" status="error" />
-      <Avatar name="John Doe" status="info" />
+      <RudiAvatar name="John Doe" status="success" />
+      <RudiAvatar name="John Doe" status="warning" />
+      <RudiAvatar name="John Doe" status="error" />
+      <RudiAvatar name="John Doe" status="info" />
     </div>
   ),
 }

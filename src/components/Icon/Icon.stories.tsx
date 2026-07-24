@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Icon } from './Icon'
+import { RudiIcon } from './Icon'
 
 const meta = {
   title: 'Components/Icon',
-  component: Icon,
+  component: RudiIcon,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -49,7 +49,7 @@ const meta = {
       table: { category: 'Appearance' },
     },
   },
-} satisfies Meta<typeof Icon>
+} satisfies Meta<typeof RudiIcon>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -101,9 +101,9 @@ export const Decorative: Story = {
 export const AllSizes: Story = {
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-      <Icon icon="lucide:home" size="sm" label="Small" />
-      <Icon icon="lucide:home" size="md" label="Medium" />
-      <Icon icon="lucide:home" size="lg" label="Large" />
+      <RudiIcon icon="lucide:home" size="sm" label="Small" />
+      <RudiIcon icon="lucide:home" size="md" label="Medium" />
+      <RudiIcon icon="lucide:home" size="lg" label="Large" />
     </div>
   ),
 }

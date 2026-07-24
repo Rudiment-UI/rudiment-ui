@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { CircularProgress } from './CircularProgress'
-import { Icon } from '../Icon/Icon'
+import { RudiCircularProgress } from './CircularProgress'
+import { RudiIcon } from '../Icon/Icon'
 
 const meta = {
   title: 'Components/CircularProgress',
-  component: CircularProgress,
+  component: RudiCircularProgress,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -68,7 +68,7 @@ const meta = {
       table: { category: 'State' },
     },
   },
-} satisfies Meta<typeof CircularProgress>
+} satisfies Meta<typeof RudiCircularProgress>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -87,19 +87,19 @@ export const WithCenterContent: Story = {
     variant: 'success',
   },
   render: (args) => (
-    <CircularProgress {...args}>
-      <Icon icon="lucide:check" size="md" />
-    </CircularProgress>
+    <RudiCircularProgress {...args}>
+      <RudiIcon icon="lucide:check" size="md" />
+    </RudiCircularProgress>
   ),
 }
 
 export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-      <CircularProgress label="Default" value={65} variant="default" showValueLabel />
-      <CircularProgress label="Success" value={85} variant="success" showValueLabel />
-      <CircularProgress label="Warning" value={45} variant="warning" showValueLabel />
-      <CircularProgress label="Error" value={25} variant="error" showValueLabel />
+      <RudiCircularProgress label="Default" value={65} variant="default" showValueLabel />
+      <RudiCircularProgress label="Success" value={85} variant="success" showValueLabel />
+      <RudiCircularProgress label="Warning" value={45} variant="warning" showValueLabel />
+      <RudiCircularProgress label="Error" value={25} variant="error" showValueLabel />
     </div>
   ),
 }
@@ -107,9 +107,9 @@ export const AllVariants: Story = {
 export const AllSizes: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '2rem', alignItems: 'end' }}>
-      <CircularProgress label="Small" value={60} size="sm" showValueLabel />
-      <CircularProgress label="Medium" value={60} size="md" showValueLabel />
-      <CircularProgress label="Large" value={60} size="lg" showValueLabel />
+      <RudiCircularProgress label="Small" value={60} size="sm" showValueLabel />
+      <RudiCircularProgress label="Medium" value={60} size="md" showValueLabel />
+      <RudiCircularProgress label="Large" value={60} size="lg" showValueLabel />
     </div>
   ),
 }

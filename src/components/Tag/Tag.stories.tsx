@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Tag } from './Tag'
+import { RudiTag } from './Tag'
 
 const meta = {
   title: 'Components/Tag',
-  component: Tag,
+  component: RudiTag,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -58,7 +58,7 @@ const meta = {
       table: { category: 'Content' },
     },
   },
-} satisfies Meta<typeof Tag>
+} satisfies Meta<typeof RudiTag>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -95,11 +95,11 @@ export const Disabled: Story = {
 export const AllVariants: Story = {
   render: ({}) => (
     <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-      <Tag variant="default">Default</Tag>
-      <Tag variant="success">Success</Tag>
-      <Tag variant="warning">Warning</Tag>
-      <Tag variant="error">Error</Tag>
-      <Tag variant="info">Info</Tag>
+      <RudiTag variant="default">Default</RudiTag>
+      <RudiTag variant="success">Success</RudiTag>
+      <RudiTag variant="warning">Warning</RudiTag>
+      <RudiTag variant="error">Error</RudiTag>
+      <RudiTag variant="info">Info</RudiTag>
     </div>
   ),
 }
@@ -107,21 +107,21 @@ export const AllVariants: Story = {
 export const DismissibleVariants: Story = {
   render: ({}) => (
     <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-      <Tag variant="default" dismissible>
+      <RudiTag variant="default" dismissible>
         Default
-      </Tag>
-      <Tag variant="success" dismissible>
+      </RudiTag>
+      <RudiTag variant="success" dismissible>
         Success
-      </Tag>
-      <Tag variant="warning" dismissible>
+      </RudiTag>
+      <RudiTag variant="warning" dismissible>
         Warning
-      </Tag>
-      <Tag variant="error" dismissible>
+      </RudiTag>
+      <RudiTag variant="error" dismissible>
         Error
-      </Tag>
-      <Tag variant="info" dismissible>
+      </RudiTag>
+      <RudiTag variant="info" dismissible>
         Info
-      </Tag>
+      </RudiTag>
     </div>
   ),
 }

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { axe } from 'vitest-axe'
 import { describe, it, expect, vi } from 'vitest'
-import { LineChart } from './LineChart'
+import { RudiLineChart } from './LineChart'
 
 vi.mock('recharts', async () => {
   const actual = await vi.importActual<typeof import('recharts')>('recharts')
@@ -22,7 +22,7 @@ const sampleData = [
 describe('LineChart', () => {
   it('renders with accessible label', () => {
     render(
-      <LineChart
+      <RudiLineChart
         data={sampleData}
         dataKeys={['revenue']}
         indexKey="month"
@@ -32,21 +32,21 @@ describe('LineChart', () => {
     expect(screen.getByRole('img', { name: 'Revenue trend' })).toBeInTheDocument()
   })
 
-  it('applies rudiment-chart class', () => {
+  it('applies rudi-chart class', () => {
     const { container } = render(
-      <LineChart
+      <RudiLineChart
         data={sampleData}
         dataKeys={['revenue']}
         indexKey="month"
         label="Revenue"
       />,
     )
-    expect(container.firstChild).toHaveClass('rudiment-chart')
+    expect(container.firstChild).toHaveClass('rudi-chart')
   })
 
   it('merges custom className', () => {
     const { container } = render(
-      <LineChart
+      <RudiLineChart
         data={sampleData}
         dataKeys={['revenue']}
         indexKey="month"
@@ -54,13 +54,13 @@ describe('LineChart', () => {
         className="my-chart"
       />,
     )
-    expect(container.firstChild).toHaveClass('rudiment-chart')
+    expect(container.firstChild).toHaveClass('rudi-chart')
     expect(container.firstChild).toHaveClass('my-chart')
   })
 
   it('has no accessibility violations', async () => {
     const { container } = render(
-      <LineChart
+      <RudiLineChart
         data={sampleData}
         dataKeys={['revenue']}
         indexKey="month"

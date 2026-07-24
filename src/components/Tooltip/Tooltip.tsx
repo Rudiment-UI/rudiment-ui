@@ -8,14 +8,14 @@ import { useTooltipTriggerState } from 'react-stately'
 import { cn } from '@/utils/cn'
 import './tooltip.css'
 
-export interface TooltipTriggerProps {
+export interface RudiTooltipTriggerProps {
   delay?: number
   closeDelay?: number
   children: [React.ReactElement, React.ReactElement]
 }
 
-export const TooltipTrigger = forwardRef<HTMLSpanElement, TooltipTriggerProps>(
-  function TooltipTrigger({ delay = 500, closeDelay = 0, children }, ref) {
+export const RudiTooltipTrigger = forwardRef<HTMLSpanElement, RudiTooltipTriggerProps>(
+  function RudiTooltipTrigger({ delay = 500, closeDelay = 0, children }, ref) {
     const state = useTooltipTriggerState({ delay, closeDelay })
     const triggerRef = useRef<HTMLElement>(null)
     const { triggerProps, tooltipProps: triggerTooltipProps } =
@@ -25,7 +25,7 @@ export const TooltipTrigger = forwardRef<HTMLSpanElement, TooltipTriggerProps>(
     const { 'aria-describedby': ariaDescribedBy, tabIndex: _tabIndex, ...eventProps } = triggerProps
 
     return (
-      <span ref={ref} className="rudiment-tooltip-trigger" {...eventProps}>
+      <span ref={ref} className="rudi-tooltip-trigger" {...eventProps}>
         {React.cloneElement(trigger as React.ReactElement<Record<string, unknown>>, {
           ref: triggerRef,
           'aria-describedby': ariaDescribedBy,
@@ -36,20 +36,20 @@ export const TooltipTrigger = forwardRef<HTMLSpanElement, TooltipTriggerProps>(
   },
 )
 
-export interface TooltipProps extends AriaTooltipProps {
+export interface RudiTooltipProps extends AriaTooltipProps {
   children: React.ReactNode
   className?: string
 }
 
-export const Tooltip = forwardRef<HTMLSpanElement, TooltipProps>(
-  function Tooltip({ children, className, ...props }, ref) {
+export const RudiTooltip = forwardRef<HTMLSpanElement, RudiTooltipProps>(
+  function RudiTooltip({ children, className, ...props }, ref) {
     const { tooltipProps } = useTooltipAria(props)
 
     return (
       <span
         {...tooltipProps}
         ref={ref}
-        className={cn('rudiment-tooltip', className)}
+        className={cn('rudi-tooltip', className)}
         role="tooltip"
       >
         {children}

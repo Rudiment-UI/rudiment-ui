@@ -1,122 +1,122 @@
 /* Card */
-.rudiment-card {
-  background-color: var(--token-component-card-bg);
-  border-radius: var(--token-component-card-radius);
+.rudi-card {
+  background-color: var(--rudi-component-card-bg);
+  border-radius: var(--rudi-component-card-radius);
   overflow: hidden;
 }
 
 /* Variants */
-.rudiment-card--default {
+.rudi-card--default {
   /* bg only, no border */
 }
 
-.rudiment-card--outlined {
-  border: 1px solid var(--token-component-card-border);
+.rudi-card--outlined {
+  border: 1px solid var(--rudi-component-card-border);
 }
 
-.rudiment-card--elevated {
-  box-shadow: var(--token-component-card-elevated-shadow);
+.rudi-card--elevated {
+  box-shadow: var(--rudi-component-card-elevated-shadow);
 }
 
 /* Padding */
-.rudiment-card--padding-none {
-  --card-padding: var(--token-component-card-padding-none);
+.rudi-card--padding-none {
+  --card-padding: var(--rudi-component-card-padding-none);
 }
 
-.rudiment-card--padding-sm {
-  --card-padding: var(--token-component-card-padding-sm);
+.rudi-card--padding-sm {
+  --card-padding: var(--rudi-component-card-padding-sm);
 }
 
-.rudiment-card--padding-md {
-  --card-padding: var(--token-component-card-padding-md);
+.rudi-card--padding-md {
+  --card-padding: var(--rudi-component-card-padding-md);
 }
 
-.rudiment-card--padding-lg {
-  --card-padding: var(--token-component-card-padding-lg);
+.rudi-card--padding-lg {
+  --card-padding: var(--rudi-component-card-padding-lg);
 }
 
 /* Subcomponents */
-.rudiment-card__header {
+.rudi-card__header {
   padding: var(--card-padding);
-  border-bottom: 1px solid var(--token-component-card-header-border);
+  border-bottom: 1px solid var(--rudi-component-card-header-border);
 }
 
-.rudiment-card__body {
+.rudi-card__body {
   padding: var(--card-padding);
 }
 
-.rudiment-card__footer {
+.rudi-card__footer {
   padding: var(--card-padding);
-  border-top: 1px solid var(--token-component-card-footer-border);
+  border-top: 1px solid var(--rudi-component-card-footer-border);
 }
 
 /* Cyberpunk theme: gradient card backgrounds + outer glow */
-[data-theme='cyberpunk'] .rudiment-card {
+[data-theme='cyberpunk'] .rudi-card {
   background:
     linear-gradient(
       135deg,
-      var(--token-color-magenta-50) 0%,
-      var(--token-color-neutral-0) 40%,
-      var(--token-color-cyber-50) 100%
+      var(--rudi-color-magenta-50) 0%,
+      var(--rudi-color-neutral-0) 40%,
+      var(--rudi-color-cyber-50) 100%
     );
   box-shadow: 0 0 12px 0 rgb(230 0 122 / 0.15), 0 0 4px 0 rgb(6 182 212 / 0.1);
 }
 
-[data-theme='cyberpunk-dark'] .rudiment-card {
+[data-theme='cyberpunk-dark'] .rudi-card {
   background:
     linear-gradient(
       135deg,
-      var(--token-color-neutral-800) 0%,
-      var(--token-color-magenta-950) 50%,
-      var(--token-color-neutral-700) 100%
+      var(--rudi-color-neutral-800) 0%,
+      var(--rudi-color-magenta-950) 50%,
+      var(--rudi-color-neutral-700) 100%
     );
   box-shadow: 0 0 16px 0 rgb(6 182 212 / 0.2), 0 0 6px 0 rgb(255 26 128 / 0.15);
 }
 
-[data-theme='cyberpunk'] .rudiment-card--outlined {
+[data-theme='cyberpunk'] .rudi-card--outlined {
   border-image: linear-gradient(
     135deg,
-    var(--token-color-magenta-400),
-    var(--token-color-cyber-400)
+    var(--rudi-color-magenta-400),
+    var(--rudi-color-cyber-400)
   ) 1;
 }
 
-[data-theme='cyberpunk-dark'] .rudiment-card--outlined {
+[data-theme='cyberpunk-dark'] .rudi-card--outlined {
   border-image: linear-gradient(
     135deg,
-    var(--token-color-cyber-400),
-    var(--token-color-magenta-400)
+    var(--rudi-color-cyber-400),
+    var(--rudi-color-magenta-400)
   ) 1;
 }
 
-[data-theme='cyberpunk'] .rudiment-card__header {
+[data-theme='cyberpunk'] .rudi-card__header {
   border-image: linear-gradient(
     90deg,
-    var(--token-color-magenta-300),
-    var(--token-color-cyber-300)
+    var(--rudi-color-magenta-300),
+    var(--rudi-color-cyber-300)
   ) 1;
 }
 
-[data-theme='cyberpunk-dark'] .rudiment-card__header {
+[data-theme='cyberpunk-dark'] .rudi-card__header {
   border-image: linear-gradient(
     90deg,
-    var(--token-color-cyber-500),
-    var(--token-color-magenta-500)
+    var(--rudi-color-cyber-500),
+    var(--rudi-color-magenta-500)
   ) 1;
 }
 
-[data-theme='cyberpunk'] .rudiment-card__footer {
+[data-theme='cyberpunk'] .rudi-card__footer {
   border-image: linear-gradient(
     90deg,
-    var(--token-color-magenta-300),
-    var(--token-color-cyber-300)
+    var(--rudi-color-magenta-300),
+    var(--rudi-color-cyber-300)
   ) 1;
 }
 
-[data-theme='cyberpunk-dark'] .rudiment-card__footer {
+[data-theme='cyberpunk-dark'] .rudi-card__footer {
   border-image: linear-gradient(
     90deg,
-    var(--token-color-cyber-500),
-    var(--token-color-magenta-500)
+    var(--rudi-color-cyber-500),
+    var(--rudi-color-magenta-500)
   ) 1;
 }

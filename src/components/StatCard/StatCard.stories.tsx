@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { StatCard } from './StatCard'
+import { RudiStatCard } from './StatCard'
 
 const meta = {
   title: 'Components/StatCard',
-  component: StatCard,
+  component: RudiStatCard,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -48,7 +48,7 @@ const meta = {
       table: { category: 'Appearance' },
     },
   },
-} satisfies Meta<typeof StatCard>
+} satisfies Meta<typeof RudiStatCard>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -107,7 +107,7 @@ export const WithChildren: Story = {
       <span
         style={{
           fontSize: '0.75rem',
-          color: 'var(--token-color-text-secondary, #6b7280)',
+          color: 'var(--rudi-color-text-secondary, #6b7280)',
         }}
       >
         vs. last 30 days
@@ -125,9 +125,9 @@ export const AllTrends: Story = {
         gap: '1rem',
       }}
     >
-      <StatCard label="Revenue" value="$12,450" delta="+12.5%" trend="up" />
-      <StatCard label="Bounce Rate" value="42.3%" delta="-3.2%" trend="down" />
-      <StatCard label="Active Users" value="1,024" delta="0%" trend="neutral" />
+      <RudiStatCard label="Revenue" value="$12,450" delta="+12.5%" trend="up" />
+      <RudiStatCard label="Bounce Rate" value="42.3%" delta="-3.2%" trend="down" />
+      <RudiStatCard label="Active Users" value="1,024" delta="0%" trend="neutral" />
     </div>
   ),
 }

@@ -10,7 +10,7 @@ const meta = {
     docs: {
       source: {
         code: `\
-<Box as="footer" style={{ borderBlockStart: '1px solid var(--token-color-border-default)' }}>
+<Box as="footer" style={{ borderBlockStart: '1px solid var(--rudi-color-border-default)' }}>
   <Center>
     <Cluster justify="space-between" align="flex-start">
       <Stack space="0.5rem">

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Cover } from './Cover'
+import { RudiCover } from './Cover'
 
 const meta = {
   title: 'Layouts/Cover',
-  component: Cover,
+  component: RudiCover,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -41,7 +41,7 @@ const meta = {
       table: { category: 'Layout' },
     },
   },
-} satisfies Meta<typeof Cover>
+} satisfies Meta<typeof RudiCover>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -57,7 +57,7 @@ function Placeholder({
     <div
       className={
         centered
-          ? 'rudiment-cover__centered border border-border-default rounded-md p-8 bg-surface-raised text-center'
+          ? 'rudi-cover__centered border border-border-default rounded-md p-8 bg-surface-raised text-center'
           : 'border border-border-default rounded-md p-4 bg-surface-raised'
       }
     >
@@ -68,65 +68,65 @@ function Placeholder({
 
 export const Default: Story = {
   render: (args) => (
-    <Cover {...args}>
+    <RudiCover {...args}>
       <Placeholder label="Header" />
       <Placeholder label="Centered content" centered />
       <Placeholder label="Footer" />
-    </Cover>
+    </RudiCover>
   ),
 }
 
 export const CenteredOnly: Story = {
   render: (args) => (
-    <Cover {...args}>
+    <RudiCover {...args}>
       <Placeholder label="Centered content" centered />
-    </Cover>
+    </RudiCover>
   ),
 }
 
 export const HeaderAndCentered: Story = {
   render: (args) => (
-    <Cover {...args}>
+    <RudiCover {...args}>
       <Placeholder label="Header" />
       <Placeholder label="Centered content" centered />
-    </Cover>
+    </RudiCover>
   ),
 }
 
 export const FullViewport: Story = {
   render: (args) => (
-    <Cover {...args}>
+    <RudiCover {...args}>
       <Placeholder label="Header" />
       <Placeholder label="Centered content" centered />
       <Placeholder label="Footer" />
-    </Cover>
+    </RudiCover>
   ),
 }
 
 export const CustomSpace: Story = {
   args: { minHeight: '400px', space: '3rem' },
   render: (args) => (
-    <Cover {...args}>
+    <RudiCover {...args}>
       <Placeholder label="Header" />
       <Placeholder label="Centered content" centered />
       <Placeholder label="Footer" />
-    </Cover>
+    </RudiCover>
   ),
 }
 
 export const AsSection: Story = {
   args: { minHeight: '400px' },
   render: (args) => (
-    <Cover {...args} as="section">
+    <RudiCover {...args} as="section">
       <header className="border border-border-default rounded-md p-4 bg-surface-raised">
         Header
       </header>
-      <main className="rudiment-cover__centered border border-border-default rounded-md p-8 bg-surface-raised text-center">
+      <main className="rudi-cover__centered border border-border-default rounded-md p-8 bg-surface-raised text-center">
         Main content
       </main>
       <footer className="border border-border-default rounded-md p-4 bg-surface-raised">
         Footer
       </footer>
-    </Cover>
+    </RudiCover>
   ),
 }

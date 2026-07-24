@@ -1,93 +1,93 @@
-.rudiment-switch {
+.rudi-switch {
   display: inline-flex;
   align-items: center;
-  gap: var(--token-component-switch-gap);
+  gap: var(--rudi-component-switch-gap);
   cursor: pointer;
-  font-size: var(--token-component-switch-label-font-size);
-  line-height: var(--token-component-switch-label-line-height);
-  color: var(--token-component-switch-label-color);
+  font-size: var(--rudi-component-switch-label-font-size);
+  line-height: var(--rudi-component-switch-label-line-height);
+  color: var(--rudi-component-switch-label-color);
 }
 
-.rudiment-switch--disabled {
+.rudi-switch--disabled {
   cursor: not-allowed;
   opacity: 0.5;
 }
 
-.rudiment-switch__track {
+.rudi-switch__track {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  width: var(--token-component-switch-track-width);
-  height: var(--token-component-switch-track-height);
-  padding: var(--token-component-switch-track-padding);
-  border-radius: var(--token-component-switch-track-radius);
-  background-color: var(--token-component-switch-track-bg);
-  transition: background-color var(--token-motion-duration-slow) var(--token-motion-easing-standard);
+  width: var(--rudi-component-switch-track-width);
+  height: var(--rudi-component-switch-track-height);
+  padding: var(--rudi-component-switch-track-padding);
+  border-radius: var(--rudi-component-switch-track-radius);
+  background-color: var(--rudi-component-switch-track-bg);
+  transition: background-color var(--rudi-motion-duration-slow) var(--rudi-motion-easing-standard);
 }
 
-.rudiment-switch:has(input:focus-visible) .rudiment-switch__track {
-  outline: 2px solid var(--token-component-switch-focus-outline-color);
+.rudi-switch:has(input:focus-visible) .rudi-switch__track {
+  outline: 2px solid var(--rudi-component-switch-focus-outline-color);
   outline-offset: 2px;
 }
 
-[data-theme='teal'] .rudiment-switch:has(input:focus-visible) .rudiment-switch__track,
-[data-theme='teal-dark'] .rudiment-switch:has(input:focus-visible) .rudiment-switch__track {
+[data-theme='teal'] .rudi-switch:has(input:focus-visible) .rudi-switch__track,
+[data-theme='teal-dark'] .rudi-switch:has(input:focus-visible) .rudi-switch__track {
   outline: none;
 }
 
-[data-theme='teal'] .rudiment-switch:has(input:focus-visible) .rudiment-switch__track {
+[data-theme='teal'] .rudi-switch:has(input:focus-visible) .rudi-switch__track {
   box-shadow:
-    0 0 0 2px var(--token-color-neutral-0),
-    0 0 0 4px var(--token-color-border-focus),
+    0 0 0 2px var(--rudi-color-neutral-0),
+    0 0 0 4px var(--rudi-color-border-focus),
     inset 0 0 0 1px rgba(10, 13, 18, 0.18);
 }
 
-[data-theme='teal-dark'] .rudiment-switch:has(input:focus-visible) .rudiment-switch__track {
+[data-theme='teal-dark'] .rudi-switch:has(input:focus-visible) .rudi-switch__track {
   box-shadow:
-    0 0 0 2px var(--token-color-neutral-600),
-    0 0 0 4px var(--token-color-neutral-50),
+    0 0 0 2px var(--rudi-color-neutral-600),
+    0 0 0 4px var(--rudi-color-neutral-50),
     inset 0 0 0 1px rgba(10, 13, 18, 0.18);
 }
 
 /* Cyberpunk theme: neon glow focus rings */
-[data-theme='cyberpunk'] .rudiment-switch:has(input:focus-visible) .rudiment-switch__track,
-[data-theme='cyberpunk-dark'] .rudiment-switch:has(input:focus-visible) .rudiment-switch__track {
+[data-theme='cyberpunk'] .rudi-switch:has(input:focus-visible) .rudi-switch__track,
+[data-theme='cyberpunk-dark'] .rudi-switch:has(input:focus-visible) .rudi-switch__track {
   outline: none;
 }
 
-[data-theme='cyberpunk'] .rudiment-switch:has(input:focus-visible) .rudiment-switch__track {
+[data-theme='cyberpunk'] .rudi-switch:has(input:focus-visible) .rudi-switch__track {
   box-shadow:
-    0 0 0 2px var(--token-color-neutral-0),
-    0 0 0 4px var(--token-color-border-focus),
-    0 0 12px 2px var(--token-color-border-focus);
+    0 0 0 2px var(--rudi-color-neutral-0),
+    0 0 0 4px var(--rudi-color-border-focus),
+    0 0 12px 2px var(--rudi-color-border-focus);
 }
 
-[data-theme='cyberpunk-dark'] .rudiment-switch:has(input:focus-visible) .rudiment-switch__track {
+[data-theme='cyberpunk-dark'] .rudi-switch:has(input:focus-visible) .rudi-switch__track {
   box-shadow:
-    0 0 0 2px var(--token-color-neutral-700),
-    0 0 0 4px var(--token-color-border-focus),
-    0 0 16px 4px var(--token-color-border-focus);
+    0 0 0 2px var(--rudi-color-neutral-700),
+    0 0 0 4px var(--rudi-color-border-focus),
+    0 0 16px 4px var(--rudi-color-border-focus);
 }
 
-.rudiment-switch__track--on {
-  background-color: var(--token-component-switch-track-bg-on);
+.rudi-switch__track--on {
+  background-color: var(--rudi-component-switch-track-bg-on);
 }
 
-.rudiment-switch__thumb {
-  width: calc(var(--token-component-switch-track-height) - var(--token-spacing-1));
-  height: calc(var(--token-component-switch-track-height) - var(--token-spacing-1));
-  border-radius: var(--token-component-switch-track-radius);
-  background-color: var(--token-component-switch-thumb-bg);
+.rudi-switch__thumb {
+  width: calc(var(--rudi-component-switch-track-height) - var(--rudi-spacing-1));
+  height: calc(var(--rudi-component-switch-track-height) - var(--rudi-spacing-1));
+  border-radius: var(--rudi-component-switch-track-radius);
+  background-color: var(--rudi-component-switch-thumb-bg);
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.15);
-  transition: transform var(--token-motion-duration-slow) var(--token-motion-easing-standard);
+  transition: transform var(--rudi-motion-duration-slow) var(--rudi-motion-easing-standard);
 }
 
-.rudiment-switch__track--on .rudiment-switch__thumb {
+.rudi-switch__track--on .rudi-switch__thumb {
   transform: translateX(
-    calc(var(--token-component-switch-track-width) - var(--token-component-switch-track-height))
+    calc(var(--rudi-component-switch-track-width) - var(--rudi-component-switch-track-height))
   );
 }
 
-.rudiment-switch__label {
+.rudi-switch__label {
   color: inherit;
 }

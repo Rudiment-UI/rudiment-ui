@@ -1,8 +1,8 @@
 import { cn } from '@/utils/cn'
-import { Card } from '@/components/Card/Card'
+import { RudiCard } from '@/components/Card/Card'
 import './stat-card.css'
 
-export interface StatCardProps {
+export interface RudiStatCardProps {
   label: string
   value: string | number
   delta?: string
@@ -11,37 +11,37 @@ export interface StatCardProps {
   className?: string
 }
 
-export function StatCard({
+export function RudiStatCard({
   label,
   value,
   delta,
   trend = 'neutral',
   children,
   className,
-}: StatCardProps) {
+}: RudiStatCardProps) {
   return (
-    <Card
+    <RudiCard
       variant="outlined"
       padding="md"
-      className={cn('rudiment-stat-card', className)}
+      className={cn('rudi-stat-card', className)}
     >
-      <Card.Body>
-        <span className="rudiment-stat-card__label">{label}</span>
-        <span className="rudiment-stat-card__value">{value}</span>
+      <RudiCard.Body>
+        <span className="rudi-stat-card__label">{label}</span>
+        <span className="rudi-stat-card__value">{value}</span>
         {delta && (
           <span
             className={cn(
-              'rudiment-stat-card__delta',
-              `rudiment-stat-card__delta--${trend}`,
+              'rudi-stat-card__delta',
+              `rudi-stat-card__delta--${trend}`,
             )}
           >
             {delta}
           </span>
         )}
         {children && (
-          <div className="rudiment-stat-card__extra">{children}</div>
+          <div className="rudi-stat-card__extra">{children}</div>
         )}
-      </Card.Body>
-    </Card>
+      </RudiCard.Body>
+    </RudiCard>
   )
 }

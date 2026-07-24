@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Switcher } from './Switcher'
+import { RudiSwitcher } from './Switcher'
 
 const meta = {
   title: 'Layouts/Switcher',
-  component: Switcher,
+  component: RudiSwitcher,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -41,7 +41,7 @@ const meta = {
       table: { category: 'Layout' },
     },
   },
-} satisfies Meta<typeof Switcher>
+} satisfies Meta<typeof RudiSwitcher>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -56,63 +56,63 @@ function Placeholder({ label }: { label: string }) {
 
 export const Default: Story = {
   render: (args) => (
-    <Switcher {...args}>
+    <RudiSwitcher {...args}>
       <Placeholder label="First" />
       <Placeholder label="Second" />
       <Placeholder label="Third" />
-    </Switcher>
+    </RudiSwitcher>
   ),
 }
 
 export const NarrowThreshold: Story = {
   args: { threshold: '20rem' },
   render: (args) => (
-    <Switcher {...args}>
+    <RudiSwitcher {...args}>
       <Placeholder label="First" />
       <Placeholder label="Second" />
       <Placeholder label="Third" />
-    </Switcher>
+    </RudiSwitcher>
   ),
 }
 
 export const WideThreshold: Story = {
   args: { threshold: '60rem' },
   render: (args) => (
-    <Switcher {...args}>
+    <RudiSwitcher {...args}>
       <Placeholder label="First" />
       <Placeholder label="Second" />
       <Placeholder label="Third" />
-    </Switcher>
+    </RudiSwitcher>
   ),
 }
 
 export const Dense: Story = {
   args: { space: '0.5rem' },
   render: (args) => (
-    <Switcher {...args}>
+    <RudiSwitcher {...args}>
       <Placeholder label="First" />
       <Placeholder label="Second" />
       <Placeholder label="Third" />
-    </Switcher>
+    </RudiSwitcher>
   ),
 }
 
 export const Loose: Story = {
   args: { space: '3rem' },
   render: (args) => (
-    <Switcher {...args}>
+    <RudiSwitcher {...args}>
       <Placeholder label="First" />
       <Placeholder label="Second" />
       <Placeholder label="Third" />
-    </Switcher>
+    </RudiSwitcher>
   ),
 }
 
 export const AsSection: Story = {
   render: () => (
-    <Switcher as="section" threshold="30rem">
+    <RudiSwitcher as="section" threshold="30rem">
       <Placeholder label="First" />
       <Placeholder label="Second" />
-    </Switcher>
+    </RudiSwitcher>
   ),
 }

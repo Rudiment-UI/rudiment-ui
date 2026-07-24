@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { NavItem } from './NavItem'
-import { Badge } from '@/components/Badge/Badge'
+import { RudiNavItem } from './NavItem'
+import { RudiBadge } from '@/components/Badge/Badge'
 
 const meta = {
   title: 'Components/NavItem',
-  component: NavItem,
+  component: RudiNavItem,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -65,7 +65,7 @@ const meta = {
       table: { category: 'Appearance' },
     },
   },
-} satisfies Meta<typeof NavItem>
+} satisfies Meta<typeof RudiNavItem>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -89,7 +89,7 @@ export const WithBadge: Story = {
   args: {
     label: 'Notifications',
     icon: 'lucide:bell',
-    badge: <Badge size="sm">5</Badge>,
+    badge: <RudiBadge size="sm">5</RudiBadge>,
   },
 }
 
@@ -125,15 +125,15 @@ export const SidebarExample: Story = {
         gap: '0.25rem',
       }}
     >
-      <NavItem label="Dashboard" icon="lucide:home" isActive />
-      <NavItem label="Projects" icon="lucide:folder" />
-      <NavItem
+      <RudiNavItem label="Dashboard" icon="lucide:home" isActive />
+      <RudiNavItem label="Projects" icon="lucide:folder" />
+      <RudiNavItem
         label="Messages"
         icon="lucide:mail"
-        badge={<Badge size="sm">3</Badge>}
+        badge={<RudiBadge size="sm">3</RudiBadge>}
       />
-      <NavItem label="Settings" icon="lucide:settings" />
-      <NavItem label="Help" icon="lucide:help-circle" isDisabled />
+      <RudiNavItem label="Settings" icon="lucide:settings" />
+      <RudiNavItem label="Help" icon="lucide:help-circle" isDisabled />
     </nav>
   ),
   parameters: {

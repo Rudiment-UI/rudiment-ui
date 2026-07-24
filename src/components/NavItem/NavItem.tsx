@@ -2,10 +2,10 @@ import React, { forwardRef } from 'react'
 import { useButton, useLink } from 'react-aria'
 import { useObjectRef } from '@react-aria/utils'
 import { cn } from '@/utils/cn'
-import { Icon } from '@/components/Icon/Icon'
+import { RudiIcon } from '@/components/Icon/Icon'
 import './nav-item.css'
 
-export interface NavItemProps {
+export interface RudiNavItemProps {
   label: string
   icon?: string
   isActive?: boolean
@@ -18,8 +18,8 @@ export interface NavItemProps {
 
 function getClasses(isActive: boolean, className?: string) {
   return cn(
-    'rudiment-nav-item',
-    isActive && 'rudiment-nav-item--active',
+    'rudi-nav-item',
+    isActive && 'rudi-nav-item--active',
     className,
   )
 }
@@ -31,14 +31,14 @@ function renderContent(
 ) {
   return (
     <>
-      {icon && <Icon icon={icon} className="rudiment-nav-item__icon" />}
-      <span className="rudiment-nav-item__label">{label}</span>
-      {badge && <span className="rudiment-nav-item__badge">{badge}</span>}
+      {icon && <RudiIcon icon={icon} className="rudi-nav-item__icon" />}
+      <span className="rudi-nav-item__label">{label}</span>
+      {badge && <span className="rudi-nav-item__badge">{badge}</span>}
     </>
   )
 }
 
-const NavItemLink = forwardRef<HTMLAnchorElement, NavItemProps>(
+const NavItemLink = forwardRef<HTMLAnchorElement, RudiNavItemProps>(
   function NavItemLink(
     { label, icon, isActive = false, href, onPress, badge, isDisabled = false, className },
     forwardedRef,
@@ -62,7 +62,7 @@ const NavItemLink = forwardRef<HTMLAnchorElement, NavItemProps>(
   },
 )
 
-const NavItemButton = forwardRef<HTMLButtonElement, NavItemProps>(
+const NavItemButton = forwardRef<HTMLButtonElement, RudiNavItemProps>(
   function NavItemButton(
     { label, icon, isActive = false, onPress, badge, isDisabled = false, className },
     forwardedRef,
@@ -85,8 +85,8 @@ const NavItemButton = forwardRef<HTMLButtonElement, NavItemProps>(
   },
 )
 
-export const NavItem = forwardRef<HTMLElement, NavItemProps>(
-  function NavItem(props, forwardedRef) {
+export const RudiNavItem = forwardRef<HTMLElement, RudiNavItemProps>(
+  function RudiNavItem(props, forwardedRef) {
     if (props.href) {
       return (
         <NavItemLink

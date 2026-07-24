@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { LineChart } from './LineChart'
+import { RudiLineChart } from './LineChart'
 
 const sampleData = [
   { month: 'Jan', revenue: 4000, profit: 2400, expenses: 1600 },
@@ -12,7 +12,7 @@ const sampleData = [
 
 const meta = {
   title: 'Components/Charts/LineChart',
-  component: LineChart,
+  component: RudiLineChart,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -59,7 +59,7 @@ const meta = {
       table: { category: 'Content' },
     },
   },
-} satisfies Meta<typeof LineChart>
+} satisfies Meta<typeof RudiLineChart>
 
 export default meta
 type Story = StoryObj<typeof meta>

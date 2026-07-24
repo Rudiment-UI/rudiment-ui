@@ -13,7 +13,7 @@ import type { Key } from 'react-aria'
 import { cn } from '@/utils/cn'
 import './select.css'
 
-export interface SelectProps<T extends object> {
+export interface RudiSelectProps<T extends object> {
   label: string
   items: Iterable<T>
   children: (item: T) => React.ReactNode
@@ -67,7 +67,7 @@ function Popover({
     <div
       {...popoverProps}
       ref={popoverRef}
-      className="rudiment-select__popover"
+      className="rudi-select__popover"
     >
       {children}
     </div>
@@ -84,7 +84,7 @@ interface ListBoxInternalProps {
 function ListBox({ state, listBoxRef, ...props }: ListBoxInternalProps) {
   const { listBoxProps } = useListBox(props, state, listBoxRef)
   return (
-    <ul {...listBoxProps} ref={listBoxRef} className="rudiment-select__listbox">
+    <ul {...listBoxProps} ref={listBoxRef} className="rudi-select__listbox">
       {[...state.collection].map((item) => (
         <Option key={item.key} item={item} state={state} />
       ))}
@@ -110,7 +110,7 @@ function Option({ item, state }: OptionInternalProps) {
     <li
       {...optionProps}
       ref={optionRef}
-      className="rudiment-select__option"
+      className="rudi-select__option"
       data-focused={isFocused}
       aria-selected={isSelected}
     >
@@ -119,7 +119,7 @@ function Option({ item, state }: OptionInternalProps) {
   )
 }
 
-export function Select<T extends object>(props: SelectProps<T>) {
+export function RudiSelect<T extends object>(props: RudiSelectProps<T>) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const state = useSelectState(props as any)
   const triggerRef = useRef<HTMLButtonElement>(null)
@@ -139,8 +139,8 @@ export function Select<T extends object>(props: SelectProps<T>) {
   const { buttonProps } = useButton(triggerProps, triggerRef)
 
   return (
-    <div className={cn('rudiment-select', props.className)}>
-      <label {...labelProps} className="rudiment-select__label">
+    <div className={cn('rudi-select', props.className)}>
+      <label {...labelProps} className="rudi-select__label">
         {props.label}
       </label>
       <HiddenSelect state={state} triggerRef={triggerRef} label={props.label} />
@@ -148,8 +148,8 @@ export function Select<T extends object>(props: SelectProps<T>) {
         {...buttonProps}
         ref={triggerRef}
         className={cn(
-          'rudiment-select__trigger',
-          props.errorMessage && 'rudiment-select__trigger--error',
+          'rudi-select__trigger',
+          props.errorMessage && 'rudi-select__trigger--error',
         )}
       >
         <span {...valueProps}>
@@ -165,12 +165,12 @@ export function Select<T extends object>(props: SelectProps<T>) {
         </Popover>
       )}
       {props.description && !props.errorMessage && (
-        <p {...descriptionProps} className="rudiment-select__description">
+        <p {...descriptionProps} className="rudi-select__description">
           {props.description}
         </p>
       )}
       {props.errorMessage && (
-        <p {...errorMessageProps} className="rudiment-select__error">
+        <p {...errorMessageProps} className="rudi-select__error">
           {props.errorMessage}
         </p>
       )}

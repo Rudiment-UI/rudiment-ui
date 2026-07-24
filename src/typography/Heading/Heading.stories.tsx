@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Heading } from './Heading'
+import { RudiHeading } from './Heading'
 
 const meta = {
   title: 'Typography/Heading',
-  component: Heading,
+  component: RudiHeading,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -41,7 +41,7 @@ const meta = {
     level: 2,
     children: 'Section Heading',
   },
-} satisfies Meta<typeof Heading>
+} satisfies Meta<typeof RudiHeading>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -53,12 +53,12 @@ export const Default: Story = {
 export const AllLevels: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <Heading level={1}>Heading Level 1</Heading>
-      <Heading level={2}>Heading Level 2</Heading>
-      <Heading level={3}>Heading Level 3</Heading>
-      <Heading level={4}>Heading Level 4</Heading>
-      <Heading level={5}>Heading Level 5</Heading>
-      <Heading level={6}>Heading Level 6</Heading>
+      <RudiHeading level={1}>Heading Level 1</RudiHeading>
+      <RudiHeading level={2}>Heading Level 2</RudiHeading>
+      <RudiHeading level={3}>Heading Level 3</RudiHeading>
+      <RudiHeading level={4}>Heading Level 4</RudiHeading>
+      <RudiHeading level={5}>Heading Level 5</RudiHeading>
+      <RudiHeading level={6}>Heading Level 6</RudiHeading>
     </div>
   ),
 }
@@ -66,12 +66,12 @@ export const AllLevels: Story = {
 export const VisualSizeOverride: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <Heading level={3} size={1}>
+      <RudiHeading level={3} size={1}>
         h3 element, size-1 appearance
-      </Heading>
-      <Heading level={1} size={3}>
+      </RudiHeading>
+      <RudiHeading level={1} size={3}>
         h1 element, size-3 appearance
-      </Heading>
+      </RudiHeading>
     </div>
   ),
 }

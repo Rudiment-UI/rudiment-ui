@@ -1,15 +1,15 @@
 import { render, screen } from '@testing-library/react'
 import { axe } from 'vitest-axe'
 import { describe, it, expect } from 'vitest'
-import { Switcher } from './Switcher'
+import { RudiSwitcher } from './Switcher'
 
 describe('Switcher', () => {
   it('renders children', () => {
     render(
-      <Switcher>
+      <RudiSwitcher>
         <p>First</p>
         <p>Second</p>
-      </Switcher>,
+      </RudiSwitcher>,
     )
     expect(screen.getByText('First')).toBeInTheDocument()
     expect(screen.getByText('Second')).toBeInTheDocument()
@@ -17,47 +17,47 @@ describe('Switcher', () => {
 
   it('applies the default class', () => {
     const { container } = render(
-      <Switcher>
+      <RudiSwitcher>
         <p>Child</p>
-      </Switcher>,
+      </RudiSwitcher>,
     )
-    expect(container.firstChild).toHaveClass('rudiment-switcher')
+    expect(container.firstChild).toHaveClass('rudi-switcher')
   })
 
   it('merges a custom className', () => {
     const { container } = render(
-      <Switcher className="mt-4">
+      <RudiSwitcher className="mt-4">
         <p>Child</p>
-      </Switcher>,
+      </RudiSwitcher>,
     )
     const el = container.firstChild as HTMLElement
-    expect(el).toHaveClass('rudiment-switcher')
+    expect(el).toHaveClass('rudi-switcher')
     expect(el).toHaveClass('mt-4')
   })
 
   it('sets --switcher-threshold when threshold prop is passed', () => {
     const { container } = render(
-      <Switcher threshold="40rem">
+      <RudiSwitcher threshold="40rem">
         <p>Child</p>
-      </Switcher>,
+      </RudiSwitcher>,
     )
     expect(container.firstChild).toHaveStyle('--switcher-threshold: 40rem')
   })
 
   it('sets --switcher-space when space prop is passed', () => {
     const { container } = render(
-      <Switcher space="2rem">
+      <RudiSwitcher space="2rem">
         <p>Child</p>
-      </Switcher>,
+      </RudiSwitcher>,
     )
     expect(container.firstChild).toHaveStyle('--switcher-space: 2rem')
   })
 
   it('does not set inline styles when no custom props are passed', () => {
     const { container } = render(
-      <Switcher>
+      <RudiSwitcher>
         <p>Child</p>
-      </Switcher>,
+      </RudiSwitcher>,
     )
     const style = (container.firstChild as HTMLElement).getAttribute('style')
     expect(style).toBeNull()
@@ -65,27 +65,27 @@ describe('Switcher', () => {
 
   it('renders the correct element via the as prop', () => {
     const { container } = render(
-      <Switcher as="section">
+      <RudiSwitcher as="section">
         <p>Child</p>
-      </Switcher>,
+      </RudiSwitcher>,
     )
     expect(container.firstChild?.nodeName).toBe('SECTION')
   })
 
   it('renders a div by default', () => {
     const { container } = render(
-      <Switcher>
+      <RudiSwitcher>
         <p>Child</p>
-      </Switcher>,
+      </RudiSwitcher>,
     )
     expect(container.firstChild?.nodeName).toBe('DIV')
   })
 
   it('forwards additional HTML attributes', () => {
     const { container } = render(
-      <Switcher data-testid="my-switcher" id="switcher-1">
+      <RudiSwitcher data-testid="my-switcher" id="switcher-1">
         <p>Child</p>
-      </Switcher>,
+      </RudiSwitcher>,
     )
     const el = container.firstChild as HTMLElement
     expect(el).toHaveAttribute('data-testid', 'my-switcher')
@@ -94,10 +94,10 @@ describe('Switcher', () => {
 
   it('has no accessibility violations', async () => {
     const { container } = render(
-      <Switcher>
+      <RudiSwitcher>
         <p>First</p>
         <p>Second</p>
-      </Switcher>,
+      </RudiSwitcher>,
     )
     expect(await axe(container)).toHaveNoViolations()
   })

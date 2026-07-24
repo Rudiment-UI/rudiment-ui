@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Checkbox } from './Checkbox'
-import { CheckboxGroup } from './CheckboxGroup'
+import { RudiCheckbox } from './Checkbox'
+import { RudiCheckboxGroup } from './CheckboxGroup'
 
 const meta = {
   title: 'Components/Checkbox',
-  component: Checkbox,
+  component: RudiCheckbox,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -67,7 +67,7 @@ const meta = {
       table: { category: 'Events' },
     },
   },
-} satisfies Meta<typeof Checkbox>
+} satisfies Meta<typeof RudiCheckbox>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -109,36 +109,36 @@ export const DisabledChecked: Story = {
 
 export const Group: Story = {
   render: ({}) => (
-    <CheckboxGroup
+    <RudiCheckboxGroup
       label="Notification preferences"
       description="Choose what updates you want to receive."
     >
-      <Checkbox value="email">Email notifications</Checkbox>
-      <Checkbox value="sms">SMS notifications</Checkbox>
-      <Checkbox value="push">Push notifications</Checkbox>
-    </CheckboxGroup>
+      <RudiCheckbox value="email">Email notifications</RudiCheckbox>
+      <RudiCheckbox value="sms">SMS notifications</RudiCheckbox>
+      <RudiCheckbox value="push">Push notifications</RudiCheckbox>
+    </RudiCheckboxGroup>
   ),
 }
 
 export const GroupWithError: Story = {
   render: ({}) => (
-    <CheckboxGroup
+    <RudiCheckboxGroup
       label="Interests"
       errorMessage="Please select at least one interest."
     >
-      <Checkbox value="design">Design</Checkbox>
-      <Checkbox value="engineering">Engineering</Checkbox>
-      <Checkbox value="product">Product</Checkbox>
-    </CheckboxGroup>
+      <RudiCheckbox value="design">Design</RudiCheckbox>
+      <RudiCheckbox value="engineering">Engineering</RudiCheckbox>
+      <RudiCheckbox value="product">Product</RudiCheckbox>
+    </RudiCheckboxGroup>
   ),
 }
 
 export const GroupDisabled: Story = {
   render: ({}) => (
-    <CheckboxGroup label="Plan features" isDisabled>
-      <Checkbox value="storage">Extended storage</Checkbox>
-      <Checkbox value="analytics">Advanced analytics</Checkbox>
-      <Checkbox value="api">API access</Checkbox>
-    </CheckboxGroup>
+    <RudiCheckboxGroup label="Plan features" isDisabled>
+      <RudiCheckbox value="storage">Extended storage</RudiCheckbox>
+      <RudiCheckbox value="analytics">Advanced analytics</RudiCheckbox>
+      <RudiCheckbox value="api">API access</RudiCheckbox>
+    </RudiCheckboxGroup>
   ),
 }

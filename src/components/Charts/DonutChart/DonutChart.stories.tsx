@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { DonutChart } from './DonutChart'
+import { RudiDonutChart } from './DonutChart'
 
 const sampleData = [
   { name: 'Desktop', value: 4200 },
@@ -10,7 +10,7 @@ const sampleData = [
 
 const meta = {
   title: 'Components/Charts/DonutChart',
-  component: DonutChart,
+  component: RudiDonutChart,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -51,7 +51,7 @@ const meta = {
       table: { category: 'Content' },
     },
   },
-} satisfies Meta<typeof DonutChart>
+} satisfies Meta<typeof RudiDonutChart>
 
 export default meta
 type Story = StoryObj<typeof meta>

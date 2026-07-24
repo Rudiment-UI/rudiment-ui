@@ -3,7 +3,7 @@ import { useCheckboxGroupState } from 'react-stately'
 import { cn } from '@/utils/cn'
 import './checkbox.css'
 
-export interface CheckboxGroupProps {
+export interface RudiCheckboxGroupProps {
   label: string
   description?: string
   value?: string[]
@@ -15,7 +15,7 @@ export interface CheckboxGroupProps {
   className?: string
 }
 
-export function CheckboxGroup(props: CheckboxGroupProps) {
+export function RudiCheckboxGroup(props: RudiCheckboxGroupProps) {
   const state = useCheckboxGroupState(props)
   const { groupProps, labelProps, descriptionProps, errorMessageProps } =
     useCheckboxGroup(props, state)
@@ -23,22 +23,22 @@ export function CheckboxGroup(props: CheckboxGroupProps) {
   return (
     <div
       {...groupProps}
-      className={cn('rudiment-checkbox-group', props.className)}
+      className={cn('rudi-checkbox-group', props.className)}
     >
-      <span {...labelProps} className="rudiment-checkbox-group__label">
+      <span {...labelProps} className="rudi-checkbox-group__label">
         {props.label}
       </span>
       {props.children}
       {props.description && !props.errorMessage && (
         <p
           {...descriptionProps}
-          className="rudiment-checkbox-group__description"
+          className="rudi-checkbox-group__description"
         >
           {props.description}
         </p>
       )}
       {props.errorMessage && (
-        <p {...errorMessageProps} className="rudiment-checkbox-group__error">
+        <p {...errorMessageProps} className="rudi-checkbox-group__error">
           {props.errorMessage}
         </p>
       )}

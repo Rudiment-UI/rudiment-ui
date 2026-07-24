@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Box } from '../layouts/Box/Box'
-import { Center } from '../layouts/Center/Center'
-import { Cluster } from '../layouts/Cluster/Cluster'
-import { Stack } from '../layouts/Stack/Stack'
-import { Heading } from '../typography/Heading/Heading'
-import { Text } from '../typography/Text/Text'
-import { Prose } from '../typography/Prose/Prose'
-import { Avatar } from '../components/Avatar/Avatar'
-import { Tag } from '../components/Tag/Tag'
+import { RudiBox } from '../layouts/Box/Box'
+import { RudiCenter } from '../layouts/Center/Center'
+import { RudiCluster } from '../layouts/Cluster/Cluster'
+import { RudiStack } from '../layouts/Stack/Stack'
+import { RudiHeading } from '../typography/Heading/Heading'
+import { RudiText } from '../typography/Text/Text'
+import { RudiProse } from '../typography/Prose/Prose'
+import { RudiAvatar } from '../components/Avatar/Avatar'
+import { RudiTag } from '../components/Tag/Tag'
 import { AppHeader, AppFooter } from './shared'
 
 const meta = {
@@ -67,30 +67,30 @@ type Story = StoryObj<typeof meta>
 export const ArticlePage: Story = {
   name: 'Article Page',
   render: () => (
-    <Stack space="0">
+    <RudiStack space="0">
       <AppHeader />
-      <Center maxWidth="48rem" style={{ paddingBlock: '3rem' }}>
-        <Stack space="2rem">
+      <RudiCenter maxWidth="48rem" style={{ paddingBlock: '3rem' }}>
+        <RudiStack space="2rem">
           <div>
-            <Tag variant="info">Engineering</Tag>
+            <RudiTag variant="info">Engineering</RudiTag>
           </div>
-          <Stack space="0.75rem">
-            <Heading
+          <RudiStack space="0.75rem">
+            <RudiHeading
               level={1}
               size={1}
               style={{ fontSize: '2.25rem', lineHeight: 1.2 }}
             >
               How we cut build times by 60% with incremental bundling
-            </Heading>
-            <Cluster space="0.75rem" align="center">
-              <Avatar name="Jane Smith" size="sm" />
-              <Text variant="caption">
+            </RudiHeading>
+            <RudiCluster space="0.75rem" align="center">
+              <RudiAvatar name="Jane Smith" size="sm" />
+              <RudiText variant="caption">
                 Jane Smith · March 15, 2026 · 8 min read
-              </Text>
-            </Cluster>
-          </Stack>
+              </RudiText>
+            </RudiCluster>
+          </RudiStack>
 
-          <Prose>
+          <RudiProse>
             <p>
               Over the past year, our monorepo had grown from a handful of
               packages to over 200. Build times that once took 45 seconds were
@@ -145,25 +145,25 @@ export const ArticlePage: Story = {
               reduction. Cold builds (no cache hit) stayed flat, but warm builds
               — which account for ~85% of CI runs — improved dramatically.
             </p>
-          </Prose>
+          </RudiProse>
 
-          <Box bordered>
-            <Cluster space="1rem" align="center">
-              <Avatar name="Jane Smith" size="md" status="success" />
-              <Stack space="0.25rem">
-                <Text variant="body-sm" style={{ fontWeight: 600 }}>
+          <RudiBox bordered>
+            <RudiCluster space="1rem" align="center">
+              <RudiAvatar name="Jane Smith" size="md" status="success" />
+              <RudiStack space="0.25rem">
+                <RudiText variant="body-sm" style={{ fontWeight: 600 }}>
                   Jane Smith
-                </Text>
-                <Text variant="caption">
+                </RudiText>
+                <RudiText variant="caption">
                   Staff Engineer at Acme. Writes about infrastructure and
                   developer experience.
-                </Text>
-              </Stack>
-            </Cluster>
-          </Box>
-        </Stack>
-      </Center>
+                </RudiText>
+              </RudiStack>
+            </RudiCluster>
+          </RudiBox>
+        </RudiStack>
+      </RudiCenter>
       <AppFooter />
-    </Stack>
+    </RudiStack>
   ),
 }

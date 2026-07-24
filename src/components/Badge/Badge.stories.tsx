@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Badge } from './Badge'
+import { RudiBadge } from './Badge'
 
 const meta = {
   title: 'Components/Badge',
-  component: Badge,
+  component: RudiBadge,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -50,7 +50,7 @@ const meta = {
       table: { category: 'Appearance' },
     },
   },
-} satisfies Meta<typeof Badge>
+} satisfies Meta<typeof RudiBadge>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -107,11 +107,11 @@ export const DotIndicator: Story = {
 export const AllVariants: Story = {
   render: ({}) => (
     <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-      <Badge variant="default">Default</Badge>
-      <Badge variant="success">Success</Badge>
-      <Badge variant="warning">Warning</Badge>
-      <Badge variant="error">Error</Badge>
-      <Badge variant="info">Info</Badge>
+      <RudiBadge variant="default">Default</RudiBadge>
+      <RudiBadge variant="success">Success</RudiBadge>
+      <RudiBadge variant="warning">Warning</RudiBadge>
+      <RudiBadge variant="error">Error</RudiBadge>
+      <RudiBadge variant="info">Info</RudiBadge>
     </div>
   ),
 }

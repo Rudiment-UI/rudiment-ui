@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 import './sidebar.css'
 
-export interface SidebarProps extends React.HTMLAttributes<HTMLElement> {
+export interface RudiSidebarProps extends React.HTMLAttributes<HTMLElement> {
   side?: 'left' | 'right'
   sideWidth?: string
   contentMin?: string
@@ -12,7 +12,7 @@ export interface SidebarProps extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode
 }
 
-export const Sidebar = forwardRef<HTMLElement, SidebarProps>(function Sidebar(
+export const RudiSidebar = forwardRef<HTMLElement, RudiSidebarProps>(function RudiSidebar(
   {
     side = 'left',
     sideWidth,
@@ -36,9 +36,9 @@ export const Sidebar = forwardRef<HTMLElement, SidebarProps>(function Sidebar(
     <Element
       ref={ref}
       className={cn(
-        'rudiment-sidebar',
-        side === 'right' && 'rudiment-sidebar--right',
-        noStretch && 'rudiment-sidebar--no-stretch',
+        'rudi-sidebar',
+        side === 'right' && 'rudi-sidebar--right',
+        noStretch && 'rudi-sidebar--no-stretch',
         className,
       )}
       style={{ ...customProperties, ...style } as React.CSSProperties}

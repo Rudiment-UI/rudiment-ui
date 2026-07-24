@@ -12,7 +12,7 @@ import { useChartTheme } from '@/hooks/useChartTheme'
 import { cn } from '@/utils/cn'
 import '../charts.css'
 
-export interface LineChartProps {
+export interface RudiLineChartProps {
   data: Array<Record<string, string | number>>
   dataKeys: string[]
   indexKey: string
@@ -25,7 +25,7 @@ export interface LineChartProps {
   className?: string
 }
 
-export function LineChart({
+export function RudiLineChart({
   data,
   dataKeys,
   indexKey,
@@ -36,12 +36,12 @@ export function LineChart({
   height = 300,
   label,
   className,
-}: LineChartProps) {
+}: RudiLineChartProps) {
   const theme = useChartTheme()
 
   return (
     <div
-      className={cn('rudiment-chart', className)}
+      className={cn('rudi-chart', className)}
       role="img"
       aria-label={label}
     >

@@ -41,19 +41,19 @@ Not sure which primitive to reach for? Start here:
 The real power comes from nesting primitives together. Here is an example of a typical page layout:
 
 ```jsx
-<Stack gap="lg">
-  <Sidebar>
+<RudiStack gap="lg">
+  <RudiSidebar>
     <nav>
       {/* navigation links */}
     </nav>
-    <Box padding="md" border>
-      <Stack gap="sm">
-        <Heading level={2}>Article title</Heading>
-        <Text>Article content goes here.</Text>
-      </Stack>
-    </Box>
-  </Sidebar>
-</Stack>
+    <RudiBox padding="md" border>
+      <RudiStack gap="sm">
+        <RudiHeading level={2}>Article title</RudiHeading>
+        <RudiText>Article content goes here.</RudiText>
+      </RudiStack>
+    </RudiBox>
+  </RudiSidebar>
+</RudiStack>
 ```
 
 In this example:
@@ -68,15 +68,15 @@ In this example:
 All layout primitives render as a `<div>` by default. Use the `as` prop to render as any HTML element for better semantic markup:
 
 ```jsx
-<Stack as="ul" gap="sm">
+<RudiStack as="ul" gap="sm">
   <li>First item</li>
   <li>Second item</li>
-</Stack>
+</RudiStack>
 
-<Cluster as="nav" gap="md">
+<RudiCluster as="nav" gap="md">
   <a href="/home">Home</a>
   <a href="/about">About</a>
-</Cluster>
+</RudiCluster>
 ```
 
 This keeps your HTML meaningful for accessibility and SEO without giving up the layout behavior.

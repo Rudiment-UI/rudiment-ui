@@ -10,13 +10,13 @@ import { useChartTheme } from '@/hooks/useChartTheme'
 import { cn } from '@/utils/cn'
 import '../charts.css'
 
-export interface DonutChartDatum {
+export interface RudiDonutChartDatum {
   name: string
   value: number
 }
 
-export interface DonutChartProps {
-  data: DonutChartDatum[]
+export interface RudiDonutChartProps {
+  data: RudiDonutChartDatum[]
   innerRadius?: number
   showLabels?: boolean
   showLegend?: boolean
@@ -25,7 +25,7 @@ export interface DonutChartProps {
   className?: string
 }
 
-export function DonutChart({
+export function RudiDonutChart({
   data,
   innerRadius = 60,
   showLabels = false,
@@ -33,12 +33,12 @@ export function DonutChart({
   height = 300,
   label,
   className,
-}: DonutChartProps) {
+}: RudiDonutChartProps) {
   const theme = useChartTheme()
 
   return (
     <div
-      className={cn('rudiment-chart', className)}
+      className={cn('rudi-chart', className)}
       role="img"
       aria-label={label}
     >

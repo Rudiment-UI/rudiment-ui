@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Prose } from './Prose'
+import { RudiProse } from './Prose'
 
 const meta = {
   title: 'Typography/Prose',
-  component: Prose,
+  component: RudiProse,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -39,7 +39,7 @@ const meta = {
   args: {
     size: 'base',
   },
-} satisfies Meta<typeof Prose>
+} satisfies Meta<typeof RudiProse>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -65,7 +65,7 @@ const SampleContent = () => (
 
 export const Default: Story = {
   render: (args) => (
-    <Prose {...args}>
+    <RudiProse {...args}>
       <h2>Section heading</h2>
       <p>
         This is a paragraph of body text. Prose handles the vertical rhythm
@@ -90,25 +90,25 @@ export const Default: Story = {
         <code>{`const greeting = 'hello world'`}</code>
       </pre>
       <p>Text after a code block also gets extra breathing room.</p>
-    </Prose>
+    </RudiProse>
   ),
 }
 
 export const Small: Story = {
   args: { size: 'sm' },
   render: (args) => (
-    <Prose {...args}>
+    <RudiProse {...args}>
       <SampleContent />
-    </Prose>
+    </RudiProse>
   ),
 }
 
 export const Large: Story = {
   args: { size: 'lg' },
   render: (args) => (
-    <Prose {...args}>
+    <RudiProse {...args}>
       <SampleContent />
-    </Prose>
+    </RudiProse>
   ),
 }
 
@@ -120,9 +120,9 @@ export const AllSizes: Story = {
           <p style={{ fontWeight: 600, marginBottom: '0.5rem' }}>
             size="{size}"
           </p>
-          <Prose size={size}>
+          <RudiProse size={size}>
             <SampleContent />
-          </Prose>
+          </RudiProse>
         </div>
       ))}
     </div>
@@ -131,17 +131,17 @@ export const AllSizes: Story = {
 
 export const AsArticle: Story = {
   render: () => (
-    <Prose as="article">
+    <RudiProse as="article">
       <SampleContent />
-    </Prose>
+    </RudiProse>
   ),
 }
 
 export const CustomClassName: Story = {
   args: { className: 'border border-dashed p-4' },
   render: (args) => (
-    <Prose {...args}>
+    <RudiProse {...args}>
       <SampleContent />
-    </Prose>
+    </RudiProse>
   ),
 }

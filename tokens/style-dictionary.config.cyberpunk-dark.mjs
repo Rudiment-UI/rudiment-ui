@@ -14,7 +14,7 @@ export default {
   platforms: {
     css: {
       transformGroup: 'css',
-      prefix: 'token',
+      prefix: 'rudi',
       buildPath: 'tokens/build/',
       files: [
         {

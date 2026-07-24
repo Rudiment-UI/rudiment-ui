@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-07-24
+
+### Changed
+
+- **BREAKING — Namespaced CSS classes:** the component class prefix changed from `rudiment-` to `rudi-` (e.g. `.rudiment-card__header` → `.rudi-card__header`). Any consumer styles or selectors targeting `.rudiment-*` classes must be updated.
+- **BREAKING — Namespaced design tokens:** the CSS custom property prefix changed from `--token-` to `--rudi-` (e.g. `var(--token-color-brand-primary)` → `var(--rudi-color-brand-primary)`). Any consumer overrides or theming referencing `--token-*` variables must be updated. This affects all six built-in themes.
+- **BREAKING — Namespaced component exports:** every exported component and its prop/data types are now prefixed with `Rudi` (e.g. `Button` → `RudiButton`, `ButtonProps` → `RudiButtonProps`, `Card` → `RudiCard`). The re-exported React Aria primitives are also aliased (`Separator` → `RudiSeparator`, `SubmenuTrigger` → `RudiSubmenuTrigger`). Update imports accordingly: `import { RudiButton } from 'rudiment-ui'`. Hooks (`useLoadingButton`, `useChartTheme`) and the `cn` utility are unchanged.
+- Replaced hardcoded transition values across component CSS files with motion tokens
+
 ### Added
 
 - **UI Components:** Badge, Tag, Avatar, Card (slot-based with Header/Body/Footer), Icon (Iconify integration), NavItem, ProgressBar, StatCard
@@ -14,10 +23,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Runtime Theming:** CSS custom property scoping via `data-theme` attribute with dual Style Dictionary build
 - **Page Examples:** 10 full-page compositions (App Shell, Settings Page, Sign-In Form, Marketing Hero, Sidebar Layout, Article Page, Simple Form, Empty State, Header, Footer) updated to use new components (Avatar, Badge, NavItem, Icon)
 - **Documentation:** Component guidelines for all new components, accessibility docs for ProgressBar, Icon, Tag, and NavItem
-
-### Changed
-
-- Replaced hardcoded transition values across component CSS files with motion tokens
 
 ## [0.1.0] - 2026-03-31
 

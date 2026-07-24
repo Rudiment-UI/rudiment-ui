@@ -2,8 +2,8 @@ import { Children, cloneElement, forwardRef, isValidElement } from 'react'
 import { cn } from '@/utils/cn'
 import './stack.css'
 
-export interface StackProps extends React.HTMLAttributes<HTMLElement> {
-  /** CSS spacing value. Defaults to --token-layout-stack-space-default token. */
+export interface RudiStackProps extends React.HTMLAttributes<HTMLElement> {
+  /** CSS spacing value. Defaults to --rudi-layout-stack-space-default token. */
   space?: string
   /** Apply spacing recursively to all nested elements, not just direct children. */
   recursive?: boolean
@@ -14,7 +14,7 @@ export interface StackProps extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode
 }
 
-export const Stack = forwardRef<HTMLElement, StackProps>(function Stack(
+export const RudiStack = forwardRef<HTMLElement, RudiStackProps>(function RudiStack(
   {
     space,
     recursive = false,
@@ -57,9 +57,9 @@ export const Stack = forwardRef<HTMLElement, StackProps>(function Stack(
     <Element
       ref={ref}
       className={cn(
-        'rudiment-stack',
-        recursive && 'rudiment-stack--recursive',
-        splitAfter && 'rudiment-stack--split',
+        'rudi-stack',
+        recursive && 'rudi-stack--recursive',
+        splitAfter && 'rudi-stack--split',
         className,
       )}
       style={{ ...customProperties, ...style } as React.CSSProperties}

@@ -2,11 +2,11 @@ import React from 'react'
 import { useObjectRef } from '@react-aria/utils'
 import type { AriaButtonProps } from 'react-aria'
 import { cn } from '@/utils/cn'
-import { Icon } from '@/components/Icon/Icon'
+import { RudiIcon } from '@/components/Icon/Icon'
 import { useLoadingButton } from '@/hooks/useLoadingButton'
 import './button.css'
 
-export interface ButtonProps extends AriaButtonProps {
+export interface RudiButtonProps extends AriaButtonProps {
   variant?: 'primary' | 'secondary' | 'destructive' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
   isLoading?: boolean
@@ -16,8 +16,8 @@ export interface ButtonProps extends AriaButtonProps {
   children: React.ReactNode
 }
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  function Button(
+export const RudiButton = React.forwardRef<HTMLButtonElement, RudiButtonProps>(
+  function RudiButton(
     {
       variant = 'primary',
       size = 'md',
@@ -38,23 +38,23 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...buttonProps}
         ref={ref}
         className={cn(
-          'rudiment-button',
-          `rudiment-button--${variant}`,
-          `rudiment-button--${size}`,
-          isLoading && 'rudiment-button--loading',
+          'rudi-button',
+          `rudi-button--${variant}`,
+          `rudi-button--${size}`,
+          isLoading && 'rudi-button--loading',
           className,
         )}
       >
         {isLoading ? (
           <>
-            <span className="rudiment-button__spinner" role="img" aria-hidden="true" />
+            <span className="rudi-button__spinner" role="img" aria-hidden="true" />
             <span>{children}</span>
           </>
         ) : (
           <>
-            {iconBefore && <Icon icon={iconBefore} size={size} className="rudiment-button__icon" />}
+            {iconBefore && <RudiIcon icon={iconBefore} size={size} className="rudi-button__icon" />}
             <span>{children}</span>
-            {iconAfter && <Icon icon={iconAfter} size={size} className="rudiment-button__icon" />}
+            {iconAfter && <RudiIcon icon={iconAfter} size={size} className="rudi-button__icon" />}
           </>
         )}
       </button>

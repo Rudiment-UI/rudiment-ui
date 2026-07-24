@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Stack } from './Stack'
+import { RudiStack } from './Stack'
 
 const meta = {
   title: 'Layouts/Stack',
-  component: Stack,
+  component: RudiStack,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -45,7 +45,7 @@ const meta = {
       table: { category: 'Layout' },
     },
   },
-} satisfies Meta<typeof Stack>
+} satisfies Meta<typeof RudiStack>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -60,33 +60,33 @@ function Placeholder({ label }: { label: string }) {
 
 export const Default: Story = {
   render: (args) => (
-    <Stack {...args}>
+    <RudiStack {...args}>
       <Placeholder label="First child" />
       <Placeholder label="Second child" />
       <Placeholder label="Third child" />
-    </Stack>
+    </RudiStack>
   ),
 }
 
 export const Dense: Story = {
   args: { space: '0.5rem' },
   render: (args) => (
-    <Stack {...args}>
+    <RudiStack {...args}>
       <Placeholder label="First" />
       <Placeholder label="Second" />
       <Placeholder label="Third" />
-    </Stack>
+    </RudiStack>
   ),
 }
 
 export const Loose: Story = {
   args: { space: '3rem' },
   render: (args) => (
-    <Stack {...args}>
+    <RudiStack {...args}>
       <Placeholder label="First" />
       <Placeholder label="Second" />
       <Placeholder label="Third" />
-    </Stack>
+    </RudiStack>
   ),
 }
 
@@ -100,20 +100,20 @@ export const SplitAfterSecond: Story = {
     ),
   ],
   render: (args) => (
-    <Stack {...args} style={{ height: '100%' }}>
+    <RudiStack {...args} style={{ height: '100%' }}>
       <Placeholder label="Top item 1" />
       <Placeholder label="Top item 2" />
       <Placeholder label="Pushed to bottom" />
-    </Stack>
+    </RudiStack>
   ),
 }
 
 export const AsUnorderedList: Story = {
   render: () => (
-    <Stack as="ul" space="0.75rem" role="list">
+    <RudiStack as="ul" space="0.75rem" role="list">
       <li>First item</li>
       <li>Second item</li>
       <li>Third item</li>
-    </Stack>
+    </RudiStack>
   ),
 }

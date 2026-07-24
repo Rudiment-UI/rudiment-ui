@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Cluster } from './Cluster'
+import { RudiCluster } from './Cluster'
 
 const meta = {
   title: 'Layouts/Cluster',
-  component: Cluster,
+  component: RudiCluster,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -53,7 +53,7 @@ const meta = {
       table: { category: 'Layout' },
     },
   },
-} satisfies Meta<typeof Cluster>
+} satisfies Meta<typeof RudiCluster>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -68,73 +68,73 @@ function Tag({ label }: { label: string }) {
 
 export const Default: Story = {
   render: (args) => (
-    <Cluster {...args}>
+    <RudiCluster {...args}>
       <Tag label="Design" />
       <Tag label="Development" />
       <Tag label="Accessibility" />
       <Tag label="Typography" />
       <Tag label="Layout" />
-    </Cluster>
+    </RudiCluster>
   ),
 }
 
 export const Dense: Story = {
   args: { space: '0.25rem' },
   render: (args) => (
-    <Cluster {...args}>
+    <RudiCluster {...args}>
       <Tag label="Design" />
       <Tag label="Development" />
       <Tag label="Accessibility" />
       <Tag label="Typography" />
       <Tag label="Layout" />
-    </Cluster>
+    </RudiCluster>
   ),
 }
 
 export const Loose: Story = {
   args: { space: '2rem' },
   render: (args) => (
-    <Cluster {...args}>
+    <RudiCluster {...args}>
       <Tag label="Design" />
       <Tag label="Development" />
       <Tag label="Accessibility" />
       <Tag label="Typography" />
       <Tag label="Layout" />
-    </Cluster>
+    </RudiCluster>
   ),
 }
 
 export const Centered: Story = {
   args: { justify: 'center' },
   render: (args) => (
-    <Cluster {...args}>
+    <RudiCluster {...args}>
       <Tag label="Design" />
       <Tag label="Development" />
       <Tag label="Accessibility" />
       <Tag label="Typography" />
       <Tag label="Layout" />
-    </Cluster>
+    </RudiCluster>
   ),
 }
 
 export const SpaceBetween: Story = {
   args: { justify: 'space-between' },
   render: (args) => (
-    <Cluster {...args}>
+    <RudiCluster {...args}>
       <Tag label="Design" />
       <Tag label="Development" />
       <Tag label="Accessibility" />
-    </Cluster>
+    </RudiCluster>
   ),
 }
 
 export const AsUnorderedList: Story = {
   render: () => (
-    <Cluster as="ul" space="0.75rem" role="list">
+    <RudiCluster as="ul" space="0.75rem" role="list">
       <li>First item</li>
       <li>Second item</li>
       <li>Third item</li>
       <li>Fourth item</li>
-    </Cluster>
+    </RudiCluster>
   ),
 }

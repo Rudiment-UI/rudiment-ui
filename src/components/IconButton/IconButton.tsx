@@ -5,7 +5,7 @@ import { cn } from '@/utils/cn'
 import { useLoadingButton } from '@/hooks/useLoadingButton'
 import './icon-button.css'
 
-export interface IconButtonProps extends AriaButtonProps {
+export interface RudiIconButtonProps extends AriaButtonProps {
   'aria-label': string
   variant?: 'primary' | 'secondary' | 'destructive' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
@@ -14,8 +14,8 @@ export interface IconButtonProps extends AriaButtonProps {
   children: React.ReactElement
 }
 
-export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
-  function IconButton(
+export const RudiIconButton = React.forwardRef<HTMLButtonElement, RudiIconButtonProps>(
+  function RudiIconButton(
     {
       variant = 'secondary',
       size = 'md',
@@ -34,9 +34,9 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
         {...buttonProps}
         ref={ref}
         className={cn(
-          'rudiment-icon-button',
-          `rudiment-icon-button--${variant}`,
-          `rudiment-icon-button--${size}`,
+          'rudi-icon-button',
+          `rudi-icon-button--${variant}`,
+          `rudi-icon-button--${size}`,
           className,
         )}
       >

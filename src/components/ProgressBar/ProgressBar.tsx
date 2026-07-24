@@ -2,7 +2,7 @@ import { useProgressBar } from 'react-aria'
 import { cn } from '@/utils/cn'
 import './progress-bar.css'
 
-export interface ProgressBarProps {
+export interface RudiProgressBarProps {
   value: number
   minValue?: number
   maxValue?: number
@@ -13,7 +13,7 @@ export interface ProgressBarProps {
   className?: string
 }
 
-export function ProgressBar({
+export function RudiProgressBar({
   value,
   minValue = 0,
   maxValue = 100,
@@ -22,7 +22,7 @@ export function ProgressBar({
   variant = 'default',
   size = 'md',
   className,
-}: ProgressBarProps) {
+}: RudiProgressBarProps) {
   const { progressBarProps, labelProps } = useProgressBar({
     label,
     value,
@@ -35,28 +35,28 @@ export function ProgressBar({
   return (
     <div
       {...progressBarProps}
-      className={cn('rudiment-progress', className)}
+      className={cn('rudi-progress', className)}
     >
-      <div className="rudiment-progress__label-row">
-        <span {...labelProps} className="rudiment-progress__label">
+      <div className="rudi-progress__label-row">
+        <span {...labelProps} className="rudi-progress__label">
           {label}
         </span>
         {showValueLabel && (
-          <span className="rudiment-progress__value">
+          <span className="rudi-progress__value">
             {Math.round(percentage)}%
           </span>
         )}
       </div>
       <div
         className={cn(
-          'rudiment-progress__track',
-          `rudiment-progress__track--${size}`,
+          'rudi-progress__track',
+          `rudi-progress__track--${size}`,
         )}
       >
         <div
           className={cn(
-            'rudiment-progress__bar',
-            `rudiment-progress__bar--${variant}`,
+            'rudi-progress__bar',
+            `rudi-progress__bar--${variant}`,
           )}
           style={{ width: `${percentage}%` }}
         />

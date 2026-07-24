@@ -3,21 +3,21 @@ import { useRadio } from 'react-aria'
 import { useObjectRef } from '@react-aria/utils'
 import type { AriaRadioProps } from 'react-aria'
 
-import { Box } from '../layouts/Box/Box'
+import { RudiBox } from '../layouts/Box/Box'
 import { Icon } from '@iconify/react'
-import { Center } from '../layouts/Center/Center'
-import { Cluster } from '../layouts/Cluster/Cluster'
-import { Heading } from '../typography/Heading/Heading'
-import { Text } from '../typography/Text/Text'
-import { Stack } from '../layouts/Stack/Stack'
-import { Button } from '../components/Button/Button'
-import { Avatar } from '../components/Avatar/Avatar'
-import { Badge } from '../components/Badge/Badge'
-import { NavItem } from '../components/NavItem/NavItem'
-import { MenuTrigger } from '../components/Menu/MenuTrigger'
-import { Menu } from '../components/Menu/Menu'
-import { MenuItem } from '../components/Menu/MenuItem'
-import { Keyboard } from '../components/Menu/Keyboard'
+import { RudiCenter } from '../layouts/Center/Center'
+import { RudiCluster } from '../layouts/Cluster/Cluster'
+import { RudiHeading } from '../typography/Heading/Heading'
+import { RudiText } from '../typography/Text/Text'
+import { RudiStack } from '../layouts/Stack/Stack'
+import { RudiButton } from '../components/Button/Button'
+import { RudiAvatar } from '../components/Avatar/Avatar'
+import { RudiBadge } from '../components/Badge/Badge'
+import { RudiNavItem } from '../components/NavItem/NavItem'
+import { RudiMenuTrigger } from '../components/Menu/MenuTrigger'
+import { RudiMenu } from '../components/Menu/Menu'
+import { RudiMenuItem } from '../components/Menu/MenuItem'
+import { RudiKeyboard } from '../components/Menu/Keyboard'
 import { Separator } from 'react-aria-components'
 import { Text as AriaText } from 'react-aria-components'
 import { RadioGroupContext } from '../components/RadioGroup/RadioGroup'
@@ -29,18 +29,18 @@ import '../components/RadioGroup/radio-group.css'
 
 export function NavLogo() {
   return (
-    <Cluster space="0.25rem" align="center">
+    <RudiCluster space="0.25rem" align="center">
       <Icon icon="game-icons:circle-cage" width="20" height="20" />
-      <Heading level={1} size={4} style={{ margin: 0 }}>
+      <RudiHeading level={1} size={4} style={{ margin: 0 }}>
         Rudiment-UI
-      </Heading>
-    </Cluster>
+      </RudiHeading>
+    </RudiCluster>
   )
 }
 
 export function AppHeader() {
   return (
-    <Box
+    <RudiBox
       as="header"
       bordered
       style={{
@@ -49,119 +49,119 @@ export function AppHeader() {
         borderBlockStart: 'none',
       }}
     >
-      <Center>
-        <Cluster justify="space-between" align="center">
+      <RudiCenter>
+        <RudiCluster justify="space-between" align="center">
           <NavLogo />
-          <Cluster as="nav" space="0.25rem">
-            <Button variant="ghost" size="sm">
+          <RudiCluster as="nav" space="0.25rem">
+            <RudiButton variant="ghost" size="sm">
               Features
-            </Button>
-            <Button variant="ghost" size="sm">
+            </RudiButton>
+            <RudiButton variant="ghost" size="sm">
               Pricing
-            </Button>
-            <Button variant="ghost" size="sm">
+            </RudiButton>
+            <RudiButton variant="ghost" size="sm">
               Docs
-            </Button>
-          </Cluster>
-          <Cluster space="0.5rem" align="center">
-            <Badge variant="info" size="sm">
+            </RudiButton>
+          </RudiCluster>
+          <RudiCluster space="0.5rem" align="center">
+            <RudiBadge variant="info" size="sm">
               Beta
-            </Badge>
-            <Button variant="secondary" size="sm">
+            </RudiBadge>
+            <RudiButton variant="secondary" size="sm">
               Log in
-            </Button>
-            <MenuTrigger>
-              <Button variant="ghost" size="sm" aria-label="User menu">
-                <Avatar name="Jane Smith" size="sm" status="success" />
-              </Button>
-              <Menu onAction={(key) => alert(key)}>
-                <MenuItem id="profile" textValue="Profile">
-                  <Icon icon="lucide:user" className="rudiment-menu__item-icon" />
+            </RudiButton>
+            <RudiMenuTrigger>
+              <RudiButton variant="ghost" size="sm" aria-label="User menu">
+                <RudiAvatar name="Jane Smith" size="sm" status="success" />
+              </RudiButton>
+              <RudiMenu onAction={(key) => alert(key)}>
+                <RudiMenuItem id="profile" textValue="Profile">
+                  <Icon icon="lucide:user" className="rudi-menu__item-icon" />
                   <AriaText slot="label">Profile</AriaText>
-                  <Keyboard>⌘P</Keyboard>
-                </MenuItem>
-                <MenuItem id="settings" textValue="Settings">
-                  <Icon icon="lucide:settings" className="rudiment-menu__item-icon" />
+                  <RudiKeyboard>⌘P</RudiKeyboard>
+                </RudiMenuItem>
+                <RudiMenuItem id="settings" textValue="Settings">
+                  <Icon icon="lucide:settings" className="rudi-menu__item-icon" />
                   <AriaText slot="label">Settings</AriaText>
-                </MenuItem>
-                <MenuItem id="billing" textValue="Billing">
-                  <Icon icon="lucide:credit-card" className="rudiment-menu__item-icon" />
+                </RudiMenuItem>
+                <RudiMenuItem id="billing" textValue="Billing">
+                  <Icon icon="lucide:credit-card" className="rudi-menu__item-icon" />
                   <AriaText slot="label">Billing</AriaText>
-                </MenuItem>
-                <Separator className="rudiment-menu__separator" />
-                <MenuItem id="sign-out" textValue="Sign out" isDestructive>
-                  <Icon icon="lucide:log-out" className="rudiment-menu__item-icon" />
+                </RudiMenuItem>
+                <Separator className="rudi-menu__separator" />
+                <RudiMenuItem id="sign-out" textValue="Sign out" isDestructive>
+                  <Icon icon="lucide:log-out" className="rudi-menu__item-icon" />
                   <AriaText slot="label">Sign out</AriaText>
-                </MenuItem>
-              </Menu>
-            </MenuTrigger>
-          </Cluster>
-        </Cluster>
-      </Center>
-    </Box>
+                </RudiMenuItem>
+              </RudiMenu>
+            </RudiMenuTrigger>
+          </RudiCluster>
+        </RudiCluster>
+      </RudiCenter>
+    </RudiBox>
   )
 }
 
 export function AppFooter() {
   return (
-    <Box
+    <RudiBox
       as="footer"
       style={{
-        borderBlockStart: '1px solid var(--token-color-border-default)',
+        borderBlockStart: '1px solid var(--rudi-color-border-default)',
       }}
     >
-      <Center>
-        <Cluster justify="space-between" align="flex-start">
-          <Stack space="0.5rem">
-            <Cluster space="0.25rem" align="center">
+      <RudiCenter>
+        <RudiCluster justify="space-between" align="flex-start">
+          <RudiStack space="0.5rem">
+            <RudiCluster space="0.25rem" align="center">
               <Icon icon="game-icons:circle-cage" width="16" height="16" />
-              <Heading level={2} size={3} style={{ margin: 0 }}>
+              <RudiHeading level={2} size={3} style={{ margin: 0 }}>
                 Rudiment-UI
-              </Heading>
-            </Cluster>
-            <Text variant="caption">Building better software, together.</Text>
-          </Stack>
-          <Cluster space="3rem" align="flex-start">
-            <Stack space="0.5rem">
-              <Text variant="overline">Product</Text>
-              <Text variant="body-sm" as="a" href="#">
+              </RudiHeading>
+            </RudiCluster>
+            <RudiText variant="caption">Building better software, together.</RudiText>
+          </RudiStack>
+          <RudiCluster space="3rem" align="flex-start">
+            <RudiStack space="0.5rem">
+              <RudiText variant="overline">Product</RudiText>
+              <RudiText variant="body-sm" as="a" href="#">
                 Features
-              </Text>
-              <Text variant="body-sm" as="a" href="#">
+              </RudiText>
+              <RudiText variant="body-sm" as="a" href="#">
                 Pricing
-              </Text>
-              <Text variant="body-sm" as="a" href="#">
+              </RudiText>
+              <RudiText variant="body-sm" as="a" href="#">
                 Changelog
-              </Text>
-            </Stack>
-            <Stack space="0.5rem">
-              <Text variant="overline">Company</Text>
-              <Text variant="body-sm" as="a" href="#">
+              </RudiText>
+            </RudiStack>
+            <RudiStack space="0.5rem">
+              <RudiText variant="overline">Company</RudiText>
+              <RudiText variant="body-sm" as="a" href="#">
                 About
-              </Text>
-              <Text variant="body-sm" as="a" href="#">
+              </RudiText>
+              <RudiText variant="body-sm" as="a" href="#">
                 Blog
-              </Text>
-              <Text variant="body-sm" as="a" href="#">
+              </RudiText>
+              <RudiText variant="body-sm" as="a" href="#">
                 Careers
-              </Text>
-            </Stack>
-            <Stack space="0.5rem">
-              <Text variant="overline">Legal</Text>
-              <Text variant="body-sm" as="a" href="#">
+              </RudiText>
+            </RudiStack>
+            <RudiStack space="0.5rem">
+              <RudiText variant="overline">Legal</RudiText>
+              <RudiText variant="body-sm" as="a" href="#">
                 Privacy
-              </Text>
-              <Text variant="body-sm" as="a" href="#">
+              </RudiText>
+              <RudiText variant="body-sm" as="a" href="#">
                 Terms
-              </Text>
-            </Stack>
-          </Cluster>
-        </Cluster>
-        <Text variant="caption" style={{ marginBlockStart: '2rem' }}>
+              </RudiText>
+            </RudiStack>
+          </RudiCluster>
+        </RudiCluster>
+        <RudiText variant="caption" style={{ marginBlockStart: '2rem' }}>
           © 2026 Rudiment-UI, Inc. All rights reserved.
-        </Text>
-      </Center>
-    </Box>
+        </RudiText>
+      </RudiCenter>
+    </RudiBox>
   )
 }
 
@@ -174,21 +174,21 @@ export function SidebarNav() {
     { label: 'Settings', icon: 'lucide:settings' },
   ]
   return (
-    <Box as="nav" style={{ blockSize: '100%' }}>
-      <Stack space="0.25rem">
-        <Text variant="overline" style={{ marginBlockEnd: '0.5rem' }}>
+    <RudiBox as="nav" style={{ blockSize: '100%' }}>
+      <RudiStack space="0.25rem">
+        <RudiText variant="overline" style={{ marginBlockEnd: '0.5rem' }}>
           Navigation
-        </Text>
+        </RudiText>
         {items.map((item, i) => (
-          <NavItem
+          <RudiNavItem
             key={item.label}
             label={item.label}
             icon={item.icon}
             isActive={i === 0}
           />
         ))}
-      </Stack>
-    </Box>
+      </RudiStack>
+    </RudiBox>
   )
 }
 
@@ -207,14 +207,14 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     const { inputProps } = useRadio(props, state, ref)
     return (
       <label
-        className={`rudiment-radio${props.isDisabled ? ' rudiment-radio--disabled' : ''}`}
+        className={`rudi-radio${props.isDisabled ? ' rudi-radio--disabled' : ''}`}
       >
-        <input {...inputProps} ref={ref} className="rudiment-radio__input" />
+        <input {...inputProps} ref={ref} className="rudi-radio__input" />
         <span
-          className={`rudiment-radio__control${state.selectedValue === props.value ? ' rudiment-radio__control--selected' : ''}`}
+          className={`rudi-radio__control${state.selectedValue === props.value ? ' rudi-radio__control--selected' : ''}`}
           aria-hidden="true"
         />
-        <span className="rudiment-radio__label">{props.children}</span>
+        <span className="rudi-radio__label">{props.children}</span>
       </label>
     )
   },

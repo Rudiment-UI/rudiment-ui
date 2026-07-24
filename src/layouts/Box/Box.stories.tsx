@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Box } from './Box'
+import { RudiBox } from './Box'
 
 const meta = {
   title: 'Layouts/Box',
-  component: Box,
+  component: RudiBox,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -47,41 +47,41 @@ const meta = {
       table: { category: 'Layout' },
     },
   },
-} satisfies Meta<typeof Box>
+} satisfies Meta<typeof RudiBox>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: (args) => <Box {...args}>Box content</Box>,
+  render: (args) => <RudiBox {...args}>Box content</RudiBox>,
 }
 
 export const Bordered: Story = {
   args: { bordered: true },
-  render: (args) => <Box {...args}>A box with a visible border</Box>,
+  render: (args) => <RudiBox {...args}>A box with a visible border</RudiBox>,
 }
 
 export const Inverted: Story = {
   args: { invert: true },
   render: (args) => (
-    <Box {...args}>A box with an inverted (dark) background</Box>
+    <RudiBox {...args}>A box with an inverted (dark) background</RudiBox>
   ),
 }
 
 export const BorderedAndInverted: Story = {
   args: { bordered: true, invert: true },
-  render: (args) => <Box {...args}>Bordered and inverted</Box>,
+  render: (args) => <RudiBox {...args}>Bordered and inverted</RudiBox>,
 }
 
 export const CustomPadding: Story = {
   args: { bordered: true, padding: '2rem' },
-  render: (args) => <Box {...args}>Box with custom padding (2rem)</Box>,
+  render: (args) => <RudiBox {...args}>Box with custom padding (2rem)</RudiBox>,
 }
 
 export const AsSection: Story = {
   render: ({}) => (
-    <Box as="section" bordered padding="1.5rem">
+    <RudiBox as="section" bordered padding="1.5rem">
       Rendered as a <code>&lt;section&gt;</code> element
-    </Box>
+    </RudiBox>
   ),
 }

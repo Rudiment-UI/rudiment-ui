@@ -1,34 +1,34 @@
 import { render, screen } from '@testing-library/react'
 import { axe } from 'vitest-axe'
 import { describe, it, expect } from 'vitest'
-import { Tooltip, TooltipTrigger } from './Tooltip'
+import { RudiTooltip, RudiTooltipTrigger } from './Tooltip'
 
 describe('Tooltip', () => {
   it('renders the tooltip content', () => {
-    render(<Tooltip>Helpful hint</Tooltip>)
+    render(<RudiTooltip>Helpful hint</RudiTooltip>)
     expect(screen.getByText('Helpful hint')).toBeInTheDocument()
   })
 
   it('applies the base class', () => {
-    const { container } = render(<Tooltip>Helpful hint</Tooltip>)
-    expect(container.firstChild).toHaveClass('rudiment-tooltip')
+    const { container } = render(<RudiTooltip>Helpful hint</RudiTooltip>)
+    expect(container.firstChild).toHaveClass('rudi-tooltip')
   })
 
   it('has the tooltip role', () => {
-    render(<Tooltip>Helpful hint</Tooltip>)
+    render(<RudiTooltip>Helpful hint</RudiTooltip>)
     expect(screen.getByRole('tooltip')).toBeInTheDocument()
   })
 
   it('merges a custom className', () => {
     const { container } = render(
-      <Tooltip className="my-tip">Helpful hint</Tooltip>,
+      <RudiTooltip className="my-tip">Helpful hint</RudiTooltip>,
     )
-    expect(container.firstChild).toHaveClass('rudiment-tooltip')
+    expect(container.firstChild).toHaveClass('rudi-tooltip')
     expect(container.firstChild).toHaveClass('my-tip')
   })
 
   it('has no accessibility violations', async () => {
-    const { container } = render(<Tooltip>Helpful hint</Tooltip>)
+    const { container } = render(<RudiTooltip>Helpful hint</RudiTooltip>)
     expect(await axe(container)).toHaveNoViolations()
   })
 })
@@ -36,40 +36,40 @@ describe('Tooltip', () => {
 describe('TooltipTrigger', () => {
   it('renders the trigger element', () => {
     render(
-      <TooltipTrigger>
+      <RudiTooltipTrigger>
         <button>Hover me</button>
-        <Tooltip>Helpful hint</Tooltip>
-      </TooltipTrigger>,
+        <RudiTooltip>Helpful hint</RudiTooltip>
+      </RudiTooltipTrigger>,
     )
     expect(screen.getByText('Hover me')).toBeInTheDocument()
   })
 
   it('applies the trigger wrapper class', () => {
     const { container } = render(
-      <TooltipTrigger>
+      <RudiTooltipTrigger>
         <button>Hover me</button>
-        <Tooltip>Helpful hint</Tooltip>
-      </TooltipTrigger>,
+        <RudiTooltip>Helpful hint</RudiTooltip>
+      </RudiTooltipTrigger>,
     )
-    expect(container.firstChild).toHaveClass('rudiment-tooltip-trigger')
+    expect(container.firstChild).toHaveClass('rudi-tooltip-trigger')
   })
 
   it('does not render the tooltip when not hovered', () => {
     render(
-      <TooltipTrigger>
+      <RudiTooltipTrigger>
         <button>Hover me</button>
-        <Tooltip>Helpful hint</Tooltip>
-      </TooltipTrigger>,
+        <RudiTooltip>Helpful hint</RudiTooltip>
+      </RudiTooltipTrigger>,
     )
     expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
   })
 
   it('has no accessibility violations', async () => {
     const { container } = render(
-      <TooltipTrigger>
+      <RudiTooltipTrigger>
         <button>Hover me</button>
-        <Tooltip>Helpful hint</Tooltip>
-      </TooltipTrigger>,
+        <RudiTooltip>Helpful hint</RudiTooltip>
+      </RudiTooltipTrigger>,
     )
     expect(await axe(container)).toHaveNoViolations()
   })

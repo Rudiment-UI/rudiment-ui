@@ -2,14 +2,14 @@ import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 import './cover.css'
 
-export interface CoverProps extends React.HTMLAttributes<HTMLElement> {
+export interface RudiCoverProps extends React.HTMLAttributes<HTMLElement> {
   minHeight?: string
   space?: string
   as?: React.ElementType
   children?: React.ReactNode
 }
 
-export const Cover = forwardRef<HTMLElement, CoverProps>(function Cover(
+export const RudiCover = forwardRef<HTMLElement, RudiCoverProps>(function RudiCover(
   {
     minHeight,
     space,
@@ -28,7 +28,7 @@ export const Cover = forwardRef<HTMLElement, CoverProps>(function Cover(
   return (
     <Element
       ref={ref}
-      className={cn('rudiment-cover', className)}
+      className={cn('rudi-cover', className)}
       style={{ ...customProperties, ...style } as React.CSSProperties}
       {...props}
     >

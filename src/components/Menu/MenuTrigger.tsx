@@ -3,8 +3,8 @@ import {
   type MenuTriggerProps as AriaMenuTriggerProps,
 } from 'react-aria-components'
 
-export interface MenuTriggerProps extends AriaMenuTriggerProps {}
+export interface RudiMenuTriggerProps extends AriaMenuTriggerProps {}
 
-export function MenuTrigger(props: MenuTriggerProps) {
+export function RudiMenuTrigger(props: RudiMenuTriggerProps) {
   return <AriaMenuTrigger {...props} />
 }

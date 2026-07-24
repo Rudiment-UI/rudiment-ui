@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { Dialog, type DialogProps } from './Dialog'
-import { Button } from '../Button/Button'
+import { RudiDialog, type RudiDialogProps } from './Dialog'
+import { RudiButton } from '../Button/Button'
 
-type DialogStoryArgs = Omit<DialogProps, 'isOpen' | 'onClose' | 'children'>
+type DialogStoryArgs = Omit<RudiDialogProps, 'isOpen' | 'onClose' | 'children'>
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const meta: Meta<DialogStoryArgs> = {
   title: 'Components/Dialog',
-  component: Dialog as any,
+  component: RudiDialog as any,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -80,8 +80,8 @@ export const Default: Story = {
     const [isOpen, setIsOpen] = useState(false)
     return (
       <>
-        <Button onPress={() => setIsOpen(true)}>Open dialog</Button>
-        <Dialog
+        <RudiButton onPress={() => setIsOpen(true)}>Open dialog</RudiButton>
+        <RudiDialog
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
           title="Confirm action"
@@ -95,14 +95,14 @@ export const Default: Story = {
               justifyContent: 'flex-end',
             }}
           >
-            <Button variant="secondary" onPress={() => setIsOpen(false)}>
+            <RudiButton variant="secondary" onPress={() => setIsOpen(false)}>
               Cancel
-            </Button>
-            <Button variant="primary" onPress={() => setIsOpen(false)}>
+            </RudiButton>
+            <RudiButton variant="primary" onPress={() => setIsOpen(false)}>
               Confirm
-            </Button>
+            </RudiButton>
           </div>
-        </Dialog>
+        </RudiDialog>
       </>
     )
   },
@@ -136,8 +136,8 @@ export const Small: Story = {
     const [isOpen, setIsOpen] = useState(false)
     return (
       <>
-        <Button onPress={() => setIsOpen(true)}>Open small dialog</Button>
-        <Dialog
+        <RudiButton onPress={() => setIsOpen(true)}>Open small dialog</RudiButton>
+        <RudiDialog
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
           title="Delete item"
@@ -152,14 +152,14 @@ export const Small: Story = {
               justifyContent: 'flex-end',
             }}
           >
-            <Button variant="secondary" onPress={() => setIsOpen(false)}>
+            <RudiButton variant="secondary" onPress={() => setIsOpen(false)}>
               Cancel
-            </Button>
-            <Button variant="destructive" onPress={() => setIsOpen(false)}>
+            </RudiButton>
+            <RudiButton variant="destructive" onPress={() => setIsOpen(false)}>
               Delete
-            </Button>
+            </RudiButton>
           </div>
-        </Dialog>
+        </RudiDialog>
       </>
     )
   },
@@ -180,7 +180,7 @@ export const Large: Story = {
     size="lg"
   >
     <p>Please read the following terms carefully before proceeding.</p>
-    <p style={{ marginTop: '1rem', color: 'var(--token-color-text-subtle)', fontSize: '0.875rem' }}>
+    <p style={{ marginTop: '1rem', color: 'var(--rudi-color-text-subtle)', fontSize: '0.875rem' }}>
       Lorem ipsum dolor sit amet...
     </p>
     <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1.5rem', justifyContent: 'flex-end' }}>
@@ -196,8 +196,8 @@ export const Large: Story = {
     const [isOpen, setIsOpen] = useState(false)
     return (
       <>
-        <Button onPress={() => setIsOpen(true)}>Open large dialog</Button>
-        <Dialog
+        <RudiButton onPress={() => setIsOpen(true)}>Open large dialog</RudiButton>
+        <RudiDialog
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
           title="Terms of service"
@@ -207,7 +207,7 @@ export const Large: Story = {
           <p
             style={{
               marginTop: '1rem',
-              color: 'var(--token-color-text-subtle)',
+              color: 'var(--rudi-color-text-subtle)',
               fontSize: '0.875rem',
             }}
           >
@@ -224,14 +224,14 @@ export const Large: Story = {
               justifyContent: 'flex-end',
             }}
           >
-            <Button variant="secondary" onPress={() => setIsOpen(false)}>
+            <RudiButton variant="secondary" onPress={() => setIsOpen(false)}>
               Decline
-            </Button>
-            <Button variant="primary" onPress={() => setIsOpen(false)}>
+            </RudiButton>
+            <RudiButton variant="primary" onPress={() => setIsOpen(false)}>
               Accept
-            </Button>
+            </RudiButton>
           </div>
-        </Dialog>
+        </RudiDialog>
       </>
     )
   },
@@ -264,10 +264,10 @@ export const NonDismissable: Story = {
     const [isOpen, setIsOpen] = useState(false)
     return (
       <>
-        <Button onPress={() => setIsOpen(true)}>
+        <RudiButton onPress={() => setIsOpen(true)}>
           Open non-dismissable dialog
-        </Button>
-        <Dialog
+        </RudiButton>
+        <RudiDialog
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
           title="Required action"
@@ -282,11 +282,11 @@ export const NonDismissable: Story = {
               justifyContent: 'flex-end',
             }}
           >
-            <Button variant="primary" onPress={() => setIsOpen(false)}>
+            <RudiButton variant="primary" onPress={() => setIsOpen(false)}>
               Got it
-            </Button>
+            </RudiButton>
           </div>
-        </Dialog>
+        </RudiDialog>
       </>
     )
   },

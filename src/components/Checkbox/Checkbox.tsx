@@ -5,7 +5,7 @@ import { useToggleState } from 'react-stately'
 import { cn } from '@/utils/cn'
 import './checkbox.css'
 
-export interface CheckboxProps {
+export interface RudiCheckboxProps {
   children: React.ReactNode
   isSelected?: boolean
   defaultSelected?: boolean
@@ -16,8 +16,8 @@ export interface CheckboxProps {
   className?: string
 }
 
-export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  function Checkbox(props, forwardedRef) {
+export const RudiCheckbox = forwardRef<HTMLInputElement, RudiCheckboxProps>(
+  function RudiCheckbox(props, forwardedRef) {
     const ref = useObjectRef(forwardedRef)
     const state = useToggleState(props)
     const { inputProps } = useCheckbox(props, state, ref)
@@ -25,22 +25,22 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <label
         className={cn(
-          'rudiment-checkbox',
-          props.isDisabled && 'rudiment-checkbox--disabled',
+          'rudi-checkbox',
+          props.isDisabled && 'rudi-checkbox--disabled',
           props.className,
         )}
       >
-        <input {...inputProps} ref={ref} className="rudiment-checkbox__input" />
+        <input {...inputProps} ref={ref} className="rudi-checkbox__input" />
         <span
           className={cn(
-            'rudiment-checkbox__control',
-            state.isSelected && 'rudiment-checkbox__control--checked',
+            'rudi-checkbox__control',
+            state.isSelected && 'rudi-checkbox__control--checked',
             props.isIndeterminate &&
-              'rudiment-checkbox__control--indeterminate',
+              'rudi-checkbox__control--indeterminate',
           )}
           aria-hidden="true"
         />
-        <span className="rudiment-checkbox__label">{props.children}</span>
+        <span className="rudi-checkbox__label">{props.children}</span>
       </label>
     )
   },

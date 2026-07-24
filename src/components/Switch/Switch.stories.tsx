@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Switch } from './Switch'
+import { RudiSwitch } from './Switch'
 
 const meta = {
   title: 'Components/Switch',
-  component: Switch,
+  component: RudiSwitch,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -52,7 +52,7 @@ const meta = {
       table: { category: 'Events' },
     },
   },
-} satisfies Meta<typeof Switch>
+} satisfies Meta<typeof RudiSwitch>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -88,12 +88,12 @@ export const DisabledOn: Story = {
 export const AllStates: Story = {
   render: ({}) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <Switch>Off by default</Switch>
-      <Switch defaultSelected>On by default</Switch>
-      <Switch isDisabled>Disabled off</Switch>
-      <Switch isDisabled defaultSelected>
+      <RudiSwitch>Off by default</RudiSwitch>
+      <RudiSwitch defaultSelected>On by default</RudiSwitch>
+      <RudiSwitch isDisabled>Disabled off</RudiSwitch>
+      <RudiSwitch isDisabled defaultSelected>
         Disabled on
-      </Switch>
+      </RudiSwitch>
     </div>
   ),
 }

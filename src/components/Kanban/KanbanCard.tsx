@@ -2,13 +2,13 @@ import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import { cn } from '@/utils/cn'
 
-export interface KanbanCardProps {
+export interface RudiKanbanCardProps {
   id: string
   children: React.ReactNode
   className?: string
 }
 
-export function KanbanCard({ id, children, className }: KanbanCardProps) {
+export function RudiKanbanCard({ id, children, className }: RudiKanbanCardProps) {
   const {
     attributes,
     listeners,
@@ -28,14 +28,14 @@ export function KanbanCard({ id, children, className }: KanbanCardProps) {
       ref={setNodeRef}
       style={style}
       className={cn(
-        'rudiment-kanban__card',
-        isDragging && 'rudiment-kanban__card--dragging',
+        'rudi-kanban__card',
+        isDragging && 'rudi-kanban__card--dragging',
         className,
       )}
     >
       <button
         type="button"
-        className="rudiment-kanban__card-handle"
+        className="rudi-kanban__card-handle"
         aria-label={`Drag handle for card ${id}`}
         {...attributes}
         {...listeners}
@@ -58,7 +58,7 @@ export function KanbanCard({ id, children, className }: KanbanCardProps) {
           <circle cx="8.5" cy="10" r="1.25" />
         </svg>
       </button>
-      <div className="rudiment-kanban__card-content">{children}</div>
+      <div className="rudi-kanban__card-content">{children}</div>
     </div>
   )
 }

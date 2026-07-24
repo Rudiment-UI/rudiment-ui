@@ -1,25 +1,25 @@
 /* Stack */
-.rudiment-stack {
-  --stack-space: var(--token-layout-stack-space-default, 1.5rem);
+.rudi-stack {
+  --stack-space: var(--rudi-layout-stack-space-default, 1.5rem);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
-.rudiment-stack > * {
+.rudi-stack > * {
   margin-block: 0;
 }
 
-.rudiment-stack > * + * {
+.rudi-stack > * + * {
   margin-block-start: var(--stack-space);
 }
 
 /* Recursive: apply spacing at any nesting depth */
-.rudiment-stack--recursive * + * {
+.rudi-stack--recursive * + * {
   margin-block-start: var(--stack-space);
 }
 
 /* Split: push elements after the nth child to the bottom */
-.rudiment-stack--split {
+.rudi-stack--split {
   min-block-size: 100%;
 }

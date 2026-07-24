@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Button } from './Button'
+import { RudiButton } from './Button'
 
 const meta = {
   title: 'Components/Button',
-  component: Button,
+  component: RudiButton,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -83,7 +83,7 @@ const meta = {
       table: { category: 'Events' },
     },
   },
-} satisfies Meta<typeof Button>
+} satisfies Meta<typeof RudiButton>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -176,10 +176,10 @@ export const AllVariants: Story = {
         alignItems: 'center',
       }}
     >
-      <Button variant="primary">Primary</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="destructive">Destructive</Button>
-      <Button variant="ghost">Ghost</Button>
+      <RudiButton variant="primary">Primary</RudiButton>
+      <RudiButton variant="secondary">Secondary</RudiButton>
+      <RudiButton variant="destructive">Destructive</RudiButton>
+      <RudiButton variant="ghost">Ghost</RudiButton>
     </div>
   ),
 }
@@ -187,9 +187,9 @@ export const AllVariants: Story = {
 export const AllSizes: Story = {
   render: ({}) => (
     <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-      <Button size="sm">Small</Button>
-      <Button size="md">Medium</Button>
-      <Button size="lg">Large</Button>
+      <RudiButton size="sm">Small</RudiButton>
+      <RudiButton size="md">Medium</RudiButton>
+      <RudiButton size="lg">Large</RudiButton>
     </div>
   ),
 }

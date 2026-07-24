@@ -31,9 +31,9 @@ The `size` prop optionally overrides the visual appearance without changing the 
 {
   /* Renders an h2, but visually looks like an h4 */
 }
-;<Heading level={2} size={4}>
+;<RudiHeading level={2} size={4}>
   Section title
-</Heading>
+</RudiHeading>
 ```
 
 ### Best practice
@@ -55,15 +55,15 @@ The **Text** component provides five variants for different text roles.
 ### Usage
 
 ```jsx
-<Text>This is standard body text.</Text>
+<RudiText>This is standard body text.</RudiText>
 
-<Text variant="body-sm">Smaller supporting text.</Text>
+<RudiText variant="body-sm">Smaller supporting text.</RudiText>
 
-<Text variant="caption">Last updated: March 2026</Text>
+<RudiText variant="caption">Last updated: March 2026</RudiText>
 
-<Text variant="overline">Category</Text>
+<RudiText variant="overline">Category</RudiText>
 
-<Text variant="code">npm install</Text>
+<RudiText variant="code">npm install</RudiText>
 ```
 
 ### The `as` prop
@@ -71,9 +71,9 @@ The **Text** component provides five variants for different text roles.
 By default, Text renders as a `<p>` element. Use the `as` prop to render as any HTML element:
 
 ```jsx
-<Text as="span">Inline text</Text>
-<Text as="label">Form label</Text>
-<Text as="strong">Important text</Text>
+<RudiText as="span">Inline text</RudiText>
+<RudiText as="label">Form label</RudiText>
+<RudiText as="strong">Important text</RudiText>
 ```
 
 This is useful when you need a specific HTML element for semantics or styling but want to keep the typography consistent.
@@ -102,7 +102,7 @@ Prose is designed for content-heavy sections where multiple elements need consis
 ### Usage
 
 ```jsx
-<Prose>
+<RudiProse>
   <h2>Getting started</h2>
   <p>Follow these steps to set up your project.</p>
   <ul>
@@ -111,12 +111,12 @@ Prose is designed for content-heavy sections where multiple elements need consis
     <li>Run the development server</li>
   </ul>
   <p>You should now see the welcome page.</p>
-</Prose>
+</RudiProse>
 
-<Prose size="lg">
+<RudiProse size="lg">
   <h1>Welcome</h1>
   <p>Large-format content for feature pages.</p>
-</Prose>
+</RudiProse>
 ```
 
 ## Typography tokens

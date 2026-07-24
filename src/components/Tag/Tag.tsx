@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react'
 import { useButton } from 'react-aria'
 import { cn } from '@/utils/cn'
-import { Icon } from '@/components/Icon/Icon'
+import { RudiIcon } from '@/components/Icon/Icon'
 import './tag.css'
 
-export interface TagProps {
+export interface RudiTagProps {
   variant?: 'default' | 'success' | 'warning' | 'error' | 'info'
   dismissible?: boolean
   onDismiss?: () => void
@@ -14,7 +14,7 @@ export interface TagProps {
   className?: string
 }
 
-export function Tag({
+export function RudiTag({
   variant = 'default',
   dismissible = false,
   onDismiss,
@@ -22,7 +22,7 @@ export function Tag({
   isDisabled = false,
   children,
   className,
-}: TagProps) {
+}: RudiTagProps) {
   const [dismissed, setDismissed] = useState(false)
   const tagRef = useRef<HTMLButtonElement>(null)
 
@@ -39,10 +39,10 @@ export function Tag({
     typeof children === 'string' ? `Remove ${children}` : 'Remove'
 
   const classes = cn(
-    'rudiment-tag',
-    `rudiment-tag--${variant}`,
-    onPress && 'rudiment-tag--interactive',
-    dismissible && 'rudiment-tag--dismissible',
+    'rudi-tag',
+    `rudi-tag--${variant}`,
+    onPress && 'rudi-tag--interactive',
+    dismissible && 'rudi-tag--dismissible',
     className,
   )
 
@@ -58,7 +58,7 @@ export function Tag({
           <span
             role="button"
             tabIndex={0}
-            className="rudiment-tag__close"
+            className="rudi-tag__close"
             aria-label={closeAriaLabel}
             onClick={(e) => {
               e.stopPropagation()
@@ -74,7 +74,7 @@ export function Tag({
               }
             }}
           >
-            <Icon icon="mdi:close" size="sm" aria-hidden="true" />
+            <RudiIcon icon="mdi:close" size="sm" aria-hidden="true" />
           </span>
         )}
       </button>
@@ -90,14 +90,14 @@ export function Tag({
       {dismissible && (
         <button
           type="button"
-          className="rudiment-tag__close"
+          className="rudi-tag__close"
           aria-label={closeAriaLabel}
           onClick={() => {
             setDismissed(true)
             onDismiss?.()
           }}
         >
-          <Icon icon="mdi:close" size="sm" aria-hidden="true" />
+          <RudiIcon icon="mdi:close" size="sm" aria-hidden="true" />
         </button>
       )}
     </span>

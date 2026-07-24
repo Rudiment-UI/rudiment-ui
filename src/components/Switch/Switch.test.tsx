@@ -1,89 +1,89 @@
 import { render, screen } from '@testing-library/react'
 import { axe } from 'vitest-axe'
 import { describe, it, expect } from 'vitest'
-import { Switch } from './Switch'
+import { RudiSwitch } from './Switch'
 
 describe('Switch', () => {
   it('renders a checkbox input', () => {
-    render(<Switch>Dark mode</Switch>)
+    render(<RudiSwitch>Dark mode</RudiSwitch>)
     expect(screen.getByRole('switch')).toBeInTheDocument()
   })
 
   it('renders the label text', () => {
-    render(<Switch>Dark mode</Switch>)
+    render(<RudiSwitch>Dark mode</RudiSwitch>)
     expect(screen.getByText('Dark mode')).toBeInTheDocument()
   })
 
   it('applies the base class', () => {
-    const { container } = render(<Switch>Dark mode</Switch>)
-    expect(container.firstChild).toHaveClass('rudiment-switch')
+    const { container } = render(<RudiSwitch>Dark mode</RudiSwitch>)
+    expect(container.firstChild).toHaveClass('rudi-switch')
   })
 
   it('applies the disabled class when isDisabled is true', () => {
-    const { container } = render(<Switch isDisabled>Dark mode</Switch>)
-    expect(container.firstChild).toHaveClass('rudiment-switch--disabled')
+    const { container } = render(<RudiSwitch isDisabled>Dark mode</RudiSwitch>)
+    expect(container.firstChild).toHaveClass('rudi-switch--disabled')
   })
 
   it('does not apply the disabled class by default', () => {
-    const { container } = render(<Switch>Dark mode</Switch>)
-    expect(container.firstChild).not.toHaveClass('rudiment-switch--disabled')
+    const { container } = render(<RudiSwitch>Dark mode</RudiSwitch>)
+    expect(container.firstChild).not.toHaveClass('rudi-switch--disabled')
   })
 
   it('renders the track element', () => {
-    const { container } = render(<Switch>Dark mode</Switch>)
+    const { container } = render(<RudiSwitch>Dark mode</RudiSwitch>)
     expect(
-      container.querySelector('.rudiment-switch__track'),
+      container.querySelector('.rudi-switch__track'),
     ).toBeInTheDocument()
   })
 
   it('renders the thumb element', () => {
-    const { container } = render(<Switch>Dark mode</Switch>)
+    const { container } = render(<RudiSwitch>Dark mode</RudiSwitch>)
     expect(
-      container.querySelector('.rudiment-switch__thumb'),
+      container.querySelector('.rudi-switch__thumb'),
     ).toBeInTheDocument()
   })
 
   it('renders the label element', () => {
-    const { container } = render(<Switch>Dark mode</Switch>)
+    const { container } = render(<RudiSwitch>Dark mode</RudiSwitch>)
     expect(
-      container.querySelector('.rudiment-switch__label'),
+      container.querySelector('.rudi-switch__label'),
     ).toBeInTheDocument()
   })
 
   it('applies the on class to the track when defaultSelected is true', () => {
-    const { container } = render(<Switch defaultSelected>Dark mode</Switch>)
-    expect(container.querySelector('.rudiment-switch__track')).toHaveClass(
-      'rudiment-switch__track--on',
+    const { container } = render(<RudiSwitch defaultSelected>Dark mode</RudiSwitch>)
+    expect(container.querySelector('.rudi-switch__track')).toHaveClass(
+      'rudi-switch__track--on',
     )
   })
 
   it('does not apply the on class when not selected', () => {
-    const { container } = render(<Switch>Dark mode</Switch>)
-    expect(container.querySelector('.rudiment-switch__track')).not.toHaveClass(
-      'rudiment-switch__track--on',
+    const { container } = render(<RudiSwitch>Dark mode</RudiSwitch>)
+    expect(container.querySelector('.rudi-switch__track')).not.toHaveClass(
+      'rudi-switch__track--on',
     )
   })
 
   it('merges a custom className', () => {
     const { container } = render(
-      <Switch className="my-switch">Dark mode</Switch>,
+      <RudiSwitch className="my-switch">Dark mode</RudiSwitch>,
     )
-    expect(container.firstChild).toHaveClass('rudiment-switch')
+    expect(container.firstChild).toHaveClass('rudi-switch')
     expect(container.firstChild).toHaveClass('my-switch')
   })
 
   it('disables the input when isDisabled is true', () => {
-    render(<Switch isDisabled>Dark mode</Switch>)
+    render(<RudiSwitch isDisabled>Dark mode</RudiSwitch>)
     expect(screen.getByRole('switch')).toBeDisabled()
   })
 
   it('has no accessibility violations', async () => {
-    const { container } = render(<Switch>Dark mode</Switch>)
+    const { container } = render(<RudiSwitch>Dark mode</RudiSwitch>)
     expect(await axe(container)).toHaveNoViolations()
   })
 
   it('has no accessibility violations when disabled', async () => {
-    const { container } = render(<Switch isDisabled>Dark mode</Switch>)
+    const { container } = render(<RudiSwitch isDisabled>Dark mode</RudiSwitch>)
     expect(await axe(container)).toHaveNoViolations()
   })
 })

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { IconButton } from './IconButton'
+import { RudiIconButton } from './IconButton'
 
 // Minimal inline SVG icons for demonstration purposes
 const CloseIcon = () => (
@@ -56,7 +56,7 @@ const TrashIcon = () => (
 
 const meta = {
   title: 'Components/IconButton',
-  component: IconButton,
+  component: RudiIconButton,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -130,7 +130,7 @@ const meta = {
       table: { category: 'Events' },
     },
   },
-} as Meta<typeof IconButton>
+} as Meta<typeof RudiIconButton>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -193,18 +193,18 @@ export const Disabled: Story = {
 export const AllVariants: Story = {
   render: ({}) => (
     <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-      <IconButton aria-label="Add item" variant="primary">
+      <RudiIconButton aria-label="Add item" variant="primary">
         <PlusIcon />
-      </IconButton>
-      <IconButton aria-label="Close" variant="secondary">
+      </RudiIconButton>
+      <RudiIconButton aria-label="Close" variant="secondary">
         <CloseIcon />
-      </IconButton>
-      <IconButton aria-label="Delete" variant="destructive">
+      </RudiIconButton>
+      <RudiIconButton aria-label="Delete" variant="destructive">
         <TrashIcon />
-      </IconButton>
-      <IconButton aria-label="Close" variant="ghost">
+      </RudiIconButton>
+      <RudiIconButton aria-label="Close" variant="ghost">
         <CloseIcon />
-      </IconButton>
+      </RudiIconButton>
     </div>
   ),
 }

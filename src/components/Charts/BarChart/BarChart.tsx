@@ -12,7 +12,7 @@ import { useChartTheme } from '@/hooks/useChartTheme'
 import { cn } from '@/utils/cn'
 import '../charts.css'
 
-export interface BarChartProps {
+export interface RudiBarChartProps {
   data: Array<Record<string, string | number>>
   dataKeys: string[]
   indexKey: string
@@ -25,7 +25,7 @@ export interface BarChartProps {
   className?: string
 }
 
-export function BarChart({
+export function RudiBarChart({
   data,
   dataKeys,
   indexKey,
@@ -36,14 +36,14 @@ export function BarChart({
   height = 300,
   label,
   className,
-}: BarChartProps) {
+}: RudiBarChartProps) {
   const theme = useChartTheme()
 
   const isHorizontal = layout === 'horizontal'
 
   return (
     <div
-      className={cn('rudiment-chart', className)}
+      className={cn('rudi-chart', className)}
       role="img"
       aria-label={label}
     >
