@@ -46,8 +46,7 @@ export function RudiStepper({
         const filled = status === 'complete' || status === 'current'
         // A connector is "filled" once the step it leads into is reached.
         const nextReached =
-          i < steps.length - 1 && steps[i + 1].status !== 'upcoming'
-
+          i < steps.length - 1 && (steps[i + 1].status ?? 'upcoming') !== 'upcoming'
         return (
           <li
             key={step.label}
