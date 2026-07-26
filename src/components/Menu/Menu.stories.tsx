@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { SubmenuTrigger } from 'react-aria-components'
+import { RudiSubmenuTrigger } from './SubmenuTrigger'
 import { RudiMenuTrigger, type RudiMenuTriggerProps } from './MenuTrigger'
 import { RudiMenu } from './Menu'
 import { RudiMenuItem } from './MenuItem'
@@ -147,13 +147,13 @@ export const WithSubmenu: Story = {
       <RudiButton variant="secondary">Actions</RudiButton>
       <RudiMenu onAction={(key) => alert(key)}>
         <RudiMenuItem id="open" icon="lucide:folder-open" label="Open" />
-        <SubmenuTrigger>
+        <RudiSubmenuTrigger>
           <RudiMenuItem icon="lucide:share" label="Share" />
           <RudiMenu>
             <RudiMenuItem id="email" icon="lucide:mail" label="Email" />
             <RudiMenuItem id="sms" icon="lucide:smartphone" label="SMS" />
           </RudiMenu>
-        </SubmenuTrigger>
+        </RudiSubmenuTrigger>
       </RudiMenu>
     </RudiMenuTrigger>
   ),
@@ -223,13 +223,13 @@ export const CompleteExample: Story = {
             shortcut="⌘⌫"
             isDestructive
           />
-          <SubmenuTrigger>
+          <RudiSubmenuTrigger>
             <RudiMenuItem icon="lucide:share" label="Share" />
             <RudiMenu>
               <RudiMenuItem id="email" icon="lucide:mail" label="Email" />
               <RudiMenuItem id="sms" icon="lucide:smartphone" label="SMS" />
             </RudiMenu>
-          </SubmenuTrigger>
+          </RudiSubmenuTrigger>
         </RudiMenuSection>
         <RudiMenuSeparator />
         <RudiMenuSection selectionMode="multiple" defaultSelectedKeys={['files']}>

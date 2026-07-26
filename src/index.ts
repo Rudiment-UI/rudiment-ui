@@ -45,7 +45,10 @@ export type { RudiMenuSeparatorProps } from './components/Menu/MenuSeparator'
 export { RudiKeyboard } from './components/Menu/Keyboard'
 export type { RudiKeyboardProps } from './components/Menu/Keyboard'
 
-export { Separator as RudiSeparator, SubmenuTrigger as RudiSubmenuTrigger } from 'react-aria-components'
+export { RudiSubmenuTrigger } from './components/Menu/SubmenuTrigger'
+export type { RudiSubmenuTriggerProps } from './components/Menu/SubmenuTrigger'
+
+export { Separator as RudiSeparator } from 'react-aria-components'
 
 export { RudiDialog } from './components/Dialog/Dialog'
 export type { RudiDialogProps } from './components/Dialog/Dialog'
