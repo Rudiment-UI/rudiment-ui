@@ -30,45 +30,6 @@
   outline-offset: 2px;
 }
 
-[data-theme='teal'] .rudi-switch:has(input:focus-visible) .rudi-switch__track,
-[data-theme='teal-dark'] .rudi-switch:has(input:focus-visible) .rudi-switch__track {
-  outline: none;
-}
-
-[data-theme='teal'] .rudi-switch:has(input:focus-visible) .rudi-switch__track {
-  box-shadow:
-    0 0 0 2px var(--rudi-color-neutral-0),
-    0 0 0 4px var(--rudi-color-border-focus),
-    inset 0 0 0 1px rgba(10, 13, 18, 0.18);
-}
-
-[data-theme='teal-dark'] .rudi-switch:has(input:focus-visible) .rudi-switch__track {
-  box-shadow:
-    0 0 0 2px var(--rudi-color-neutral-600),
-    0 0 0 4px var(--rudi-color-neutral-50),
-    inset 0 0 0 1px rgba(10, 13, 18, 0.18);
-}
-
-/* Cyberpunk theme: neon glow focus rings */
-[data-theme='cyberpunk'] .rudi-switch:has(input:focus-visible) .rudi-switch__track,
-[data-theme='cyberpunk-dark'] .rudi-switch:has(input:focus-visible) .rudi-switch__track {
-  outline: none;
-}
-
-[data-theme='cyberpunk'] .rudi-switch:has(input:focus-visible) .rudi-switch__track {
-  box-shadow:
-    0 0 0 2px var(--rudi-color-neutral-0),
-    0 0 0 4px var(--rudi-color-border-focus),
-    0 0 12px 2px var(--rudi-color-border-focus);
-}
-
-[data-theme='cyberpunk-dark'] .rudi-switch:has(input:focus-visible) .rudi-switch__track {
-  box-shadow:
-    0 0 0 2px var(--rudi-color-neutral-700),
-    0 0 0 4px var(--rudi-color-border-focus),
-    0 0 16px 4px var(--rudi-color-border-focus);
-}
-
 .rudi-switch__track--on {
   background-color: var(--rudi-component-switch-track-bg-on);
 }

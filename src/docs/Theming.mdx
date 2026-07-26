@@ -14,10 +14,12 @@ Rudiment UI generates CSS files from your token definitions:
 |---|---|---|
 | `tokens/build/tokens.css` | `:root` | Base (light) theme |
 | `tokens/build/tokens-dark.css` | `[data-theme="dark"]` | Dark theme overrides |
-| `tokens/build/tokens-teal.css` | `[data-theme="teal"]` | Teal light theme |
-| `tokens/build/tokens-teal-dark.css` | `[data-theme="teal-dark"]` | Teal dark theme |
-| `tokens/build/tokens-cyberpunk.css` | `[data-theme="cyberpunk"]` | Cyberpunk light theme |
-| `tokens/build/tokens-cyberpunk-dark.css` | `[data-theme="cyberpunk-dark"]` | Cyberpunk dark theme |
+| `tokens/build/tokens-roomy.css` | `[data-theme="roomy"]` | Roomy light theme |
+| `tokens/build/tokens-roomy-dark.css` | `[data-theme="roomy-dark"]` | Roomy dark theme |
+| `tokens/build/tokens-soft.css` | `[data-theme="soft"]` | Soft light theme |
+| `tokens/build/tokens-soft-dark.css` | `[data-theme="soft-dark"]` | Soft dark theme |
+| `tokens/build/tokens-compressed.css` | `[data-theme="compressed"]` | Compressed light theme |
+| `tokens/build/tokens-compressed-dark.css` | `[data-theme="compressed-dark"]` | Compressed dark theme |
 
 When a `data-theme` attribute is set on an ancestor element, CSS custom properties resolve to that theme's values. Components don't need any conditional logic because the cascade handles everything.
 
@@ -136,7 +138,12 @@ A minimal toggle that cycles through all built-in themes:
 ```tsx
 import { useState, useEffect } from 'react'
 
-const themes = ['light', 'dark', 'teal', 'teal-dark', 'cyberpunk', 'cyberpunk-dark'] as const
+const themes = [
+  'light', 'dark',
+  'roomy', 'roomy-dark',
+  'soft', 'soft-dark',
+  'compressed', 'compressed-dark',
+] as const
 
 function ThemeToggle() {
   const [theme, setTheme] = useState(() =>
@@ -250,28 +257,26 @@ The same pattern used for dark mode extends to any number of themes. Here's how 
 
 ## Built-in themes
 
-### Teal theme
+### Modifier themes: Roomy and Soft
 
-Rudiment UI ships with a teal theme in both light and dark variants. The teal theme demonstrates how far you can push token-based customization without modifying component code. Compared to the default theme, teal applies a deep teal brand palette, softer border radii, and a skeuomorphic focus ring style that replaces the standard outline with layered `box-shadow` rings.
+Two themes soften the default: they warm the palette, swap in a friendlier typeface, and adjust the primitive `spacing`/`radius` scales, so the effect cascades to every component that references them, no component code required. Each ships light and dark, and every brand/text pairing meets WCAG AA contrast.
 
-Activate the teal light theme:
+| Theme | Palette + type | Shape |
+|---|---|---|
+| **Roomy** (`roomy`, `roomy-dark`) | Moderately soft warm neutrals, a muted slate brand accent, and Rubik (subtly rounded) | Enlarged `spacing` scale (about 1.5x) and a slightly larger `radius` scale: more padding, wider gaps, gently rounded corners |
+| **Soft** (`soft`, `soft-dark`) | Soft warm neutrals, a soft periwinkle brand accent, and Nunito (rounded, friendly) | Enlarged `radius` scale plus full-pill buttons: large rounded cards, inputs, and dialogs; spacing unchanged |
+| **Compressed** (`compressed`, `compressed-dark`) | Default palette and typeface (unchanged) | Very tight `spacing` scale and very small `radius` scale: dense, near-square components |
+
+The web fonts (Nunito, Rubik) load through `.storybook/preview-head.html`; in a production app, self-host or link them. Both themes redefine the neutral ramp and add a small brand-accent ramp, while base status colors (red/green/amber) and layout tokens cascade from `:root`.
 
 ```html
-<html data-theme="teal">
+<html data-theme="roomy">
+<html data-theme="soft-dark">
 ```
 
-Activate the teal dark theme:
+These themes work because component padding, gaps, and radii resolve through `var(--rudi-spacing-*)` and `var(--rudi-radius-*)`, and the layout primitives read their default spacing from `--rudi-layout-*` tokens that trace back to the same scale. A modifier theme redefines only those scales and re-emits the tokens that reference them; colors fall through to `:root` (light) or the dark palette (dark). Because they touch only spacing and radius, Roomy and Soft compose with any brand recolor you layer on top.
 
-```html
-<html data-theme="teal-dark">
-```
-
-The teal theme tokens live in:
-
-- `tokens/themes/teal/` — light variant (tokens, semantic, components)
-- `tokens/themes/teal-dark/` — dark variant (tokens, semantic, components)
-
-The focus ring overrides are defined in each component's CSS file (for example, `button.css`, `input.css`) under `[data-theme="teal"]` and `[data-theme="teal-dark"]` selectors. This pattern shows how to add theme-specific visual treatments at the component level while keeping token files responsible for colors, spacing, and radii.
+The default `light` and `dark` themes use **IBM Plex Sans** (with IBM Plex Mono for figures) and the precise, small-radius scale that gives them an IBM-style-guide feel. Roomy and Soft inherit that typeface and adjust the geometry around it.
 
 ## Overriding tokens without modifying source files
 
@@ -307,200 +312,56 @@ This changes only the button without affecting other components that use the bra
 
 ## Previewing themes
 
-Use the theme picker in the Storybook toolbar to switch between all six built-in themes (Default Light, Default Dark, Teal Light, Teal Dark, Cyberpunk Light, Cyberpunk Dark) while developing. Every story renders inside a themed wrapper, so you can verify token changes across all themes without leaving the browser.
+Use the theme picker in the Storybook toolbar to switch between the built-in themes (Default plus the Roomy and Soft modifier themes, each in light and dark) while developing. Every story renders inside a themed wrapper, so you can verify token changes across all themes without leaving the browser.
 
 ## Advanced theming
 
-The token system covers colors, typography, spacing, and radii — but some visual effects go beyond what a single CSS custom property can express. The cyberpunk theme demonstrates several advanced techniques that layer CSS overrides on top of the token foundation.
+The token system covers colors, typography, spacing, and radii, but some visual effects go beyond what a single CSS custom property can express. Two techniques let a theme reach further while still building on the token foundation.
 
-### Custom fonts via Google Fonts
+### Custom fonts
 
-A theme can override the font family token with any web font. The cyberpunk theme uses [Chakra Petch](https://fonts.google.com/specimen/Chakra+Petch), an angular typeface that looks nothing like a business app but remains legible at all sizes.
-
-**Step 1** — Load the font. In Storybook, add a `<link>` tag to `.storybook/preview-head.html`:
-
-```html
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&display=swap"
-  rel="stylesheet"
-/>
-```
-
-For a production app, add the same tags to your HTML `<head>` or use a bundler plugin.
-
-**Step 2** — Override the font family token in your theme's `tokens.json`:
+A theme can override the sans typeface with a token in its `tokens.json`:
 
 ```json
 {
   "font": {
     "family": {
-      "sans": {
-        "$value": "'Chakra Petch', system-ui, sans-serif",
-        "$type": "fontFamily"
-      }
+      "sans": { "$value": "'Satoshi', ui-sans-serif, system-ui, sans-serif", "$type": "fontFamily" }
     }
   }
 }
 ```
 
-**Step 3** — Adjust your Style Dictionary config filter. The default theme configs exclude the `font` category from themed output (since font tokens are typically shared across themes). To include font overrides, remove `'font'` from the excluded categories:
+The default and dark theme configs exclude the `font` category from themed output, so a theme that overrides its typeface uses a config that lets `font.family` through:
 
 ```js
-// Before (default / teal configs)
-const PRIMITIVE_CATEGORIES = new Set(['spacing', 'radius', 'font', 'motion'])
-
-// After (cyberpunk config — allows font-family through)
+// Exclude spacing/radius/motion, but allow font-family to re-resolve per theme
 const PRIMITIVE_CATEGORIES = new Set(['spacing', 'radius', 'motion'])
-```
 
-Then refine the filter to only emit the font tokens you actually override:
-
-```js
 filter: (token) => {
   const category = token.path[0]
   if (PRIMITIVE_CATEGORIES.has(category)) return false
-  // Allow font-family through, skip font-size/weight/lineHeight
-  if (category === 'font') {
-    return token.path[1] === 'family'
-  }
+  if (category === 'font') return token.path[1] === 'family'
   // ... rest of filter
 }
 ```
 
-### Gradient borders
+Load the web font in your app `<head>` (or `.storybook/preview-head.html` for Storybook). Rebuild with `npm run build:tokens` and the theme's components pick up the new typeface automatically.
 
-CSS custom properties store single values, so a token can't hold a gradient. But `border-image` can — and since it's applied via `[data-theme]` selectors, it layers cleanly on top of the token system.
+### Component-level CSS treatments
 
-> **Important:** `border-image` does not work with `border-radius`. The cyberpunk theme uses `radius: none` (sharp corners) specifically to enable this technique. If your theme uses rounded corners, use the pseudo-element approach described below instead.
-
-Apply a gradient border to any component that already has a `border`:
+Some signature effects (layered focus rings, tinted elevation, tactile press) go beyond a single token. A theme can add one such treatment in the relevant component CSS under its `[data-theme]` selector. For example, a custom `my-theme` focus ring in `button.css`:
 
 ```css
-[data-theme='cyberpunk'] .rudi-card--outlined {
-  border-image: linear-gradient(
-    135deg,
-    var(--rudi-color-magenta-400),
-    var(--rudi-color-cyber-400)
-  ) 1;
-}
-
-[data-theme='cyberpunk-dark'] .rudi-card--outlined {
-  border-image: linear-gradient(
-    135deg,
-    var(--rudi-color-cyber-400),
-    var(--rudi-color-magenta-400)
-  ) 1;
-}
-```
-
-The `1` at the end is the `border-image-slice` value — it tells the browser to use the entire gradient as the border. The gradient direction and colors can differ between light and dark variants.
-
-This same pattern works for inputs, selects, buttons, and alerts. For elements with `border: 1px solid transparent` (like buttons), `border-image` replaces the transparent color with the gradient.
-
-#### Gradient borders with rounded corners
-
-If your theme needs both gradients and rounded corners, `border-image` won't work. Use a pseudo-element instead:
-
-```css
-[data-theme='my-theme'] .rudi-card--outlined {
-  border: none;
-  position: relative;
-}
-
-[data-theme='my-theme'] .rudi-card--outlined::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  padding: 1px; /* border thickness */
-  border-radius: inherit;
-  background: linear-gradient(135deg, #ff4d9e, #22d3ee);
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
-```
-
-### Gradient backgrounds
-
-Cards and other surface elements can use gradient backgrounds via `[data-theme]` selectors. Use the `background` shorthand (not `background-color`) so it overrides the token-driven solid color:
-
-```css
-[data-theme='cyberpunk'] .rudi-card {
-  background: linear-gradient(
-    135deg,
-    var(--rudi-color-magenta-50) 0%,
-    var(--rudi-color-neutral-0) 40%,
-    var(--rudi-color-cyber-50) 100%
-  );
-}
-```
-
-The component tokens still provide a solid `background-color` as a fallback. The CSS `background` shorthand takes precedence when the theme selector matches.
-
-### Outer glow effects
-
-Neon glows are achieved with `box-shadow` using theme color tokens and transparency. Layer multiple shadows for a richer effect:
-
-```css
-/* Subtle dual-tone glow on cards */
-[data-theme='cyberpunk-dark'] .rudi-card {
+[data-theme='my-theme'] .rudi-button:focus-visible {
+  outline: none;
   box-shadow:
-    0 0 16px 0 rgb(6 182 212 / 0.2),
-    0 0 6px 0 rgb(255 26 128 / 0.15);
-}
-
-/* Stronger glow on buttons */
-[data-theme='cyberpunk-dark'] .rudi-button--primary {
-  box-shadow: 0 0 12px 0 rgb(255 26 128 / 0.4);
+    0 0 0 2px var(--rudi-color-background-surface),
+    0 0 0 4px var(--rudi-color-border-focus);
 }
 ```
 
-When combining glow with focus rings, the focus-visible rule replaces the resting `box-shadow`. Include the glow in the focus state too, but intensify it:
-
-```css
-[data-theme='cyberpunk-dark'] .rudi-button--primary:focus-visible {
-  box-shadow:
-    0 0 0 2px var(--rudi-color-neutral-700),
-    0 0 0 4px var(--rudi-color-border-focus),
-    0 0 20px 6px rgb(255 26 128 / 0.5);
-}
-```
-
-### Cyberpunk theme
-
-Rudiment UI ships with a cyberpunk theme in both light and dark variants. It demonstrates all of the advanced techniques above:
-
-- **Chakra Petch** typeface from Google Fonts
-- **Neon magenta** brand color with **electric cyan** accents
-- **Zero border-radius** on all components for hard, angular edges
-- **Gradient borders** on cards, inputs, selects, buttons, and alerts
-- **Gradient card backgrounds** sweeping from pink through white to cyan (light) or across deep purples (dark)
-- **Outer glow** on cards and buttons using layered `box-shadow`
-- **Neon glow focus rings** that intensify on `:focus-visible`
-
-Activate the cyberpunk light theme:
-
-```html
-<html data-theme="cyberpunk">
-```
-
-Activate the cyberpunk dark theme:
-
-```html
-<html data-theme="cyberpunk-dark">
-```
-
-The cyberpunk theme tokens live in:
-
-- `tokens/themes/cyberpunk/` — light variant (tokens, semantic, components)
-- `tokens/themes/cyberpunk-dark/` — dark variant (tokens, semantic, components)
-
-The CSS overrides for gradient borders, gradient backgrounds, and glow effects are defined in each component's CSS file under `[data-theme="cyberpunk"]` and `[data-theme="cyberpunk-dark"]` selectors. This pattern shows how to push well beyond what tokens alone can express while still building on the token foundation for colors, spacing, and typography.
+Because these rules are scoped to `[data-theme]`, they layer cleanly on top of the base component styles and only apply when that theme is active. The same pattern works for gradients, elevation, and other effects a plain custom property cannot hold.
 
 ## End-to-end workflow
 

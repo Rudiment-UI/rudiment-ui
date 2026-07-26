@@ -30,6 +30,40 @@ const meta = {
       description: 'The typographic style to apply',
       table: { category: 'Appearance' },
     },
+    weight: {
+      control: 'select',
+      options: [undefined, 'regular', 'medium', 'semibold', 'bold'],
+      description: 'Font weight, overriding the variant default',
+      table: { category: 'Appearance' },
+    },
+    tone: {
+      control: 'select',
+      options: [
+        undefined,
+        'default',
+        'subtle',
+        'disabled',
+        'brand',
+        'inverted',
+        'success',
+        'warning',
+        'error',
+        'info',
+      ],
+      description: 'Semantic text color',
+      table: { category: 'Appearance' },
+    },
+    align: {
+      control: 'select',
+      options: [undefined, 'start', 'center', 'end', 'justify'],
+      description: 'Text alignment',
+      table: { category: 'Appearance' },
+    },
+    noMargin: {
+      control: 'boolean',
+      description: "Removes the element's default block margin",
+      table: { category: 'Appearance' },
+    },
     className: {
       description: 'Additional CSS class names to apply to the text element',
       table: { category: 'Appearance' },
@@ -79,6 +113,42 @@ export const AsLabel: Story = {
     <RudiText as="label" variant="overline" htmlFor="example-input">
       Field label
     </RudiText>
+  ),
+}
+
+export const Weights: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <RudiText weight="regular">regular — The quick brown fox.</RudiText>
+      <RudiText weight="medium">medium — The quick brown fox.</RudiText>
+      <RudiText weight="semibold">semibold — The quick brown fox.</RudiText>
+      <RudiText weight="bold">bold — The quick brown fox.</RudiText>
+    </div>
+  ),
+}
+
+export const Tones: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <RudiText tone="default">default — primary body color</RudiText>
+      <RudiText tone="subtle">subtle — secondary / supporting text</RudiText>
+      <RudiText tone="disabled">disabled — de-emphasized text</RudiText>
+      <RudiText tone="brand">brand — brand accent</RudiText>
+      <RudiText tone="success">success — positive feedback</RudiText>
+      <RudiText tone="warning">warning — cautionary feedback</RudiText>
+      <RudiText tone="error">error — destructive feedback</RudiText>
+      <RudiText tone="info">info — informational feedback</RudiText>
+    </div>
+  ),
+}
+
+export const Alignment: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <RudiText align="start">start — aligned to the start edge</RudiText>
+      <RudiText align="center">center — aligned to the center</RudiText>
+      <RudiText align="end">end — aligned to the end edge</RudiText>
+    </div>
   ),
 }
 

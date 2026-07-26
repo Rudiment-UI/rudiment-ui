@@ -46,45 +46,6 @@
   outline-offset: 2px;
 }
 
-[data-theme='teal'] .rudi-checkbox__input:focus-visible + .rudi-checkbox__control,
-[data-theme='teal-dark'] .rudi-checkbox__input:focus-visible + .rudi-checkbox__control {
-  outline: none;
-}
-
-[data-theme='teal'] .rudi-checkbox__input:focus-visible + .rudi-checkbox__control {
-  box-shadow:
-    0 0 0 2px var(--rudi-color-neutral-0),
-    0 0 0 4px var(--rudi-color-border-focus),
-    inset 0 0 0 1px rgba(10, 13, 18, 0.18);
-}
-
-[data-theme='teal-dark'] .rudi-checkbox__input:focus-visible + .rudi-checkbox__control {
-  box-shadow:
-    0 0 0 2px var(--rudi-color-neutral-600),
-    0 0 0 4px var(--rudi-color-neutral-50),
-    inset 0 0 0 1px rgba(10, 13, 18, 0.18);
-}
-
-/* Cyberpunk theme: neon glow focus rings */
-[data-theme='cyberpunk'] .rudi-checkbox__input:focus-visible + .rudi-checkbox__control,
-[data-theme='cyberpunk-dark'] .rudi-checkbox__input:focus-visible + .rudi-checkbox__control {
-  outline: none;
-}
-
-[data-theme='cyberpunk'] .rudi-checkbox__input:focus-visible + .rudi-checkbox__control {
-  box-shadow:
-    0 0 0 2px var(--rudi-color-neutral-0),
-    0 0 0 4px var(--rudi-color-border-focus),
-    0 0 12px 2px var(--rudi-color-border-focus);
-}
-
-[data-theme='cyberpunk-dark'] .rudi-checkbox__input:focus-visible + .rudi-checkbox__control {
-  box-shadow:
-    0 0 0 2px var(--rudi-color-neutral-700),
-    0 0 0 4px var(--rudi-color-border-focus),
-    0 0 16px 4px var(--rudi-color-border-focus);
-}
-
 .rudi-checkbox__control--checked {
   background-color: var(--rudi-component-checkbox-checked-bg);
   border-color: var(--rudi-component-checkbox-checked-border);

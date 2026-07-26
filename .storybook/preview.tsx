@@ -10,10 +10,6 @@ import '../src/app.css'
 // set in preview-head.html. Mirrors the light brand theme in manager.ts.
 const docsTheme = create({
   base: 'light',
-  fontBase:
-    '"InterVariable", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif',
-  fontCode:
-    '"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
 })
 
 const preview: Preview = {
@@ -61,10 +57,12 @@ const preview: Preview = {
         items: [
           { value: 'light', title: 'Default Light', icon: 'sun' },
           { value: 'dark', title: 'Default Dark', icon: 'moon' },
-          { value: 'teal', title: 'Teal Light', icon: 'sun' },
-          { value: 'teal-dark', title: 'Teal Dark', icon: 'moon' },
-          { value: 'cyberpunk', title: 'Cyberpunk Light', icon: 'sun' },
-          { value: 'cyberpunk-dark', title: 'Cyberpunk Dark', icon: 'moon' },
+          { value: 'roomy', title: 'Roomy Light', icon: 'sun' },
+          { value: 'roomy-dark', title: 'Roomy Dark', icon: 'moon' },
+          { value: 'soft', title: 'Soft Light', icon: 'sun' },
+          { value: 'soft-dark', title: 'Soft Dark', icon: 'moon' },
+          { value: 'compressed', title: 'Compressed Light', icon: 'sun' },
+          { value: 'compressed-dark', title: 'Compressed Dark', icon: 'moon' },
         ],
         dynamicTitle: true,
       },
@@ -86,8 +84,7 @@ const preview: Preview = {
             padding: '2rem',
             backgroundColor: 'var(--rudi-color-background-surface)',
             color: 'var(--rudi-color-text-default)',
-            fontFamily:
-              '"InterVariable", "Inter", ui-sans-serif, system-ui, sans-serif',
+            fontFamily: 'var(--rudi-font-family-sans)',
           }}
         >
           <Story />

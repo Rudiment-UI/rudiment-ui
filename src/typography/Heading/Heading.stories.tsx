@@ -32,6 +32,40 @@ const meta = {
         'The visual size of the heading, independent of semantic level. Defaults to match the level.',
       table: { category: 'Appearance' },
     },
+    weight: {
+      control: 'select',
+      options: [undefined, 'regular', 'medium', 'semibold', 'bold'],
+      description: 'Font weight, overriding the size default',
+      table: { category: 'Appearance' },
+    },
+    tone: {
+      control: 'select',
+      options: [
+        undefined,
+        'default',
+        'subtle',
+        'disabled',
+        'brand',
+        'inverted',
+        'success',
+        'warning',
+        'error',
+        'info',
+      ],
+      description: 'Semantic text color',
+      table: { category: 'Appearance' },
+    },
+    align: {
+      control: 'select',
+      options: [undefined, 'start', 'center', 'end', 'justify'],
+      description: 'Text alignment',
+      table: { category: 'Appearance' },
+    },
+    noMargin: {
+      control: 'boolean',
+      description: "Removes the element's default block margin",
+      table: { category: 'Appearance' },
+    },
     className: {
       description: 'Additional CSS class names to apply to the heading element',
       table: { category: 'Appearance' },
@@ -71,6 +105,38 @@ export const VisualSizeOverride: Story = {
       </RudiHeading>
       <RudiHeading level={1} size={3}>
         h1 element, size-3 appearance
+      </RudiHeading>
+    </div>
+  ),
+}
+
+export const Tones: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+      <RudiHeading level={3} tone="default">
+        default tone
+      </RudiHeading>
+      <RudiHeading level={3} tone="subtle">
+        subtle tone
+      </RudiHeading>
+      <RudiHeading level={3} tone="brand">
+        brand tone
+      </RudiHeading>
+    </div>
+  ),
+}
+
+export const Alignment: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+      <RudiHeading level={3} align="start">
+        start aligned
+      </RudiHeading>
+      <RudiHeading level={3} align="center">
+        center aligned
+      </RudiHeading>
+      <RudiHeading level={3} align="end">
+        end aligned
       </RudiHeading>
     </div>
   ),

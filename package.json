@@ -9,7 +9,7 @@
     "prepare": "npm run build:tokens && npm run build",
     "prepublishOnly": "npm run build:tokens && npm run build",
     "build-storybook": "storybook build",
-    "build:tokens": "style-dictionary build --config tokens/style-dictionary.config.mjs && style-dictionary build --config tokens/style-dictionary.config.dark.mjs && style-dictionary build --config tokens/style-dictionary.config.teal.mjs && style-dictionary build --config tokens/style-dictionary.config.teal-dark.mjs && style-dictionary build --config tokens/style-dictionary.config.cyberpunk.mjs && style-dictionary build --config tokens/style-dictionary.config.cyberpunk-dark.mjs",
+    "build:tokens": "style-dictionary build --config tokens/style-dictionary.config.mjs && style-dictionary build --config tokens/style-dictionary.config.dark.mjs && style-dictionary build --config tokens/style-dictionary.config.roomy.mjs && style-dictionary build --config tokens/style-dictionary.config.roomy-dark.mjs && style-dictionary build --config tokens/style-dictionary.config.soft.mjs && style-dictionary build --config tokens/style-dictionary.config.soft-dark.mjs && style-dictionary build --config tokens/style-dictionary.config.compressed.mjs && style-dictionary build --config tokens/style-dictionary.config.compressed-dark.mjs",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "test:watch": "vitest --watch"

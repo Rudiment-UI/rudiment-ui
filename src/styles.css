@@ -9,7 +9,9 @@
  */
 @import '../tokens/build/tokens.css';
 @import '../tokens/build/tokens-dark.css';
-@import '../tokens/build/tokens-teal.css';
-@import '../tokens/build/tokens-teal-dark.css';
-@import '../tokens/build/tokens-cyberpunk.css';
-@import '../tokens/build/tokens-cyberpunk-dark.css';
+@import '../tokens/build/tokens-roomy.css';
+@import '../tokens/build/tokens-roomy-dark.css';
+@import '../tokens/build/tokens-soft.css';
+@import '../tokens/build/tokens-soft-dark.css';
+@import '../tokens/build/tokens-compressed.css';
+@import '../tokens/build/tokens-compressed-dark.css';

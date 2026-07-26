@@ -71,6 +71,51 @@ describe('Heading', () => {
     expect(ref.current?.nodeName).toBe('H2')
   })
 
+  it.each(['regular', 'medium', 'semibold', 'bold'] as const)(
+    'applies rudi-heading--weight-%s for weight=%s',
+    (weight) => {
+      const { container } = render(
+        <RudiHeading level={2} weight={weight}>
+          Text
+        </RudiHeading>,
+      )
+      expect(container.firstChild).toHaveClass(`rudi-heading--weight-${weight}`)
+    },
+  )
+
+  it.each(['default', 'subtle', 'brand', 'inverted', 'error'] as const)(
+    'applies rudi-heading--tone-%s for tone=%s',
+    (tone) => {
+      const { container } = render(
+        <RudiHeading level={2} tone={tone}>
+          Text
+        </RudiHeading>,
+      )
+      expect(container.firstChild).toHaveClass(`rudi-heading--tone-${tone}`)
+    },
+  )
+
+  it.each(['start', 'center', 'end', 'justify'] as const)(
+    'applies rudi-heading--align-%s for align=%s',
+    (align) => {
+      const { container } = render(
+        <RudiHeading level={2} align={align}>
+          Text
+        </RudiHeading>,
+      )
+      expect(container.firstChild).toHaveClass(`rudi-heading--align-${align}`)
+    },
+  )
+
+  it('applies rudi-heading--flush when noMargin is set', () => {
+    const { container } = render(
+      <RudiHeading level={2} noMargin>
+        Text
+      </RudiHeading>,
+    )
+    expect(container.firstChild).toHaveClass('rudi-heading--flush')
+  })
+
   it('has no accessibility violations', async () => {
     const { container } = render(<RudiHeading level={1}>Hello</RudiHeading>)
     expect(await axe(container)).toHaveNoViolations()

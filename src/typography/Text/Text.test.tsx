@@ -56,6 +56,41 @@ describe('Text', () => {
     expect(ref.current?.nodeName).toBe('P')
   })
 
+  it.each(['regular', 'medium', 'semibold', 'bold'] as const)(
+    'applies rudi-text--weight-%s for weight=%s',
+    (weight) => {
+      const { container } = render(<RudiText weight={weight}>Text</RudiText>)
+      expect(container.firstChild).toHaveClass(`rudi-text--weight-${weight}`)
+    },
+  )
+
+  it.each(['default', 'subtle', 'brand', 'inverted', 'error'] as const)(
+    'applies rudi-text--tone-%s for tone=%s',
+    (tone) => {
+      const { container } = render(<RudiText tone={tone}>Text</RudiText>)
+      expect(container.firstChild).toHaveClass(`rudi-text--tone-${tone}`)
+    },
+  )
+
+  it.each(['start', 'center', 'end', 'justify'] as const)(
+    'applies rudi-text--align-%s for align=%s',
+    (align) => {
+      const { container } = render(<RudiText align={align}>Text</RudiText>)
+      expect(container.firstChild).toHaveClass(`rudi-text--align-${align}`)
+    },
+  )
+
+  it('applies rudi-text--flush when noMargin is set', () => {
+    const { container } = render(<RudiText noMargin>Text</RudiText>)
+    expect(container.firstChild).toHaveClass('rudi-text--flush')
+  })
+
+  it('omits modifier classes when the props are not provided', () => {
+    const { container } = render(<RudiText>Text</RudiText>)
+    const el = container.firstChild as HTMLElement
+    expect(el.className).not.toMatch(/rudi-text--(weight|tone|align|flush)/)
+  })
+
   it('has no accessibility violations', async () => {
     const { container } = render(<RudiText>Hello</RudiText>)
     expect(await axe(container)).toHaveNoViolations()

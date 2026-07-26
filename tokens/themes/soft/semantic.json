@@ -1,0 +1,19 @@
+{
+  "color": {
+    "brand": {
+      "primary": { "$value": "{color.soft.700}" },
+      "primary-hover": { "$value": "{color.soft.800}" },
+      "primary-active": { "$value": "{color.soft.900}" }
+    },
+    "background": {
+      "inverted": { "$value": "{color.soft.700}" },
+      "control": { "$value": "{color.neutral.100}" }
+    },
+    "border": {
+      "focus": { "$value": "{color.soft.400}" }
+    },
+    "dataviz": {
+      "series-1": { "$value": "{color.soft.500}" }
+    }
+  }
+}

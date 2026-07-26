@@ -119,7 +119,12 @@ export { RudiHeading } from './typography/Heading/Heading'
 export type { RudiHeadingProps } from './typography/Heading/Heading'
 
 export { RudiText } from './typography/Text/Text'
-export type { RudiTextProps } from './typography/Text/Text'
+export type {
+  RudiTextProps,
+  RudiTypographyWeight,
+  RudiTypographyTone,
+  RudiTypographyAlign,
+} from './typography/Text/Text'
 
 export { RudiProse } from './typography/Prose/Prose'
 export type { RudiProseProps } from './typography/Prose/Prose'

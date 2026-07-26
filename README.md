@@ -1,21 +1,23 @@
 # Rudiment UI
 
+> Rudiment is still in beta (not even beta, really) and should not be used in production. I'm happy to accept pull requests that help improve this tool.
+
 A complete, accessible React component library template built on [React Aria](https://react-spectrum.adobe.com/react-aria/), styled with [Tailwind CSS 4](https://tailwindcss.com/), and documented in [Storybook](https://storybook.js.org/).
 
 Clone it. Swap the tokens. Ship your design system.
 
 ## What's included
 
-| Category | Components |
-|----------|-----------|
-| **UI Components** | Button, Input, Checkbox, CheckboxGroup, Select, Dialog, Switch, RadioGroup, Tooltip, Alert, IconButton, Badge, Tag, Avatar, Card, Icon, NavItem, ProgressBar, StatCard, CircularProgress |
-| **Charts** | BarChart, LineChart, DonutChart |
-| **Kanban** | KanbanBoard, KanbanColumn, KanbanCard |
-| **Typography** | Heading, Text, Prose |
-| **Layout Primitives** | Box, Stack, Cluster, Grid, Sidebar, Center, Cover, Switcher |
-| **Page Examples** | App Shell, App Header, App Footer, Settings Page, Sign-In Form, Marketing Hero, Sidebar Layout, Article Page, Simple Form, Empty State |
+| Category              | Components                                                                                                                                                                               |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **UI Components**     | Button, Input, Checkbox, CheckboxGroup, Select, Dialog, Switch, RadioGroup, Tooltip, Alert, IconButton, Badge, Tag, Avatar, Card, Icon, NavItem, ProgressBar, StatCard, CircularProgress |
+| **Charts**            | BarChart, LineChart, DonutChart                                                                                                                                                          |
+| **Kanban**            | KanbanBoard, KanbanColumn, KanbanCard                                                                                                                                                    |
+| **Typography**        | Heading, Text, Prose                                                                                                                                                                     |
+| **Layout Primitives** | Box, Stack, Cluster, Grid, Sidebar, Center, Cover, Switcher                                                                                                                              |
+| **Page Examples**     | App Shell, App Header, App Footer, Settings Page, Sign-In Form, Marketing Hero, Sidebar Layout, Article Page, Simple Form, Empty State                                                   |
 
-Also included: a three-tier design token architecture, six built-in themes (Default, Teal, and Cyberpunk in light and dark variants), motion tokens, a data visualization palette, surface tokens, a Vitest test suite with accessibility checks, and interactive Storybook documentation.
+Also included: a three-tier design token architecture, eight built-in themes (Default plus the Roomy, Soft, and Compressed modifier themes, each in light and dark variants), motion tokens, a data visualization palette, surface tokens, a Vitest test suite with accessibility checks, and interactive Storybook documentation.
 
 ## Quick start
 
@@ -51,7 +53,7 @@ Import the stylesheet once at your app's entry point:
 import 'rudiment-ui/styles'
 ```
 
-This ships the component styles plus all six themes. It does **not** include Tailwind — components are styled with plain BEM classes and CSS custom properties, and the bundle contains no bare-element selectors, so it will not reset or clobber your app's own styles.
+This ships the component styles plus all eight themes. It does **not** include Tailwind — components are styled with plain BEM classes and CSS custom properties, and the bundle contains no bare-element selectors, so it will not reset or clobber your app's own styles.
 
 Every export is marked `"use client"`, so the package can be imported directly into a Next.js App Router Server Component without a re-export barrel.
 
@@ -70,21 +72,31 @@ That single import is the whole setup. There is no provider to mount — `Dialog
 
 ## Themes
 
-Six themes ship in the stylesheet. Set `data-theme` on a root element to switch:
+Eight themes ship in the stylesheet. Set `data-theme` on a root element to switch:
 
-| Theme | Attribute |
-|-------|-----------|
-| Default (light) | *no attribute* |
-| Dark | `data-theme="dark"` |
-| Teal | `data-theme="teal"` |
-| Teal Dark | `data-theme="teal-dark"` |
-| Cyberpunk | `data-theme="cyberpunk"` |
-| Cyberpunk Dark | `data-theme="cyberpunk-dark"` |
+| Theme           | Attribute                      |
+| --------------- | ------------------------------ |
+| Default (light) | _no attribute_                 |
+| Dark            | `data-theme="dark"`            |
+| Roomy           | `data-theme="roomy"`           |
+| Roomy Dark      | `data-theme="roomy-dark"`      |
+| Soft            | `data-theme="soft"`            |
+| Soft Dark       | `data-theme="soft-dark"`       |
+| Compressed      | `data-theme="compressed"`      |
+| Compressed Dark | `data-theme="compressed-dark"` |
 
 The default theme lives on `:root`, so **omit the attribute for it** — there is no `data-theme="light"`. Remove the attribute to return to default.
 
 ```tsx
-type Theme = 'default' | 'dark' | 'teal' | 'teal-dark' | 'cyberpunk' | 'cyberpunk-dark'
+type Theme =
+  | 'default'
+  | 'dark'
+  | 'roomy'
+  | 'roomy-dark'
+  | 'soft'
+  | 'soft-dark'
+  | 'compressed'
+  | 'compressed-dark'
 
 function applyTheme(theme: Theme) {
   if (theme === 'default') {
@@ -111,9 +123,11 @@ Charts follow theme changes automatically — `useChartTheme` watches `data-them
 Every visual value is a CSS custom property prefixed `--rudi-`, arranged in three tiers that resolve through `var()` chains. Overriding a tier cascades to everything below it.
 
 ```css
---rudi-color-neutral-900: #171717;                                    /* 1. primitive  */
---rudi-color-brand-primary: var(--rudi-color-neutral-900);           /* 2. semantic   */
---rudi-component-button-primary-bg: var(--rudi-color-brand-primary); /* 3. component  */
+--rudi-color-neutral-900: #171717; /* 1. primitive  */
+--rudi-color-brand-primary: var(--rudi-color-neutral-900); /* 2. semantic   */
+--rudi-component-button-primary-bg: var(
+  --rudi-color-brand-primary
+); /* 3. component  */
 ```
 
 Rebrand by overriding tier 2 in your own stylesheet, loaded after `rudiment-ui/styles`:
@@ -129,25 +143,29 @@ Rebrand by overriding tier 2 in your own stylesheet, loaded after `rudiment-ui/s
 **Scope overrides per theme.** `:root` and `[data-theme="dark"]` have equal specificity, and the theme blocks come later in the stylesheet — so a plain `:root` override loses inside a themed subtree. Repeat it under each theme you use:
 
 ```css
-:root                      { --rudi-color-brand-primary: #7c3aed; }
-[data-theme="dark"]        { --rudi-color-brand-primary: #a78bfa; }
+:root {
+  --rudi-color-brand-primary: #7c3aed;
+}
+[data-theme='dark'] {
+  --rudi-color-brand-primary: #a78bfa;
+}
 ```
 
 The tokens worth reaching for most often:
 
-| Purpose | Tokens |
-|---------|--------|
-| **Brand** | `--rudi-color-brand-primary`, `-hover`, `-active` |
-| **Surfaces** | `--rudi-color-background-surface`, `-raised`, `-sunken`, `-overlay`, `--rudi-color-background-disabled`, `-inverted` |
-| **Text** | `--rudi-color-text-default`, `-subtle`, `-disabled`, `-on-brand`, `-on-inverted` |
-| **Borders** | `--rudi-color-border-default`, `-focus`, `-error` |
-| **Feedback** | `--rudi-color-feedback-{error,success,warning,info}` each with `-surface`, `-border`, `-text` |
-| **Charts** | `--rudi-color-dataviz-series-1` … `-8` |
-| **Spacing** | `--rudi-spacing-{0,1,2,3,4,6,8,12}` (`0.25rem` steps — note 5, 7, 9–11 don't exist) |
-| **Radius** | `--rudi-radius-{none,sm,md,lg,full}` |
-| **Type** | `--rudi-font-family-{sans,mono}`, `--rudi-font-size-{xs…4xl}`, `--rudi-font-weight-{regular,medium,semibold,bold}` |
-| **Motion** | `--rudi-motion-duration-{fast,base,slow}`, `--rudi-motion-easing-standard` |
-| **Layout** | `--rudi-layout-sidebar-width`, `--rudi-layout-grid-min-cell`, `--rudi-layout-center-max-width`, `--rudi-layout-switcher-threshold` |
+| Purpose      | Tokens                                                                                                                             |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **Brand**    | `--rudi-color-brand-primary`, `-hover`, `-active`                                                                                  |
+| **Surfaces** | `--rudi-color-background-surface`, `-raised`, `-sunken`, `-overlay`, `--rudi-color-background-disabled`, `-inverted`               |
+| **Text**     | `--rudi-color-text-default`, `-subtle`, `-disabled`, `-on-brand`, `-on-inverted`                                                   |
+| **Borders**  | `--rudi-color-border-default`, `-focus`, `-error`                                                                                  |
+| **Feedback** | `--rudi-color-feedback-{error,success,warning,info}` each with `-surface`, `-border`, `-text`                                      |
+| **Charts**   | `--rudi-color-dataviz-series-1` … `-8`                                                                                             |
+| **Spacing**  | `--rudi-spacing-{0,1,2,3,4,6,8,12}` (`0.25rem` steps — note 5, 7, 9–11 don't exist)                                                |
+| **Radius**   | `--rudi-radius-{none,sm,md,lg,full}`                                                                                               |
+| **Type**     | `--rudi-font-family-{sans,mono}`, `--rudi-font-size-{xs…4xl}`, `--rudi-font-weight-{regular,medium,semibold,bold}`                 |
+| **Motion**   | `--rudi-motion-duration-{fast,base,slow}`, `--rudi-motion-easing-standard`                                                         |
+| **Layout**   | `--rudi-layout-sidebar-width`, `--rudi-layout-grid-min-cell`, `--rudi-layout-center-max-width`, `--rudi-layout-switcher-threshold` |
 
 Component-level tokens (`--rudi-component-*`) are available for surgical changes — `--rudi-component-button-primary-bg`, `--rudi-component-card-bg`, `--rudi-component-input-bg`, and so on — but prefer semantic overrides so the change carries across every component.
 
@@ -180,22 +198,22 @@ function LoginForm() {
 
 **Actions**
 
-| Component | Props |
-|-----------|-------|
-| `Button` | `variant?: 'primary' \| 'secondary' \| 'destructive' \| 'ghost'` (`'primary'`), `size?: 'sm' \| 'md' \| 'lg'` (`'md'`), `isLoading?`, `iconBefore?`, `iconAfter?`, `onPress?`, `isDisabled?` |
-| `IconButton` | `aria-label` **(required)**, `variant?` (`'secondary'`), `size?: 'sm' \| 'md' \| 'lg'` (`'md'`), `isLoading?`, `onPress?`; `children` is a single element |
-| `NavItem` | `label` **(required)**, `icon?`, `isActive?`, `href?` (renders `<a>`, else `<button>`), `onPress?`, `badge?`, `isDisabled?` |
+| Component    | Props                                                                                                                                                                                        |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Button`     | `variant?: 'primary' \| 'secondary' \| 'destructive' \| 'ghost'` (`'primary'`), `size?: 'sm' \| 'md' \| 'lg'` (`'md'`), `isLoading?`, `iconBefore?`, `iconAfter?`, `onPress?`, `isDisabled?` |
+| `IconButton` | `aria-label` **(required)**, `variant?` (`'secondary'`), `size?: 'sm' \| 'md' \| 'lg'` (`'md'`), `isLoading?`, `onPress?`; `children` is a single element                                    |
+| `NavItem`    | `label` **(required)**, `icon?`, `isActive?`, `href?` (renders `<a>`, else `<button>`), `onPress?`, `badge?`, `isDisabled?`                                                                  |
 
 **Forms**
 
-| Component | Props |
-|-----------|-------|
-| `Input` | `label` **(required)**, `type?: 'text' \| 'email' \| 'password' \| 'url' \| 'tel' \| 'search' \| 'number'` (`'text'`), `placeholder?`, `description?`, `errorMessage?` (sets invalid state), `isRequired?`, `isDisabled?`, `value?`, `defaultValue?`, `onChange?: (value: string) => void` |
-| `Checkbox` | `children` (label), `isSelected?`, `defaultSelected?`, `isIndeterminate?`, `onChange?: (isSelected: boolean) => void`, `isDisabled?`, `value?` |
-| `CheckboxGroup` | `label` **(required)**, `description?`, `value?: string[]`, `defaultValue?`, `onChange?: (value: string[]) => void`, `errorMessage?`, `isDisabled?` |
-| `Switch` | `children` (label), `isSelected?`, `defaultSelected?`, `onChange?: (isSelected: boolean) => void`, `isDisabled?` |
-| `Select` | `label`, `items`, `children: (item) => ReactNode`, `selectedKey?`, `defaultSelectedKey?`, `onSelectionChange?: (key) => void`, `placeholder?`, `description?`, `errorMessage?`, `isRequired?`, `isDisabled?` |
-| `RadioGroup` | `label`, `orientation?: 'horizontal' \| 'vertical'`, `value?`, `defaultValue?`, `onChange?: (value: string) => void`, `errorMessage?`, `isDisabled?` |
+| Component       | Props                                                                                                                                                                                                                                                                                      |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `Input`         | `label` **(required)**, `type?: 'text' \| 'email' \| 'password' \| 'url' \| 'tel' \| 'search' \| 'number'` (`'text'`), `placeholder?`, `description?`, `errorMessage?` (sets invalid state), `isRequired?`, `isDisabled?`, `value?`, `defaultValue?`, `onChange?: (value: string) => void` |
+| `Checkbox`      | `children` (label), `isSelected?`, `defaultSelected?`, `isIndeterminate?`, `onChange?: (isSelected: boolean) => void`, `isDisabled?`, `value?`                                                                                                                                             |
+| `CheckboxGroup` | `label` **(required)**, `description?`, `value?: string[]`, `defaultValue?`, `onChange?: (value: string[]) => void`, `errorMessage?`, `isDisabled?`                                                                                                                                        |
+| `Switch`        | `children` (label), `isSelected?`, `defaultSelected?`, `onChange?: (isSelected: boolean) => void`, `isDisabled?`                                                                                                                                                                           |
+| `Select`        | `label`, `items`, `children: (item) => ReactNode`, `selectedKey?`, `defaultSelectedKey?`, `onSelectionChange?: (key) => void`, `placeholder?`, `description?`, `errorMessage?`, `isRequired?`, `isDisabled?`                                                                               |
+| `RadioGroup`    | `label`, `orientation?: 'horizontal' \| 'vertical'`, `value?`, `defaultValue?`, `onChange?: (value: string) => void`, `errorMessage?`, `isDisabled?`                                                                                                                                       |
 
 `Select` renders its options from an `items` collection plus a render function. The item element comes from `react-stately`:
 
@@ -216,27 +234,27 @@ const roles = [
 
 **Feedback & display**
 
-| Component | Props |
-|-----------|-------|
-| `Alert` | `variant: 'info' \| 'success' \| 'warning' \| 'error'` **(required)**, `title?`, `icon?`, `isPolite?` (`role="status"` instead of `"alert"`), `dismissible?`, `onDismiss?` |
-| `Badge` | `variant?: 'default' \| 'success' \| 'warning' \| 'error' \| 'info'` (`'default'`), `size?: 'sm' \| 'md'` (`'md'`), `dot?` (hides children) |
-| `Tag` | `variant?` (as Badge), `dismissible?`, `onDismiss?`, `onPress?` (switches root to `<button>`), `isDisabled?` |
-| `Avatar` | `src?`, `alt?`, `name?` (derives initials), `size?: 'sm' \| 'md' \| 'lg'` (`'md'`), `status?: 'success' \| 'warning' \| 'error' \| 'info'` |
-| `Icon` | `icon` **(required)**, `size?: 'sm' \| 'md' \| 'lg' \| number` (`'md'`), `color?`, `label?` (sets `role="img"`; without it the icon is `aria-hidden`) |
-| `ProgressBar` | `value` + `label` **(required)**, `minValue?` (`0`), `maxValue?` (`100`), `showValueLabel?`, `variant?: 'default' \| 'success' \| 'warning' \| 'error'`, `size?: 'sm' \| 'md'` |
-| `CircularProgress` | same as ProgressBar plus `size?: 'sm' \| 'md' \| 'lg'` and `children?` for custom center content |
-| `StatCard` | `label`, `value: string \| number`, `delta?: string`, `trend?: 'up' \| 'down' \| 'neutral'` (`'neutral'`), `children?` |
+| Component          | Props                                                                                                                                                                          |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `Alert`            | `variant: 'info' \| 'success' \| 'warning' \| 'error'` **(required)**, `title?`, `icon?`, `isPolite?` (`role="status"` instead of `"alert"`), `dismissible?`, `onDismiss?`     |
+| `Badge`            | `variant?: 'default' \| 'success' \| 'warning' \| 'error' \| 'info'` (`'default'`), `size?: 'sm' \| 'md'` (`'md'`), `dot?` (hides children)                                    |
+| `Tag`              | `variant?` (as Badge), `dismissible?`, `onDismiss?`, `onPress?` (switches root to `<button>`), `isDisabled?`                                                                   |
+| `Avatar`           | `src?`, `alt?`, `name?` (derives initials), `size?: 'sm' \| 'md' \| 'lg'` (`'md'`), `status?: 'success' \| 'warning' \| 'error' \| 'info'`                                     |
+| `Icon`             | `icon` **(required)**, `size?: 'sm' \| 'md' \| 'lg' \| number` (`'md'`), `color?`, `label?` (sets `role="img"`; without it the icon is `aria-hidden`)                          |
+| `ProgressBar`      | `value` + `label` **(required)**, `minValue?` (`0`), `maxValue?` (`100`), `showValueLabel?`, `variant?: 'default' \| 'success' \| 'warning' \| 'error'`, `size?: 'sm' \| 'md'` |
+| `CircularProgress` | same as ProgressBar plus `size?: 'sm' \| 'md' \| 'lg'` and `children?` for custom center content                                                                               |
+| `StatCard`         | `label`, `value: string \| number`, `delta?: string`, `trend?: 'up' \| 'down' \| 'neutral'` (`'neutral'`), `children?`                                                         |
 
 `Alert` and `Tag` handle dismissal with internal state — once dismissed they render `null` and can't be reopened via props. Control visibility yourself if you need it back.
 
 **Containers & overlays**
 
-| Component | Props |
-|-----------|-------|
-| `Card` | `variant?: 'default' \| 'outlined' \| 'elevated'` (`'default'`), `padding?: 'none' \| 'sm' \| 'md' \| 'lg'` (`'md'`) |
-| `Dialog` | `isOpen`, `onClose`, `title` **(all required)**, `isDismissable?` (`true`), `size?: 'sm' \| 'md' \| 'lg'` (`'md'`) |
-| `TooltipTrigger` / `Tooltip` | `delay?` (`500`ms), `closeDelay?` (`0`ms); children must be exactly `[trigger, tooltip]` |
-| `MenuTrigger` / `Menu` / `MenuItem` / `MenuSection` / `Keyboard` | React Aria menu primitives; `MenuItem` adds `isDestructive?` |
+| Component                                                        | Props                                                                                                                |
+| ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `Card`                                                           | `variant?: 'default' \| 'outlined' \| 'elevated'` (`'default'`), `padding?: 'none' \| 'sm' \| 'md' \| 'lg'` (`'md'`) |
+| `Dialog`                                                         | `isOpen`, `onClose`, `title` **(all required)**, `isDismissable?` (`true`), `size?: 'sm' \| 'md' \| 'lg'` (`'md'`)   |
+| `TooltipTrigger` / `Tooltip`                                     | `delay?` (`500`ms), `closeDelay?` (`0`ms); children must be exactly `[trigger, tooltip]`                             |
+| `MenuTrigger` / `Menu` / `MenuItem` / `MenuSection` / `Keyboard` | React Aria menu primitives; `MenuItem` adds `isDestructive?`                                                         |
 
 `Card` is compound — use the dot subcomponents:
 
@@ -263,7 +281,9 @@ const [isOpen, setIsOpen] = useState(false)
 
 ```tsx
 <TooltipTrigger>
-  <IconButton aria-label="Delete"><Icon icon="mdi:trash-can" /></IconButton>
+  <IconButton aria-label="Delete">
+    <Icon icon="mdi:trash-can" />
+  </IconButton>
   <Tooltip>Delete this item</Tooltip>
 </TooltipTrigger>
 ```
@@ -272,16 +292,16 @@ const [isOpen, setIsOpen] = useState(false)
 
 Eight primitives handle spacing and composition. **Every spacing prop takes a raw CSS length string** — `"1rem"`, `"2rem"`, or `var(--rudi-spacing-6)` — not a numeric scale. The prop is `space` everywhere (never `gap`); `Box` uses `padding`. All accept `as`, `className`, and any DOM attribute.
 
-| Component | Props | Default |
-|-----------|-------|---------|
-| `Box` | `padding?`, `bordered?`, `invert?` | padding `1rem` |
-| `Stack` | `space?`, `recursive?`, `splitAfter?: number` | space `1.5rem` |
-| `Cluster` | `space?`, `justify?: 'flex-start' \| 'flex-end' \| 'center' \| 'space-between' \| 'space-around'`, `align?: 'flex-start' \| 'flex-end' \| 'center' \| 'baseline' \| 'stretch'` | space `1rem`, justify `flex-start`, align `center` |
-| `Grid` | `minCellWidth?`, `space?` | min cell `15rem`, space `1.5rem` |
-| `Sidebar` | `side?: 'left' \| 'right'`, `sideWidth?`, `contentMin?`, `space?`, `noStretch?` | side `left`, width `20rem`, content min `50%` |
-| `Center` | `maxWidth?`, `gutters?`, `intrinsic?` | max width `60rem`, gutters `1rem` |
-| `Cover` | `minHeight?`, `space?` | min height `100vh` |
-| `Switcher` | `threshold?`, `space?` | threshold `30rem`, space `1.5rem` |
+| Component  | Props                                                                                                                                                                          | Default                                            |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------- |
+| `Box`      | `padding?`, `bordered?`, `invert?`                                                                                                                                             | padding `1rem`                                     |
+| `Stack`    | `space?`, `recursive?`, `splitAfter?: number`                                                                                                                                  | space `1.5rem`                                     |
+| `Cluster`  | `space?`, `justify?: 'flex-start' \| 'flex-end' \| 'center' \| 'space-between' \| 'space-around'`, `align?: 'flex-start' \| 'flex-end' \| 'center' \| 'baseline' \| 'stretch'` | space `1rem`, justify `flex-start`, align `center` |
+| `Grid`     | `minCellWidth?`, `space?`                                                                                                                                                      | min cell `15rem`, space `1.5rem`                   |
+| `Sidebar`  | `side?: 'left' \| 'right'`, `sideWidth?`, `contentMin?`, `space?`, `noStretch?`                                                                                                | side `left`, width `20rem`, content min `50%`      |
+| `Center`   | `maxWidth?`, `gutters?`, `intrinsic?`                                                                                                                                          | max width `60rem`, gutters `1rem`                  |
+| `Cover`    | `minHeight?`, `space?`                                                                                                                                                         | min height `100vh`                                 |
+| `Switcher` | `threshold?`, `space?`                                                                                                                                                         | threshold `30rem`, space `1.5rem`                  |
 
 ```tsx
 <Sidebar side="left" sideWidth="16rem" space="2rem">
@@ -300,11 +320,11 @@ Eight primitives handle spacing and composition. **Every spacing prop takes a ra
 
 ## Typography
 
-| Component | Props |
-|-----------|-------|
-| `Heading` | `level: 1–6` **(required, sets the tag)**, `size?: 1–6` (visual size, defaults to `level`) |
-| `Text` | `variant?: 'body' \| 'body-sm' \| 'caption' \| 'overline' \| 'code'` (`'body'`), `as?` (`'p'`) |
-| `Prose` | `size?: 'sm' \| 'base' \| 'lg'` (`'base'`), `as?` (`'div'`) |
+| Component | Props                                                                                          |
+| --------- | ---------------------------------------------------------------------------------------------- |
+| `Heading` | `level: 1–6` **(required, sets the tag)**, `size?: 1–6` (visual size, defaults to `level`)     |
+| `Text`    | `variant?: 'body' \| 'body-sm' \| 'caption' \| 'overline' \| 'code'` (`'body'`), `as?` (`'p'`) |
+| `Prose`   | `size?: 'sm' \| 'base' \| 'lg'` (`'base'`), `as?` (`'div'`)                                    |
 
 `level` and `size` are separate so you can keep a correct document outline while styling freely — `<Heading level={2} size={4}>` renders an `<h2>` that looks like an h4. `Prose` styles a block of unstyled HTML (CMS content, rendered Markdown).
 
@@ -312,11 +332,11 @@ Eight primitives handle spacing and composition. **Every spacing prop takes a ra
 
 All three wrap Recharts, size themselves to their container, and require a `label` for the accessible name. Series colors come from the dataviz tokens and follow the active theme automatically.
 
-| Component | Props |
-|-----------|-------|
-| `BarChart` | `data`, `dataKeys: string[]`, `indexKey`, `label`, `layout?: 'vertical' \| 'horizontal'` (`'vertical'`), `stacked?`, `showLegend?` (`true`), `showGrid?` (`true`), `height?` (`300`) |
-| `LineChart` | `data`, `dataKeys`, `indexKey`, `label`, `curved?` (`true`), `showDots?` (`true`), `showGrid?`, `showLegend?`, `height?` |
-| `DonutChart` | `data: { name, value }[]`, `label`, `innerRadius?` (`60`), `showLabels?` (`false`), `showLegend?`, `height?` |
+| Component    | Props                                                                                                                                                                                |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `BarChart`   | `data`, `dataKeys: string[]`, `indexKey`, `label`, `layout?: 'vertical' \| 'horizontal'` (`'vertical'`), `stacked?`, `showLegend?` (`true`), `showGrid?` (`true`), `height?` (`300`) |
+| `LineChart`  | `data`, `dataKeys`, `indexKey`, `label`, `curved?` (`true`), `showDots?` (`true`), `showGrid?`, `showLegend?`, `height?`                                                             |
+| `DonutChart` | `data: { name, value }[]`, `label`, `innerRadius?` (`60`), `showLabels?` (`false`), `showLegend?`, `height?`                                                                         |
 
 ```tsx
 <BarChart
@@ -339,9 +359,8 @@ Note that `BarChart`'s `layout` describes the bars, not the Recharts axis: the d
 
 ```tsx
 import { KanbanBoard, KanbanCard, type KanbanCardMoveEvent } from 'rudiment-ui'
-
-<KanbanBoard
-  columns={columns}          // { id, title, items: { id, ... }[] }[]
+;<KanbanBoard
+  columns={columns} // { id, title, items: { id, ... }[] }[]
   renderCard={(item) => <KanbanCard id={item.id}>{item.title}</KanbanCard>}
   onCardMove={(e: KanbanCardMoveEvent) => {
     // e: { cardId, fromColumnId, toColumnId, fromIndex, toIndex }
@@ -370,15 +389,15 @@ If you cloned the template rather than installing the package:
 
 ## Available scripts
 
-| Command | Description |
-|---------|------------|
-| `npm run dev` | Start Storybook dev server on port 6006 |
-| `npm run build` | Build the component library for distribution |
-| `npm run build-storybook` | Build a static Storybook site |
-| `npm run build:tokens` | Generate CSS from design token JSON files |
-| `npm run test` | Run the test suite |
-| `npm run test:coverage` | Run tests with coverage report |
-| `npm run test:watch` | Run tests in watch mode |
+| Command                   | Description                                  |
+| ------------------------- | -------------------------------------------- |
+| `npm run dev`             | Start Storybook dev server on port 6006      |
+| `npm run build`           | Build the component library for distribution |
+| `npm run build-storybook` | Build a static Storybook site                |
+| `npm run build:tokens`    | Generate CSS from design token JSON files    |
+| `npm run test`            | Run the test suite                           |
+| `npm run test:coverage`   | Run tests with coverage report               |
+| `npm run test:watch`      | Run tests in watch mode                      |
 
 ## Project structure
 

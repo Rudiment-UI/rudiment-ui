@@ -1,0 +1,15 @@
+{
+  "color": {
+    "brand": {
+      "primary": { "$value": "{color.roomy.400}" },
+      "primary-hover": { "$value": "{color.roomy.300}" },
+      "primary-active": { "$value": "{color.roomy.500}" }
+    },
+    "border": {
+      "focus": { "$value": "{color.roomy.400}" }
+    },
+    "dataviz": {
+      "series-1": { "$value": "{color.roomy.400}" }
+    }
+  }
+}

@@ -35,3 +35,29 @@
   padding: var(--rudi-typography-code-padding-y) var(--rudi-typography-code-padding-x);
   border-radius: var(--rudi-typography-code-radius);
 }
+
+/* Weight modifiers */
+.rudi-text--weight-regular { font-weight: var(--rudi-font-weight-regular); }
+.rudi-text--weight-medium { font-weight: var(--rudi-font-weight-medium); }
+.rudi-text--weight-semibold { font-weight: var(--rudi-font-weight-semibold); }
+.rudi-text--weight-bold { font-weight: var(--rudi-font-weight-bold); }
+
+/* Tone modifiers */
+.rudi-text--tone-default { color: var(--rudi-color-text-default); }
+.rudi-text--tone-subtle { color: var(--rudi-color-text-subtle); }
+.rudi-text--tone-disabled { color: var(--rudi-color-text-disabled); }
+.rudi-text--tone-brand { color: var(--rudi-color-brand-primary); }
+.rudi-text--tone-inverted { color: var(--rudi-color-text-on-inverted); }
+.rudi-text--tone-success { color: var(--rudi-color-feedback-success-text); }
+.rudi-text--tone-warning { color: var(--rudi-color-feedback-warning-text); }
+.rudi-text--tone-error { color: var(--rudi-color-feedback-error-text); }
+.rudi-text--tone-info { color: var(--rudi-color-feedback-info-text); }
+
+/* Alignment modifiers */
+.rudi-text--align-start { text-align: start; }
+.rudi-text--align-center { text-align: center; }
+.rudi-text--align-end { text-align: end; }
+.rudi-text--align-justify { text-align: justify; }
+
+/* Margin modifier */
+.rudi-text--flush { margin: 0; }

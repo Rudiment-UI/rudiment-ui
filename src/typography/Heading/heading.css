@@ -45,3 +45,29 @@
   letter-spacing: var(--rudi-typography-heading-6-tracking);
   color: var(--rudi-typography-heading-6-color);
 }
+
+/* Weight modifiers */
+.rudi-heading--weight-regular { font-weight: var(--rudi-font-weight-regular); }
+.rudi-heading--weight-medium { font-weight: var(--rudi-font-weight-medium); }
+.rudi-heading--weight-semibold { font-weight: var(--rudi-font-weight-semibold); }
+.rudi-heading--weight-bold { font-weight: var(--rudi-font-weight-bold); }
+
+/* Tone modifiers */
+.rudi-heading--tone-default { color: var(--rudi-color-text-default); }
+.rudi-heading--tone-subtle { color: var(--rudi-color-text-subtle); }
+.rudi-heading--tone-disabled { color: var(--rudi-color-text-disabled); }
+.rudi-heading--tone-brand { color: var(--rudi-color-brand-primary); }
+.rudi-heading--tone-inverted { color: var(--rudi-color-text-on-inverted); }
+.rudi-heading--tone-success { color: var(--rudi-color-feedback-success-text); }
+.rudi-heading--tone-warning { color: var(--rudi-color-feedback-warning-text); }
+.rudi-heading--tone-error { color: var(--rudi-color-feedback-error-text); }
+.rudi-heading--tone-info { color: var(--rudi-color-feedback-info-text); }
+
+/* Alignment modifiers */
+.rudi-heading--align-start { text-align: start; }
+.rudi-heading--align-center { text-align: center; }
+.rudi-heading--align-end { text-align: end; }
+.rudi-heading--align-justify { text-align: justify; }
+
+/* Margin modifier */
+.rudi-heading--flush { margin: 0; }

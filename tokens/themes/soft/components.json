@@ -1,0 +1,95 @@
+{
+  "component": {
+    "button": {
+      "radius": { "$value": "{radius.full}" },
+      "secondary-border": { "$value": "transparent", "$type": "color" },
+      "secondary-bg": { "$value": "{color.background.surface-raised}" },
+      "secondary-hover-bg": { "$value": "{color.background.control}" }
+    },
+    "icon-button": {
+      "radius": { "$value": "{radius.full}" },
+      "secondary-border": { "$value": "transparent", "$type": "color" },
+      "secondary-bg": { "$value": "{color.background.surface-raised}" },
+      "secondary-hover-bg": { "$value": "{color.background.control}" }
+    },
+    "nav-item": {
+      "radius": { "$value": "{radius.full}" }
+    },
+    "input": {
+      "radius": { "$value": "{radius.lg}" },
+      "border": { "$value": "transparent", "$type": "color" },
+      "error-border": { "$value": "transparent", "$type": "color" },
+      "bg": { "$value": "{color.background.control}" }
+    },
+    "select": {
+      "trigger-radius": { "$value": "{radius.lg}" },
+      "popover-radius": { "$value": "{radius.lg}" },
+      "option-radius": { "$value": "{radius.md}" },
+      "trigger-border": { "$value": "transparent", "$type": "color" },
+      "trigger-error-border": { "$value": "transparent", "$type": "color" },
+      "popover-border": { "$value": "transparent", "$type": "color" },
+      "trigger-bg": { "$value": "{color.background.control}" },
+      "popover-bg": { "$value": "{color.background.surface-raised}" }
+    },
+    "checkbox": {
+      "control-radius": { "$value": "{radius.md}" },
+      "control-border": { "$value": "transparent", "$type": "color" },
+      "checked-border": { "$value": "transparent", "$type": "color" },
+      "control-bg": { "$value": "{color.background.control}" }
+    },
+    "radio": {
+      "control-border": { "$value": "transparent", "$type": "color" },
+      "selected-border": { "$value": "transparent", "$type": "color" },
+      "control-bg": { "$value": "{color.background.control}" }
+    },
+    "tag": {
+      "default-border": { "$value": "transparent", "$type": "color" },
+      "success-border": { "$value": "transparent", "$type": "color" },
+      "warning-border": { "$value": "transparent", "$type": "color" },
+      "error-border": { "$value": "transparent", "$type": "color" },
+      "info-border": { "$value": "transparent", "$type": "color" }
+    },
+    "card": {
+      "radius": { "$value": "{radius.lg}" },
+      "border": { "$value": "transparent", "$type": "color" },
+      "header-border": { "$value": "transparent", "$type": "color" },
+      "footer-border": { "$value": "transparent", "$type": "color" },
+      "bg": { "$value": "{color.background.surface-raised}" }
+    },
+    "dialog": {
+      "radius": { "$value": "{radius.lg}" }
+    },
+    "tooltip": {
+      "radius": { "$value": "{radius.md}" }
+    },
+    "chart": {
+      "tooltip-border": { "$value": "transparent", "$type": "color" },
+      "tooltip-bg": { "$value": "{color.background.surface-raised}" }
+    },
+    "alert": {
+      "info-border": { "$value": "transparent", "$type": "color" },
+      "success-border": { "$value": "transparent", "$type": "color" },
+      "warning-border": { "$value": "transparent", "$type": "color" },
+      "error-border": { "$value": "transparent", "$type": "color" }
+    },
+    "menu": {
+      "popover-radius": { "$value": "{radius.lg}" },
+      "item-radius": { "$value": "{radius.md}" },
+      "popover-border": { "$value": "transparent", "$type": "color" },
+      "popover-bg": { "$value": "{color.background.surface-raised}" }
+    },
+    "kanban": {
+      "column-radius": { "$value": "{radius.lg}" },
+      "card-radius": { "$value": "{radius.lg}" },
+      "card-border": { "$value": "transparent", "$type": "color" },
+      "card-bg": { "$value": "{color.background.surface-raised}" }
+    }
+  },
+  "typography": {
+    "prose": {
+      "blockquote-border": { "$value": "transparent", "$type": "color" },
+      "pre-border": { "$value": "transparent", "$type": "color" },
+      "table-border": { "$value": "transparent", "$type": "color" }
+    }
+  }
+}
