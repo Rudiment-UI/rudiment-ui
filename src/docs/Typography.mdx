@@ -40,6 +40,8 @@ The `size` prop optionally overrides the visual appearance without changing the 
 
 Use heading levels in order (`h1`, then `h2`, then `h3`, and so on) for accessibility and correct document structure. Adjust the `size` prop when the visual design requires a different appearance.
 
+Heading also accepts the [shared style props](#shared-style-props) (`weight`, `tone`, `align`, `noMargin`) described below.
+
 ## Text
 
 The **Text** component provides five variants for different text roles.
@@ -77,6 +79,33 @@ By default, Text renders as a `<p>` element. Use the `as` prop to render as any 
 ```
 
 This is useful when you need a specific HTML element for semantics or styling but want to keep the typography consistent.
+
+## Shared style props
+
+Both **Heading** and **Text** accept the same set of token-backed style props, so you can adjust common typographic details without inline styles or custom classes:
+
+| Prop       | Values                                                                                          | Purpose                                        |
+| ---------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| `weight`   | `regular`, `medium`, `semibold`, `bold`                                                          | Font weight                                    |
+| `tone`     | `default`, `subtle`, `disabled`, `brand`, `inverted`, `success`, `warning`, `error`, `info`      | Text color, drawn from semantic color tokens   |
+| `align`    | `start`, `center`, `end`, `justify`                                                              | Text alignment                                 |
+| `noMargin` | `true` / `false`                                                                                 | Removes the component's default block margin   |
+
+```jsx
+<RudiHeading level={2} weight="semibold" tone="brand" noMargin>
+  Section title
+</RudiHeading>
+
+<RudiText tone="subtle" align="center">
+  Muted, centered supporting text.
+</RudiText>
+
+<RudiText tone="error" weight="medium">
+  Something went wrong.
+</RudiText>
+```
+
+Because these map to design tokens, colors and weights stay consistent with the rest of the system and adapt across themes automatically.
 
 ## Prose
 

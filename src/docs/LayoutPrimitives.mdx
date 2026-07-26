@@ -41,13 +41,13 @@ Not sure which primitive to reach for? Start here:
 The real power comes from nesting primitives together. Here is an example of a typical page layout:
 
 ```jsx
-<RudiStack gap="lg">
+<RudiStack space="2rem">
   <RudiSidebar>
     <nav>
       {/* navigation links */}
     </nav>
-    <RudiBox padding="md" border>
-      <RudiStack gap="sm">
+    <RudiBox padding="1rem" bordered>
+      <RudiStack space="0.5rem">
         <RudiHeading level={2}>Article title</RudiHeading>
         <RudiText>Article content goes here.</RudiText>
       </RudiStack>
@@ -68,12 +68,12 @@ In this example:
 All layout primitives render as a `<div>` by default. Use the `as` prop to render as any HTML element for better semantic markup:
 
 ```jsx
-<RudiStack as="ul" gap="sm">
+<RudiStack as="ul" space="0.5rem">
   <li>First item</li>
   <li>Second item</li>
 </RudiStack>
 
-<RudiCluster as="nav" gap="md">
+<RudiCluster as="nav" space="1rem">
   <a href="/home">Home</a>
   <a href="/about">About</a>
 </RudiCluster>
@@ -81,12 +81,16 @@ All layout primitives render as a `<div>` by default. Use the `as` prop to rende
 
 This keeps your HTML meaningful for accessibility and SEO without giving up the layout behavior.
 
+## Spacing props
+
+Primitives that space their children expose a **`space`** prop (Stack, Cluster, Grid, Sidebar, Cover, Switcher), and Box exposes a **`padding`** prop. These accept any CSS length string — for example `space="1rem"`, `padding="2rem"`, or a token reference like `space="var(--rudi-spacing-6)"`. There is no keyword scale (`"sm"`/`"md"`/`"lg"`); pass a concrete length. Box's border is toggled with the boolean `bordered` prop. When a `space`/`padding` prop is omitted, each primitive falls back to a sensible default sourced from the design tokens.
+
 ## Layout tokens
 
-Spacing values used by layout primitives come from the design token system. This means:
+Default spacing values used by layout primitives come from the design token system. This means:
 
 - Layouts stay consistent with the rest of the design system
-- Changing a spacing token updates every layout that uses it
+- Changing a spacing token updates every layout that relies on its default
 - Designers and developers reference the same spacing scale
 
 See [Token Architecture](?path=/docs/getting-started-token-architecture--docs) for details on how tokens work.

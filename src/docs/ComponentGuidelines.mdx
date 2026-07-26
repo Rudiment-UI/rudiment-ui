@@ -27,6 +27,13 @@ Practical do/don't guidance for each interactive component. Following these patt
 - **Don't** put long text in a Badge. Keep labels to one or two short words.
 - **Don't** use color as the only way to convey meaning. Pair the variant color with a text label so color-blind readers can still understand the status.
 
+## Breadcrumb
+
+- **Do** reflect the real page hierarchy in `items`, with the current page as the last entry (it's rendered as plain text with `aria-current="page"`, not a link)
+- **Do** give earlier items an `href` so users can jump back up the tree
+- **Don't** use Breadcrumb for steps in a linear flow (checkout, onboarding). Use **Stepper** instead.
+- **Don't** bury a deep hierarchy in breadcrumbs. If the trail is very long, truncate the middle rather than wrapping to multiple lines.
+
 ## Button
 
 - **Do** use `variant="primary"` for the main action on a page
@@ -43,7 +50,7 @@ Practical do/don't guidance for each interactive component. Following these patt
 
 ## Charts (BarChart, LineChart, DonutChart)
 
-- **Do** provide an `aria-label` that describes the chart's purpose (for example, `aria-label="Monthly revenue by product line"`)
+- **Do** provide a `label` that describes the chart's purpose (for example, `label="Monthly revenue by product line"`). It sets the chart's accessible name.
 - **Do** use `BarChart` for categorical comparisons, `LineChart` for trends over time, and `DonutChart` for part-to-whole relationships
 - **Do** limit chart series to 8 or fewer to stay within the dataviz token palette
 - **Don't** mix chart types to represent the same data set. Pick the chart that best fits the data relationship.
@@ -72,6 +79,20 @@ These two components look similar but serve different purposes:
 - **Don't** use for passive notifications. Use **Alert** instead.
 - **Don't** stack multiple dialogs. If a dialog needs to open another dialog, rethink the flow.
 
+## Divider
+
+- **Do** use to separate distinct content groups, and tune the gap with the `spacing` prop (`none`, `sm`, `md`, `lg`)
+- **Do** add a `label` to caption a divider when it introduces a break (for example, "OR" between sign-in options)
+- **Don't** reach for a Divider where whitespace alone would group content. Too many rules add visual noise.
+- **Don't** use `orientation="vertical"` outside a container that gives it a height — a vertical divider needs a sized parent to render.
+
+## Dot
+
+- **Do** provide a `label` when the Dot is the only signal of status, so screen readers announce it (without a `label` it is `aria-hidden`)
+- **Do** use the semantic `tone` prop (`success`, `warning`, `error`, `info`) instead of a raw `color` so the indicator stays theme-aware
+- **Don't** rely on color alone. Pair the Dot with a text label so color-blind readers can tell states apart.
+- **Don't** use `pulse` for static states. Reserve the animation for live or active indicators.
+
 ## Icon
 
 - **Do** provide a `label` prop when the icon conveys meaning not present in surrounding text
@@ -85,6 +106,14 @@ These two components look similar but serve different purposes:
 - **Do** use when the icon meaning is universally understood (close, search, and menu)
 - **Don't** use without an `aria-label`. Screen reader users won't know what the button does.
 - **Don't** use for actions where the icon meaning is ambiguous. Add a visible text label with a regular **Button** instead.
+
+## Image
+
+- **Do** set an `aspectRatio` (for example, `aspectRatio="16 / 9"`) to reserve space and prevent layout shift as the image loads
+- **Do** write descriptive `alt` text (it's required); use an empty string only when the image is purely decorative
+- **Do** use `loading="lazy"` for below-the-fold images
+- **Don't** use `fit="cover"` when cropping would hide important detail. Use `fit="contain"` instead.
+- **Don't** put essential controls only in the `overlay` slot without making them reachable by keyboard.
 
 ## Input
 
@@ -100,6 +129,14 @@ These two components look similar but serve different purposes:
 - **Do** test keyboard drag-and-drop: Space to grab, arrow keys to move, Space to drop
 - **Don't** put complex interactive elements (dialogs, forms) inside KanbanCard. Cards should be scannable at a glance.
 - **Don't** use KanbanBoard for simple lists. It's designed for multi-column workflows with drag-and-drop reordering.
+
+## Link
+
+- **Do** use for navigation to another page or resource (`href` is required)
+- **Do** set `external` for links that open a new tab. It adds a safe `rel` and an external-link icon automatically.
+- **Do** match `variant` to context (`default` in body copy, `subtle` for muted secondary links, `standalone` for a self-contained "Learn more" link)
+- **Don't** use Link for actions that don't navigate. Use **Button** (or a ghost Button) for in-page actions.
+- **Don't** disable underlines on inline links within body text where underline is the main affordance that they're clickable.
 
 ## Menu (MenuTrigger, Menu, MenuItem, MenuSection)
 
@@ -117,6 +154,13 @@ These two components look similar but serve different purposes:
 - **Don't** provide both `href` and `onPress` for the same navigation action. Pick the appropriate mechanism.
 - **Don't** use NavItem outside of a sidebar or navigation context. For in-page actions, use **Button** instead.
 
+## Pagination
+
+- **Do** use for navigating large, paged data sets (search results, tables, listings)
+- **Do** tune `siblingCount` to control how many page numbers appear around the current page on wider layouts
+- **Don't** use Pagination when infinite scroll or a "Load more" button fits the content better (feeds, timelines)
+- **Don't** use it for a handful of pages where showing every item at once would be simpler
+
 ## ProgressBar
 
 - **Do** provide a `label`. It's required for accessibility and helps everyone understand what the bar represents
@@ -129,6 +173,14 @@ These two components look similar but serve different purposes:
 - **Do** use when there are two to five mutually exclusive options
 - **Do** use horizontal layout only for two or three short options (long labels work better vertically)
 - **Don't** use for more than seven options. Use **Select** instead to save space.
+
+## Rating
+
+- **Do** pass `onChange` only when users should set the rating — it becomes an interactive radiogroup; omit it for a read-only display (a labeled image)
+- **Do** use `showValue` and `count` to add the numeric score and review count next to the stars
+- **Do** provide a `label` describing what is being rated
+- **Don't** make a read-only rating look interactive. Without `onChange` it is not clickable, so don't imply it is.
+- **Don't** use a rating scale larger than `max={5}` unless your domain genuinely needs finer granularity.
 
 ## Select
 
@@ -143,12 +195,27 @@ These two components look similar but serve different purposes:
 - **Don't** use StatCard for non-metric content. It's designed for numbers and KPIs, not paragraphs.
 - **Don't** omit the `label`. A number without context ("12,450") is meaningless on its own.
 
+## Stepper
+
+- **Do** use to show progress through a known, ordered sequence (checkout, onboarding, multi-step forms) by setting each step's `status` (`complete`, `current`, `upcoming`)
+- **Do** use `orientation="vertical"` for a timeline-style layout in narrow columns, and `horizontal` for wide headers
+- **Don't** use Stepper for navigation between unrelated pages. Use **Breadcrumb** for hierarchy or **NavItem** for navigation.
+- **Don't** mark more than one step as `current` at a time. The current step should be unambiguous.
+
 ## Tag
 
 - **Do** use for user-generated labels, filters, or categorization that users may need to add or remove
 - **Do** provide `onDismiss` when users should be able to remove the tag
 - **Don't** use Tag when the label is system-defined and non-removable. Use **Badge** instead.
 - **Don't** mix interactive (`onPress`) and dismissible (`onDismiss`) behavior on the same tag. Pick one interaction model.
+
+## Textarea
+
+- **Do** use for multi-line free text (comments, descriptions, notes), and set `rows` to hint at the expected length
+- **Do** provide a visible label and use the `description` prop for guidance, mirroring **Input**
+- **Do** use `errorMessage` to surface validation problems inline
+- **Don't** use Textarea for short single-line values. Use **Input** instead.
+- **Don't** disable resizing (`resize="none"`) when users may need to see long content while editing.
 
 ## Tooltip
 

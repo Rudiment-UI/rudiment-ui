@@ -39,7 +39,7 @@ Rudiment UI is for teams that want to start with a solid foundation and customiz
    npm run build:tokens
    ```
 
-6. Switch themes with the theme picker in the Storybook toolbar, or set `data-theme` on your root element (supported values: `light`, `dark`, and the `roomy` and `soft` modifier themes, each with a `-dark` variant).
+6. Switch themes with the theme picker in the Storybook toolbar, or set `data-theme` on your root element (supported values: `light`, `dark`, and the `roomy`, `soft`, and `compressed` modifier themes, each with a `-dark` variant).
 
 ## Import components
 
@@ -61,13 +61,13 @@ import 'rudiment-ui/styles'
 
 | Category              | Count         | Examples                             |
 | --------------------- | ------------- | ------------------------------------ |
-| UI components         | 24            | RudiButton, RudiInput, RudiSelect, RudiDialog, RudiAlert, RudiBadge, RudiTag, RudiIcon, RudiCard, RudiProgressBar, RudiCircularProgress, RudiAvatar, RudiStatCard, RudiNavItem, RudiCheckbox, RudiCheckboxGroup, RudiSwitch, RudiRadioGroup, RudiTooltip, RudiIconButton, RudiBarChart, RudiLineChart, RudiDonutChart, RudiKanbanBoard |
+| UI components         | 34            | RudiButton, RudiInput, RudiTextarea, RudiCheckbox, RudiCheckboxGroup, RudiRadioGroup, RudiSelect, RudiSwitch, RudiMenu, RudiDialog, RudiTooltip, RudiAlert, RudiBadge, RudiTag, RudiIcon, RudiIconButton, RudiCard, RudiStatCard, RudiAvatar, RudiProgressBar, RudiCircularProgress, RudiBreadcrumb, RudiPagination, RudiStepper, RudiRating, RudiLink, RudiDivider, RudiDot, RudiImage, RudiNavItem, RudiBarChart, RudiLineChart, RudiDonutChart, RudiKanbanBoard |
 | Typography components | 3             | RudiHeading, RudiText, RudiProse                 |
-| Layout primitives     | 8             | RudiStack, RudiBox, RudiGrid, RudiSidebar, RudiCenter    |
+| Layout primitives     | 8             | RudiBox, RudiStack, RudiCluster, RudiGrid, RudiSidebar, RudiCenter, RudiCover, RudiSwitcher    |
 | Hooks                 | 2             | useLoadingButton, useChartTheme      |
 | Design tokens         | Full set      | Colors, spacing, typography, motion, data visualization |
 | Themes                | 8 built-in    | Default plus the Roomy, Soft, and Compressed modifier themes, each in light and dark, via `data-theme` attribute |
-| Page examples         | 10            | App Shell, Settings Page, Sign-In Form, Marketing Hero, Sidebar Layout, Article Page, Simple Form, Empty State, Header, Footer |
+| Page examples         | 26            | Full-page compositions across four domains — CRM, Project Management, eCommerce, and Biotech (dashboards, boards, checkout flows, and marketing/landing pages) |
 | Tests                 | Per component | Unit tests with accessibility checks |
 
 ## Related documentation
@@ -78,4 +78,4 @@ import 'rudiment-ui/styles'
 - [Layout Primitives](?path=/docs/getting-started-layout-primitives--docs): composition-based layout system
 - [Component Guidelines](?path=/docs/getting-started-component-guidelines--docs): do/don't guidance for each component
 - [Typography](?path=/docs/getting-started-typography--docs): Heading, Text, and Prose components
-- [Examples](?path=/docs/examples-app-shell--docs): full-page compositions showing components working together
+- [Examples](?path=/docs/examples-crm-dashboard--docs): full-page compositions showing components working together
