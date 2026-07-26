@@ -1,0 +1,53 @@
+/* Rating */
+.rudi-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rudi-component-rating-gap);
+}
+
+.rudi-rating__stars {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rudi-component-rating-star-gap);
+}
+
+.rudi-rating__star {
+  color: var(--rudi-component-rating-empty-color);
+}
+
+/* Filled + half stars use the active color and fill the glyph so the star
+   reads as solid rather than an outline. */
+.rudi-rating__star--full,
+.rudi-rating__star--half {
+  color: var(--rudi-component-rating-active-color);
+}
+
+.rudi-rating__star--full svg,
+.rudi-rating__star--half svg {
+  fill: currentColor;
+}
+
+.rudi-rating__text {
+  color: var(--rudi-component-rating-text-color);
+  font-size: var(--rudi-component-rating-text-font-size);
+}
+
+/* Interactive */
+.rudi-rating__button {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+  border-radius: var(--rudi-radius-sm);
+}
+
+.rudi-rating__button:focus-visible {
+  outline: 2px solid var(--rudi-color-border-focus);
+  outline-offset: 2px;
+}
+
+.rudi-rating__button + .rudi-rating__button {
+  margin-inline-start: var(--rudi-component-rating-star-gap);
+}

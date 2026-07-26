@@ -1,6 +1,8 @@
 import React, { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 import './top-bar.css'
+
+export interface RudiTopBarProps extends React.HTMLAttributes<HTMLElement> {
   /** Content pinned to the inline-start of the bar. */
   start?: React.ReactNode
   /** Content pinned to the inline-end of the bar. */

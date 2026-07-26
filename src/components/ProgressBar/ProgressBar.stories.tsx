@@ -158,3 +158,22 @@ export const AllVariants: Story = {
     </div>
   ),
 }
+
+export const Thresholds: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      {[45, 85, 100].map((value) => (
+        <RudiProgressBar
+          key={value}
+          label={`Capacity ${value}%`}
+          value={value}
+          showValueLabel
+          thresholds={[
+            { at: 80, variant: 'warning' },
+            { at: 100, variant: 'error' },
+          ]}
+        />
+      ))}
+    </div>
+  ),
+}

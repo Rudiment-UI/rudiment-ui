@@ -1,0 +1,78 @@
+.rudi-textarea {
+  display: grid;
+  gap: var(--rudi-component-textarea-gap);
+  font-size: var(--rudi-component-textarea-font-size);
+}
+
+.rudi-textarea__label {
+  font-weight: var(--rudi-component-textarea-label-font-weight);
+  color: var(--rudi-component-textarea-label-color);
+  line-height: var(--rudi-component-textarea-label-line-height);
+}
+
+.rudi-textarea__required {
+  color: var(--rudi-component-textarea-required-color);
+}
+
+.rudi-textarea__field {
+  width: 100%;
+  padding: var(--rudi-component-textarea-padding-y)
+    var(--rudi-component-textarea-padding-x);
+  background-color: var(--rudi-component-textarea-bg);
+  color: var(--rudi-component-textarea-text);
+  border: 1px solid var(--rudi-component-textarea-border);
+  border-radius: var(--rudi-component-textarea-radius);
+  font-size: inherit;
+  font-family: inherit;
+  line-height: var(--rudi-component-textarea-line-height);
+  min-block-size: var(--rudi-component-textarea-min-height);
+  transition: border-color var(--rudi-motion-duration-base) var(--rudi-motion-easing-standard);
+}
+
+.rudi-textarea__field--resize-none {
+  resize: none;
+}
+.rudi-textarea__field--resize-vertical {
+  resize: vertical;
+}
+.rudi-textarea__field--resize-horizontal {
+  resize: horizontal;
+}
+.rudi-textarea__field--resize-both {
+  resize: both;
+}
+
+.rudi-textarea__field::placeholder {
+  color: var(--rudi-component-textarea-placeholder-color);
+}
+
+.rudi-textarea__field:focus-visible {
+  outline: 2px solid var(--rudi-component-textarea-focus-outline-color);
+  outline-offset: 2px;
+}
+
+.rudi-textarea__field[disabled] {
+  background-color: var(--rudi-component-textarea-disabled-bg);
+  color: var(--rudi-component-textarea-disabled-text);
+  cursor: not-allowed;
+}
+
+.rudi-textarea__field--error {
+  border-color: var(--rudi-component-textarea-error-border);
+}
+
+.rudi-textarea__field--error:focus-visible {
+  outline-color: var(--rudi-component-textarea-error-border);
+}
+
+.rudi-textarea__description {
+  color: var(--rudi-component-textarea-description-color);
+  font-size: var(--rudi-component-textarea-description-font-size);
+  line-height: var(--rudi-font-line-height-normal);
+}
+
+.rudi-textarea__error {
+  color: var(--rudi-component-textarea-error-text-color);
+  font-size: var(--rudi-component-textarea-error-font-size);
+  line-height: var(--rudi-font-line-height-normal);
+}

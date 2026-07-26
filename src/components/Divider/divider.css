@@ -1,0 +1,66 @@
+/* Divider */
+.rudi-divider {
+  border: 0;
+  background: transparent;
+}
+
+/* Horizontal rule */
+.rudi-divider--horizontal:not(.rudi-divider--labeled) {
+  inline-size: 100%;
+  block-size: var(--rudi-component-divider-thickness);
+  background-color: var(--rudi-component-divider-color);
+}
+
+/* Vertical rule */
+.rudi-divider--vertical {
+  align-self: stretch;
+  inline-size: var(--rudi-component-divider-thickness);
+  min-block-size: 1em;
+  background-color: var(--rudi-component-divider-color);
+}
+
+/* Labeled (rule / text / rule) */
+.rudi-divider--labeled {
+  display: flex;
+  align-items: center;
+  gap: var(--rudi-component-divider-label-gap);
+}
+
+.rudi-divider__line {
+  flex: 1;
+  block-size: var(--rudi-component-divider-thickness);
+  background-color: var(--rudi-component-divider-color);
+}
+
+.rudi-divider__label {
+  color: var(--rudi-component-divider-label-color);
+  font-size: var(--rudi-component-divider-label-font-size);
+  white-space: nowrap;
+}
+
+/* Spacing — block margin for horizontal, inline margin for vertical */
+.rudi-divider--horizontal.rudi-divider--spacing-none {
+  margin-block: 0;
+}
+.rudi-divider--horizontal.rudi-divider--spacing-sm {
+  margin-block: var(--rudi-component-divider-spacing-sm);
+}
+.rudi-divider--horizontal.rudi-divider--spacing-md {
+  margin-block: var(--rudi-component-divider-spacing-md);
+}
+.rudi-divider--horizontal.rudi-divider--spacing-lg {
+  margin-block: var(--rudi-component-divider-spacing-lg);
+}
+
+.rudi-divider--vertical.rudi-divider--spacing-none {
+  margin-inline: 0;
+}
+.rudi-divider--vertical.rudi-divider--spacing-sm {
+  margin-inline: var(--rudi-component-divider-spacing-sm);
+}
+.rudi-divider--vertical.rudi-divider--spacing-md {
+  margin-inline: var(--rudi-component-divider-spacing-md);
+}
+.rudi-divider--vertical.rudi-divider--spacing-lg {
+  margin-inline: var(--rudi-component-divider-spacing-lg);
+}

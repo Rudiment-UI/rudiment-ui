@@ -83,7 +83,45 @@ export type {
 } from './components/Card/Card'
 
 export { RudiProgressBar } from './components/ProgressBar/ProgressBar'
-export type { RudiProgressBarProps } from './components/ProgressBar/ProgressBar'
+export type {
+  RudiProgressBarProps,
+  RudiProgressBarVariant,
+  RudiProgressBarThreshold,
+} from './components/ProgressBar/ProgressBar'
+
+export { RudiDivider } from './components/Divider/Divider'
+export type { RudiDividerProps } from './components/Divider/Divider'
+
+export { RudiDot } from './components/Dot/Dot'
+export type { RudiDotProps } from './components/Dot/Dot'
+
+export { RudiLink } from './components/Link/Link'
+export type { RudiLinkProps } from './components/Link/Link'
+
+export { RudiImage } from './components/Image/Image'
+export type { RudiImageProps } from './components/Image/Image'
+
+export { RudiRating } from './components/Rating/Rating'
+export type { RudiRatingProps } from './components/Rating/Rating'
+
+export { RudiStepper } from './components/Stepper/Stepper'
+export type {
+  RudiStepperProps,
+  RudiStepperStep,
+  RudiStepStatus,
+} from './components/Stepper/Stepper'
+
+export { RudiTextarea } from './components/Textarea/Textarea'
+export type { RudiTextareaProps } from './components/Textarea/Textarea'
+
+export { RudiBreadcrumb } from './components/Breadcrumb/Breadcrumb'
+export type {
+  RudiBreadcrumbProps,
+  RudiBreadcrumbItem,
+} from './components/Breadcrumb/Breadcrumb'
+
+export { RudiPagination } from './components/Pagination/Pagination'
+export type { RudiPaginationProps } from './components/Pagination/Pagination'
 
 export { RudiAvatar } from './components/Avatar/Avatar'
 export type { RudiAvatarProps } from './components/Avatar/Avatar'
