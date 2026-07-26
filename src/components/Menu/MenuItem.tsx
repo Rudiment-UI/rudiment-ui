@@ -13,7 +13,7 @@ export interface RudiMenuItemProps extends AriaMenuItemProps {
   /** Iconify icon name rendered before the label. */
   icon?: string
   /** Primary text. When set, content is composed for you (no need to pass children). */
-  label?: ReactNode
+  label?: string
   /** Secondary text shown beneath the label. */
   description?: ReactNode
   /** Keyboard shortcut hint shown at the trailing edge. */
