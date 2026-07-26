@@ -36,7 +36,7 @@ export function RudiMenuItem({
 
   // RAC needs a textValue for typeahead when children aren't a plain string.
   const resolvedTextValue =
-    textValue ?? (typeof label === 'string' ? label : undefined)
+    textValue ?? label ?? (typeof children === 'string' ? children : undefined)
 
   return (
     <AriaMenuItem
