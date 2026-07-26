@@ -58,7 +58,9 @@ export function RudiProgressBar({
     maxValue,
   })
 
-  const percentage = ((value - minValue) / (maxValue - minValue)) * 100
+  const range = maxValue - minValue
+  const rawPercentage = range === 0 ? 0 : ((value - minValue) / range) * 100
+  const percentage = Math.min(100, Math.max(0, rawPercentage))
   const activeVariant = resolveVariant(percentage, variant, thresholds)
 
   return (
