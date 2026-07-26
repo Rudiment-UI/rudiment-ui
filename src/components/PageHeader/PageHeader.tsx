@@ -1,4 +1,4 @@
-import { forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 import { RudiHeading } from '@/typography/Heading/Heading'
 import { RudiText } from '@/typography/Text/Text'
