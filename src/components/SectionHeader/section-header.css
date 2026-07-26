@@ -1,0 +1,26 @@
+/* SectionHeader */
+.rudi-section-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--rudi-component-section-header-gap);
+}
+
+.rudi-section-header__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rudi-component-section-header-title-gap);
+  min-inline-size: 0;
+}
+
+.rudi-section-header__description {
+  color: var(--rudi-component-section-header-description-color);
+}
+
+.rudi-section-header__action {
+  display: flex;
+  align-items: center;
+  gap: var(--rudi-spacing-2);
+  flex-shrink: 0;
+}

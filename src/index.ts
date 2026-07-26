@@ -114,6 +114,32 @@ export type { RudiKanbanColumnProps } from './components/Kanban/KanbanColumn'
 export { RudiKanbanCard } from './components/Kanban/KanbanCard'
 export type { RudiKanbanCardProps } from './components/Kanban/KanbanCard'
 
+export { RudiAppShell } from './components/AppShell/AppShell'
+export type {
+  RudiAppShellProps,
+  RudiAppShellSidebarProps,
+  RudiAppShellContentProps,
+  RudiAppShellMainProps,
+  RudiAppShellMenuButtonProps,
+} from './components/AppShell/AppShell'
+
+export { RudiTopBar } from './components/TopBar/TopBar'
+export type { RudiTopBarProps } from './components/TopBar/TopBar'
+
+export { RudiFooter } from './components/Footer/Footer'
+export type {
+  RudiFooterProps,
+  RudiFooterColumnsProps,
+  RudiFooterColumnProps,
+  RudiFooterBottomBarProps,
+} from './components/Footer/Footer'
+
+export { RudiPageHeader } from './components/PageHeader/PageHeader'
+export type { RudiPageHeaderProps } from './components/PageHeader/PageHeader'
+
+export { RudiSectionHeader } from './components/SectionHeader/SectionHeader'
+export type { RudiSectionHeaderProps } from './components/SectionHeader/SectionHeader'
+
 // Typography
 export { RudiHeading } from './typography/Heading/Heading'
 export type { RudiHeadingProps } from './typography/Heading/Heading'

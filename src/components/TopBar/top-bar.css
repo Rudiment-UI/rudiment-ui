@@ -1,0 +1,56 @@
+/* TopBar */
+.rudi-top-bar {
+  background-color: var(--rudi-component-top-bar-bg);
+  border-block-end: 1px solid var(--rudi-component-top-bar-border);
+}
+
+.rudi-top-bar--sticky {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: var(--rudi-component-top-bar-z);
+}
+
+.rudi-top-bar__announcement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--rudi-spacing-2);
+  padding: var(--rudi-component-top-bar-announcement-padding-y)
+    var(--rudi-component-top-bar-announcement-padding-x);
+  background-color: var(--rudi-component-top-bar-announcement-bg);
+  color: var(--rudi-component-top-bar-announcement-text);
+  font-size: var(--rudi-component-top-bar-announcement-font-size);
+  text-align: center;
+}
+
+.rudi-top-bar__row {
+  display: flex;
+  align-items: center;
+  gap: var(--rudi-component-top-bar-gap);
+  min-block-size: var(--rudi-component-top-bar-height);
+  padding-inline: var(--rudi-component-top-bar-padding-x);
+}
+
+.rudi-top-bar__start {
+  display: flex;
+  align-items: center;
+  gap: var(--rudi-component-top-bar-gap);
+  flex-shrink: 0;
+}
+
+.rudi-top-bar__center {
+  flex: 1;
+  min-inline-size: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--rudi-component-top-bar-gap);
+}
+
+/* Keeps end content pinned right even when no center content is present. */
+.rudi-top-bar__end {
+  margin-inline-start: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--rudi-component-top-bar-gap);
+  flex-shrink: 0;
+}
