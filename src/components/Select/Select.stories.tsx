@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Item } from 'react-stately'
 import { RudiSelect, type RudiSelectProps } from './Select'
+import { RudiOption } from './Option'
 
 interface SelectItem {
   id: string
@@ -37,7 +37,7 @@ const meta: Meta<SelectStoryArgs> = {
   ],
   render: (args) => (
     <RudiSelect {...(args as RudiSelectProps<SelectItem>)}>
-      {(item) => <Item key={item.id}>{item.label}</Item>}
+      {(item) => <RudiOption key={item.id}>{item.label}</RudiOption>}
     </RudiSelect>
   ),
   parameters: {

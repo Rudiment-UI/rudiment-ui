@@ -24,6 +24,9 @@ export type { RudiCheckboxGroupProps } from './components/Checkbox/CheckboxGroup
 export { RudiSelect } from './components/Select/Select'
 export type { RudiSelectProps } from './components/Select/Select'
 
+export { RudiOption } from './components/Select/Option'
+export type { RudiOptionProps } from './components/Select/Option'
+
 export { RudiMenuTrigger } from './components/Menu/MenuTrigger'
 export type { RudiMenuTriggerProps } from './components/Menu/MenuTrigger'
 
@@ -35,6 +38,9 @@ export type { RudiMenuItemProps } from './components/Menu/MenuItem'
 
 export { RudiMenuSection } from './components/Menu/MenuSection'
 export type { RudiMenuSectionProps } from './components/Menu/MenuSection'
+
+export { RudiMenuSeparator } from './components/Menu/MenuSeparator'
+export type { RudiMenuSeparatorProps } from './components/Menu/MenuSeparator'
 
 export { RudiKeyboard } from './components/Menu/Keyboard'
 export type { RudiKeyboardProps } from './components/Menu/Keyboard'
