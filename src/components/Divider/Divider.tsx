@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { cn } from '@/utils/cn'
 import './divider.css'
 
@@ -10,7 +11,7 @@ export interface RudiDividerProps {
    * Optional centered label. Only meaningful for a horizontal divider — it
    * renders a rule / text / rule row instead of a bare line.
    */
-  label?: React.ReactNode
+  label?: ReactNode
   className?: string
 }
 
