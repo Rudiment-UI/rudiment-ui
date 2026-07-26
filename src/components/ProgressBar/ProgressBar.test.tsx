@@ -51,6 +51,49 @@ describe('ProgressBar', () => {
     expect(bar).toHaveClass('rudi-progress__bar--success')
   })
 
+  it('applies a threshold variant when the percentage crosses it', () => {
+    const { container } = render(
+      <RudiProgressBar
+        label="Workload"
+        value={90}
+        thresholds={[
+          { at: 80, variant: 'warning' },
+          { at: 100, variant: 'error' },
+        ]}
+      />,
+    )
+    const bar = container.querySelector('.rudi-progress__bar')
+    expect(bar).toHaveClass('rudi-progress__bar--warning')
+  })
+
+  it('falls back to the base variant below every threshold', () => {
+    const { container } = render(
+      <RudiProgressBar
+        label="Workload"
+        value={40}
+        variant="success"
+        thresholds={[{ at: 80, variant: 'warning' }]}
+      />,
+    )
+    const bar = container.querySelector('.rudi-progress__bar')
+    expect(bar).toHaveClass('rudi-progress__bar--success')
+  })
+
+  it('picks the highest matching threshold', () => {
+    const { container } = render(
+      <RudiProgressBar
+        label="Workload"
+        value={100}
+        thresholds={[
+          { at: 80, variant: 'warning' },
+          { at: 100, variant: 'error' },
+        ]}
+      />,
+    )
+    const bar = container.querySelector('.rudi-progress__bar')
+    expect(bar).toHaveClass('rudi-progress__bar--error')
+  })
+
   it('applies size class to track element', () => {
     const { container } = render(
       <RudiProgressBar label="Loading..." value={50} size="sm" />,

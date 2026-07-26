@@ -47,7 +47,12 @@ export const WithIcons: Story = {
         <RudiMenuItem id="open" icon="lucide:folder-open" label="Open" />
         <RudiMenuItem id="rename" icon="lucide:pencil" label="Rename" />
         <RudiMenuItem id="duplicate" icon="lucide:copy" label="Duplicate" />
-        <RudiMenuItem id="delete" icon="lucide:trash-2" label="Delete" isDestructive />
+        <RudiMenuItem
+          id="delete"
+          icon="lucide:trash-2"
+          label="Delete"
+          isDestructive
+        />
       </RudiMenu>
     </RudiMenuTrigger>
   ),
@@ -100,14 +105,39 @@ export const WithSections: Story = {
       <RudiButton variant="secondary">File</RudiButton>
       <RudiMenu onAction={(key) => alert(key)}>
         <RudiMenuSection title="File">
-          <RudiMenuItem id="new" icon="lucide:file-plus" label="New file" shortcut="⌘N" />
-          <RudiMenuItem id="open" icon="lucide:folder-open" label="Open" shortcut="⌘O" />
-          <RudiMenuItem id="save" icon="lucide:save" label="Save" shortcut="⌘S" />
+          <RudiMenuItem
+            id="new"
+            icon="lucide:file-plus"
+            label="New file"
+            shortcut="⌘N"
+          />
+          <RudiMenuItem
+            id="open"
+            icon="lucide:folder-open"
+            label="Open"
+            shortcut="⌘O"
+          />
+          <RudiMenuItem
+            id="save"
+            icon="lucide:save"
+            label="Save"
+            shortcut="⌘S"
+          />
         </RudiMenuSection>
         <RudiMenuSeparator />
         <RudiMenuSection title="Edit">
-          <RudiMenuItem id="undo" icon="lucide:undo" label="Undo" shortcut="⌘Z" />
-          <RudiMenuItem id="redo" icon="lucide:redo" label="Redo" shortcut="⇧⌘Z" />
+          <RudiMenuItem
+            id="undo"
+            icon="lucide:undo"
+            label="Undo"
+            shortcut="⌘Z"
+          />
+          <RudiMenuItem
+            id="redo"
+            icon="lucide:redo"
+            label="Redo"
+            shortcut="⇧⌘Z"
+          />
         </RudiMenuSection>
       </RudiMenu>
     </RudiMenuTrigger>
@@ -232,7 +262,10 @@ export const CompleteExample: Story = {
           </RudiSubmenuTrigger>
         </RudiMenuSection>
         <RudiMenuSeparator />
-        <RudiMenuSection selectionMode="multiple" defaultSelectedKeys={['files']}>
+        <RudiMenuSection
+          selectionMode="multiple"
+          defaultSelectedKeys={['files']}
+        >
           <RudiMenuItem id="files">Show files</RudiMenuItem>
           <RudiMenuItem id="folders">Show folders</RudiMenuItem>
         </RudiMenuSection>

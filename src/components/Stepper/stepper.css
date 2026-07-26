@@ -1,0 +1,117 @@
+/* Stepper / Timeline */
+.rudi-stepper {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.rudi-stepper__node {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  inline-size: var(--rudi-component-stepper-node-size-md);
+  block-size: var(--rudi-component-stepper-node-size-md);
+  border-radius: var(--rudi-radius-full);
+  background-color: var(--rudi-component-stepper-node-bg);
+  color: var(--rudi-component-stepper-node-color);
+  border: 1px solid var(--rudi-component-stepper-node-border);
+}
+
+.rudi-stepper--sm .rudi-stepper__node {
+  inline-size: var(--rudi-component-stepper-node-size-sm);
+  block-size: var(--rudi-component-stepper-node-size-sm);
+}
+
+.rudi-stepper__node--filled {
+  background-color: var(--rudi-component-stepper-node-filled-bg);
+  color: var(--rudi-component-stepper-node-filled-color);
+  border-color: var(--rudi-component-stepper-node-filled-bg);
+}
+
+.rudi-stepper__number {
+  font-size: var(--rudi-component-stepper-number-font-size);
+  font-weight: var(--rudi-component-stepper-number-font-weight);
+  line-height: 1;
+}
+
+.rudi-stepper__connector {
+  background-color: var(--rudi-component-stepper-connector-color);
+}
+
+.rudi-stepper__connector--filled {
+  background-color: var(--rudi-component-stepper-connector-filled-color);
+}
+
+.rudi-stepper__label {
+  color: var(--rudi-component-stepper-label-color);
+  font-size: var(--rudi-component-stepper-label-font-size);
+}
+
+.rudi-stepper__step--current .rudi-stepper__label,
+.rudi-stepper__step--complete .rudi-stepper__label {
+  color: var(--rudi-component-stepper-label-active-color);
+  font-weight: var(--rudi-component-stepper-label-active-font-weight);
+}
+
+.rudi-stepper__description {
+  display: block;
+  color: var(--rudi-component-stepper-description-color);
+  font-size: var(--rudi-component-stepper-description-font-size);
+}
+
+/* ---------------- Horizontal ---------------- */
+.rudi-stepper--horizontal .rudi-stepper__step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--rudi-component-stepper-content-gap);
+}
+
+.rudi-stepper--horizontal .rudi-stepper__marker {
+  display: flex;
+  align-items: center;
+  inline-size: 100%;
+}
+
+.rudi-stepper--horizontal .rudi-stepper__connector {
+  flex: 1;
+  block-size: var(--rudi-component-stepper-connector-thickness);
+}
+
+/* ---------------- Vertical (timeline) ---------------- */
+.rudi-stepper--vertical {
+  flex-direction: column;
+}
+
+.rudi-stepper--vertical .rudi-stepper__step {
+  display: flex;
+  align-items: stretch;
+  gap: var(--rudi-component-stepper-content-gap);
+}
+
+.rudi-stepper--vertical .rudi-stepper__marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rudi-stepper--vertical .rudi-stepper__connector--before {
+  display: none;
+}
+
+.rudi-stepper--vertical .rudi-stepper__connector--after {
+  flex: 1;
+  inline-size: var(--rudi-component-stepper-connector-thickness);
+  min-block-size: var(--rudi-component-stepper-vertical-min-gap);
+}
+
+.rudi-stepper--vertical .rudi-stepper__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding-block-end: var(--rudi-component-stepper-vertical-content-pad);
+}

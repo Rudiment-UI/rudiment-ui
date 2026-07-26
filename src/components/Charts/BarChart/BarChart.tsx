@@ -13,7 +13,11 @@ import { cn } from '@/utils/cn'
 import '../charts.css'
 
 export interface RudiBarChartProps {
-  data: Array<Record<string, string | number>>
+  /**
+   * Row data. Values may be `null` to represent gaps in a series. Strongly-typed
+   * data objects are accepted directly — no cast required.
+   */
+  data: Array<Record<string, string | number | null>>
   dataKeys: string[]
   indexKey: string
   layout?: 'vertical' | 'horizontal'

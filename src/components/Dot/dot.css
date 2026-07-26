@@ -1,0 +1,81 @@
+/* Dot — status / category indicator */
+.rudi-dot {
+  display: inline-block;
+  flex-shrink: 0;
+  border-radius: var(--rudi-radius-full);
+  background-color: var(--rudi-dot-color, var(--rudi-component-dot-default-color));
+}
+
+/* Sizes */
+.rudi-dot--sm {
+  inline-size: var(--rudi-component-dot-size-sm);
+  block-size: var(--rudi-component-dot-size-sm);
+}
+.rudi-dot--md {
+  inline-size: var(--rudi-component-dot-size-md);
+  block-size: var(--rudi-component-dot-size-md);
+}
+.rudi-dot--lg {
+  inline-size: var(--rudi-component-dot-size-lg);
+  block-size: var(--rudi-component-dot-size-lg);
+}
+
+/* Tones (set the shared custom prop so an inline `color` can override) */
+.rudi-dot--default {
+  --rudi-dot-color: var(--rudi-component-dot-default-color);
+}
+.rudi-dot--success {
+  --rudi-dot-color: var(--rudi-component-dot-success-color);
+}
+.rudi-dot--warning {
+  --rudi-dot-color: var(--rudi-component-dot-warning-color);
+}
+.rudi-dot--error {
+  --rudi-dot-color: var(--rudi-component-dot-error-color);
+}
+.rudi-dot--info {
+  --rudi-dot-color: var(--rudi-component-dot-info-color);
+}
+
+/* Pulse halo */
+.rudi-dot--pulse {
+  position: relative;
+}
+.rudi-dot--pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--rudi-radius-full);
+  background-color: inherit;
+  animation: rudi-dot-pulse 1.8s ease-out infinite;
+}
+
+@keyframes rudi-dot-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rudi-dot--pulse::after {
+    animation: none;
+  }
+}
+
+/* Visually-hidden accessible label */
+.rudi-dot__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

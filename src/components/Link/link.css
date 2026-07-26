@@ -1,0 +1,53 @@
+/* Link */
+.rudi-link {
+  color: var(--rudi-component-link-color);
+  border-radius: var(--rudi-component-link-focus-radius);
+  text-decoration-color: currentColor;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    text-decoration-color 0.15s ease;
+}
+
+.rudi-link:hover {
+  color: var(--rudi-component-link-color-hover);
+}
+
+.rudi-link:focus-visible {
+  outline: var(--rudi-component-link-focus-width) solid
+    var(--rudi-component-link-focus-color);
+  outline-offset: 2px;
+}
+
+/* Variants */
+.rudi-link--subtle {
+  color: var(--rudi-component-link-subtle-color);
+}
+.rudi-link--subtle:hover {
+  color: var(--rudi-component-link-color-hover);
+}
+
+.rudi-link--standalone {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rudi-component-link-icon-gap);
+  font-weight: var(--rudi-component-link-standalone-font-weight);
+}
+
+/* Underline behavior */
+.rudi-link--underline-always {
+  text-decoration-line: underline;
+}
+.rudi-link--underline-none {
+  text-decoration-line: none;
+}
+.rudi-link--underline-hover {
+  text-decoration-line: none;
+}
+.rudi-link--underline-hover:hover {
+  text-decoration-line: underline;
+}
+
+.rudi-link__external-icon {
+  margin-inline-start: var(--rudi-component-link-icon-gap);
+}

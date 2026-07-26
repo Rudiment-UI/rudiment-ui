@@ -1,0 +1,56 @@
+/* Image — framed, aspect-ratio-aware media */
+.rudi-image {
+  position: relative;
+  display: block;
+  inline-size: 100%;
+  overflow: hidden;
+  background-color: var(--rudi-component-image-placeholder-bg);
+}
+
+.rudi-image__img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.rudi-image__img--cover {
+  object-fit: cover;
+}
+.rudi-image__img--contain {
+  object-fit: contain;
+}
+
+/* When a frame has a fixed aspect ratio the image fills it; otherwise it
+   flows at its natural height. */
+.rudi-image[style*='aspect-ratio'] .rudi-image__img {
+  position: absolute;
+  inset: 0;
+}
+
+.rudi-image__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Interactive overlay children (buttons, links) opt back into pointer events */
+.rudi-image__overlay :where(button, a, input, [role='button']) {
+  pointer-events: auto;
+}
+
+/* Radius */
+.rudi-image--radius-none {
+  border-radius: var(--rudi-radius-none);
+}
+.rudi-image--radius-sm {
+  border-radius: var(--rudi-radius-sm);
+}
+.rudi-image--radius-md {
+  border-radius: var(--rudi-radius-md);
+}
+.rudi-image--radius-lg {
+  border-radius: var(--rudi-radius-lg);
+}
+.rudi-image--radius-full {
+  border-radius: var(--rudi-radius-full);
+}

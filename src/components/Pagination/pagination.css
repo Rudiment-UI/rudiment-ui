@@ -1,0 +1,62 @@
+/* Pagination */
+.rudi-pagination__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--rudi-component-pagination-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rudi-pagination__page,
+.rudi-pagination__control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: var(--rudi-component-pagination-size);
+  block-size: var(--rudi-component-pagination-size);
+  padding-inline: var(--rudi-component-pagination-padding-x);
+  border: 1px solid transparent;
+  border-radius: var(--rudi-component-pagination-radius);
+  background: none;
+  color: var(--rudi-component-pagination-color);
+  font-size: var(--rudi-component-pagination-font-size);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.rudi-pagination__page:hover:not(.rudi-pagination__page--active),
+.rudi-pagination__control:hover:not(:disabled) {
+  background-color: var(--rudi-component-pagination-hover-bg);
+}
+
+.rudi-pagination__page:focus-visible,
+.rudi-pagination__control:focus-visible {
+  outline: 2px solid var(--rudi-color-border-focus);
+  outline-offset: 2px;
+}
+
+.rudi-pagination__page--active {
+  background-color: var(--rudi-component-pagination-active-bg);
+  color: var(--rudi-component-pagination-active-color);
+  border-color: var(--rudi-component-pagination-active-bg);
+  cursor: default;
+}
+
+.rudi-pagination__control:disabled {
+  color: var(--rudi-component-pagination-disabled-color);
+  cursor: not-allowed;
+}
+
+.rudi-pagination__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: var(--rudi-component-pagination-size);
+  block-size: var(--rudi-component-pagination-size);
+  color: var(--rudi-component-pagination-color);
+}
