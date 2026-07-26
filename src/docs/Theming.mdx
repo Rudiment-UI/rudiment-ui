@@ -257,9 +257,9 @@ The same pattern used for dark mode extends to any number of themes. Here's how 
 
 ## Built-in themes
 
-### Modifier themes: Roomy and Soft
+### Modifier themes: Roomy, Soft, and Compressed
 
-Two themes soften the default: they warm the palette, swap in a friendlier typeface, and adjust the primitive `spacing`/`radius` scales, so the effect cascades to every component that references them, no component code required. Each ships light and dark, and every brand/text pairing meets WCAG AA contrast.
+Three themes adjust the primitive `spacing`/`radius` scales (and, for Roomy and Soft, warm the palette and swap in a friendlier typeface), so the effect cascades to every component that references them, no component code required. Each ships light and dark, and every brand/text pairing meets WCAG AA contrast.
 
 | Theme | Palette + type | Shape |
 |---|---|---|
@@ -267,16 +267,16 @@ Two themes soften the default: they warm the palette, swap in a friendlier typef
 | **Soft** (`soft`, `soft-dark`) | Soft warm neutrals, a soft periwinkle brand accent, and Nunito (rounded, friendly) | Enlarged `radius` scale plus full-pill buttons: large rounded cards, inputs, and dialogs; spacing unchanged |
 | **Compressed** (`compressed`, `compressed-dark`) | Default palette and typeface (unchanged) | Very tight `spacing` scale and very small `radius` scale: dense, near-square components |
 
-The web fonts (Nunito, Rubik) load through `.storybook/preview-head.html`; in a production app, self-host or link them. Both themes redefine the neutral ramp and add a small brand-accent ramp, while base status colors (red/green/amber) and layout tokens cascade from `:root`.
+These themes name web fonts (Rubik, Nunito) in their tokens, but Rudiment UI does not bundle them — you load them yourself. `.storybook/preview-head.html` ships a ready-to-use Google Fonts `<link>` for all of the themes' typefaces (currently commented out); uncomment it to preview the fonts in Storybook, and in a production app self-host or link the fonts your active themes reference. Until the fonts are loaded, text falls back to the system sans-serif. Roomy and Soft redefine the neutral ramp and add a small brand-accent ramp, while base status colors (red/green/amber) and layout tokens cascade from `:root`; Compressed leaves the palette and typeface untouched.
 
 ```html
 <html data-theme="roomy">
 <html data-theme="soft-dark">
 ```
 
-These themes work because component padding, gaps, and radii resolve through `var(--rudi-spacing-*)` and `var(--rudi-radius-*)`, and the layout primitives read their default spacing from `--rudi-layout-*` tokens that trace back to the same scale. A modifier theme redefines only those scales and re-emits the tokens that reference them; colors fall through to `:root` (light) or the dark palette (dark). Because they touch only spacing and radius, Roomy and Soft compose with any brand recolor you layer on top.
+These themes work because component padding, gaps, and radii resolve through `var(--rudi-spacing-*)` and `var(--rudi-radius-*)`, and the layout primitives read their default spacing from `--rudi-layout-*` tokens that trace back to the same scale. A modifier theme redefines those scales and re-emits every token that references them. **Compressed** stops there — it changes only spacing and radius, so its palette and typeface fall through to `:root` (light) or the dark palette. Because it touches only spacing and radius, Compressed composes with any brand recolor you layer on top. **Roomy** and **Soft** go further: alongside the scale changes they also redefine the neutral ramp, add a brand-accent ramp, and swap the sans typeface, while base status colors (red/green/amber) still cascade from `:root`.
 
-The default `light` and `dark` themes use **IBM Plex Sans** (with IBM Plex Mono for figures) and the precise, small-radius scale that gives them an IBM-style-guide feel. Roomy and Soft inherit that typeface and adjust the geometry around it.
+The default `light` and `dark` themes use **IBM Plex Sans** (with IBM Plex Mono for figures) and the precise, small-radius scale that gives them an IBM-style-guide feel. Roomy swaps in **Rubik** and Soft swaps in **Nunito**, each adjusting the geometry around its own typeface; Compressed keeps IBM Plex and only tightens the scales.
 
 ## Overriding tokens without modifying source files
 
@@ -312,7 +312,7 @@ This changes only the button without affecting other components that use the bra
 
 ## Previewing themes
 
-Use the theme picker in the Storybook toolbar to switch between the built-in themes (Default plus the Roomy and Soft modifier themes, each in light and dark) while developing. Every story renders inside a themed wrapper, so you can verify token changes across all themes without leaving the browser.
+Use the theme picker in the Storybook toolbar to switch between the built-in themes (Default plus the Roomy, Soft, and Compressed modifier themes, each in light and dark) while developing. Every story renders inside a themed wrapper, so you can verify token changes across all themes without leaving the browser.
 
 ## Advanced theming
 

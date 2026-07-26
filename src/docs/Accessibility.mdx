@@ -6,7 +6,7 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 ## Built on React Aria
 
-Every interactive component in Rudiment UI uses Adobe's [React Aria](https://react-spectrum.adobe.com/react-aria/) library. React Aria is one of the most well-tested accessibility foundations available for React, handling the complex parts of accessible UI so you don't have to.
+Nearly every interactive component in Rudiment UI is built on Adobe's [React Aria](https://react-spectrum.adobe.com/react-aria/) library. React Aria is one of the most well-tested accessibility foundations available for React, handling the complex parts of accessible UI so you don't have to. A few simpler components (such as Breadcrumb and Pagination) are composed from native HTML elements — `<nav>`, `<a>`, and `<button>` — which are accessible by default.
 
 ### What React Aria provides automatically
 
@@ -30,6 +30,8 @@ Every component can be operated without a mouse. Here's what keyboard users can 
 | **Tooltip**             | Appears on focus, `Escape` to dismiss                                      |
 | **Tag**                 | `Space` or `Enter` to activate (when interactive), `Space` or `Enter` on close button to dismiss |
 | **NavItem**             | `Space` or `Enter` to activate (link or button), `Tab` to move between items |
+| **Breadcrumb**          | `Tab` to move between links, `Enter` to activate (the current page is plain text, marked `aria-current="page"`) |
+| **Pagination**          | `Tab` to move between page controls, `Space` or `Enter` to activate (the active page is marked `aria-current="page"`) |
 | **ProgressBar**         | Not interactive — reports progress via `aria-valuenow` to assistive technology |
 
 ## Focus indicators
