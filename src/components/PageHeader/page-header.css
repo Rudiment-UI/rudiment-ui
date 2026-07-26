@@ -1,0 +1,26 @@
+/* PageHeader */
+.rudi-page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--rudi-component-page-header-gap);
+}
+
+.rudi-page-header__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rudi-component-page-header-title-gap);
+  min-inline-size: 0;
+}
+
+.rudi-page-header__subtitle {
+  color: var(--rudi-component-page-header-subtitle-color);
+}
+
+.rudi-page-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--rudi-spacing-2);
+  flex-shrink: 0;
+}

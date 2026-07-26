@@ -1,0 +1,91 @@
+/* AppShell */
+.rudi-app-shell {
+  display: flex;
+  align-items: flex-start;
+  min-block-size: 100vh;
+  background-color: var(--rudi-component-app-shell-bg);
+  color: var(--rudi-color-text-default);
+}
+
+/* Sidebar */
+.rudi-app-shell__sidebar {
+  --sidebar-width: var(--rudi-component-app-shell-sidebar-width);
+  position: sticky;
+  inset-block-start: 0;
+  z-index: var(--rudi-component-app-shell-sidebar-z);
+  flex-shrink: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--rudi-component-app-shell-sidebar-gap);
+  inline-size: var(--sidebar-width);
+  block-size: 100vh;
+  padding: var(--rudi-component-app-shell-sidebar-padding);
+  background-color: var(--rudi-component-app-shell-sidebar-bg);
+  border-inline-end: 1px solid var(--rudi-component-app-shell-sidebar-border);
+  overflow-y: auto;
+}
+
+/* Backdrop — only shown for the mobile drawer (see media query) */
+.rudi-app-shell__backdrop {
+  all: unset;
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: var(--rudi-component-app-shell-backdrop-z);
+  background-color: var(--rudi-component-app-shell-backdrop-bg);
+  cursor: pointer;
+}
+
+/* Content column */
+.rudi-app-shell__content {
+  flex: 1;
+  min-inline-size: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main scroll region */
+.rudi-app-shell__main {
+  --app-shell-main-max-width: var(--rudi-component-app-shell-main-max-width);
+  --app-shell-main-padding: var(--rudi-component-app-shell-main-padding);
+  flex: 1;
+  padding: var(--app-shell-main-padding);
+}
+
+.rudi-app-shell__main-inner {
+  max-inline-size: var(--app-shell-main-max-width);
+  margin-inline: auto;
+}
+
+/* Hamburger — hidden on desktop, revealed with the drawer below the breakpoint */
+.rudi-app-shell__menu {
+  display: none;
+}
+
+/* Responsive drawer. The 900px breakpoint is a literal because CSS media
+   queries cannot read custom properties. */
+@media (max-width: 900px) {
+  .rudi-app-shell__sidebar {
+    position: fixed;
+    inset-block: 0;
+    inset-inline-start: 0;
+    block-size: 100%;
+    transform: translateX(-100%);
+    box-shadow: var(--rudi-component-app-shell-drawer-shadow);
+    transition: transform var(--rudi-motion-duration-base)
+      var(--rudi-motion-easing-standard);
+  }
+
+  .rudi-app-shell--sidebar-open .rudi-app-shell__sidebar {
+    transform: translateX(0);
+  }
+
+  .rudi-app-shell--sidebar-open .rudi-app-shell__backdrop {
+    display: block;
+  }
+
+  .rudi-app-shell__menu {
+    display: inline-flex;
+  }
+}
