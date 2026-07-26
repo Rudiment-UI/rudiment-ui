@@ -37,9 +37,10 @@ export function RudiRating({
   label,
   className,
 }: RudiRatingProps) {
-  const stars = Array.from({ length: max }, (_, i) => starState(i, value))
   const interactive = typeof onChange === 'function'
-  const accessibleLabel = label ?? `Rated ${value} out of ${max}`
+  const displayValue = interactive ? Math.round(value) : value
+  const stars = Array.from({ length: max }, (_, i) => starState(i, displayValue))
+  const accessibleLabel = label ?? `Rated ${displayValue} out of ${max}`
 
   const icon = (state: StarState) => (
     <RudiIcon
@@ -51,7 +52,7 @@ export function RudiRating({
 
   const text = (showValue || count != null) && (
     <span className="rudi-rating__text">
-      {showValue && value.toFixed(1)}
+      {showValue && displayValue.toFixed(1)}
       {count != null && ` (${count})`}
     </span>
   )
