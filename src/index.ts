@@ -24,6 +24,9 @@ export type { RudiCheckboxGroupProps } from './components/Checkbox/CheckboxGroup
 export { RudiSelect } from './components/Select/Select'
 export type { RudiSelectProps } from './components/Select/Select'
 
+export { RudiOption } from './components/Select/Option'
+export type { RudiOptionProps } from './components/Select/Option'
+
 export { RudiMenuTrigger } from './components/Menu/MenuTrigger'
 export type { RudiMenuTriggerProps } from './components/Menu/MenuTrigger'
 
@@ -36,10 +39,16 @@ export type { RudiMenuItemProps } from './components/Menu/MenuItem'
 export { RudiMenuSection } from './components/Menu/MenuSection'
 export type { RudiMenuSectionProps } from './components/Menu/MenuSection'
 
+export { RudiMenuSeparator } from './components/Menu/MenuSeparator'
+export type { RudiMenuSeparatorProps } from './components/Menu/MenuSeparator'
+
 export { RudiKeyboard } from './components/Menu/Keyboard'
 export type { RudiKeyboardProps } from './components/Menu/Keyboard'
 
-export { Separator as RudiSeparator, SubmenuTrigger as RudiSubmenuTrigger } from 'react-aria-components'
+export { RudiSubmenuTrigger } from './components/Menu/SubmenuTrigger'
+export type { RudiSubmenuTriggerProps } from './components/Menu/SubmenuTrigger'
+
+export { Separator as RudiSeparator } from 'react-aria-components'
 
 export { RudiDialog } from './components/Dialog/Dialog'
 export type { RudiDialogProps } from './components/Dialog/Dialog'
@@ -113,32 +122,6 @@ export type { RudiKanbanColumnProps } from './components/Kanban/KanbanColumn'
 
 export { RudiKanbanCard } from './components/Kanban/KanbanCard'
 export type { RudiKanbanCardProps } from './components/Kanban/KanbanCard'
-
-export { RudiAppShell } from './components/AppShell/AppShell'
-export type {
-  RudiAppShellProps,
-  RudiAppShellSidebarProps,
-  RudiAppShellContentProps,
-  RudiAppShellMainProps,
-  RudiAppShellMenuButtonProps,
-} from './components/AppShell/AppShell'
-
-export { RudiTopBar } from './components/TopBar/TopBar'
-export type { RudiTopBarProps } from './components/TopBar/TopBar'
-
-export { RudiFooter } from './components/Footer/Footer'
-export type {
-  RudiFooterProps,
-  RudiFooterColumnsProps,
-  RudiFooterColumnProps,
-  RudiFooterBottomBarProps,
-} from './components/Footer/Footer'
-
-export { RudiPageHeader } from './components/PageHeader/PageHeader'
-export type { RudiPageHeaderProps } from './components/PageHeader/PageHeader'
-
-export { RudiSectionHeader } from './components/SectionHeader/SectionHeader'
-export type { RudiSectionHeaderProps } from './components/SectionHeader/SectionHeader'
 
 // Typography
 export { RudiHeading } from './typography/Heading/Heading'

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { RudiSubmenuTrigger } from './SubmenuTrigger'
 import { RudiMenuTrigger, type RudiMenuTriggerProps } from './MenuTrigger'
 import { RudiMenu } from './Menu'
 import { RudiMenuItem } from './MenuItem'
 import { RudiMenuSection } from './MenuSection'
-import { RudiKeyboard } from './Keyboard'
-import { Separator, SubmenuTrigger, Text } from 'react-aria-components'
+import { RudiMenuSeparator } from './MenuSeparator'
 import { RudiButton } from '@/components/Button/Button'
 import { RudiIcon } from '@/components/Icon/Icon'
 
@@ -44,25 +44,10 @@ export const WithIcons: Story = {
     <RudiMenuTrigger>
       <RudiButton variant="secondary">Actions</RudiButton>
       <RudiMenu onAction={(key) => alert(key)}>
-        <RudiMenuItem id="open" textValue="Open">
-          <RudiIcon
-            icon="lucide:folder-open"
-            className="rudi-menu__item-icon"
-          />
-          <Text slot="label">Open</Text>
-        </RudiMenuItem>
-        <RudiMenuItem id="rename" textValue="Rename">
-          <RudiIcon icon="lucide:pencil" className="rudi-menu__item-icon" />
-          <Text slot="label">Rename</Text>
-        </RudiMenuItem>
-        <RudiMenuItem id="duplicate" textValue="Duplicate">
-          <RudiIcon icon="lucide:copy" className="rudi-menu__item-icon" />
-          <Text slot="label">Duplicate</Text>
-        </RudiMenuItem>
-        <RudiMenuItem id="delete" isDestructive textValue="Delete">
-          <RudiIcon icon="lucide:trash-2" className="rudi-menu__item-icon" />
-          <Text slot="label">Delete</Text>
-        </RudiMenuItem>
+        <RudiMenuItem id="open" icon="lucide:folder-open" label="Open" />
+        <RudiMenuItem id="rename" icon="lucide:pencil" label="Rename" />
+        <RudiMenuItem id="duplicate" icon="lucide:copy" label="Duplicate" />
+        <RudiMenuItem id="delete" icon="lucide:trash-2" label="Delete" isDestructive />
       </RudiMenu>
     </RudiMenuTrigger>
   ),
@@ -73,18 +58,9 @@ export const WithKeyboardShortcuts: Story = {
     <RudiMenuTrigger>
       <RudiButton variant="secondary">Edit</RudiButton>
       <RudiMenu onAction={(key) => alert(key)}>
-        <RudiMenuItem id="cut" textValue="Cut">
-          <Text slot="label">Cut</Text>
-          <RudiKeyboard>⌘X</RudiKeyboard>
-        </RudiMenuItem>
-        <RudiMenuItem id="copy" textValue="Copy">
-          <Text slot="label">Copy</Text>
-          <RudiKeyboard>⌘C</RudiKeyboard>
-        </RudiMenuItem>
-        <RudiMenuItem id="paste" textValue="Paste">
-          <Text slot="label">Paste</Text>
-          <RudiKeyboard>⌘V</RudiKeyboard>
-        </RudiMenuItem>
+        <RudiMenuItem id="cut" label="Cut" shortcut="⌘X" />
+        <RudiMenuItem id="copy" label="Copy" shortcut="⌘C" />
+        <RudiMenuItem id="paste" label="Paste" shortcut="⌘V" />
       </RudiMenu>
     </RudiMenuTrigger>
   ),
@@ -95,51 +71,24 @@ export const WithDescriptions: Story = {
     <RudiMenuTrigger>
       <RudiButton variant="secondary">Account</RudiButton>
       <RudiMenu onAction={(key) => alert(key)}>
-        <RudiMenuItem id="profile" textValue="Profile">
-          <RudiIcon icon="lucide:user" className="rudi-menu__item-icon" />
-          <div className="rudi-menu__item-content">
-            <Text slot="label" className="rudi-menu__item-label">
-              Profile
-            </Text>
-            <Text
-              slot="description"
-              className="rudi-menu__item-description"
-            >
-              View and edit your profile
-            </Text>
-          </div>
-        </RudiMenuItem>
-        <RudiMenuItem id="settings" textValue="Settings">
-          <RudiIcon icon="lucide:settings" className="rudi-menu__item-icon" />
-          <div className="rudi-menu__item-content">
-            <Text slot="label" className="rudi-menu__item-label">
-              Settings
-            </Text>
-            <Text
-              slot="description"
-              className="rudi-menu__item-description"
-            >
-              Manage your preferences
-            </Text>
-          </div>
-        </RudiMenuItem>
-        <RudiMenuItem id="billing" textValue="Billing">
-          <RudiIcon
-            icon="lucide:credit-card"
-            className="rudi-menu__item-icon"
-          />
-          <div className="rudi-menu__item-content">
-            <Text slot="label" className="rudi-menu__item-label">
-              Billing
-            </Text>
-            <Text
-              slot="description"
-              className="rudi-menu__item-description"
-            >
-              Manage payment methods
-            </Text>
-          </div>
-        </RudiMenuItem>
+        <RudiMenuItem
+          id="profile"
+          icon="lucide:user"
+          label="Profile"
+          description="View and edit your profile"
+        />
+        <RudiMenuItem
+          id="settings"
+          icon="lucide:settings"
+          label="Settings"
+          description="Manage your preferences"
+        />
+        <RudiMenuItem
+          id="billing"
+          icon="lucide:credit-card"
+          label="Billing"
+          description="Manage payment methods"
+        />
       </RudiMenu>
     </RudiMenuTrigger>
   ),
@@ -151,40 +100,14 @@ export const WithSections: Story = {
       <RudiButton variant="secondary">File</RudiButton>
       <RudiMenu onAction={(key) => alert(key)}>
         <RudiMenuSection title="File">
-          <RudiMenuItem id="new" textValue="New file">
-            <RudiIcon
-              icon="lucide:file-plus"
-              className="rudi-menu__item-icon"
-            />
-            <Text slot="label">New file</Text>
-            <RudiKeyboard>⌘N</RudiKeyboard>
-          </RudiMenuItem>
-          <RudiMenuItem id="open" textValue="Open">
-            <RudiIcon
-              icon="lucide:folder-open"
-              className="rudi-menu__item-icon"
-            />
-            <Text slot="label">Open</Text>
-            <RudiKeyboard>⌘O</RudiKeyboard>
-          </RudiMenuItem>
-          <RudiMenuItem id="save" textValue="Save">
-            <RudiIcon icon="lucide:save" className="rudi-menu__item-icon" />
-            <Text slot="label">Save</Text>
-            <RudiKeyboard>⌘S</RudiKeyboard>
-          </RudiMenuItem>
+          <RudiMenuItem id="new" icon="lucide:file-plus" label="New file" shortcut="⌘N" />
+          <RudiMenuItem id="open" icon="lucide:folder-open" label="Open" shortcut="⌘O" />
+          <RudiMenuItem id="save" icon="lucide:save" label="Save" shortcut="⌘S" />
         </RudiMenuSection>
-        <Separator className="rudi-menu__separator" />
+        <RudiMenuSeparator />
         <RudiMenuSection title="Edit">
-          <RudiMenuItem id="undo" textValue="Undo">
-            <RudiIcon icon="lucide:undo" className="rudi-menu__item-icon" />
-            <Text slot="label">Undo</Text>
-            <RudiKeyboard>⌘Z</RudiKeyboard>
-          </RudiMenuItem>
-          <RudiMenuItem id="redo" textValue="Redo">
-            <RudiIcon icon="lucide:redo" className="rudi-menu__item-icon" />
-            <Text slot="label">Redo</Text>
-            <RudiKeyboard>⇧⌘Z</RudiKeyboard>
-          </RudiMenuItem>
+          <RudiMenuItem id="undo" icon="lucide:undo" label="Undo" shortcut="⌘Z" />
+          <RudiMenuItem id="redo" icon="lucide:redo" label="Redo" shortcut="⇧⌘Z" />
         </RudiMenuSection>
       </RudiMenu>
     </RudiMenuTrigger>
@@ -223,32 +146,14 @@ export const WithSubmenu: Story = {
     <RudiMenuTrigger>
       <RudiButton variant="secondary">Actions</RudiButton>
       <RudiMenu onAction={(key) => alert(key)}>
-        <RudiMenuItem id="open" textValue="Open">
-          <RudiIcon
-            icon="lucide:folder-open"
-            className="rudi-menu__item-icon"
-          />
-          <Text slot="label">Open</Text>
-        </RudiMenuItem>
-        <SubmenuTrigger>
-          <RudiMenuItem textValue="Share">
-            <RudiIcon icon="lucide:share" className="rudi-menu__item-icon" />
-            <Text slot="label">Share</Text>
-          </RudiMenuItem>
+        <RudiMenuItem id="open" icon="lucide:folder-open" label="Open" />
+        <RudiSubmenuTrigger>
+          <RudiMenuItem icon="lucide:share" label="Share" />
           <RudiMenu>
-            <RudiMenuItem id="email" textValue="Email">
-              <RudiIcon icon="lucide:mail" className="rudi-menu__item-icon" />
-              <Text slot="label">Email</Text>
-            </RudiMenuItem>
-            <RudiMenuItem id="sms" textValue="SMS">
-              <RudiIcon
-                icon="lucide:smartphone"
-                className="rudi-menu__item-icon"
-              />
-              <Text slot="label">SMS</Text>
-            </RudiMenuItem>
+            <RudiMenuItem id="email" icon="lucide:mail" label="Email" />
+            <RudiMenuItem id="sms" icon="lucide:smartphone" label="SMS" />
           </RudiMenu>
-        </SubmenuTrigger>
+        </RudiSubmenuTrigger>
       </RudiMenu>
     </RudiMenuTrigger>
   ),
@@ -259,18 +164,9 @@ export const DisabledItems: Story = {
     <RudiMenuTrigger>
       <RudiButton variant="secondary">Options</RudiButton>
       <RudiMenu onAction={(key) => alert(key)}>
-        <RudiMenuItem id="copy" textValue="Copy">
-          <Text slot="label">Copy</Text>
-          <RudiKeyboard>⌘C</RudiKeyboard>
-        </RudiMenuItem>
-        <RudiMenuItem id="paste" isDisabled textValue="Paste">
-          <Text slot="label">Paste</Text>
-          <RudiKeyboard>⌘V</RudiKeyboard>
-        </RudiMenuItem>
-        <RudiMenuItem id="cut" textValue="Cut">
-          <Text slot="label">Cut</Text>
-          <RudiKeyboard>⌘X</RudiKeyboard>
-        </RudiMenuItem>
+        <RudiMenuItem id="copy" label="Copy" shortcut="⌘C" />
+        <RudiMenuItem id="paste" label="Paste" shortcut="⌘V" isDisabled />
+        <RudiMenuItem id="cut" label="Cut" shortcut="⌘X" />
       </RudiMenu>
     </RudiMenuTrigger>
   ),
@@ -281,18 +177,14 @@ export const DestructiveItems: Story = {
     <RudiMenuTrigger>
       <RudiButton variant="secondary">Manage</RudiButton>
       <RudiMenu onAction={(key) => alert(key)}>
-        <RudiMenuItem id="archive" textValue="Archive">
-          <RudiIcon icon="lucide:archive" className="rudi-menu__item-icon" />
-          <Text slot="label">Archive</Text>
-        </RudiMenuItem>
-        <RudiMenuItem id="move" textValue="Move to folder">
-          <RudiIcon icon="lucide:folder" className="rudi-menu__item-icon" />
-          <Text slot="label">Move to folder</Text>
-        </RudiMenuItem>
-        <RudiMenuItem id="delete" isDestructive textValue="Delete permanently">
-          <RudiIcon icon="lucide:trash-2" className="rudi-menu__item-icon" />
-          <Text slot="label">Delete permanently</Text>
-        </RudiMenuItem>
+        <RudiMenuItem id="archive" icon="lucide:archive" label="Archive" />
+        <RudiMenuItem id="move" icon="lucide:folder" label="Move to folder" />
+        <RudiMenuItem
+          id="delete"
+          icon="lucide:trash-2"
+          label="Delete permanently"
+          isDestructive
+        />
       </RudiMenu>
     </RudiMenuTrigger>
   ),
@@ -306,54 +198,40 @@ export const CompleteExample: Story = {
       </RudiButton>
       <RudiMenu>
         <RudiMenuSection>
-          <RudiMenuItem onAction={() => alert('open')} textValue="Open">
-            <RudiIcon
-              icon="lucide:folder-open"
-              className="rudi-menu__item-icon"
-            />
-            <Text slot="label">Open</Text>
-            <RudiKeyboard>⌘O</RudiKeyboard>
-          </RudiMenuItem>
-          <RudiMenuItem onAction={() => alert('rename')} textValue="Rename">
-            <RudiIcon icon="lucide:pencil" className="rudi-menu__item-icon" />
-            <Text slot="label">Rename…</Text>
-            <RudiKeyboard>⌘R</RudiKeyboard>
-          </RudiMenuItem>
-          <RudiMenuItem onAction={() => alert('duplicate')} textValue="Duplicate">
-            <RudiIcon icon="lucide:copy" className="rudi-menu__item-icon" />
-            <Text slot="label">Duplicate</Text>
-            <RudiKeyboard>⌘D</RudiKeyboard>
-          </RudiMenuItem>
+          <RudiMenuItem
+            onAction={() => alert('open')}
+            icon="lucide:folder-open"
+            label="Open"
+            shortcut="⌘O"
+          />
+          <RudiMenuItem
+            onAction={() => alert('rename')}
+            icon="lucide:pencil"
+            label="Rename…"
+            shortcut="⌘R"
+          />
+          <RudiMenuItem
+            onAction={() => alert('duplicate')}
+            icon="lucide:copy"
+            label="Duplicate"
+            shortcut="⌘D"
+          />
           <RudiMenuItem
             onAction={() => alert('delete')}
+            icon="lucide:trash-2"
+            label="Delete…"
+            shortcut="⌘⌫"
             isDestructive
-            textValue="Delete"
-          >
-            <RudiIcon icon="lucide:trash-2" className="rudi-menu__item-icon" />
-            <Text slot="label">Delete…</Text>
-            <RudiKeyboard>⌘⌫</RudiKeyboard>
-          </RudiMenuItem>
-          <SubmenuTrigger>
-            <RudiMenuItem textValue="Share">
-              <RudiIcon icon="lucide:share" className="rudi-menu__item-icon" />
-              <Text slot="label">Share</Text>
-            </RudiMenuItem>
+          />
+          <RudiSubmenuTrigger>
+            <RudiMenuItem icon="lucide:share" label="Share" />
             <RudiMenu>
-              <RudiMenuItem id="email" textValue="Email">
-                <RudiIcon icon="lucide:mail" className="rudi-menu__item-icon" />
-                <Text slot="label">Email</Text>
-              </RudiMenuItem>
-              <RudiMenuItem id="sms" textValue="SMS">
-                <RudiIcon
-                  icon="lucide:smartphone"
-                  className="rudi-menu__item-icon"
-                />
-                <Text slot="label">SMS</Text>
-              </RudiMenuItem>
+              <RudiMenuItem id="email" icon="lucide:mail" label="Email" />
+              <RudiMenuItem id="sms" icon="lucide:smartphone" label="SMS" />
             </RudiMenu>
-          </SubmenuTrigger>
+          </RudiSubmenuTrigger>
         </RudiMenuSection>
-        <Separator className="rudi-menu__separator" />
+        <RudiMenuSeparator />
         <RudiMenuSection selectionMode="multiple" defaultSelectedKeys={['files']}>
           <RudiMenuItem id="files">Show files</RudiMenuItem>
           <RudiMenuItem id="folders">Show folders</RudiMenuItem>

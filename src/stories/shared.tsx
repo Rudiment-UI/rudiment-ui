@@ -17,9 +17,7 @@ import { RudiNavItem } from '../components/NavItem/NavItem'
 import { RudiMenuTrigger } from '../components/Menu/MenuTrigger'
 import { RudiMenu } from '../components/Menu/Menu'
 import { RudiMenuItem } from '../components/Menu/MenuItem'
-import { RudiKeyboard } from '../components/Menu/Keyboard'
-import { Separator } from 'react-aria-components'
-import { Text as AriaText } from 'react-aria-components'
+import { RudiMenuSeparator } from '../components/Menu/MenuSeparator'
 import { RadioGroupContext } from '../components/RadioGroup/RadioGroup'
 import '../components/RadioGroup/radio-group.css'
 
@@ -75,24 +73,11 @@ export function AppHeader() {
                 <RudiAvatar name="Jane Smith" size="sm" status="success" />
               </RudiButton>
               <RudiMenu onAction={(key) => alert(key)}>
-                <RudiMenuItem id="profile" textValue="Profile">
-                  <Icon icon="lucide:user" className="rudi-menu__item-icon" />
-                  <AriaText slot="label">Profile</AriaText>
-                  <RudiKeyboard>⌘P</RudiKeyboard>
-                </RudiMenuItem>
-                <RudiMenuItem id="settings" textValue="Settings">
-                  <Icon icon="lucide:settings" className="rudi-menu__item-icon" />
-                  <AriaText slot="label">Settings</AriaText>
-                </RudiMenuItem>
-                <RudiMenuItem id="billing" textValue="Billing">
-                  <Icon icon="lucide:credit-card" className="rudi-menu__item-icon" />
-                  <AriaText slot="label">Billing</AriaText>
-                </RudiMenuItem>
-                <Separator className="rudi-menu__separator" />
-                <RudiMenuItem id="sign-out" textValue="Sign out" isDestructive>
-                  <Icon icon="lucide:log-out" className="rudi-menu__item-icon" />
-                  <AriaText slot="label">Sign out</AriaText>
-                </RudiMenuItem>
+                <RudiMenuItem id="profile" icon="lucide:user" label="Profile" shortcut="⌘P" />
+                <RudiMenuItem id="settings" icon="lucide:settings" label="Settings" />
+                <RudiMenuItem id="billing" icon="lucide:credit-card" label="Billing" />
+                <RudiMenuSeparator />
+                <RudiMenuItem id="sign-out" icon="lucide:log-out" label="Sign out" isDestructive />
               </RudiMenu>
             </RudiMenuTrigger>
           </RudiCluster>
