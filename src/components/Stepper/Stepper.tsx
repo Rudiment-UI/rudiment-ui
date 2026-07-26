@@ -49,7 +49,7 @@ export function RudiStepper({
           i < steps.length - 1 && (steps[i + 1].status ?? 'upcoming') !== 'upcoming'
         return (
           <li
-            key={step.label}
+            key={`${step.label}-${i}`}
             className={cn('rudi-stepper__step', `rudi-stepper__step--${status}`)}
             aria-current={status === 'current' ? 'step' : undefined}
           >
