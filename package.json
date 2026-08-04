@@ -1,7 +1,7 @@
 {
   "name": "rudiment-ui",
-  "version": "0.2.0",
-  "description": "Accessible React component library built on React Aria, with layout primitives, charts, and a three-tier design token architecture supporting six built-in themes.",
+  "version": "0.3.0",
+  "description": "Accessible React component library built on React Aria, with layout primitives, charts, and a three-tier design token architecture supporting eight built-in themes.",
   "main": "dist/index.js",
   "scripts": {
     "dev": "storybook dev -p 6006",
