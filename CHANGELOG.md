@@ -7,6 +7,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-08-04
+
+### Changed
+
+- **BREAKING — Themes replaced:** the `teal` / `teal-dark` and `cyberpunk` / `cyberpunk-dark` themes were removed and replaced by three modifier themes — `roomy` / `roomy-dark`, `soft` / `soft-dark`, and `compressed` / `compressed-dark` — bringing the total to eight (default and dark plus the three modifiers). Consumers setting `data-theme="teal"` or `data-theme="cyberpunk"` must switch to one of the new names.
+- **BREAKING — Default typefaces changed:** the `font.family.sans` primitive moved from `Inter, system-ui, sans-serif` to `'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif`, and `font.family.mono` from `JetBrains Mono, monospace` to `'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace`. Roomy references Rubik and Soft references Nunito. No fonts are bundled — load the ones your active themes use, or text falls back to the system sans-serif.
+- **BREAKING — `RudiSubmenuTrigger` is now a first-party wrapper** (`./components/Menu/SubmenuTrigger`) rather than an alias re-export of React Aria's `SubmenuTrigger`, and it now has its own `RudiSubmenuTriggerProps` type. Usage is unchanged; the identity of the exported component is not.
+- Themes are pure token overlays again — every `[data-theme='teal']` / `[data-theme='cyberpunk']` override was deleted from the component stylesheets (Alert, Button, Card, Checkbox, IconButton, Input, Menu, NavItem, RadioGroup, Select, Switch), so per-theme appearance now comes only from re-emitted custom properties.
+- `RudiProgressBar` clamps its computed percentage to 0–100 and guards a zero-width range, so out-of-bounds `value` or `minValue === maxValue` no longer produces an overflowing or `NaN` fill.
+- `RudiBarChart` and `RudiLineChart` accept `Array<Record<string, string | number | null>>` for `data`, so a series can carry gaps (e.g. a burndown line that stops mid-sprint) and strongly typed row objects pass without a cast.
+
+### Added
+
+- **UI Components:** Breadcrumb, Divider, Dot, Image, Link, Pagination, Rating, Stepper, Textarea
+- **Closed third-party API leaks:** `RudiOption` (Select) and `RudiMenuSeparator` (Menu) are now exported, so composing a Select or Menu no longer requires importing `Item` from `react-stately` or `Separator` from `react-aria-components`.
+- **Menu item content props:** `RudiMenuItem` accepts `icon`, `label`, `description`, and `shortcut` and composes the layout for you, deriving `textValue` so typeahead keeps working with non-string content.
+- **ProgressBar thresholds:** a `thresholds` prop drives the fill color from the current percentage (highest matching `at` wins); `RudiProgressBarVariant` and `RudiProgressBarThreshold` are exported.
+- **Typography props:** `RudiText` and `RudiHeading` accept `weight`, `tone`, `align`, and `noMargin`, with `RudiTypographyWeight`, `RudiTypographyTone`, and `RudiTypographyAlign` exported.
+- **Design Tokens:** component tokens for every new component (breadcrumb, divider, dot, image, link, pagination, rating, stepper, textarea) plus the internal shell components, and full token sets for the six new theme files.
+- **Example Apps:** 26 Storybook example pages across four domains (biotech marketing site, CRM, ecommerce, project management), each rendering its full source in the docs, plus `src/stories/examples/DEPARTURES.md` — a gap analysis of every place those examples had to reach outside the library.
+- **Internal shell components:** AppShell, TopBar, Footer, PageHeader, and SectionHeader back the example apps. They ship with tests and stories but are deliberately **not exported** from the package yet.
+- **Testing:** story and unit coverage for Heading and Text.
+
+### Removed
+
+- The `teal`, `teal-dark`, `cyberpunk`, and `cyberpunk-dark` themes, along with their Style Dictionary configs and token sources.
+- The ten standalone page-composition stories (App Shell, Article Page, Empty State, Footer, Header, Marketing Hero, Settings Page, Sidebar Layout, Sign-In Form, Simple Form), superseded by the four example apps.
+
 ## [0.2.0] - 2026-07-24
 
 ### Changed
