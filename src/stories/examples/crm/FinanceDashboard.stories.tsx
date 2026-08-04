@@ -74,8 +74,26 @@ const invoiceRow: CSSProperties = {
 
 const alignEnd: CSSProperties = { textAlign: 'end' }
 
-function FinanceDashboardRender() {
-  return (
+const meta = {
+  title: 'Examples/CRM/Finance Dashboard',
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        story:
+          'The finance command-center for Meridian: revenue, expenses, net margin, and outstanding accounts-receivable KPIs, an overdue-invoice alert, a revenue-vs-expenses trend, invoiced amount by status, monthly cash flow, and a scrollable table of unpaid invoices — a mobile-friendly shell built entirely from Rudiment-UI primitives and themed with design tokens.',
+      },
+    },
+  },
+} satisfies Meta
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const FinanceDashboard: Story = {
+  name: 'Finance Dashboard',
+  render: () => (
     <CrmShell active="finance">
       <RudiStack space="1.5rem">
         <PageHeader
@@ -203,27 +221,5 @@ function FinanceDashboardRender() {
         </RudiGrid>
       </RudiStack>
     </CrmShell>
-  )
-}
-
-const meta = {
-  title: 'Examples/CRM/Finance Dashboard',
-  tags: ['autodocs'],
-  parameters: {
-    layout: 'fullscreen',
-    docs: {
-      description: {
-        story:
-          'The finance command-center for Meridian: revenue, expenses, net margin, and outstanding accounts-receivable KPIs, an overdue-invoice alert, a revenue-vs-expenses trend, invoiced amount by status, monthly cash flow, and a scrollable table of unpaid invoices — a mobile-friendly shell built entirely from Rudiment-UI primitives and themed with design tokens.',
-      },
-    },
-  },
-} satisfies Meta
-
-export default meta
-type Story = StoryObj<typeof meta>
-
-export const FinanceDashboard: Story = {
-  name: 'Finance Dashboard',
-  render: () => <FinanceDashboardRender />,
+  ),
 }

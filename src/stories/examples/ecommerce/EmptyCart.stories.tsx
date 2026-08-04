@@ -22,8 +22,9 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-function EmptyCartRender() {
-  return (
+export const EmptyCart: Story = {
+  name: 'Empty Cart',
+  render: () => (
     <RudiStack space="0">
       <StoreHeader cartCount={0} />
       <RudiCenter style={{ paddingBlock: '2rem' }}>
@@ -92,10 +93,5 @@ function EmptyCartRender() {
       </RudiCenter>
       <StoreFooter />
     </RudiStack>
-  )
-}
-
-export const EmptyCart: Story = {
-  name: 'Empty Cart',
-  render: () => <EmptyCartRender />,
+  ),
 }

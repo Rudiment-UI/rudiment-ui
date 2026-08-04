@@ -52,8 +52,26 @@ const pipelineByStage = pipelineOrder.map((stage) => ({
 /** Highest-MRR accounts for the snapshot list. */
 const topCustomers = [...customers].sort((a, b) => b.mrr - a.mrr).slice(0, 5)
 
-function DashboardRender() {
-  return (
+const meta = {
+  title: 'Examples/CRM/Dashboard',
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        story:
+          'The company command-center for Meridian: revenue, recurring revenue, pipeline, and headcount KPIs, a revenue-vs-expenses trend, open pipeline by stage, a live activity feed, and the top accounts by MRR — a mobile-friendly shell built entirely from Rudiment-UI primitives and themed with design tokens.',
+      },
+    },
+  },
+} satisfies Meta
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Dashboard: Story = {
+  name: 'Dashboard',
+  render: () => (
     <CrmShell active="dashboard">
       <RudiStack space="1.5rem">
         <PageHeader
@@ -174,27 +192,5 @@ function DashboardRender() {
         </RudiGrid>
       </RudiStack>
     </CrmShell>
-  )
-}
-
-const meta = {
-  title: 'Examples/CRM/Dashboard',
-  tags: ['autodocs'],
-  parameters: {
-    layout: 'fullscreen',
-    docs: {
-      description: {
-        story:
-          'The company command-center for Meridian: revenue, recurring revenue, pipeline, and headcount KPIs, a revenue-vs-expenses trend, open pipeline by stage, a live activity feed, and the top accounts by MRR — a mobile-friendly shell built entirely from Rudiment-UI primitives and themed with design tokens.',
-      },
-    },
-  },
-} satisfies Meta
-
-export default meta
-type Story = StoryObj<typeof meta>
-
-export const Dashboard: Story = {
-  name: 'Dashboard',
-  render: () => <DashboardRender />,
+  ),
 }

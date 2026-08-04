@@ -42,8 +42,9 @@ const impactStats = [
   { value: '$2.1B', label: 'Committed R&D through 2028' },
 ]
 
-function AboutRender() {
-  return (
+export const AboutUs: Story = {
+  name: 'About Us',
+  render: () => (
     <RudiStack space="0">
       <BioHeader active="About" />
 
@@ -224,10 +225,5 @@ function AboutRender() {
 
       <BioFooter />
     </RudiStack>
-  )
-}
-
-export const AboutUs: Story = {
-  name: 'About Us',
-  render: () => <AboutRender />,
+  ),
 }

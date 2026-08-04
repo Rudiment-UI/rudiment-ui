@@ -91,8 +91,9 @@ function FilterRail() {
   )
 }
 
-function CategoryRender() {
-  return (
+export const CategoryPage: Story = {
+  name: 'Category Page',
+  render: () => (
     <RudiStack space="0">
       <StoreHeader />
       <RudiCenter style={{ paddingBlock: '2rem' }}>
@@ -186,10 +187,5 @@ function CategoryRender() {
       </RudiCenter>
       <StoreFooter />
     </RudiStack>
-  )
-}
-
-export const CategoryPage: Story = {
-  name: 'Category Page',
-  render: () => <CategoryRender />,
+  ),
 }

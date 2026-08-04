@@ -99,57 +99,6 @@ function BoardCard({ item }: { item: RudiKanbanItem }) {
   )
 }
 
-function BoardRender() {
-  const [columns, setColumns] = useState<RudiKanbanColumnData[]>(buildColumns)
-
-  const handleCardMove = (event: RudiKanbanCardMoveEvent) => {
-    setColumns((prev) => {
-      const next = prev.map((col) => ({ ...col, items: [...col.items] }))
-      const fromCol = next.find((c) => c.id === event.fromColumnId)
-      const toCol = next.find((c) => c.id === event.toColumnId)
-      if (!fromCol || !toCol) return prev
-      const [moved] = fromCol.items.splice(event.fromIndex, 1)
-      toCol.items.splice(event.toIndex, 0, moved)
-      return next
-    })
-  }
-
-  const wip = columns.find((c) => c.id === 'in-progress')?.items.length ?? 0
-
-  return (
-    <PmShell active="board">
-      <RudiStack space="1.5rem">
-        <PageHeader
-          title="Board"
-          subtitle="Drag cards between columns to update their status. Fully keyboard-accessible."
-          actions={
-            <>
-              <RudiCluster space="0.375rem" align="center">
-                {sprintAssignees.map((id) => (
-                  <AssigneeAvatar key={id} id={id} size="sm" />
-                ))}
-                <RudiText variant="caption">{sprintAssignees.length} on sprint</RudiText>
-              </RudiCluster>
-              <RudiButton variant="secondary" size="sm" iconBefore="lucide:filter">
-                Group by epic
-              </RudiButton>
-            </>
-          }
-        />
-
-        {wip > 4 && (
-          <RudiText variant="caption" style={{ color: 'var(--rudi-color-feedback-warning-text)' }}>
-            Heads up: {wip} items in progress exceeds the WIP limit of 4.
-          </RudiText>
-        )}
-
-        <div style={{ overflowX: 'auto', paddingBlockEnd: '0.5rem' }}>
-          <RudiKanbanBoard columns={columns} onCardMove={handleCardMove} renderCard={(item) => <BoardCard key={item.id} item={item} />} />
-        </div>
-      </RudiStack>
-    </PmShell>
-  )
-}
 
 const meta = {
   title: 'Examples/Project Management/Board',
@@ -170,5 +119,55 @@ type Story = StoryObj<typeof meta>
 
 export const Board: Story = {
   name: 'Board',
-  render: () => <BoardRender />,
+  render: () => {
+    const [columns, setColumns] = useState<RudiKanbanColumnData[]>(buildColumns)
+
+    const handleCardMove = (event: RudiKanbanCardMoveEvent) => {
+      setColumns((prev) => {
+        const next = prev.map((col) => ({ ...col, items: [...col.items] }))
+        const fromCol = next.find((c) => c.id === event.fromColumnId)
+        const toCol = next.find((c) => c.id === event.toColumnId)
+        if (!fromCol || !toCol) return prev
+        const [moved] = fromCol.items.splice(event.fromIndex, 1)
+        toCol.items.splice(event.toIndex, 0, moved)
+        return next
+      })
+    }
+
+    const wip = columns.find((c) => c.id === 'in-progress')?.items.length ?? 0
+
+    return (
+      <PmShell active="board">
+        <RudiStack space="1.5rem">
+          <PageHeader
+            title="Board"
+            subtitle="Drag cards between columns to update their status. Fully keyboard-accessible."
+            actions={
+              <>
+                <RudiCluster space="0.375rem" align="center">
+                  {sprintAssignees.map((id) => (
+                    <AssigneeAvatar key={id} id={id} size="sm" />
+                  ))}
+                  <RudiText variant="caption">{sprintAssignees.length} on sprint</RudiText>
+                </RudiCluster>
+                <RudiButton variant="secondary" size="sm" iconBefore="lucide:filter">
+                  Group by epic
+                </RudiButton>
+              </>
+            }
+          />
+
+          {wip > 4 && (
+            <RudiText variant="caption" style={{ color: 'var(--rudi-color-feedback-warning-text)' }}>
+              Heads up: {wip} items in progress exceeds the WIP limit of 4.
+            </RudiText>
+          )}
+
+          <div style={{ overflowX: 'auto', paddingBlockEnd: '0.5rem' }}>
+            <RudiKanbanBoard columns={columns} onCardMove={handleCardMove} renderCard={(item) => <BoardCard key={item.id} item={item} />} />
+          </div>
+        </RudiStack>
+      </PmShell>
+    )
+  },
 }

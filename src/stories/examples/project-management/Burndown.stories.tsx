@@ -49,8 +49,27 @@ function ChartLegend({ items }: { items: { label: string; color: string; dashed?
   )
 }
 
-function BurndownRender() {
-  return (
+
+const meta = {
+  title: 'Examples/Project Management/Burndown',
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        story:
+          'A sprint burndown report: ideal-versus-actual remaining points, sprint-health KPIs, a five-sprint velocity comparison, and a plain-language read-out of what the trend means.',
+      },
+    },
+  },
+} satisfies Meta
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Burndown: Story = {
+  name: 'Burndown',
+  render: () => (
     <PmShell active="burndown">
       <RudiStack space="1.5rem">
         <PageHeader
@@ -157,27 +176,5 @@ function BurndownRender() {
         </RudiGrid>
       </RudiStack>
     </PmShell>
-  )
-}
-
-const meta = {
-  title: 'Examples/Project Management/Burndown',
-  tags: ['autodocs'],
-  parameters: {
-    layout: 'fullscreen',
-    docs: {
-      description: {
-        story:
-          'A sprint burndown report: ideal-versus-actual remaining points, sprint-health KPIs, a five-sprint velocity comparison, and a plain-language read-out of what the trend means.',
-      },
-    },
-  },
-} satisfies Meta
-
-export default meta
-type Story = StoryObj<typeof meta>
-
-export const Burndown: Story = {
-  name: 'Burndown',
-  render: () => <BurndownRender />,
+  ),
 }

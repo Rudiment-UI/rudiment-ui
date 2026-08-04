@@ -46,8 +46,9 @@ const heroStats = [
   { value: '98%', label: 'On-target edits' },
 ]
 
-function LandingRender() {
-  return (
+export const LandingPage: Story = {
+  name: 'Landing Page',
+  render: () => (
     <RudiStack space="0">
       <BioHeader active="Platform" />
 
@@ -281,10 +282,5 @@ function LandingRender() {
 
       <BioFooter />
     </RudiStack>
-  )
-}
-
-export const LandingPage: Story = {
-  name: 'Landing Page',
-  render: () => <LandingRender />,
+  ),
 }

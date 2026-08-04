@@ -42,109 +42,6 @@ const deptOptions = [
   })),
 ]
 
-function EmployeesRender() {
-  const [dept, setDept] = useState<string>(ALL)
-
-  const filtered = dept === ALL ? employees : employees.filter((e) => e.departmentId === dept)
-
-  return (
-    <CrmShell active="employees">
-      <RudiStack space="1.5rem">
-        <PageHeader
-          title="Employees"
-          subtitle="Directory · Meridian · the people behind the numbers"
-          actions={
-            <>
-              <RudiButton variant="secondary" size="sm" iconBefore="lucide:download">
-                Export
-              </RudiButton>
-              <RudiButton size="sm" iconBefore="lucide:user-plus">
-                Invite
-              </RudiButton>
-            </>
-          }
-        />
-
-        {/* KPI row */}
-        <RudiGrid minCellWidth="13rem" space="1rem">
-          <RudiStatCard label="Total employees" value={totalEmployees} delta="Across 6 teams" trend="neutral" />
-          <RudiStatCard label="Active" value={activeCount} delta="In office" trend="up" />
-          <RudiStatCard label="Remote" value={remoteCount} delta="Distributed" trend="neutral" />
-          <RudiStatCard label="On leave" value={onLeaveCount} delta="Temporarily away" trend="neutral" />
-        </RudiGrid>
-
-        {/* Filter bar */}
-        <Panel>
-          <RudiCluster justify="space-between" align="flex-end" space="1rem">
-            <div style={{ minInlineSize: '13rem' }}>
-              <RudiSelect
-                label="Department"
-                items={deptOptions}
-                selectedKey={dept}
-                onSelectionChange={(key) => setDept(key ? String(key) : ALL)}
-              >
-                {(item) => <RudiOption key={item.id}>{item.label}</RudiOption>}
-              </RudiSelect>
-            </div>
-            <RudiText variant="caption">
-              Showing {filtered.length} of {totalEmployees} people
-            </RudiText>
-          </RudiCluster>
-        </Panel>
-
-        {/* Directory */}
-        {filtered.length === 0 ? (
-          <Panel>
-            <RudiText variant="body-sm">No employees match this department.</RudiText>
-          </Panel>
-        ) : (
-          <RudiGrid minCellWidth="18rem" space="1rem">
-            {filtered.map((e) => {
-              const statusMeta = employeeStatusMeta[e.status]
-              const dep = department(e.departmentId)
-              return (
-                <Panel key={e.id}>
-                  <RudiStack space="1rem">
-                    <RudiCluster justify="space-between" align="flex-start" space="0.75rem">
-                      <RudiCluster space="0.75rem" align="center" style={{ minInlineSize: 0 }}>
-                        <AvatarFor id={e.id} size="md" />
-                        <RudiStack space="0" style={{ minInlineSize: 0 }}>
-                          <RudiHeading level={3} size={5} style={{ margin: 0 }}>
-                            {e.name}
-                          </RudiHeading>
-                          <RudiText variant="caption">{e.role}</RudiText>
-                        </RudiStack>
-                      </RudiCluster>
-                      <RudiBadge variant={statusMeta.variant} size="sm">
-                        {statusMeta.label}
-                      </RudiBadge>
-                    </RudiCluster>
-
-                    <RudiStack space="0.5rem">
-                      <RudiCluster space="0.5rem" align="center">
-                        <StatusDot color={dep.color} />
-                        <RudiText variant="body-sm" style={medium}>
-                          {dep.name}
-                        </RudiText>
-                      </RudiCluster>
-                      <RudiText variant="caption" style={{ color: 'var(--rudi-color-text-subtle)' }}>
-                        {e.email}
-                      </RudiText>
-                      <RudiText variant="caption" style={{ color: 'var(--rudi-color-text-subtle)' }}>
-                        {e.location}
-                      </RudiText>
-                    </RudiStack>
-                  </RudiStack>
-                </Panel>
-              )
-            })}
-          </RudiGrid>
-        )}
-      </RudiStack>
-    </CrmShell>
-  )
-}
-
 const meta = {
   title: 'Examples/CRM/Employees',
   tags: ['autodocs'],
@@ -164,5 +61,106 @@ type Story = StoryObj<typeof meta>
 
 export const Employees: Story = {
   name: 'Employees',
-  render: () => <EmployeesRender />,
+  render: () => {
+    const [dept, setDept] = useState<string>(ALL)
+
+    const filtered = dept === ALL ? employees : employees.filter((e) => e.departmentId === dept)
+
+    return (
+      <CrmShell active="employees">
+        <RudiStack space="1.5rem">
+          <PageHeader
+            title="Employees"
+            subtitle="Directory · Meridian · the people behind the numbers"
+            actions={
+              <>
+                <RudiButton variant="secondary" size="sm" iconBefore="lucide:download">
+                  Export
+                </RudiButton>
+                <RudiButton size="sm" iconBefore="lucide:user-plus">
+                  Invite
+                </RudiButton>
+              </>
+            }
+          />
+
+          {/* KPI row */}
+          <RudiGrid minCellWidth="13rem" space="1rem">
+            <RudiStatCard label="Total employees" value={totalEmployees} delta="Across 6 teams" trend="neutral" />
+            <RudiStatCard label="Active" value={activeCount} delta="In office" trend="up" />
+            <RudiStatCard label="Remote" value={remoteCount} delta="Distributed" trend="neutral" />
+            <RudiStatCard label="On leave" value={onLeaveCount} delta="Temporarily away" trend="neutral" />
+          </RudiGrid>
+
+          {/* Filter bar */}
+          <Panel>
+            <RudiCluster justify="space-between" align="flex-end" space="1rem">
+              <div style={{ minInlineSize: '13rem' }}>
+                <RudiSelect
+                  label="Department"
+                  items={deptOptions}
+                  selectedKey={dept}
+                  onSelectionChange={(key) => setDept(key ? String(key) : ALL)}
+                >
+                  {(item) => <RudiOption key={item.id}>{item.label}</RudiOption>}
+                </RudiSelect>
+              </div>
+              <RudiText variant="caption">
+                Showing {filtered.length} of {totalEmployees} people
+              </RudiText>
+            </RudiCluster>
+          </Panel>
+
+          {/* Directory */}
+          {filtered.length === 0 ? (
+            <Panel>
+              <RudiText variant="body-sm">No employees match this department.</RudiText>
+            </Panel>
+          ) : (
+            <RudiGrid minCellWidth="18rem" space="1rem">
+              {filtered.map((e) => {
+                const statusMeta = employeeStatusMeta[e.status]
+                const dep = department(e.departmentId)
+                return (
+                  <Panel key={e.id}>
+                    <RudiStack space="1rem">
+                      <RudiCluster justify="space-between" align="flex-start" space="0.75rem">
+                        <RudiCluster space="0.75rem" align="center" style={{ minInlineSize: 0 }}>
+                          <AvatarFor id={e.id} size="md" />
+                          <RudiStack space="0" style={{ minInlineSize: 0 }}>
+                            <RudiHeading level={3} size={5} style={{ margin: 0 }}>
+                              {e.name}
+                            </RudiHeading>
+                            <RudiText variant="caption">{e.role}</RudiText>
+                          </RudiStack>
+                        </RudiCluster>
+                        <RudiBadge variant={statusMeta.variant} size="sm">
+                          {statusMeta.label}
+                        </RudiBadge>
+                      </RudiCluster>
+
+                      <RudiStack space="0.5rem">
+                        <RudiCluster space="0.5rem" align="center">
+                          <StatusDot color={dep.color} />
+                          <RudiText variant="body-sm" style={medium}>
+                            {dep.name}
+                          </RudiText>
+                        </RudiCluster>
+                        <RudiText variant="caption" style={{ color: 'var(--rudi-color-text-subtle)' }}>
+                          {e.email}
+                        </RudiText>
+                        <RudiText variant="caption" style={{ color: 'var(--rudi-color-text-subtle)' }}>
+                          {e.location}
+                        </RudiText>
+                      </RudiStack>
+                    </RudiStack>
+                  </Panel>
+                )
+              })}
+            </RudiGrid>
+          )}
+        </RudiStack>
+      </CrmShell>
+    )
+  },
 }

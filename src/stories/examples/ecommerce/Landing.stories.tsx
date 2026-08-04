@@ -47,8 +47,9 @@ const valueProps = [
   { icon: 'lucide:sprout', title: 'Sustainably made', body: 'FSC-certified wood, recycled textiles.' },
 ]
 
-function LandingRender() {
-  return (
+export const LandingPage: Story = {
+  name: 'Landing Page',
+  render: () => (
     <RudiStack space="0">
       <StoreHeader />
 
@@ -236,10 +237,5 @@ function LandingRender() {
 
       <StoreFooter />
     </RudiStack>
-  )
-}
-
-export const LandingPage: Story = {
-  name: 'Landing Page',
-  render: () => <LandingRender />,
+  ),
 }

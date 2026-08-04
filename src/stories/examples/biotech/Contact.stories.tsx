@@ -65,8 +65,9 @@ function TextArea({ label, placeholder }: { label: string; placeholder: string }
   return <RudiTextarea label={label} placeholder={placeholder} rows={5} />
 }
 
-function ContactRender() {
-  return (
+export const ContactUs: Story = {
+  name: 'Contact Us',
+  render: () => (
     <RudiStack space="0">
       <BioHeader active="About" />
 
@@ -222,10 +223,5 @@ function ContactRender() {
 
       <BioFooter />
     </RudiStack>
-  )
-}
-
-export const ContactUs: Story = {
-  name: 'Contact Us',
-  render: () => <ContactRender />,
+  ),
 }

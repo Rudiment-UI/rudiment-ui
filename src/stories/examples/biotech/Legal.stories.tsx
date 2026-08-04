@@ -183,8 +183,9 @@ const sections: Section[] = [
   },
 ]
 
-function LegalRender() {
-  return (
+export const TermsAndPrivacy: Story = {
+  name: 'Terms & Privacy',
+  render: () => (
     <RudiStack space="0">
       <BioHeader />
 
@@ -286,10 +287,5 @@ function LegalRender() {
 
       <BioFooter />
     </RudiStack>
-  )
-}
-
-export const TermsAndPrivacy: Story = {
-  name: 'Terms & Privacy',
-  render: () => <LegalRender />,
+  ),
 }

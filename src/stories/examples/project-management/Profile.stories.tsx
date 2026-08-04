@@ -89,8 +89,27 @@ function SettingRow({ title, description, defaultOn }: { title: string; descript
   )
 }
 
-function ProfileRender() {
-  return (
+
+const meta = {
+  title: 'Examples/Project Management/Profile',
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        story:
+          "A team member's profile: identity header, personal delivery KPIs, current in-flight work, a quarterly focus breakdown, sprint-goal contribution, skills, and notification settings.",
+      },
+    },
+  },
+} satisfies Meta
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Profile: Story = {
+  name: 'Profile',
+  render: () => (
     <PmShell active="profile">
       <RudiStack space="1.5rem">
         <PageHeader
@@ -259,27 +278,5 @@ function ProfileRender() {
         </RudiSidebar>
       </RudiStack>
     </PmShell>
-  )
-}
-
-const meta = {
-  title: 'Examples/Project Management/Profile',
-  tags: ['autodocs'],
-  parameters: {
-    layout: 'fullscreen',
-    docs: {
-      description: {
-        story:
-          "A team member's profile: identity header, personal delivery KPIs, current in-flight work, a quarterly focus breakdown, sprint-goal contribution, skills, and notification settings.",
-      },
-    },
-  },
-} satisfies Meta
-
-export default meta
-type Story = StoryObj<typeof meta>
-
-export const Profile: Story = {
-  name: 'Profile',
-  render: () => <ProfileRender />,
+  ),
 }

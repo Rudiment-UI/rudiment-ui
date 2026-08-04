@@ -47,8 +47,9 @@ const areaTagVariant: Record<string, 'success' | 'info' | 'warning' | 'error' | 
   Cardiology: 'default',
 }
 
-function ProductsRender() {
-  return (
+export const ProductsAndServices: Story = {
+  name: 'Products & Services',
+  render: () => (
     <RudiStack space="0">
       <BioHeader active="Platform" />
 
@@ -294,10 +295,5 @@ function ProductsRender() {
 
       <BioFooter />
     </RudiStack>
-  )
-}
-
-export const ProductsAndServices: Story = {
-  name: 'Products & Services',
-  render: () => <ProductsRender />,
+  ),
 }

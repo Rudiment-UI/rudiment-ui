@@ -266,8 +266,9 @@ function OrderSummary() {
   )
 }
 
-function CheckoutRender() {
-  return (
+export const Checkout: Story = {
+  name: 'Checkout',
+  render: () => (
     <RudiStack space="0">
       {/* Minimal checkout header */}
       <RudiBox
@@ -354,10 +355,5 @@ function CheckoutRender() {
         </RudiStack>
       </RudiCenter>
     </RudiStack>
-  )
-}
-
-export const Checkout: Story = {
-  name: 'Checkout',
-  render: () => <CheckoutRender />,
+  ),
 }

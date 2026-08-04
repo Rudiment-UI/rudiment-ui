@@ -68,8 +68,9 @@ function filingIcon(type: string) {
   return 'lucide:file-chart-column'
 }
 
-function InvestorsRender() {
-  return (
+export const InvestorsAndStakeholders: Story = {
+  name: 'Investors & Stakeholders',
+  render: () => (
     <RudiStack space="0">
       <BioHeader active="Investors" />
 
@@ -356,10 +357,5 @@ function InvestorsRender() {
 
       <BioFooter />
     </RudiStack>
-  )
-}
-
-export const InvestorsAndStakeholders: Story = {
-  name: 'Investors & Stakeholders',
-  render: () => <InvestorsRender />,
+  ),
 }

@@ -109,8 +109,27 @@ function EpicCard({ e }: { e: Epic }) {
   )
 }
 
-function EpicsRender() {
-  return (
+
+const meta = {
+  title: 'Examples/Project Management/Epics',
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        story:
+          'The epic roadmap: each card shows the epic owner, status, summary, completion, story counts and target sprint, with roll-up KPIs across the whole roadmap.',
+      },
+    },
+  },
+} satisfies Meta
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Epics: Story = {
+  name: 'Epics',
+  render: () => (
     <PmShell active="epics">
       <RudiStack space="1.5rem">
         <PageHeader
@@ -142,27 +161,5 @@ function EpicsRender() {
         </RudiGrid>
       </RudiStack>
     </PmShell>
-  )
-}
-
-const meta = {
-  title: 'Examples/Project Management/Epics',
-  tags: ['autodocs'],
-  parameters: {
-    layout: 'fullscreen',
-    docs: {
-      description: {
-        story:
-          'The epic roadmap: each card shows the epic owner, status, summary, completion, story counts and target sprint, with roll-up KPIs across the whole roadmap.',
-      },
-    },
-  },
-} satisfies Meta
-
-export default meta
-type Story = StoryObj<typeof meta>
-
-export const Epics: Story = {
-  name: 'Epics',
-  render: () => <EpicsRender />,
+  ),
 }

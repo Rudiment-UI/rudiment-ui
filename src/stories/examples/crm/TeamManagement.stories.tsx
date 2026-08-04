@@ -120,8 +120,26 @@ function DepartmentCard({ d }: { d: Department }) {
   )
 }
 
-function TeamManagementRender() {
-  return (
+const meta = {
+  title: 'Examples/CRM/Team Management',
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        story:
+          "Meridian's org overview: headcount, open roles, department count, and monthly budget KPIs, a headcount-by-department chart, per-department cards with their lead, budget burn, and open reqs, plus a hiring pipeline — a mobile-friendly shell built entirely from Rudiment-UI primitives and themed with design tokens.",
+      },
+    },
+  },
+} satisfies Meta
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const TeamManagement: Story = {
+  name: 'Team Management',
+  render: () => (
     <CrmShell active="team">
       <RudiStack space="1.5rem">
         <PageHeader
@@ -201,27 +219,5 @@ function TeamManagementRender() {
         </Panel>
       </RudiStack>
     </CrmShell>
-  )
-}
-
-const meta = {
-  title: 'Examples/CRM/Team Management',
-  tags: ['autodocs'],
-  parameters: {
-    layout: 'fullscreen',
-    docs: {
-      description: {
-        story:
-          "Meridian's org overview: headcount, open roles, department count, and monthly budget KPIs, a headcount-by-department chart, per-department cards with their lead, budget burn, and open reqs, plus a hiring pipeline — a mobile-friendly shell built entirely from Rudiment-UI primitives and themed with design tokens.",
-      },
-    },
-  },
-} satisfies Meta
-
-export default meta
-type Story = StoryObj<typeof meta>
-
-export const TeamManagement: Story = {
-  name: 'Team Management',
-  render: () => <TeamManagementRender />,
+  ),
 }

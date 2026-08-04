@@ -163,114 +163,6 @@ function StoryDetail({ story }: { story: StoryModel }) {
   )
 }
 
-function StoriesRender() {
-  // Everything except backlog, so the table reflects committed sprint work.
-  const rows = stories.filter((s) => s.status !== 'backlog')
-  const [selectedId, setSelectedId] = useState(rows[0].id)
-  const selected = rows.find((s) => s.id === selectedId) ?? rows[0]
-
-  return (
-    <PmShell active="stories">
-      <RudiStack space="1.5rem">
-        <PageHeader
-          title="Stories"
-          subtitle={`${rows.length} issues in Sprint 24`}
-          actions={
-            <>
-              <RudiButton variant="secondary" size="sm" iconBefore="lucide:arrow-up-down">
-                Sort
-              </RudiButton>
-              <RudiButton size="sm" iconBefore="lucide:plus">
-                New issue
-              </RudiButton>
-            </>
-          }
-        />
-
-        <Panel>
-          <RudiCluster space="0.75rem" align="center" justify="space-between">
-            <div style={{ inlineSize: 'min(20rem, 100%)' }}>
-              <RudiInput label="Search stories" type="search" placeholder="Filter by title or key…" />
-            </div>
-            <RudiCluster space="0.375rem" align="center">
-              {(['critical', 'high', 'medium', 'low'] as const).map((p) => (
-                <RudiCluster key={p} space="0.25rem" align="center">
-                  <RudiIcon icon={priorityMeta[p].icon} size="sm" color={`var(--rudi-color-feedback-${priorityMeta[p].variant === 'default' ? 'info' : priorityMeta[p].variant})`} />
-                  <RudiText variant="caption">{rows.filter((r) => r.priority === p).length}</RudiText>
-                </RudiCluster>
-              ))}
-            </RudiCluster>
-          </RudiCluster>
-        </Panel>
-
-        <RudiSidebar side="right" sideWidth="20rem" space="1.5rem" contentMin="50%">
-          {/* Table */}
-          <Panel style={{ padding: 0, overflow: 'hidden' }}>
-            <div style={{ overflowX: 'auto' }}>
-              <table style={{ inlineSize: '100%', borderCollapse: 'collapse', fontSize: 'var(--rudi-font-size-sm)' }}>
-                <thead>
-                  <tr style={{ backgroundColor: 'var(--rudi-color-background-surface-sunken)' }}>
-                    <th style={cellHeader}>Type</th>
-                    <th style={cellHeader}>Key</th>
-                    <th style={{ ...cellHeader, inlineSize: '100%' }}>Summary</th>
-                    <th style={cellHeader}>Priority</th>
-                    <th style={cellHeader}>Status</th>
-                    <th style={cellHeader}>Pts</th>
-                    <th style={cellHeader}>Owner</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {rows.map((s) => {
-                    const isSelected = s.id === selectedId
-                    return (
-                      <tr
-                        key={s.id}
-                        onClick={() => setSelectedId(s.id)}
-                        style={{
-                          cursor: 'pointer',
-                          backgroundColor: isSelected ? 'var(--rudi-color-feedback-info-surface)' : 'transparent',
-                        }}
-                      >
-                        <td style={cell}>
-                          <TypeIcon type={s.type} />
-                        </td>
-                        <td style={cell}>
-                          <IssueKey>{s.key}</IssueKey>
-                        </td>
-                        <td style={{ ...cell }}>
-                          <RudiText variant="body-sm" style={medium}>
-                            {s.title}
-                          </RudiText>
-                        </td>
-                        <td style={cell}>
-                          <PriorityBadge priority={s.priority} />
-                        </td>
-                        <td style={cell}>
-                          <RudiBadge variant={statusMeta[s.status].variant} size="sm">
-                            {statusMeta[s.status].label}
-                          </RudiBadge>
-                        </td>
-                        <td style={{ ...cell, textAlign: 'center' }}>
-                          <Points value={s.points} />
-                        </td>
-                        <td style={cell}>
-                          <AssigneeAvatar id={s.assigneeId} size="sm" />
-                        </td>
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </Panel>
-
-          {/* Detail */}
-          <StoryDetail story={selected} />
-        </RudiSidebar>
-      </RudiStack>
-    </PmShell>
-  )
-}
 
 const meta = {
   title: 'Examples/Project Management/Stories',
@@ -291,5 +183,112 @@ type Story = StoryObj<typeof meta>
 
 export const Stories: Story = {
   name: 'Stories',
-  render: () => <StoriesRender />,
+  render: () => {
+    // Everything except backlog, so the table reflects committed sprint work.
+    const rows = stories.filter((s) => s.status !== 'backlog')
+    const [selectedId, setSelectedId] = useState(rows[0].id)
+    const selected = rows.find((s) => s.id === selectedId) ?? rows[0]
+
+    return (
+      <PmShell active="stories">
+        <RudiStack space="1.5rem">
+          <PageHeader
+            title="Stories"
+            subtitle={`${rows.length} issues in Sprint 24`}
+            actions={
+              <>
+                <RudiButton variant="secondary" size="sm" iconBefore="lucide:arrow-up-down">
+                  Sort
+                </RudiButton>
+                <RudiButton size="sm" iconBefore="lucide:plus">
+                  New issue
+                </RudiButton>
+              </>
+            }
+          />
+
+          <Panel>
+            <RudiCluster space="0.75rem" align="center" justify="space-between">
+              <div style={{ inlineSize: 'min(20rem, 100%)' }}>
+                <RudiInput label="Search stories" type="search" placeholder="Filter by title or key…" />
+              </div>
+              <RudiCluster space="0.375rem" align="center">
+                {(['critical', 'high', 'medium', 'low'] as const).map((p) => (
+                  <RudiCluster key={p} space="0.25rem" align="center">
+                    <RudiIcon icon={priorityMeta[p].icon} size="sm" color={`var(--rudi-color-feedback-${priorityMeta[p].variant === 'default' ? 'info' : priorityMeta[p].variant})`} />
+                    <RudiText variant="caption">{rows.filter((r) => r.priority === p).length}</RudiText>
+                  </RudiCluster>
+                ))}
+              </RudiCluster>
+            </RudiCluster>
+          </Panel>
+
+          <RudiSidebar side="right" sideWidth="20rem" space="1.5rem" contentMin="50%">
+            {/* Table */}
+            <Panel style={{ padding: 0, overflow: 'hidden' }}>
+              <div style={{ overflowX: 'auto' }}>
+                <table style={{ inlineSize: '100%', borderCollapse: 'collapse', fontSize: 'var(--rudi-font-size-sm)' }}>
+                  <thead>
+                    <tr style={{ backgroundColor: 'var(--rudi-color-background-surface-sunken)' }}>
+                      <th style={cellHeader}>Type</th>
+                      <th style={cellHeader}>Key</th>
+                      <th style={{ ...cellHeader, inlineSize: '100%' }}>Summary</th>
+                      <th style={cellHeader}>Priority</th>
+                      <th style={cellHeader}>Status</th>
+                      <th style={cellHeader}>Pts</th>
+                      <th style={cellHeader}>Owner</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {rows.map((s) => {
+                      const isSelected = s.id === selectedId
+                      return (
+                        <tr
+                          key={s.id}
+                          onClick={() => setSelectedId(s.id)}
+                          style={{
+                            cursor: 'pointer',
+                            backgroundColor: isSelected ? 'var(--rudi-color-feedback-info-surface)' : 'transparent',
+                          }}
+                        >
+                          <td style={cell}>
+                            <TypeIcon type={s.type} />
+                          </td>
+                          <td style={cell}>
+                            <IssueKey>{s.key}</IssueKey>
+                          </td>
+                          <td style={{ ...cell }}>
+                            <RudiText variant="body-sm" style={medium}>
+                              {s.title}
+                            </RudiText>
+                          </td>
+                          <td style={cell}>
+                            <PriorityBadge priority={s.priority} />
+                          </td>
+                          <td style={cell}>
+                            <RudiBadge variant={statusMeta[s.status].variant} size="sm">
+                              {statusMeta[s.status].label}
+                            </RudiBadge>
+                          </td>
+                          <td style={{ ...cell, textAlign: 'center' }}>
+                            <Points value={s.points} />
+                          </td>
+                          <td style={cell}>
+                            <AssigneeAvatar id={s.assigneeId} size="sm" />
+                          </td>
+                        </tr>
+                      )
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </Panel>
+
+            {/* Detail */}
+            <StoryDetail story={selected} />
+          </RudiSidebar>
+        </RudiStack>
+      </PmShell>
+    )
+  },
 }

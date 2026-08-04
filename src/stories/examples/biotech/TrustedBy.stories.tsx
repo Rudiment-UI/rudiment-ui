@@ -67,8 +67,9 @@ const caseStudies = [
   },
 ]
 
-function TrustedByRender() {
-  return (
+export const TrustedBy: Story = {
+  name: 'Trusted By',
+  render: () => (
     <RudiStack space="0">
       <BioHeader active="Partners" />
 
@@ -260,10 +261,5 @@ function TrustedByRender() {
 
       <BioFooter />
     </RudiStack>
-  )
-}
-
-export const TrustedBy: Story = {
-  name: 'Trusted By',
-  render: () => <TrustedByRender />,
+  ),
 }

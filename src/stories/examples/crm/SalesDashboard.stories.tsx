@@ -63,8 +63,26 @@ const openDealsByValue = [...openDeals].sort((a, b) => b.value - a.value)
 /** Shared grid template so the header row and data rows line up. */
 const dealCols = '2.2fr 1.3fr 1fr 1fr 0.8fr'
 
-function SalesDashboardRender() {
-  return (
+const meta = {
+  title: 'Examples/CRM/Sales Dashboard',
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        story:
+          'A sales-pipeline command center for Meridian: open-pipeline, win-rate, average-deal-size, and closing-this-quarter KPIs, a pipeline funnel by stage, an MRR trend, a rep leaderboard by won revenue, and a sortable open-deals table — built entirely from Rudiment-UI primitives and themed with design tokens.',
+      },
+    },
+  },
+} satisfies Meta
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const SalesDashboard: Story = {
+  name: 'Sales Dashboard',
+  render: () => (
     <CrmShell active="sales">
       <RudiStack space="1.5rem">
         <PageHeader
@@ -236,27 +254,5 @@ function SalesDashboardRender() {
         </RudiGrid>
       </RudiStack>
     </CrmShell>
-  )
-}
-
-const meta = {
-  title: 'Examples/CRM/Sales Dashboard',
-  tags: ['autodocs'],
-  parameters: {
-    layout: 'fullscreen',
-    docs: {
-      description: {
-        story:
-          'A sales-pipeline command center for Meridian: open-pipeline, win-rate, average-deal-size, and closing-this-quarter KPIs, a pipeline funnel by stage, an MRR trend, a rep leaderboard by won revenue, and a sortable open-deals table — built entirely from Rudiment-UI primitives and themed with design tokens.',
-      },
-    },
-  },
-} satisfies Meta
-
-export default meta
-type Story = StoryObj<typeof meta>
-
-export const SalesDashboard: Story = {
-  name: 'Sales Dashboard',
-  render: () => <SalesDashboardRender />,
+  ),
 }
